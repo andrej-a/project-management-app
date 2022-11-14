@@ -18,7 +18,7 @@ export const RussianState: ILanguage = {
   'Boards (0)': 'нет досок',
   'Boards (1)': ' доска',
   'Boards (2-4)': ' доски',
-  'Boards (5+)': ' доскок',
+  'Boards (5+)': ' досок',
   'To do': 'для выполнения',
   'Keep up the good work!': ' Продолжай в том же духе!',
 };

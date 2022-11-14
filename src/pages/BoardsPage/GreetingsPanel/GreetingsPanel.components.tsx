@@ -8,7 +8,7 @@ export const GreetingsPanelStyled = styled.div`
   width: 93%;
   box-sizing: border-box;
   min-height: 125px;
-  margin: 33px 3.5% auto 3.5%;
+  margin: 33px 3.5% 0 3.5%;
   padding: 21px 3.4%;
   background: linear-gradient(
     91.75deg,
@@ -20,7 +20,6 @@ export const GreetingsPanelStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Libre Franklin';
 `;
 
 export const GreetingTextBlock = styled.div`
