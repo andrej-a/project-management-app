@@ -1,7 +1,7 @@
 /* MODELS */
 import { ILanguage } from '../../models/ILanguage';
 
-export const initialState1: ILanguage = {
+export const initialState: ILanguage = {
   Hello: 'Hello',
   'You have': 'You have',
   'Boards (0)': 'no boards',
@@ -12,13 +12,13 @@ export const initialState1: ILanguage = {
   'Keep up the good work!': ' Keep up the good work!',
 };
 
-export const initialState: ILanguage = {
+export const RussianState: ILanguage = {
   Hello: 'Привет',
   'You have': 'У тебя',
   'Boards (0)': 'нет досок',
   'Boards (1)': ' доска',
   'Boards (2-4)': ' доски',
-  'Boards (5+)': ' досок',
+  'Boards (5+)': ' доскок',
   'To do': 'для выполнения',
   'Keep up the good work!': ' Продолжай в том же духе!',
 };
