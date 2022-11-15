@@ -3,6 +3,14 @@ export interface ILanguage {
     title: string;
     confirmButton: string;
   };
+  registrationModal: {
+    title: string;
+    namePlaceholder: string;
+    loginPlaceholder: string;
+    passwordPlaceholder: string;
+    registrationButton: string;
+    changeModalToSignIn: string;
+  };
   cancel: string;
   Hello: string;
   'You have': string;
