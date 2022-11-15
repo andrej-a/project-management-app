@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 /* STORE */
 import { store } from '../../../../../store/store';
+/* CONSTANTS */
+import { size } from '../../../../../constants/screenSizes';
 const {
   LIGHT_BACKGROUND,
   INPUT_BORDER_COLOR_LIGHT,
@@ -33,6 +35,11 @@ export const FormWrapper = styled.div`
       font-weight: 600;
       font-size: 14px;
       line-height: 17px;
+    }
+    input[type='text']::-moz-placeholder {
+      color: ${TEXT_COLOR_GREY};
+    }
+    input[type='text']::-webkit-input-placeholder {
       color: ${TEXT_COLOR_GREY};
     }
 
@@ -48,6 +55,21 @@ export const FormWrapper = styled.div`
       line-height: 22px;
       color: ${TEXT_COLOR};
       cursor: pointer;
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+
+    @media (max-width: ${size.mobileL}) {
+      input[type='text'] {
+        width: 250px;
+      }
+    }
+
+    @media (max-width: ${size.mobileM}) {
+      input[type='text'] {
+        width: 200px;
+      }
     }
   }
 `;

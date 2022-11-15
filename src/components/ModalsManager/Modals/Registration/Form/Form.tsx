@@ -84,7 +84,11 @@ export const Form = () => {
             <InputError>{errors.password?.message}</InputError>
           </InputWrapper>
 
-          <input type="submit" value={registrationButton} />
+          <input
+            disabled={Object.keys(errors).length > 0}
+            type="submit"
+            value={registrationButton}
+          />
         </form>
       </FormWrapper>
     </>
