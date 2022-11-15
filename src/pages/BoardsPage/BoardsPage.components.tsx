@@ -25,7 +25,9 @@ export const BoardsPanelWrapper = styled.div`
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-    gap: 71px;
+    gap: 5vw;
+    max-width: 100%;
+    margin: 71px 0;
   }
 `;
 export const BoardsWrapper = styled.div`

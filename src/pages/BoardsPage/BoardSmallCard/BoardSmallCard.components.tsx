@@ -3,10 +3,8 @@ import { store } from '../../../store/store';
 const { MAIN_BACKGROUND, TEXT_COLOR } = store.getState().application_theme;
 
 export const BoardSmallCardStyled = styled.div`
-  min-width: 332px;
-  min-height: 176px;
-  max-width: 332px;
-  max-height: 176px;
+  height: 176px;
+  width: clamp(200px, 332px, 80%);
   padding: 31px 33px;
   display: flex;
   flex-direction: column;

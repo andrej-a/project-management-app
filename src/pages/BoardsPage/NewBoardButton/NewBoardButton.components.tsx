@@ -5,7 +5,7 @@ const { MAIN_BACKGROUND } = store.getState().application_theme;
 export const NewBoardButtonWrapper = styled.button`
   min-height: 100%;
   border-radius: 20px;
-  min-width: 332px;
+  width: clamp(200px, 332px, 80%);
   display: flex;
   justify-content: center;
   align-items: flex-start;
