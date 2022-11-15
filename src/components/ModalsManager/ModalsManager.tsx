@@ -5,11 +5,18 @@ import { useAppSelector } from '../../hooks/hooks';
 /* COMPONENTS */
 import { DeleteItem } from './Modals/DeleteItem/DeleteItem';
 import { Registration } from './Modals/Registration/Registration';
+import { LogIn } from './Modals/LogIn/LogIn';
 export const ModalsManager = () => {
   const { modalsState } = useAppSelector((state) => state.modals_state);
   const getModal = (): JSX.Element => {
     switch (modalsState) {
-      case 'hidden':
+      case 'login':
+        return (
+          <Overlay>
+            <LogIn />
+          </Overlay>
+        );
+      case 'registration':
         return (
           <Overlay>
             <Registration />

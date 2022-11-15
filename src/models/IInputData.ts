@@ -3,3 +3,8 @@ export interface IRegistrationData {
   login: string;
   password: string;
 }
+
+export interface ILogInData {
+  login: string;
+  password: string;
+}
