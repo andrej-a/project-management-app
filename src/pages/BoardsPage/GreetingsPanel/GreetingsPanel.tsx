@@ -6,12 +6,12 @@ import {
   GreetingTextBlock,
 } from './GreetingsPanel.components';
 import imageHand from '../../../assets/img/boards_page/greetings_hand.png';
-import { numOfBoards, userName } from '../../../temporalStates/temporalStates';
 
 import { store } from '../../../store/store';
+import { IBoard } from '../../../models/IBoard';
 const l = store.getState().language;
 
-const GreetingsPanel = () => {
+const GreetingsPanel = ({ userName, boards }: { userName: string; boards: IBoard[] }) => {
   return (
     <GreetingsPanelStyled>
       <GreetingTextBlock>
@@ -19,8 +19,8 @@ const GreetingsPanel = () => {
           {l.Hello} <span>{userName}!</span>
         </GreetingMainText>
         <GreetingSubText>
-          {l['You have']} {getBoardsWord(numOfBoards)} {l['To do']}.
-          {!!numOfBoards && l['Keep up the good work!']}
+          {l['You have']} {getBoardsWord(boards.length)} {l['To do']}.
+          {!!boards.length && l['Keep up the good work!']}
         </GreetingSubText>
       </GreetingTextBlock>
       <GreetingImageBlock>

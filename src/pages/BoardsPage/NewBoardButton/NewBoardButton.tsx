@@ -1,10 +1,12 @@
-import { NewBoardButtonStyled } from './NewBoardButton.components';
+import { NewBoardButtonWrapper } from './NewBoardButton.components';
 
 const NewBoardButton = () => {
   return (
-    <NewBoardButtonStyled>
-      Create <br /> new Board
-    </NewBoardButtonStyled>
+    <NewBoardButtonWrapper>
+      <div>
+        Create <br /> new Board
+      </div>
+    </NewBoardButtonWrapper>
   );
 };
 

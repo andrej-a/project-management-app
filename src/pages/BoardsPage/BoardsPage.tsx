@@ -3,24 +3,18 @@ import BoardSmallCard from './BoardSmallCard/BoardSmallCard';
 import { BoardsPanelWrapper, BoardsWrapper, Wrapper } from './BoardsPage.components';
 import GreetingsPanel from './GreetingsPanel/GreetingsPanel';
 import NewBoardButton from './NewBoardButton/NewBoardButton';
+import { userName, boards } from '../../temporalStates/temporalStates';
 
 const BoardsPage = () => {
+  const boardsList = boards.map((board) => (
+    <BoardSmallCard title={board.title} description={board.description} key={board.id} />
+  ));
   return (
     <Wrapper>
-      <GreetingsPanel />
+      <GreetingsPanel userName={userName} boards={boards} />
       <BoardsPanelWrapper>
         <NewBoardButton></NewBoardButton>
-        <BoardsWrapper>
-          <BoardSmallCard title="Board name" description="Shor description...." />
-          <BoardSmallCard title="Board name" description="Shor description...." />
-          <BoardSmallCard title="Board name" description="Shor description...." />
-          <BoardSmallCard title="Board name" description="Shor description...." />
-          <BoardSmallCard title="Board name" description="Shor description...." />
-          <BoardSmallCard
-            title="Board name"
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint maxime reiciendis distinctio tempore? Cumque ea sapiente, officiis, similique, magni praesentium architecto cupiditate animi aperiam aut asperiores temporibus illum delectus magnam."
-          />
-        </BoardsWrapper>
+        <BoardsWrapper>{boardsList}</BoardsWrapper>
       </BoardsPanelWrapper>
     </Wrapper>
   );
