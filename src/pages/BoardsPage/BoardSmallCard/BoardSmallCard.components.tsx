@@ -16,6 +16,7 @@ export const BoardSmallCardStyled = styled.div`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   color: ${TEXT_COLOR};
+  position: relative;
 
   &:hover {
     transform: scale(1.06);

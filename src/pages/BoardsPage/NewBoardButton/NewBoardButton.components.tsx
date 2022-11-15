@@ -33,7 +33,7 @@ export const NewBoardButtonWrapper = styled.button`
       min-height: 4px;
       background-color: ${MAIN_BACKGROUND};
       position: absolute;
-      transition: transform 0.7s ease-in-out;
+      transition: transform 0.5s ease-in-out;
     }
     &::before {
       top: 50%;
@@ -51,10 +51,10 @@ export const NewBoardButtonWrapper = styled.button`
     div {
       transform: scale(1.06);
       &::before {
-        transform: rotate(180deg);
+        transform: rotate(90deg);
       }
       &::after {
-        transform: rotate(270deg);
+        transform: rotate(180deg);
       }
     }
   }

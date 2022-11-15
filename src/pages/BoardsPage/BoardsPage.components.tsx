@@ -4,8 +4,10 @@ import { store } from '../../store/store';
 const { DESK_BACKGROUND } = store.getState().application_theme;
 
 export const Wrapper = styled.div`
-  width: 100vw;
+  max-width: 100vw;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
   height: auto;
   background: ${DESK_BACKGROUND};
   display: flex;
