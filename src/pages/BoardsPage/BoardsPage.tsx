@@ -1,4 +1,3 @@
-import { store } from '../../store/store';
 import BoardSmallCard from './BoardSmallCard/BoardSmallCard';
 import { BoardsPanelWrapper, BoardsWrapper, Wrapper } from './BoardsPage.components';
 import GreetingsPanel from './GreetingsPanel/GreetingsPanel';
