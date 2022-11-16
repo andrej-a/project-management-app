@@ -12,12 +12,30 @@ export const initialState: ILanguage = {
     'To do': 'to do',
     'Keep up the good work!': ' Keep up the good work!',
     Create: 'Create',
-    'new Board': 'new Board',
+    'New Board': 'New Board',
   },
   mainPage: {
     title: 'YOUR PROJECT MANAGER IN ONE SPACE',
     description:
       'This is a project management program that allows you to centrally manage tasks and their timely completion. Trackers are widely used in project management, because they allow you to easily monitor all work processes and control the work of the team',
+  },
+  header: {
+    LogOut: 'LOG OUT',
+    SignIn: 'SIGN IN',
+    SignUp: 'SIGN UP',
+    Theme: 'Theme',
+    ThemeDefault: 'Default',
+    ThemeDark: 'Dark',
+    EN: 'EN',
+    RU: 'RU',
+    SearchProject: 'Search Project...',
+    SearchBoard: 'Search Board...',
+  },
+  profile: {
+    DeleteProfile: 'Delete Profile',
+    ChangePassword: 'Change Password',
+    ChangeLogin: 'Change Login',
+    EditProfile: 'Edit Profile',
   },
 };
 
@@ -32,11 +50,29 @@ export const RussianState: ILanguage = {
     'To do': 'для выполнения',
     'Keep up the good work!': ' Продолжай в том же духе!',
     Create: 'Создать',
-    'new Board': 'новую Доску',
+    'New Board': 'Новую Доску',
   },
   mainPage: {
     title: 'ТВОЙ МЕНЕДЖЕР ПРОЕКТОВ В ОДНОМ МЕСТЕ',
     description:
       'Это программа для управления проектами, которая позволяет централизованно руководить задачами и их своевременным выполнением. Трекеры широко используются в проектном менеджменте, потому что позволяют без труда следить за всеми рабочими процессами и контролировать работу команды',
+  },
+  header: {
+    LogOut: 'Выйти',
+    SignIn: 'Войти',
+    SignUp: 'Зарегистрироваться',
+    Theme: 'Тема',
+    ThemeDefault: 'По умолчанию',
+    ThemeDark: 'Темная',
+    EN: 'EN',
+    RU: 'RU',
+    SearchProject: 'Найти задание...',
+    SearchBoard: 'Найти доску...',
+  },
+  profile: {
+    DeleteProfile: 'Удалить Профиль',
+    ChangePassword: 'Изменить Пароль',
+    ChangeLogin: 'Изменить Логин',
+    EditProfile: 'Редактировать Профиль',
   },
 };

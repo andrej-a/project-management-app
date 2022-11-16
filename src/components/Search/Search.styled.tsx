@@ -1,36 +1,35 @@
 import styled from 'styled-components';
-
 import { store } from '../../store/store';
 const { TEXT_COLOR_DARK, TEXT_COLOR, TASK_TEXT } = store.getState().application_theme;
 
 export const FormWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: auto;
   position: relative;
-  margin-top: 20px;
   svg {
     fill: ${TEXT_COLOR_DARK};
     position: absolute;
-    top: 5px;
+    top: 8px;
     left: 18px;
   }
 `;
+export const Line = styled.div`
+  margin-left: 22px;
+  border-left: 3px solid ${TEXT_COLOR};
+  height: 44px;
+`;
 export const InputSearch = styled.input`
   width: 340px;
-  height: 30px;
+  height: 40px;
   color: ${TASK_TEXT};
   background-color: ${TEXT_COLOR};
-  border-radius: 4px;
+  border-radius: 20px;
   padding-left: 72px;
+  padding-right: 10px;
   font-size: 20px;
   font-weight: 400;
+  border: none;
+  outline: none;
 `;
-// export const ButtonSearch = styled.button`
-//   width: 30px;
-//   height: 30px;
-//   background-image: url(${IconSearch});
-//   background-color: transparent;
-//   border: none;
-//   position: absolute;
-//   top: 4px;
-//   right: 7px;
-// `;

@@ -24,17 +24,26 @@ export const ButtonContainer = styled.div`
   align-items: center;
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   padding: 7px 36px;
   font-size: 16px;
   border-radius: 20px;
   font-weight: 600;
   border: 3px solid ${TEXT_COLOR};
+  cursor: pointer;
+  &:hover {
+    color: ${TEXT_COLOR_DARK};
+    background-color: ${TEXT_COLOR};
+  }
 `;
 
 export const SignUp = styled(Button)`
   color: ${TEXT_COLOR_DARK};
   background-color: ${TEXT_COLOR};
+  &:hover {
+    color: ${TEXT_COLOR_DARK};
+    background-color: ${TEXT_COLOR};
+  }
 `;
 
 export const SignIn = styled(Button)`

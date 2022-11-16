@@ -12,7 +12,7 @@ const NewBoardButton = () => {
   return (
     <NewBoardButtonWrapper>
       <div>
-        {dictionary.Create} <br /> {dictionary['new Board']}
+        {dictionary.Create} <br /> {dictionary['New Board']}
       </div>
     </NewBoardButtonWrapper>
   );

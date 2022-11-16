@@ -1,6 +1,9 @@
 import { IUser } from '../../models/IUser';
 
 export const initialState: IUser = {
-  isAuthorized: false,
+  isAuthorized: true,
   search: '',
+  name: 'Stepfanie',
+  login: '',
+  password: '',
 };
