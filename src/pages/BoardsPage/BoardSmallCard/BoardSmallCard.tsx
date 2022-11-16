@@ -1,5 +1,6 @@
 /**COMPONENTS */
-import BoardCardBtn from './BoardCardBtnStyled/BoardCardBtn';
+import SvgButton from '../../../components/SvgButton/SvgButton';
+
 /**STYLES */
 import {
   BoardSmallCardStyled,
@@ -11,24 +12,25 @@ import deleteIcon from '../../../assets/img/delete.svg';
 import editIcon from '../../../assets/img/edit.svg';
 /**HOOKS */
 import { useAppSelector } from '../../../hooks/hooks';
+import { IBoard } from '../../../models/IBoard';
 
-const BoardSmallCard = ({ title, description }: { title: string; description: string }) => {
-  const { textColor } = useAppSelector((state) => {
+const BoardSmallCard = ({ title, description }: IBoard) => {
+  const { buttonColor } = useAppSelector((state) => {
     return {
-      textColor: state.application_theme.TEXT_COLOR,
+      buttonColor: state.application_theme.BUTTON_BORDER_COLOR_LIGHT,
     };
   });
   return (
     <BoardSmallCardStyled>
       <BoardSmallTitle>{title}</BoardSmallTitle>
       <BoardSmallDescription>{description}</BoardSmallDescription>
-      <BoardCardBtn
-        color={textColor}
+      <SvgButton
+        color={buttonColor}
         icon={deleteIcon}
         stylish={{ position: 'absolute', right: '12px', top: '12px' }}
       />
-      <BoardCardBtn
-        color={textColor}
+      <SvgButton
+        color={buttonColor}
         icon={editIcon}
         size={28}
         stylish={{ position: 'absolute', right: '44px', top: '14px' }}

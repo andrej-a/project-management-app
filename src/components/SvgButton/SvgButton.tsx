@@ -1,10 +1,10 @@
 import { HandySvg } from 'handy-svg';
 /**CONSTANTS */
-import { svgDefaultSize } from '../../../../constants/applicationConstants';
-import { BoardCardBtnStyled } from './BoardCardBtnStyled.styled';
+import { svgDefaultSize } from '../../constants/applicationConstants';
+import { BoardCardBtnStyled } from './SvgButton.styled';
 import CSS from 'csstype';
 
-const BoardCardBtn = ({
+const SvgButton = ({
   color,
   icon,
   size,
@@ -23,4 +23,4 @@ const BoardCardBtn = ({
   );
 };
 
-export default BoardCardBtn;
+export default SvgButton;

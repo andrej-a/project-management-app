@@ -1,4 +1,6 @@
 import { IBoard } from '../models/IBoard';
+import { IColumn } from '../models/IColumn';
+import { ITask } from '../models/ITask';
 
 export const userName = 'Stephanie';
 export const boards: IBoard[] = [
@@ -24,3 +26,54 @@ export const boards: IBoard[] = [
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque non iste, vitae esse, delectus maxime voluptas, laborum magni ipsum nesciunt rem magnam suscipit explicabo! Voluptatem animi deserunt enim beatae culpa.',
   },
 ];
+export const columns: IColumn[] = [
+  {
+    _id: '6373dca57a0a06b9b7c6db30',
+    title: 'New project',
+    order: 0,
+    boardId: '6373dc7f7a0a06b9b7c6db2c',
+  },
+  {
+    _id: '637510c37a0a06b9b7c6db43',
+    title: 'In progress',
+    order: 0,
+    boardId: '6373dc7f7a0a06b9b7c6db2c',
+  },
+];
+export const tasks: { [key: string]: ITask[] } = {
+  '6373dca57a0a06b9b7c6db30': [
+    {
+      _id: '637510997a0a06b9b7c6db3d',
+      title: 'First task',
+      order: 0,
+      description: '12121212',
+      userId: '0',
+      boardId: '6373dc7f7a0a06b9b7c6db2c',
+      columnId: '6373dca57a0a06b9b7c6db30',
+      users: ['string'],
+    },
+    {
+      _id: '637510a27a0a06b9b7c6db40',
+      title: 'Second task',
+      order: 0,
+      description:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque non iste, vitae esse, delectus maxime voluptas, laborum magni ipsum nesciunt rem magnam suscipit explicabo! Voluptatem animi deserunt enim beatae culpa.',
+      userId: '0',
+      boardId: '6373dc7f7a0a06b9b7c6db2c',
+      columnId: '6373dca57a0a06b9b7c6db30',
+      users: ['string'],
+    },
+  ],
+  '637510c37a0a06b9b7c6db43': [
+    {
+      _id: '637510c37a0a06b9b7c6db43',
+      title: 'Blablabla',
+      order: 0,
+      description: 'Hello world',
+      userId: '0',
+      boardId: '6373dc7f7a0a06b9b7c6db2c',
+      columnId: '6373dca97a0a06b9b7c6db33',
+      users: ['string'],
+    },
+  ],
+};

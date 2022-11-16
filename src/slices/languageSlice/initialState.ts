@@ -14,6 +14,10 @@ export const initialState: ILanguage = {
     Create: 'Create',
     'new Board': 'new Board',
   },
+  currentBoardPage: {
+    'See all Boards': 'See all Boards',
+    'New column': 'New column',
+  },
 };
 
 export const RussianState: ILanguage = {
@@ -28,5 +32,9 @@ export const RussianState: ILanguage = {
     'Keep up the good work!': ' Продолжай в том же духе!',
     Create: 'Создать',
     'new Board': 'новую Доску',
+  },
+  currentBoardPage: {
+    'See all Boards': 'Просмтореть все доски',
+    'New column': 'Новая колонка',
   },
 };

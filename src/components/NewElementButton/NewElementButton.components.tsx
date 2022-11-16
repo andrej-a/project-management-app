@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { store } from '../../../store/store';
-const { MAIN_BACKGROUND } = store.getState().application_theme;
+import { store } from '../../store/store';
+const { TEXT_COLOR_DARK } = store.getState().application_theme;
 
-export const NewBoardButtonWrapper = styled.button`
+export const NewElementButtonWrapper = styled.button`
   min-height: 100%;
   border-radius: 20px;
   width: clamp(200px, 332px, 80%);
@@ -18,7 +18,7 @@ export const NewBoardButtonWrapper = styled.button`
 
   div {
     height: min-content;
-    color: ${MAIN_BACKGROUND};
+    color: ${TEXT_COLOR_DARK};
     font-size: 24px;
     line-height: 29px;
     position: relative;
@@ -31,7 +31,7 @@ export const NewBoardButtonWrapper = styled.button`
       content: '';
       width: 37px;
       min-height: 4px;
-      background-color: ${MAIN_BACKGROUND};
+      background-color: ${TEXT_COLOR_DARK};
       position: absolute;
       transition: transform 0.5s ease-in-out;
     }
@@ -47,7 +47,7 @@ export const NewBoardButtonWrapper = styled.button`
   }
 
   &:hover {
-    border: 1px dashed ${MAIN_BACKGROUND};
+    border: 1px dashed ${TEXT_COLOR_DARK};
     div {
       transform: scale(1.06);
       &::before {

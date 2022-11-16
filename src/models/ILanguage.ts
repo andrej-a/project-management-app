@@ -11,4 +11,8 @@ export interface ILanguage {
     Create: string;
     'new Board': string;
   };
+  currentBoardPage: {
+    'See all Boards': string;
+    'New column': string;
+  };
 }

@@ -2,9 +2,10 @@ import { configureStore } from '@reduxjs/toolkit';
 import ReduxThunk from 'redux-thunk';
 import application_theme from '../slices/themeSlice/themeSlice';
 import language from '../slices/languageSlice/languageSlice';
+import board from '../slices/boardSlice/boardSlice';
 
 export const store = configureStore({
-  reducer: { application_theme, language },
+  reducer: { application_theme, language, board },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: [ReduxThunk],
 });
