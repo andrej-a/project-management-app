@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 import { store } from './store/store';
-const { DESK_BACKGROUND } = store.getState().application_theme;
+const { DESK_BACKGROUND, FRAME_TASK_COLOR, TEXT_COLOR } = store.getState().application_theme;
 
 export default createGlobalStyle`
 ${normalize}
@@ -33,5 +33,22 @@ body {
     font-family: 'Libre Franklin', sans-serif;
     background-color: ${DESK_BACKGROUND};
     width: 100%;
+    &::-webkit-scrollbar {
+    background-color: ${FRAME_TASK_COLOR};
+    width: 14px;
+    
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background-clip: content-box;
+    background-color: ${TEXT_COLOR}; 
+    border: 4px solid ${FRAME_TASK_COLOR};
+  }
   }
 `;

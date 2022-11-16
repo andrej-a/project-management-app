@@ -11,4 +11,8 @@ export interface ILanguage {
     Create: string;
     'new Board': string;
   };
+  mainPage: {
+    title: string;
+    description: string;
+  };
 }

@@ -9,7 +9,7 @@ export const Footer = () => {
     <FooterWrapper>
       <Contacts />
       <div>
-        <a href="https://rs.school/">
+        <a href="https://rs.school/react/">
           <HandySvg src={rssLogo} width="116" height="42" />
         </a>
       </div>
