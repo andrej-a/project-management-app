@@ -1,18 +1,25 @@
+/**COMPONENTS */
 import DeleteBtn from './DeleteBtn/DeleteBtn';
+/**STYLES */
 import {
   BoardSmallCardStyled,
   BoardSmallDescription,
   BoardSmallTitle,
 } from './BoardSmallCard.components';
-import { store } from '../../../store/store';
-const { TEXT_COLOR } = store.getState().application_theme;
+/**HOOKS */
+import { useAppSelector } from '../../../hooks/hooks';
 
 const BoardSmallCard = ({ title, description }: { title: string; description: string }) => {
+  const { textColor } = useAppSelector((state) => {
+    return {
+      textColor: state.application_theme.TEXT_COLOR,
+    };
+  });
   return (
     <BoardSmallCardStyled>
       <BoardSmallTitle>{title}</BoardSmallTitle>
       <BoardSmallDescription>{description}</BoardSmallDescription>
-      <DeleteBtn color={TEXT_COLOR} />
+      <DeleteBtn color={textColor} />
     </BoardSmallCardStyled>
   );
 };

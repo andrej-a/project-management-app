@@ -1,7 +1,10 @@
+/**COMPONENTS */
 import BoardSmallCard from './BoardSmallCard/BoardSmallCard';
-import { BoardsPanelWrapper, BoardsWrapper, Wrapper } from './BoardsPage.components';
 import GreetingsPanel from './GreetingsPanel/GreetingsPanel';
 import NewBoardButton from './NewBoardButton/NewBoardButton';
+/**STYLES */
+import { BoardsPanelWrapper, BoardsWrapper, Wrapper } from './BoardsPage.components';
+
 import { userName, boards } from '../../temporalStates/temporalStates';
 
 const BoardsPage = () => {
