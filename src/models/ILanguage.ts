@@ -18,7 +18,6 @@ export interface ILanguage {
     logInButton: string;
     changeModalToSignUp: string;
   };
-  cancel: string;
   boardsPage: {
     Hello: string;
     'You have': string;
