@@ -1,8 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
+
 import { store } from './store/store';
 const { DESK_BACKGROUND } = store.getState().application_theme;
 
 export default createGlobalStyle`
+${normalize}
 * {
     margin: 0;
     padding: 0;

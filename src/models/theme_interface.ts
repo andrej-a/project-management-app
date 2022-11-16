@@ -14,4 +14,6 @@ export interface ITheme_Interface {
   BUTTON_RED: string;
   BUTTON_YELLOW: string;
   BUTTON_GREEN: string;
+
+  GRADIENT_SECOND_COLOR: string;
 }

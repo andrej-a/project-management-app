@@ -17,6 +17,8 @@ export const initialState: ITheme_Interface = {
   BUTTON_RED: '#FF7979',
   BUTTON_YELLOW: '#FFBA53',
   BUTTON_GREEN: '#46B220',
+
+  GRADIENT_SECOND_COLOR: '#4332f7',
 };
 
 export const DarkTheme: ITheme_Interface = {
@@ -35,4 +37,6 @@ export const DarkTheme: ITheme_Interface = {
   BUTTON_RED: '#FF7979',
   BUTTON_YELLOW: '#FFBA53',
   BUTTON_GREEN: '#46B220',
+
+  GRADIENT_SECOND_COLOR: '#434343',
 };
