@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 /* STORE */
 import { store } from '../../../../store/store';
-/* CONSTANTS */
-import { size } from '../../../../constants/screenSizes';
 
 const { FRAME_TASK_COLOR, LIGHT_BACKGROUND, TEXT_COLOR_DARK, BUTTON_RED } =
   store.getState().application_theme;

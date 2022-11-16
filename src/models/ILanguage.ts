@@ -18,6 +18,13 @@ export interface ILanguage {
     logInButton: string;
     changeModalToSignUp: string;
   };
+  createBoard: {
+    title: string;
+    hint: string;
+    description: string;
+    createButton: string;
+  };
+  cancel: string;
   boardsPage: {
     Hello: string;
     'You have': string;

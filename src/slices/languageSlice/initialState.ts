@@ -21,6 +21,13 @@ export const initialState: ILanguage = {
     logInButton: 'Log In',
     changeModalToSignUp: 'Don`t have an account? Sign up',
   },
+  createBoard: {
+    title: 'New Board',
+    hint: 'Title',
+    description: 'Description',
+    createButton: 'Create board',
+  },
+  cancel: 'Cancel',
   boardsPage: {
     Hello: 'Hello',
     'You have': 'You have',
@@ -55,6 +62,13 @@ export const RussianState: ILanguage = {
     logInButton: 'Войти',
     changeModalToSignUp: 'Еще нет аккаунта? Создать',
   },
+  createBoard: {
+    title: 'Новая доска',
+    hint: 'Название',
+    description: 'Описание',
+    createButton: 'Создать',
+  },
+  cancel: 'Отменить',
   boardsPage: {
     Hello: 'Привет',
     'You have': 'У тебя',

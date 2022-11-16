@@ -10,4 +10,5 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Libre Franklin';
 `;

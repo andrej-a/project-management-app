@@ -6,10 +6,17 @@ import { useAppSelector } from '../../hooks/hooks';
 import { DeleteItem } from './Modals/DeleteItem/DeleteItem';
 import { Registration } from './Modals/Registration/Registration';
 import { LogIn } from './Modals/LogIn/LogIn';
+import { NewBoard } from './Modals/New_Board/NewBoard';
 export const ModalsManager = () => {
   const { modalsState } = useAppSelector((state) => state.modals_state);
   const getModal = (): JSX.Element => {
     switch (modalsState) {
+      case 'new_board':
+        return (
+          <Overlay>
+            <NewBoard />
+          </Overlay>
+        );
       case 'login':
         return (
           <Overlay>
