@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { store } from '../../store/store';
 const { TEXT_COLOR_DARK, TEXT_COLOR, TASK_TEXT } = store.getState().application_theme;
+import { size } from '../../constants/screenSizes';
 
 export const FormWrapper = styled.div`
   display: flex;
@@ -14,14 +15,20 @@ export const FormWrapper = styled.div`
     top: 8px;
     left: 18px;
   }
+  @media (max-width: ${size.tablet}) {
+    display: none;
+  }
 `;
 export const Line = styled.div`
   margin-left: 22px;
   border-left: 3px solid ${TEXT_COLOR};
   height: 44px;
+  @media (max-width: ${size.laptopM}) {
+    display: none;
+  }
 `;
 export const InputSearch = styled.input`
-  width: 340px;
+  width: 350px;
   height: 40px;
   color: ${TASK_TEXT};
   background-color: ${TEXT_COLOR};
@@ -32,4 +39,7 @@ export const InputSearch = styled.input`
   font-weight: 400;
   border: none;
   outline: none;
+  @media (max-width: ${size.laptopM}) {
+    width: 260px;
+  }
 `;

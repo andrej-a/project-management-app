@@ -14,7 +14,7 @@ import {
   TextContainer,
 } from './Navigation.styled';
 
-export const NavigationComponent = () => {
+export const NavigationComponent = ({ isOpen }: boolean) => {
   const { user, dictionary } = useAppSelector((state) => {
     return {
       user: state.user,
@@ -38,7 +38,8 @@ export const NavigationComponent = () => {
   const firstNamesLetter = user.name ? user.name[0].toUpperCase() : null;
 
   return (
-    <Wrapper>
+    <Wrapper className={isOpen ? 'active' : ''}>
+      <p>Search</p>
       <NewBoardButton>
         <HandySvg src={plus} width="28" height="28" />
         <p>{dictionary.boardsPage['New Board']}</p>

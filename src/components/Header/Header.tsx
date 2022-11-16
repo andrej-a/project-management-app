@@ -1,25 +1,45 @@
 import { useAppSelector } from '../../hooks/hooks';
-
+import React, { useState } from 'react';
 import { Search } from '../Search/Search';
-import { ButtonContainer, HeaderWrapper, SignIn, SignUp } from './Header.styled';
+import {
+  ButtonContainer,
+  HeaderWrapper,
+  SignIn,
+  SignUp,
+  BurgerMenu,
+  Container,
+} from './Header.styled';
 import { NavigationComponent } from './Navigation/Navigation';
 
 export const Header = () => {
-  const { isAuthorized } = useAppSelector((state) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthorized, dictionary } = useAppSelector((state) => {
     return {
       isAuthorized: state.user.isAuthorized,
+      dictionary: state.language,
     };
   });
   return (
-    <HeaderWrapper>
-      {isAuthorized && <Search />}
-      <h2>TASKBAN</h2>
+    <HeaderWrapper className={isMenuOpen ? 'active' : ''}>
+      {/* {isAuthorized && <Search />} */}
+      <Container>
+        <h2>TASKBAN</h2>
+        <BurgerMenu
+          onClick={() => {
+            setIsMenuOpen(!isMenuOpen);
+          }}
+          className={isMenuOpen ? 'active' : ''}
+        >
+          <span />
+        </BurgerMenu>
+      </Container>
+
       {isAuthorized ? (
-        <NavigationComponent />
+        <NavigationComponent isOpen={isMenuOpen} />
       ) : (
-        <ButtonContainer>
-          <SignIn>SING IN</SignIn>
-          <SignUp>SIGN UP</SignUp>
+        <ButtonContainer className={isMenuOpen ? 'active' : ''}>
+          <SignIn onClick={() => {}}>{dictionary.header.SignIn}</SignIn>
+          <SignUp onClick={() => {}}>{dictionary.header.SignUp}</SignUp>
         </ButtonContainer>
       )}
     </HeaderWrapper>
