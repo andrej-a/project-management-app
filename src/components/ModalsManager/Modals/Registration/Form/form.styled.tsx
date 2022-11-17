@@ -81,4 +81,11 @@ export const InputError = styled.p`
   color: ${TEXT_COLOR_GREY};
 `;
 
-export const InputWrapper = styled.div``;
+export const InputWrapper = styled.div`
+  width: auto;
+  height: auto;
+  display: flex;
+  @media (max-width: ${size.mobileL}) {
+    justify-content: center;
+  }
+`;

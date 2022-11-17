@@ -4,7 +4,6 @@ import { store } from '../../../../../store/store';
 const {
   LIGHT_BACKGROUND,
   INPUT_BORDER_COLOR_LIGHT,
-  BUTTON_BORDER_COLOR_DARK,
   TEXT_COLOR,
   BUTTON_RED,
   BUTTON_YELLOW,
@@ -61,7 +60,7 @@ export const FormWrapper = styled.div`
       color: ${TEXT_COLOR};
       cursor: pointer;
       transition: all 0.3s ease;
-      &:hover {
+      &:hover:not(:disabled) {
         background: ${LIGHT_BACKGROUND};
         color: ${MAIN_BACKGROUND};
       }
@@ -79,6 +78,16 @@ export const LabelWrapper = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   gap: 15px;
+
+  input[type='radio']:checked + label {
+    background: ${MAIN_BACKGROUND};
+    border-color: ${MAIN_BACKGROUND};
+    color: ${TEXT_COLOR};
+  }
+
+  @media (max-width: ${size.mobileL}) {
+    flex-direction: column;
+  }
 `;
 
 export const HighPriorityLabel = styled.label`

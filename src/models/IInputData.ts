@@ -13,3 +13,9 @@ export interface ICreateBoardData {
   title: string;
   descriptionInput: string;
 }
+
+export interface ICreateCardData {
+  title: string;
+  description: string;
+  priority: string;
+}

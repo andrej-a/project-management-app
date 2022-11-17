@@ -12,7 +12,7 @@ export const ModalsManager = () => {
   const { modalsState } = useAppSelector((state) => state.modals_state);
   const getModal = (): JSX.Element => {
     switch (modalsState) {
-      case 'hidden':
+      case 'new_card':
         return (
           <Overlay>
             <NewCard />
