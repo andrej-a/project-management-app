@@ -4,6 +4,8 @@ const { MAIN_BACKGROUND, TEXT_COLOR, TEXT_COLOR_DARK } = store.getState().applic
 import { size } from '../../constants/screenSizes';
 
 export const HeaderWrapper = styled.div`
+  position: sticky;
+  top: 0;
   display: flex;
   width: 100%;
   height: 80px;
@@ -12,6 +14,7 @@ export const HeaderWrapper = styled.div`
   padding: 20px 32px;
   background-color: ${MAIN_BACKGROUND};
   h2 {
+    cursor: pointer;
     position: relative;
     z-index: 300;
     font-family: 'K2D', sans-serif;
@@ -37,6 +40,7 @@ export const ButtonContainer = styled.div`
   gap: 32px;
   justify-content: center;
   align-items: center;
+
   @media (max-width: ${size.tablet}) {
     display: none;
     &.active {
@@ -48,11 +52,12 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.button`
+  transition: all 0.3s ease-in-out;
   padding: 7px 36px;
   font-size: 16px;
   border-radius: 20px;
-  font-weight: 600;
-  border: 3px solid ${TEXT_COLOR};
+  font-weight: 500;
+  border: 2px solid ${TEXT_COLOR};
   cursor: pointer;
   &:hover {
     color: ${TEXT_COLOR_DARK};
@@ -72,7 +77,7 @@ export const SignUp = styled(Button)`
 export const SignIn = styled(Button)`
   color: ${TEXT_COLOR};
   background-color: transparent;
-  border: 3px solid ${TEXT_COLOR};
+  border: 2px solid ${TEXT_COLOR};
 `;
 export const BurgerMenu = styled.div`
   width: 40px;

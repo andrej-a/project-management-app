@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   padding: 0 48px;
   img {
     position: absolute;
-    top: 80px;
+    top: 100px;
     right: 48px;
     width: 42rem;
     height: 32rem;
@@ -40,7 +40,7 @@ export const TextInfo = styled.div`
   margin-left: 100px;
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
+  margin-top: 100px;
   margin-bottom: 200px;
   gap: 10px;
   h1 {
@@ -60,6 +60,7 @@ export const TextInfo = styled.div`
   @media (max-width: ${size.laptopL}) {
     padding: 0px 40px;
     margin-bottom: 40px;
+    margin-top: 10%;
     p {
       width: 100%;
     }

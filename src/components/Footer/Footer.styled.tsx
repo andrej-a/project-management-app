@@ -4,10 +4,11 @@ const { TEXT_COLOR_DARK } = store.getState().application_theme;
 import { size } from '../../constants/screenSizes';
 
 export const FooterWrapper = styled.div`
+  width: auto;
   margin: auto 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 66px;
   height: 60px;
   padding: 0px 40px;

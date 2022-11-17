@@ -30,6 +30,7 @@ export const initialState: ILanguage = {
     RU: 'RU',
     SearchProject: 'Search Project...',
     SearchBoard: 'Search Board...',
+    Search: 'Search',
   },
   profile: {
     DeleteProfile: 'Delete Profile',
@@ -68,6 +69,7 @@ export const RussianState: ILanguage = {
     RU: 'RU',
     SearchProject: 'Найти задание...',
     SearchBoard: 'Найти доску...',
+    Search: 'Поиск',
   },
   profile: {
     DeleteProfile: 'Удалить Профиль',

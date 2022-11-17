@@ -7,9 +7,12 @@ import { size } from '../../../constants/screenSizes';
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 50px;
+  p {
+    font-size: 16px;
+  }
   @media (max-width: ${size.laptopL}) {
-    gap: 20px;
+    gap: 30px;
   }
   @media (max-width: ${size.laptop}) {
     display: none;
@@ -26,17 +29,15 @@ export const Wrapper = styled.div`
 export const OptionsContainer = styled.div`
   display: none;
   position: absolute;
-  transition: 0.5s;
   background-color: ${MAIN_BACKGROUND};
   min-width: 160px;
   z-index: 1;
-  transition: 0.5s;
+  transition: all 0.5s ease-in-out;
   border-radius: 0px 0px 14px 14px;
   font-weight: 500;
-  font-size: 18px;
   li {
     width: auto;
-    transition: 0.5s;
+    transition: all 0.5s ease-in-out;
     color: ${TEXT_COLOR};
     padding: 12px 16px;
     text-decoration: none;
@@ -77,11 +78,10 @@ export const TextContainer = styled.div`
   padding: 23px 0px;
   p {
     color: ${TEXT_COLOR};
-    font-size: 18px;
     font-weight: 500;
   }
   svg {
-    transition: 0.5s;
+    transition: all 0.5s ease-in-out;
     color: ${TEXT_COLOR};
     transform: rotate(90deg);
   }
@@ -108,7 +108,7 @@ export const Switch = styled.div`
     }
   }
 `;
-export const NewBoardButton = styled.div`
+export const ItemContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -116,14 +116,34 @@ export const NewBoardButton = styled.div`
   cursor: pointer;
   p {
     color: ${TEXT_COLOR};
-    font-size: 18px;
     font-weight: 500;
   }
   svg {
-    color: ${TEXT_COLOR};
+    fill: ${TEXT_COLOR};
   }
   &:hover {
     transform: scale(1.1);
+  }
+`;
+export const NewBoardButton = styled(ItemContainer)`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  p {
+    color: ${TEXT_COLOR};
+    font-weight: 500;
+  }
+  svg {
+    transition: all 0.5s ease-in-out;
+    fill: ${TEXT_COLOR};
+  }
+  &:hover {
+    transform: scale(1.1);
+    svg {
+      transform: rotate(90deg);
+    }
   }
 `;
 
@@ -144,18 +164,21 @@ export const User = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 16px;
+  transition: all 0.3s ease-in-out;
   p {
     color: ${TEXT_COLOR};
-    font-size: 18px;
     font-weight: 500;
+  }
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 
 export const LogOut = styled(Button)`
   color: ${TEXT_COLOR};
   background-color: transparent;
-  border: 3px solid ${TEXT_COLOR};
+  border: 2px solid ${TEXT_COLOR};
   margin: 0 10px;
   @media (max-width: ${size.laptop}) {
     margin-top: 40px;

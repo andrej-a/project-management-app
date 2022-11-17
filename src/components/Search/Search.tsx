@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { FormWrapper, InputSearch, Line } from './Search.styled';
-import searchIcon from '../../assets/svg/search.svg';
+import { FormWrapper, InputSearch } from './Search.styled';
+import searchIcon from '../../assets/svg/search1.svg';
 import { HandySvg } from 'handy-svg';
 import { useAppSelector } from '../../hooks/hooks';
 
@@ -23,11 +23,10 @@ export const Search = () => {
         autoComplete="off"
         autoFocus
         value={search}
-        placeholder={dictionary.SearchBoard} //нужно сделать условие, в зависимости от страницы где мы находимся меняется текст
+        placeholder={dictionary.SearchBoard}
         onChange={handleChange}
       />
       <HandySvg src={searchIcon} width="24" height="24" />
-      <Line />
     </FormWrapper>
   );
 };

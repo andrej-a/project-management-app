@@ -30,6 +30,8 @@ ${normalize}
 }
 body {
     margin: 0;
+    background: ${DESK_BACKGROUND};
+
     font-family: 'Libre Franklin', sans-serif;
     background-color: ${DESK_BACKGROUND};
     width: 100%;

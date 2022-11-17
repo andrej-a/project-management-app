@@ -10,6 +10,7 @@ import {
   Container,
 } from './Header.styled';
 import { NavigationComponent } from './Navigation/Navigation';
+import { NavLink } from 'react-router-dom';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,9 +22,11 @@ export const Header = () => {
   });
   return (
     <HeaderWrapper className={isMenuOpen ? 'active' : ''}>
-      {/* {isAuthorized && <Search />} */}
       <Container>
-        <h2>TASKBAN</h2>
+        <NavLink to="boards">
+          <h2>TASKBAN</h2>
+        </NavLink>
+
         <BurgerMenu
           onClick={() => {
             setIsMenuOpen(!isMenuOpen);

@@ -2,6 +2,7 @@ import { useAppSelector } from '../../../hooks/hooks';
 
 import plus from '../../../assets/svg/plus.svg';
 import arrow from '../../../assets/svg/arrow.svg';
+import searchIcon from '../../../assets/svg/search1.svg';
 import { HandySvg } from 'handy-svg';
 import {
   LogOut,
@@ -12,9 +13,15 @@ import {
   UserAvatar,
   OptionsContainer,
   TextContainer,
+  ItemContainer,
 } from './Navigation.styled';
+import { NavLink } from 'react-router-dom';
 
-export const NavigationComponent = ({ isOpen }: boolean) => {
+type props = {
+  isOpen: boolean;
+};
+
+export const NavigationComponent = ({ isOpen }: props) => {
   const { user, dictionary } = useAppSelector((state) => {
     return {
       user: state.user,
@@ -39,11 +46,18 @@ export const NavigationComponent = ({ isOpen }: boolean) => {
 
   return (
     <Wrapper className={isOpen ? 'active' : ''}>
-      <p>Search</p>
-      <NewBoardButton>
-        <HandySvg src={plus} width="28" height="28" />
+      <NavLink to="search">
+        <ItemContainer>
+          <HandySvg src={searchIcon} width="24" height="24" />
+          <p>{dictionary.header.Search}</p>
+        </ItemContainer>
+      </NavLink>
+
+      <NewBoardButton onClick={() => {}}>
+        <HandySvg src={plus} width="22" height="22" />
         <p>{dictionary.boardsPage['New Board']}</p>
       </NewBoardButton>
+
       {switchOptions.map((item) => {
         return (
           <Switch key={item.id}>
@@ -61,10 +75,13 @@ export const NavigationComponent = ({ isOpen }: boolean) => {
       })}
 
       <LogOut>{dictionary.header.LogOut}</LogOut>
-      <User>
-        <p>{user.name}</p>
-        <UserAvatar>{firstNamesLetter}</UserAvatar>
-      </User>
+
+      <NavLink to="profile">
+        <User>
+          <p>{dictionary.profile.EditProfile}</p>
+          <UserAvatar>{firstNamesLetter}</UserAvatar>
+        </User>
+      </NavLink>
     </Wrapper>
   );
 };

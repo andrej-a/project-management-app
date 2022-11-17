@@ -26,6 +26,7 @@ export interface ILanguage {
     RU: string;
     SearchProject: string;
     SearchBoard: string;
+    Search: string;
   };
   profile: {
     DeleteProfile: string;
