@@ -24,7 +24,7 @@ export interface ILanguage {
     ThemeDark: string;
     EN: string;
     RU: string;
-    SearchProject: string;
+    SearchNothing: string;
     SearchBoard: string;
     Search: string;
   };

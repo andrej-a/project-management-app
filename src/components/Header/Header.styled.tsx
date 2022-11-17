@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import { store } from '../../store/store';
-const { MAIN_BACKGROUND, TEXT_COLOR, TEXT_COLOR_DARK } = store.getState().application_theme;
+const { MAIN_BACKGROUND, TEXT_COLOR, TEXT_COLOR_DARK, GRADIENT_SECOND_COLOR } =
+  store.getState().application_theme;
 import { size } from '../../constants/screenSizes';
 
 export const HeaderWrapper = styled.div`
   position: sticky;
   top: 0;
+  z-index: 100;
   display: flex;
   width: 100%;
   height: 80px;
@@ -13,6 +15,7 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   padding: 20px 32px;
   background-color: ${MAIN_BACKGROUND};
+  transition: all 0.3s ease-in-out;
   h2 {
     cursor: pointer;
     position: relative;
@@ -33,6 +36,9 @@ export const HeaderWrapper = styled.div`
       position: fixed;
       z-index: 100;
     }
+  }
+  &.changeColor {
+    background-color: ${GRADIENT_SECOND_COLOR};
   }
 `;
 export const ButtonContainer = styled.div`

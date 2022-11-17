@@ -10,6 +10,7 @@ export const FormWrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  z-index: 1;
   svg {
     fill: ${TEXT_COLOR_DARK};
     position: absolute;

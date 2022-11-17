@@ -9,7 +9,7 @@ import { Wrapper } from './SearchPage.styled';
 const SearchPage = () => {
   const { dictionary } = useAppSelector((state) => {
     return {
-      dictionary: state.language.mainPage,
+      dictionary: state.language,
     };
   });
 
@@ -26,7 +26,7 @@ const SearchPage = () => {
           })}
         </BoardsWrapper>
       ) : (
-        <p>Nothing found yet. Another attempt?</p>
+        <p>{dictionary.header.SearchNothing}</p>
       )}
     </Wrapper>
   );
