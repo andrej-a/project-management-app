@@ -1,5 +1,5 @@
 import { store } from '../../../store/store';
-const dictionary = store.getState().language.boardsPage;
+const dictionary = store.getState().language.lang.boardsPage;
 
 export function getBoardsWord(number: number) {
   switch (number) {

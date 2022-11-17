@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { size } from '../../constants/screenSizes';
-import { store } from '../../store/store';
-const { DESK_BACKGROUND } = store.getState().application_theme;
 
 export const Wrapper = styled.div`
   max-width: 100vw;
@@ -9,10 +7,9 @@ export const Wrapper = styled.div`
   margin: 0;
   padding: 0;
   height: auto;
-  background: ${DESK_BACKGROUND};
+  background: ${({ theme }) => theme.DESK_BACKGROUND};
   display: flex;
   flex-direction: column;
-  font-family: 'Libre Franklin';
 `;
 
 export const BoardsPanelWrapper = styled.div`

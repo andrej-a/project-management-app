@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { store } from '../../../store/store';
-const { MAIN_BACKGROUND, TEXT_COLOR } = store.getState().application_theme;
 
 export const BoardSmallCardStyled = styled.div`
   height: 176px;
@@ -9,12 +7,13 @@ export const BoardSmallCardStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: ${MAIN_BACKGROUND};
+  background-color: ${({ theme }) => theme.MAIN_BACKGROUND};
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  color: ${TEXT_COLOR};
+  color: ${({ theme }) => theme.TEXT_COLOR};
   position: relative;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.06);

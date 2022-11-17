@@ -6,13 +6,13 @@ import { useAppSelector } from '../../../hooks/hooks';
 const NewBoardButton = () => {
   const { dictionary } = useAppSelector((state) => {
     return {
-      dictionary: state.language.boardsPage,
+      dictionary: state.language.lang.boardsPage,
     };
   });
   return (
     <NewBoardButtonWrapper>
       <div>
-        {dictionary.Create} <br /> {dictionary['new Board']}
+        {dictionary.Create} <br /> {dictionary['New Board']}
       </div>
     </NewBoardButtonWrapper>
   );
