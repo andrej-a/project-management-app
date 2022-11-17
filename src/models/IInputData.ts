@@ -19,3 +19,7 @@ export interface ICreateCardData {
   description: string;
   priority: string;
 }
+
+export interface ICreateColumn {
+  title: string;
+}

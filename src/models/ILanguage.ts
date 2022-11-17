@@ -36,6 +36,11 @@ export interface ILanguage {
     };
     addTaskButon: string;
   };
+  createColumn: {
+    title: string;
+    hint: string;
+    addColumnButton: string;
+  };
   cancel: string;
   boardsPage: {
     Hello: string;

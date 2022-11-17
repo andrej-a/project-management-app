@@ -8,10 +8,18 @@ import { Registration } from './Modals/Registration/Registration';
 import { LogIn } from './Modals/LogIn/LogIn';
 import { NewBoard } from './Modals/New_Board/NewBoard';
 import { NewCard } from './Modals/NewCard/NewCard';
+import { NewColumn } from './Modals/NewColumn/NewColumn';
+
 export const ModalsManager = () => {
   const { modalsState } = useAppSelector((state) => state.modals_state);
   const getModal = (): JSX.Element => {
     switch (modalsState) {
+      case 'hidden':
+        return (
+          <Overlay>
+            <NewColumn />
+          </Overlay>
+        );
       case 'new_card':
         return (
           <Overlay>

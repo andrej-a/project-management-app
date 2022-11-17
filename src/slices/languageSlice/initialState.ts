@@ -39,6 +39,11 @@ export const initialState: ILanguage = {
     },
     addTaskButon: 'Add Task',
   },
+  createColumn: {
+    title: 'Create column',
+    hint: 'Your title',
+    addColumnButton: 'Add column',
+  },
   cancel: 'Cancel',
   boardsPage: {
     Hello: 'Hello',
@@ -91,6 +96,11 @@ export const RussianState: ILanguage = {
       low: 'низкий',
     },
     addTaskButon: 'Добавить карточку',
+  },
+  createColumn: {
+    title: 'Добавить колонку',
+    hint: 'Ваша колонка',
+    addColumnButton: 'Добавить',
   },
   cancel: 'Отменить',
   boardsPage: {
