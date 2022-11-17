@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import { store } from '../../store/store';
-const { TEXT_COLOR_DARK } = store.getState().application_theme;
-import { size } from '../../constants/screenSizes';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -14,11 +11,8 @@ export const Wrapper = styled.div`
   padding-top: 40px;
   p {
     margin: auto 0;
-    color: ${TEXT_COLOR_DARK};
+    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
     font-size: 20px;
     font-weight: bold;
   }
-  /* @media (max-width: ${size.mobileL}) {
-    padding: 0px 10px;
-  } */
 `;

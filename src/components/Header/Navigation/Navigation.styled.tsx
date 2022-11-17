@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { store } from '../../../store/store';
-import { Button } from '../Header.styled';
-const { MAIN_BACKGROUND, TEXT_COLOR, TEXT_COLOR_DARK } = store.getState().application_theme;
+
 import { size } from '../../../constants/screenSizes';
+import { Button } from '../Header.styled';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -29,7 +28,7 @@ export const Wrapper = styled.div`
 export const OptionsContainer = styled.div`
   display: none;
   position: absolute;
-  background-color: ${MAIN_BACKGROUND};
+  background-color: ${({ theme }) => theme.MAIN_BACKGROUND};
   min-width: 160px;
   z-index: 1;
   transition: all 0.5s ease-in-out;
@@ -38,20 +37,20 @@ export const OptionsContainer = styled.div`
   li {
     width: auto;
     transition: all 0.5s ease-in-out;
-    color: ${TEXT_COLOR};
+    color: ${({ theme }) => theme.TEXT_COLOR};
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     &:hover {
-      color: ${MAIN_BACKGROUND};
-      background-color: ${TEXT_COLOR};
+      color: ${({ theme }) => theme.MAIN_BACKGROUND};
+      background-color: ${({ theme }) => theme.TEXT_COLOR};
     }
   }
   li:last-child {
     transition: 0.5s;
     &:hover {
-      color: ${MAIN_BACKGROUND};
-      background-color: ${TEXT_COLOR};
+      color: ${({ theme }) => theme.MAIN_BACKGROUND};
+      background-color: ${({ theme }) => theme.TEXT_COLOR};
       border-radius: 0px 0px 13px 13px;
     }
   }
@@ -59,36 +58,38 @@ export const OptionsContainer = styled.div`
     li:hover {
       border-radius: 0;
       background-color: transparent;
-      color: ${TEXT_COLOR};
-      border-bottom: 2px solid ${TEXT_COLOR};
+      color: ${({ theme }) => theme.TEXT_COLOR};
+      border-bottom: 2px solid ${({ theme }) => theme.TEXT_COLOR};
     }
     li:last-child {
       &:hover {
         border-radius: 0;
         background-color: transparent;
-        color: ${TEXT_COLOR};
-        border-bottom: 2px solid ${TEXT_COLOR};
+        color: ${({ theme }) => theme.TEXT_COLOR};
+        border-bottom: 2px solid ${({ theme }) => theme.TEXT_COLOR};
       }
     }
   }
 `;
+
 export const TextContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 23px 0px;
   p {
-    color: ${TEXT_COLOR};
+    color: ${({ theme }) => theme.TEXT_COLOR};
     font-weight: 500;
   }
   svg {
     transition: all 0.5s ease-in-out;
-    color: ${TEXT_COLOR};
+    color: ${({ theme }) => theme.TEXT_COLOR};
     transform: rotate(90deg);
   }
   @media (max-width: ${size.laptop}) {
     padding: 0px;
   }
 `;
+
 export const Switch = styled.div`
   cursor: pointer;
   position: relative;
@@ -108,6 +109,7 @@ export const Switch = styled.div`
     }
   }
 `;
+
 export const ItemContainer = styled.div`
   display: flex;
   align-items: center;
@@ -115,16 +117,17 @@ export const ItemContainer = styled.div`
   transition: 0.5s;
   cursor: pointer;
   p {
-    color: ${TEXT_COLOR};
+    color: ${({ theme }) => theme.TEXT_COLOR};
     font-weight: 500;
   }
   svg {
-    fill: ${TEXT_COLOR};
+    fill: ${({ theme }) => theme.TEXT_COLOR};
   }
   &:hover {
     transform: scale(1.1);
   }
 `;
+
 export const NewBoardButton = styled(ItemContainer)`
   display: flex;
   align-items: center;
@@ -132,12 +135,12 @@ export const NewBoardButton = styled(ItemContainer)`
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   p {
-    color: ${TEXT_COLOR};
+    color: ${({ theme }) => theme.TEXT_COLOR};
     font-weight: 500;
   }
   svg {
     transition: all 0.5s ease-in-out;
-    fill: ${TEXT_COLOR};
+    fill: ${({ theme }) => theme.TEXT_COLOR};
   }
   &:hover {
     transform: scale(1.1);
@@ -150,8 +153,8 @@ export const NewBoardButton = styled(ItemContainer)`
 export const UserAvatar = styled.div`
   width: 36px;
   height: 36px;
-  background: ${TEXT_COLOR};
-  color: ${MAIN_BACKGROUND};
+  background: ${({ theme }) => theme.TEXT_COLOR};
+  color: ${({ theme }) => theme.MAIN_BACKGROUND};
   border-radius: 100%;
   font-size: 22px;
   font-weight: 700;
@@ -160,6 +163,7 @@ export const UserAvatar = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 export const User = styled.div`
   cursor: pointer;
   display: flex;
@@ -167,8 +171,9 @@ export const User = styled.div`
   gap: 16px;
   transition: all 0.3s ease-in-out;
   p {
-    color: ${TEXT_COLOR};
+    color: ${({ theme }) => theme.TEXT_COLOR};
     font-weight: 500;
+    max-width: 100px;
   }
   &:hover {
     transform: scale(1.1);
@@ -176,9 +181,9 @@ export const User = styled.div`
 `;
 
 export const LogOut = styled(Button)`
-  color: ${TEXT_COLOR};
+  color: ${({ theme }) => theme.TEXT_COLOR};
   background-color: transparent;
-  border: 2px solid ${TEXT_COLOR};
+  border: 2px solid ${({ theme }) => theme.TEXT_COLOR};
   margin: 0 10px;
   @media (max-width: ${size.laptop}) {
     margin-top: 40px;

@@ -5,7 +5,7 @@ import notebook from '../../assets/img/noteBook.png';
 const MainPage = () => {
   const { dictionary } = useAppSelector((state) => {
     return {
-      dictionary: state.language.mainPage,
+      dictionary: state.language.lang.mainPage,
     };
   });
   return (

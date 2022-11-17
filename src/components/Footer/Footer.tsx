@@ -1,7 +1,7 @@
 import { HandySvg } from 'handy-svg';
 
-import { FooterWrapper } from './Footer.styled';
 import { Contacts } from './data';
+import { FooterWrapper } from './Footer.styled';
 import rssLogo from '../../assets/svg/rssLogo.svg';
 
 export const Footer = () => {

@@ -9,7 +9,7 @@ import { Wrapper } from './SearchPage.styled';
 const SearchPage = () => {
   const { dictionary } = useAppSelector((state) => {
     return {
-      dictionary: state.language,
+      dictionary: state.language.lang,
     };
   });
 

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import { store } from '../../store/store';
-const { MAIN_BACKGROUND, TEXT_COLOR, TEXT_COLOR_DARK, GRADIENT_SECOND_COLOR } =
-  store.getState().application_theme;
+
 import { size } from '../../constants/screenSizes';
 
 export const HeaderWrapper = styled.div`
@@ -14,7 +12,7 @@ export const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px 32px;
-  background-color: ${MAIN_BACKGROUND};
+  background-color: ${({ theme }) => theme.MAIN_BACKGROUND};
   transition: all 0.3s ease-in-out;
   h2 {
     cursor: pointer;
@@ -23,7 +21,7 @@ export const HeaderWrapper = styled.div`
     font-family: 'K2D', sans-serif;
     font-size: 32px;
     font-weight: bold;
-    color: ${TEXT_COLOR};
+    color: ${({ theme }) => theme.TEXT_COLOR};
   }
   @media (max-width: ${size.laptop}) {
     &.active {
@@ -38,9 +36,10 @@ export const HeaderWrapper = styled.div`
     }
   }
   &.changeColor {
-    background-color: ${GRADIENT_SECOND_COLOR};
+    background-color: ${({ theme }) => theme.GRADIENT_SECOND_COLOR};
   }
 `;
+
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 32px;
@@ -63,28 +62,29 @@ export const Button = styled.button`
   font-size: 16px;
   border-radius: 20px;
   font-weight: 500;
-  border: 2px solid ${TEXT_COLOR};
+  border: 2px solid ${({ theme }) => theme.TEXT_COLOR};
   cursor: pointer;
   &:hover {
-    color: ${TEXT_COLOR_DARK};
-    background-color: ${TEXT_COLOR};
+    color: ${({ theme }) => theme.MAIN_BACKGROUND};
+    background-color: ${({ theme }) => theme.TEXT_COLOR};
   }
 `;
 
 export const SignUp = styled(Button)`
-  color: ${TEXT_COLOR_DARK};
-  background-color: ${TEXT_COLOR};
+  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+  background-color: ${({ theme }) => theme.TEXT_COLOR};
   &:hover {
-    color: ${TEXT_COLOR_DARK};
-    background-color: ${TEXT_COLOR};
+    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+    background-color: ${({ theme }) => theme.TEXT_COLOR};
   }
 `;
 
 export const SignIn = styled(Button)`
-  color: ${TEXT_COLOR};
+  color: ${({ theme }) => theme.TEXT_COLOR};
   background-color: transparent;
-  border: 2px solid ${TEXT_COLOR};
+  border: 2px solid ${({ theme }) => theme.TEXT_COLOR};
 `;
+
 export const BurgerMenu = styled.div`
   width: 40px;
   height: 40px;
@@ -104,7 +104,7 @@ export const BurgerMenu = styled.div`
     top: 6px;
     width: 36px;
     height: 3px;
-    background-color: ${TEXT_COLOR};
+    background-color: ${({ theme }) => theme.TEXT_COLOR};
     transition: transform 0.4s ease-in-out;
   }
   &::after {
@@ -113,7 +113,7 @@ export const BurgerMenu = styled.div`
     bottom: 5px;
     width: 36px;
     height: 3px;
-    background-color: ${TEXT_COLOR};
+    background-color: ${({ theme }) => theme.TEXT_COLOR};
     transition: transform 0.4s ease-in-out;
   }
   span {
@@ -122,7 +122,7 @@ export const BurgerMenu = styled.div`
     top: 20px;
     width: 36px;
     height: 3px;
-    background-color: ${TEXT_COLOR};
+    background-color: ${({ theme }) => theme.TEXT_COLOR};
     transition: transform 0.2s ease-in-out;
     opacity: 100;
   }
@@ -145,6 +145,7 @@ export const BurgerMenu = styled.div`
     display: flex;
   }
 `;
+
 export const Container = styled.div`
   width: auto;
   display: flex;

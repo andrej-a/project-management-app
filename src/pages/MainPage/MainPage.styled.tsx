@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { store } from '../../store/store';
-const { TEXT_COLOR_DARK } = store.getState().application_theme;
+
 import { size } from '../../constants/screenSizes';
 
 export const Wrapper = styled.div`
@@ -47,12 +46,12 @@ export const TextInfo = styled.div`
     font-family: 'K2D', sans-serif;
     font-size: 50px;
     font-weight: bold;
-    color: ${TEXT_COLOR_DARK};
+    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
     width: 50%;
   }
   p {
     font-size: 20px;
-    color: ${TEXT_COLOR_DARK};
+    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
     line-height: 1.5em;
     font-weight: 500;
     width: 50%;

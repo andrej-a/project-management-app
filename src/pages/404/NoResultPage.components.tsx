@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { store } from '../../store/store';
-const { TEXT_COLOR_DARK } = store.getState().application_theme;
 
 export const Wrapper = styled.div`
   width: 100vw;

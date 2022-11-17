@@ -1,6 +1,7 @@
 import { HandySvg } from 'handy-svg';
 
 import gitLogo from '../../assets/svg/github.svg';
+import { SvgSizes } from '../../constants/applicationConstants';
 import { MemberItem, MembersInfo } from './Footer.styled';
 
 interface IContact {
@@ -31,7 +32,7 @@ const Item = ({ name, link }: IContact) => {
   return (
     <MemberItem>
       <a href={link}>
-        <HandySvg src={gitLogo} width="30" height="30" />
+        <HandySvg src={gitLogo} width={SvgSizes.MEDIUM} height={SvgSizes.MEDIUM} />
         <p>{name}</p>
       </a>
     </MemberItem>

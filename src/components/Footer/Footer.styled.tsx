@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { store } from '../../store/store';
-const { TEXT_COLOR_DARK } = store.getState().application_theme;
+
 import { size } from '../../constants/screenSizes';
 
 export const FooterWrapper = styled.div`
@@ -15,7 +14,10 @@ export const FooterWrapper = styled.div`
   p {
     font-size: 16px;
     font-weight: 400;
-    color: ${TEXT_COLOR_DARK};
+    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+  }
+  svg {
+    fill: ${({ theme }) => theme.TEXT_COLOR_DARK};
   }
   @media (max-width: ${size.tablet}) {
     flex-direction: column;
@@ -47,10 +49,10 @@ export const MemberItem = styled.div`
     display: flex;
     align-items: center;
     gap: 12px;
-    color: ${TEXT_COLOR_DARK};
+    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
   }
   svg {
-    fill: ${TEXT_COLOR_DARK};
+    fill: ${({ theme }) => theme.TEXT_COLOR_DARK};
   }
   @media (max-width: ${size.tablet}) {
     margin-top: 10px;

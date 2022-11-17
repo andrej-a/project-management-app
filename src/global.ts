@@ -1,8 +1,10 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import { ITheme_Interface } from './models/theme_interface';
 
-import { store } from './store/store';
-const { DESK_BACKGROUND, FRAME_TASK_COLOR, TEXT_COLOR } = store.getState().application_theme;
+type GlobalThemeProps = {
+  theme: ITheme_Interface;
+};
 
 export default createGlobalStyle`
 ${normalize}
@@ -27,18 +29,21 @@ ${normalize}
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 body {
     margin: 0;
-    background: ${DESK_BACKGROUND};
+    background: ${({ theme }: GlobalThemeProps) => theme.DESK_BACKGROUND};
 
     font-family: 'Libre Franklin', sans-serif;
-    background-color: ${DESK_BACKGROUND};
+    background-color: ${({ theme }: GlobalThemeProps) => theme.DESK_BACKGROUND};
     width: 100%;
     &::-webkit-scrollbar {
-    background-color: ${FRAME_TASK_COLOR};
+    background-color: ${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
     width: 14px;
-    
+  
+      background-color:${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
+    };
   }
 
   &::-webkit-scrollbar-track {
@@ -49,8 +54,8 @@ body {
   &::-webkit-scrollbar-thumb {
     border-radius: 100px;
     background-clip: content-box;
-    background-color: ${TEXT_COLOR}; 
-    border: 4px solid ${FRAME_TASK_COLOR};
+    background-color: ${({ theme }: GlobalThemeProps) => theme.TEXT_COLOR}; 
+    border: 4px solid ${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
   }
-  }
+  
 `;

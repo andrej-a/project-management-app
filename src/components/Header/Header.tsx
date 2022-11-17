@@ -1,6 +1,13 @@
-import { useAppSelector } from '../../hooks/hooks';
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
+
+import { useAppSelector } from '../../hooks/hooks';
+import { NavigationComponent } from './Navigation/Navigation';
+import { authorizationSwitch } from '../../slices/userSlice/userSlice';
+import { Styles, headerHeight } from '../../constants/applicationConstants';
+
 import {
   ButtonContainer,
   HeaderWrapper,
@@ -9,16 +16,15 @@ import {
   BurgerMenu,
   Container,
 } from './Header.styled';
-import { NavigationComponent } from './Navigation/Navigation';
-import { NavLink } from 'react-router-dom';
 
 export const Header = () => {
+  const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scroll, setScroll] = React.useState(0);
+  const [scroll, setScroll] = React.useState(headerHeight.start);
   const { isAuthorized, dictionary } = useAppSelector((state) => {
     return {
       isAuthorized: state.user.isAuthorized,
-      dictionary: state.language,
+      dictionary: state.language.lang,
     };
   });
 
@@ -31,9 +37,21 @@ export const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleButton = (button: string) => {
+    switch (button) {
+      case dictionary.header.SignIn:
+        return dispatch(authorizationSwitch());
+      default:
+        return button;
+    }
+  };
+
   return (
     <HeaderWrapper
-      className={classNames(`${isMenuOpen ? 'active' : ''}`, `${scroll > 80 ? 'changeColor' : ''}`)}
+      className={classNames(
+        `${isMenuOpen ? Styles.ACTIVE : ''}`,
+        `${scroll > headerHeight.end ? Styles.CHANGE_COLOR : ''}`
+      )}
     >
       <Container>
         <NavLink to="boards">
@@ -44,7 +62,7 @@ export const Header = () => {
           onClick={() => {
             setIsMenuOpen(!isMenuOpen);
           }}
-          className={isMenuOpen ? 'active' : ''}
+          className={isMenuOpen ? Styles.ACTIVE : ''}
         >
           <span />
         </BurgerMenu>
@@ -53,9 +71,12 @@ export const Header = () => {
       {isAuthorized ? (
         <NavigationComponent isOpen={isMenuOpen} />
       ) : (
-        <ButtonContainer className={isMenuOpen ? 'active' : ''}>
-          <SignIn onClick={() => {}}>{dictionary.header.SignIn}</SignIn>
-          <SignUp onClick={() => {}}>{dictionary.header.SignUp}</SignUp>
+        <ButtonContainer
+          className={isMenuOpen ? Styles.ACTIVE : ''}
+          onClick={(e) => handleButton((e.target as HTMLElement).innerText)}
+        >
+          <SignIn>{dictionary.header.SignIn}</SignIn>
+          <SignUp>{dictionary.header.SignUp}</SignUp>
         </ButtonContainer>
       )}
     </HeaderWrapper>

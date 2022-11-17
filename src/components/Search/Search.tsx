@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 
+import { useAppSelector } from '../../hooks/hooks';
+
 import { FormWrapper, InputSearch } from './Search.styled';
 import searchIcon from '../../assets/svg/search1.svg';
 import { HandySvg } from 'handy-svg';
-import { useAppSelector } from '../../hooks/hooks';
 
 export const Search = () => {
   const [search, setSearch] = useState<string>('');
   const { dictionary } = useAppSelector((state) => {
     return {
-      dictionary: state.language.header,
+      dictionary: state.language.lang.header,
     };
   });
+
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setSearch((e.target as HTMLInputElement).value);
   };
@@ -30,5 +32,3 @@ export const Search = () => {
     </FormWrapper>
   );
 };
-
-export default Search;

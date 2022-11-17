@@ -6,7 +6,7 @@ import { useAppSelector } from '../../../hooks/hooks';
 const NewBoardButton = () => {
   const { dictionary } = useAppSelector((state) => {
     return {
-      dictionary: state.language.boardsPage,
+      dictionary: state.language.lang.boardsPage,
     };
   });
   return (

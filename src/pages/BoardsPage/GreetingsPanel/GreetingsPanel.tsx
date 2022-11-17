@@ -16,7 +16,7 @@ import { getBoardsWord } from '../utils/utils';
 const GreetingsPanel = ({ userName, boards }: { userName: string; boards: IBoard[] }) => {
   const { dictionary } = useAppSelector((state) => {
     return {
-      dictionary: state.language.boardsPage,
+      dictionary: state.language.lang.boardsPage,
     };
   });
   return (

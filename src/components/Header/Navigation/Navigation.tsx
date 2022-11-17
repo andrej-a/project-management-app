@@ -1,9 +1,19 @@
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { HandySvg } from 'handy-svg';
+
 import { useAppSelector } from '../../../hooks/hooks';
+import { Styles, SvgSizes } from '../../../constants/applicationConstants';
+
+import { themeChange } from '../../../slices/themeSlice/themeSlice';
+import { DarkTheme, Default } from '../../../slices/themeSlice/initialState';
+import { langChange } from '../../../slices/languageSlice/languageSlice';
+import { EnglishState, RussianState } from '../../../slices/languageSlice/initialState';
+import { authorizationSwitch } from '../../../slices/userSlice/userSlice';
 
 import plus from '../../../assets/svg/plus.svg';
 import arrow from '../../../assets/svg/arrow.svg';
 import searchIcon from '../../../assets/svg/search1.svg';
-import { HandySvg } from 'handy-svg';
 import {
   LogOut,
   User,
@@ -15,20 +25,20 @@ import {
   TextContainer,
   ItemContainer,
 } from './Navigation.styled';
-import { NavLink } from 'react-router-dom';
 
 type props = {
   isOpen: boolean;
 };
 
 export const NavigationComponent = ({ isOpen }: props) => {
+  const dispatch = useDispatch();
   const { user, dictionary } = useAppSelector((state) => {
     return {
       user: state.user,
-      dictionary: state.language,
+      dictionary: state.language.lang,
     };
   });
-
+  const firstNamesLetter = user.name ? user.name[0].toUpperCase() : null;
   const switchOptions = [
     {
       id: 111,
@@ -42,19 +52,32 @@ export const NavigationComponent = ({ isOpen }: props) => {
     },
   ];
 
-  const firstNamesLetter = user.name ? user.name[0].toUpperCase() : null;
+  const handleOption = (option: string) => {
+    switch (option) {
+      case dictionary.header.EN:
+        return dispatch(langChange(EnglishState));
+      case dictionary.header.RU:
+        return dispatch(langChange(RussianState));
+      case dictionary.header.ThemeDefault:
+        return dispatch(themeChange(Default));
+      case dictionary.header.ThemeDark:
+        return dispatch(themeChange(DarkTheme));
+      default:
+        return option;
+    }
+  };
 
   return (
-    <Wrapper className={isOpen ? 'active' : ''}>
+    <Wrapper className={isOpen ? Styles.ACTIVE : ''}>
       <NavLink to="search">
         <ItemContainer>
-          <HandySvg src={searchIcon} width="24" height="24" />
+          <HandySvg src={searchIcon} width={SvgSizes.SMALL} height={SvgSizes.SMALL} />
           <p>{dictionary.header.Search}</p>
         </ItemContainer>
       </NavLink>
 
       <NewBoardButton onClick={() => {}}>
-        <HandySvg src={plus} width="22" height="22" />
+        <HandySvg src={plus} width={SvgSizes.SMALL} height={SvgSizes.SMALL} />
         <p>{dictionary.boardsPage['New Board']}</p>
       </NewBoardButton>
 
@@ -63,9 +86,9 @@ export const NavigationComponent = ({ isOpen }: props) => {
           <Switch key={item.id}>
             <TextContainer>
               <p>{item.title}</p>
-              <HandySvg src={arrow} width="32" height="32" />
+              <HandySvg src={arrow} width={SvgSizes.MEDIUM} height={SvgSizes.MEDIUM} />
             </TextContainer>
-            <OptionsContainer>
+            <OptionsContainer onClick={(e) => handleOption((e.target as HTMLElement).innerText)}>
               {item.options.map((option, index) => {
                 return <li key={index}>{option}</li>;
               })}
@@ -74,7 +97,7 @@ export const NavigationComponent = ({ isOpen }: props) => {
         );
       })}
 
-      <LogOut>{dictionary.header.LogOut}</LogOut>
+      <LogOut onClick={() => dispatch(authorizationSwitch())}>{dictionary.header.LogOut}</LogOut>
 
       <NavLink to="profile">
         <User>

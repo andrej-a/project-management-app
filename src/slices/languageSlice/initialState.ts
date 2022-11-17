@@ -1,7 +1,7 @@
 /* MODELS */
 import { ILanguage } from '../../models/ILanguage';
 
-export const initialState: ILanguage = {
+export const EnglishState: ILanguage = {
   boardsPage: {
     Hello: 'Hello',
     'You have': 'You have',
@@ -51,7 +51,7 @@ export const RussianState: ILanguage = {
     'To do': 'для выполнения',
     'Keep up the good work!': ' Продолжай в том же духе!',
     Create: 'Создать',
-    'New Board': 'Новую Доску',
+    'New Board': 'Новая доска',
   },
   mainPage: {
     title: 'ТВОЙ МЕНЕДЖЕР ПРОЕКТОВ В ОДНОМ МЕСТЕ',
@@ -72,9 +72,16 @@ export const RussianState: ILanguage = {
     Search: 'Поиск',
   },
   profile: {
-    DeleteProfile: 'Удалить Профиль',
-    ChangePassword: 'Изменить Пароль',
-    ChangeLogin: 'Изменить Логин',
-    EditProfile: 'Редактировать Профиль',
+    DeleteProfile: 'Удалить профиль',
+    ChangePassword: 'Изменить пароль',
+    ChangeLogin: 'Изменить логин',
+    EditProfile: 'Редактировать профиль',
   },
 };
+
+export const initialState: IState = {
+  lang: EnglishState,
+};
+interface IState {
+  lang: ILanguage;
+}

@@ -1,8 +1,4 @@
 import styled from 'styled-components';
-import { store } from '../../store/store';
-const { TEXT_COLOR_DARK, TEXT_COLOR, TASK_TEXT, FRAME_TASK_COLOR } =
-  store.getState().application_theme;
-import { size } from '../../constants/screenSizes';
 
 export const FormWrapper = styled.div`
   width: 350px;
@@ -12,7 +8,7 @@ export const FormWrapper = styled.div`
   position: relative;
   z-index: 1;
   svg {
-    fill: ${TEXT_COLOR_DARK};
+    fill: ${({ theme }) => theme.MAIN_BACKGROUND};
     position: absolute;
     top: 8px;
     left: 18px;
@@ -21,8 +17,8 @@ export const FormWrapper = styled.div`
 export const InputSearch = styled.input`
   width: 350px;
   height: 40px;
-  color: ${TASK_TEXT};
-  background-color: ${TEXT_COLOR};
+  color: ${({ theme }) => theme.TASK_TEXT};
+  background-color: ${({ theme }) => theme.TEXT_COLOR};
   border-radius: 20px;
   padding-left: 72px;
   padding-right: 10px;
@@ -30,5 +26,5 @@ export const InputSearch = styled.input`
   font-weight: 400;
   border: none;
   outline: none;
-  border: 3px solid ${FRAME_TASK_COLOR};
+  border: 3px solid ${({ theme }) => theme.FRAME_TASK_COLOR};
 `;
