@@ -46,7 +46,7 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.laptop}) {
     display: none;
     &.active {
       display: flex;
@@ -71,11 +71,13 @@ export const Button = styled.button`
 `;
 
 export const SignUp = styled(Button)`
-  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+  color: ${({ theme }) => theme.MAIN_BACKGROUND};
   background-color: ${({ theme }) => theme.TEXT_COLOR};
   &:hover {
-    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+    color: ${({ theme }) => theme.MAIN_BACKGROUND};
     background-color: ${({ theme }) => theme.TEXT_COLOR};
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.1);
   }
 `;
 

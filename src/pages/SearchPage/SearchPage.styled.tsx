@@ -13,6 +13,6 @@ export const Wrapper = styled.div`
     margin: auto 0;
     color: ${({ theme }) => theme.TEXT_COLOR_DARK};
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 400;
   }
 `;
