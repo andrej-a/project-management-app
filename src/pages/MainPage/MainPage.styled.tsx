@@ -3,14 +3,21 @@ import styled from 'styled-components';
 import { size } from '../../constants/screenSizes';
 
 export const Wrapper = styled.div`
-  position: relative;
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
-  padding: 0 48px;
+  padding: 0 80px;
+  @media (max-width: ${size.tablet}) {
+    padding: 0 20px;
+  }
+`;
+export const Container = styled.div`
+  margin: auto 0;
+  position: relative;
+  margin-top: 18vh;
   img {
     position: absolute;
     top: 80px;
-    right: 48px;
+    right: 100px;
     width: 42rem;
     height: 32rem;
   }
@@ -19,6 +26,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 10vh;
     img {
       position: relative;
       top: 0;
@@ -28,9 +36,10 @@ export const Wrapper = styled.div`
     }
   }
   @media (max-width: ${size.tablet}) {
+    margin-top: 6vh;
     img {
-      width: 80%;
-      height: 80%;
+      width: 100%;
+      height: 100%;
     }
   }
 `;
@@ -39,8 +48,6 @@ export const TextInfo = styled.div`
   margin-left: 100px;
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
-  margin-bottom: 200px;
   gap: 10px;
   h1 {
     font-family: 'K2D', sans-serif;
