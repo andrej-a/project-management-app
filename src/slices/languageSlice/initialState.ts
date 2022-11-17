@@ -27,6 +27,18 @@ export const initialState: ILanguage = {
     description: 'Description',
     createButton: 'Create board',
   },
+  createCard: {
+    title: 'New Card',
+    hint: 'Title',
+    description: 'Description',
+    titlePriority: 'Priority',
+    priority: {
+      high: 'high',
+      medium: 'medium',
+      low: 'low',
+    },
+    addTaskButon: 'Add Task',
+  },
   cancel: 'Cancel',
   boardsPage: {
     Hello: 'Hello',
@@ -67,6 +79,18 @@ export const RussianState: ILanguage = {
     hint: 'Название',
     description: 'Описание',
     createButton: 'Создать',
+  },
+  createCard: {
+    title: 'Новая карточка',
+    hint: 'Название',
+    description: 'Описание',
+    titlePriority: 'Приоритет',
+    priority: {
+      high: 'высокий',
+      medium: 'средний',
+      low: 'низкий',
+    },
+    addTaskButon: 'Добавить карточку',
   },
   cancel: 'Отменить',
   boardsPage: {

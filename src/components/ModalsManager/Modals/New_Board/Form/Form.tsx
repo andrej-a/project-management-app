@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { setStatus } from '../../../../../slices/modalsSlice/modalsSlice';
 /* HOOKS */
-import { useAppSelector } from '../../../../../hooks/hooks';
+import { useAppSelector, useAppDispatch } from '../../../../../hooks/hooks';
 /* STYLES */
 import {
   CreateBoardFormWrapper,
@@ -16,6 +17,7 @@ import {
 import { ICreateBoardData } from '../../../../../models/IInputData';
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
 export const CreateBoardForm = () => {
+  const dispatch = useAppDispatch();
   const { hint, description, createBoard, cancel } = useAppSelector((state) => {
     return {
       hint: state.language.createBoard.hint,
@@ -77,7 +79,9 @@ export const CreateBoardForm = () => {
             <InputError>{errors.descriptionInput?.message}</InputError>
           </InputWrapper>
           <ButtonsWrapper>
-            <CreateCardCancelButton>{cancel}</CreateCardCancelButton>
+            <CreateCardCancelButton onClick={() => dispatch(setStatus('hidden'))}>
+              {cancel}
+            </CreateCardCancelButton>
             <input disabled={Object.keys(errors).length > 0} type="submit" value={createBoard} />
           </ButtonsWrapper>
         </form>

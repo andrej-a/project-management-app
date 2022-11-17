@@ -24,6 +24,18 @@ export interface ILanguage {
     description: string;
     createButton: string;
   };
+  createCard: {
+    title: string;
+    hint: string;
+    description: string;
+    titlePriority: string;
+    priority: {
+      high: string;
+      medium: string;
+      low: string;
+    };
+    addTaskButon: string;
+  };
   cancel: string;
   boardsPage: {
     Hello: string;

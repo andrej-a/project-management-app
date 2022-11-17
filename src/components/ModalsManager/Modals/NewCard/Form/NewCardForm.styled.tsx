@@ -1,26 +1,24 @@
 import styled from 'styled-components';
-import { store } from '../../../../../store/store';
 import { size } from '../../../../../constants/screenSizes';
+import { store } from '../../../../../store/store';
 const {
   LIGHT_BACKGROUND,
   INPUT_BORDER_COLOR_LIGHT,
   BUTTON_BORDER_COLOR_DARK,
   TEXT_COLOR,
   BUTTON_RED,
+  BUTTON_YELLOW,
+  BUTTON_GREEN,
+  MAIN_BACKGROUND,
 } = store.getState().application_theme;
-export const CreateBoardFormWrapper = styled.div`
-  width: auto;
-  height: auto;
-  margin: 22px 59px 0 59px;
 
-  @media (max-width: ${size.tablet}) {
-    margin: 22px 29px 0px 29px;
-  }
+export const FormWrapper = styled.div`
+  margin: 22px 41px 22px 0px;
 
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 22px;
 
@@ -44,9 +42,15 @@ export const CreateBoardFormWrapper = styled.div`
       }
     }
 
+    input[type='radio'] {
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+    }
+
     input[type='submit'] {
       padding: 10px 37px;
-      background: ${BUTTON_BORDER_COLOR_DARK};
+      background: ${MAIN_BACKGROUND};
       border-radius: 20px;
       margin-bottom: 37px;
       border: 0px;
@@ -56,6 +60,11 @@ export const CreateBoardFormWrapper = styled.div`
       line-height: 22px;
       color: ${TEXT_COLOR};
       cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background: ${LIGHT_BACKGROUND};
+        color: ${MAIN_BACKGROUND};
+      }
       &:disabled {
         cursor: not-allowed;
       }
@@ -63,50 +72,49 @@ export const CreateBoardFormWrapper = styled.div`
   }
 `;
 
-export const TitleInput = styled.input`
-  height: 40px;
-  padding: 12px 0px 10px 10px;
-`;
-
-export const DescriptionInput = styled.input`
-  height: 230px;
-  padding: 12px 0px 201px 10px;
-
-  @media (max-width: ${size.mobileL}) {
-    padding: 12px 0px 120px 10px;
-    height: 150px;
-  }
-`;
-
-export const ButtonsWrapper = styled.div`
+export const LabelWrapper = styled.div`
   width: 100%;
+  height: auto;
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 15px;
+`;
 
-  @media (max-width: ${size.tablet}) {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+export const HighPriorityLabel = styled.label`
+  padding: 5px 15px;
+  background: ${LIGHT_BACKGROUND};
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: ${BUTTON_RED};
+  cursor: pointer;
+  border: 2px solid ${BUTTON_RED};
+  transition: all 0.3s ease;
+  &:hover {
+    color: ${LIGHT_BACKGROUND};
+    background: ${BUTTON_RED};
   }
 `;
 
-export const CreateCardCancelButton = styled.button`
-  width: 180px;
-  height: 40px;
+export const MediumPriorityLabel = styled(HighPriorityLabel)`
   background: ${LIGHT_BACKGROUND};
-  border: 2px solid ${BUTTON_RED};
-  border-radius: 20px;
-  cursor: pointer;
-
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  color: ${BUTTON_RED};
-
-  transition: all 0.3s ease;
-
+  color: ${BUTTON_YELLOW};
+  border-color: ${BUTTON_YELLOW};
   &:hover {
-    background: ${BUTTON_RED};
-    color: ${TEXT_COLOR};
+    color: ${LIGHT_BACKGROUND};
+    background: ${BUTTON_YELLOW};
+  }
+`;
+
+export const LowPriorityLabel = styled(HighPriorityLabel)`
+  background: ${LIGHT_BACKGROUND};
+  color: ${BUTTON_GREEN};
+  border-color: ${BUTTON_GREEN};
+  &:hover {
+    color: ${LIGHT_BACKGROUND};
+    background: ${BUTTON_GREEN};
   }
 `;
