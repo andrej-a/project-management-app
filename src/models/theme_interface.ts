@@ -9,7 +9,9 @@ export interface ITheme_Interface {
   TEXT_COLOR_GREY: string;
   TASK_TEXT: string;
   LIGHT_GRAY: string;
+  BUTTON_COLOR_TEXT: string;
 
+  BUTTON_BACKGROUND: string;
   BUTTON_BORDER_COLOR_LIGHT: string;
   BUTTON_BORDER_COLOR_DARK: string;
   INPUT_BORDER_COLOR_LIGHT: string;

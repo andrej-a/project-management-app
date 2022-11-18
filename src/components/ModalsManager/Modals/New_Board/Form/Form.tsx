@@ -16,14 +16,15 @@ import {
 /* CONSTANTS */
 import { ICreateBoardData } from '../../../../../models/IInputData';
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
+
 export const CreateBoardForm = () => {
   const dispatch = useAppDispatch();
   const { hint, description, createBoard, cancel } = useAppSelector((state) => {
     return {
-      hint: state.language.createBoard.hint,
-      description: state.language.createBoard.description,
-      createBoard: state.language.createBoard.createButton,
-      cancel: state.language.cancel,
+      hint: state.language.lang.createBoard.hint,
+      description: state.language.lang.createBoard.description,
+      createBoard: state.language.lang.createBoard.createButton,
+      cancel: state.language.lang.cancel,
     };
   });
   const schema = yup

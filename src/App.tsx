@@ -52,8 +52,8 @@ function App() {
           <Route path="*" element={<NoResultPage />} />
         </Routes>
         <Footer />
+        <ModalsManager />
       </ThemeProvider>
-      <ModalsManager />
     </>
   );
 }

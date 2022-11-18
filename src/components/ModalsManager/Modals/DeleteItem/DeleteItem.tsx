@@ -10,12 +10,13 @@ import {
 } from './DeleteItem.styled';
 /* HOOKS */
 import { useAppSelector } from '../../../../hooks/hooks';
+
 export const DeleteItem = () => {
   const { title, confirmButton, cancel } = useAppSelector((state) => {
     return {
-      title: state.language.deleteItemModal.title,
-      confirmButton: state.language.deleteItemModal.confirmButton,
-      cancel: state.language.cancel,
+      title: state.language.lang.deleteItemModal.title,
+      confirmButton: state.language.lang.deleteItemModal.confirmButton,
+      cancel: state.language.lang.cancel,
     };
   });
   return (

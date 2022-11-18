@@ -1,15 +1,5 @@
 import styled from 'styled-components';
 import { size } from '../../../../../constants/screenSizes';
-import { store } from '../../../../../store/store';
-const {
-  LIGHT_BACKGROUND,
-  INPUT_BORDER_COLOR_LIGHT,
-  TEXT_COLOR,
-  BUTTON_RED,
-  BUTTON_YELLOW,
-  BUTTON_GREEN,
-  MAIN_BACKGROUND,
-} = store.getState().application_theme;
 
 export const FormWrapper = styled.div`
   margin: 22px 41px 22px 0px;
@@ -23,14 +13,15 @@ export const FormWrapper = styled.div`
 
     input[type='text'] {
       width: 400px;
-      background: ${LIGHT_BACKGROUND};
+      background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       outline: none;
-      border: 1px solid ${INPUT_BORDER_COLOR_LIGHT};
+      border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
       border-radius: 5px;
       outline: none;
       font-weight: 600;
       font-size: 14px;
       line-height: 17px;
+      color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 
       @media (max-width: ${size.tablet}) {
         width: 300px;
@@ -45,11 +36,12 @@ export const FormWrapper = styled.div`
       position: absolute;
       opacity: 0;
       visibility: hidden;
+      position: -9999px;
     }
 
     input[type='submit'] {
       padding: 10px 37px;
-      background: ${MAIN_BACKGROUND};
+      background: ${({ theme }) => theme.BUTTON_BACKGROUND};
       border-radius: 20px;
       margin-bottom: 37px;
       border: 0px;
@@ -57,18 +49,22 @@ export const FormWrapper = styled.div`
       font-weight: 600;
       font-size: 18px;
       line-height: 22px;
-      color: ${TEXT_COLOR};
+      color: ${({ theme }) => theme.BUTTON_COLOR_TEXT};
       cursor: pointer;
       transition: all 0.3s ease;
       &:hover:not(:disabled) {
-        background: ${LIGHT_BACKGROUND};
-        color: ${MAIN_BACKGROUND};
+        background: ${({ theme }) => theme.BUTTON_GREEN};
+        color: ${({ theme }) => theme.TEXT_COLOR};
       }
       &:disabled {
         cursor: not-allowed;
       }
     }
   }
+`;
+
+export const PriorityTitle = styled.p`
+  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;
 
 export const LabelWrapper = styled.div`
@@ -80,9 +76,9 @@ export const LabelWrapper = styled.div`
   gap: 15px;
 
   input[type='radio']:checked + label {
-    background: ${MAIN_BACKGROUND};
-    border-color: ${MAIN_BACKGROUND};
-    color: ${TEXT_COLOR};
+    background: ${({ theme }) => theme.MAIN_BACKGROUND};
+    border-color: ${({ theme }) => theme.MAIN_BACKGROUND};
+    color: ${({ theme }) => theme.TEXT_COLOR};
   }
 
   @media (max-width: ${size.mobileL}) {
@@ -92,38 +88,38 @@ export const LabelWrapper = styled.div`
 
 export const HighPriorityLabel = styled.label`
   padding: 5px 15px;
-  background: ${LIGHT_BACKGROUND};
+  background: ${({ theme }) => theme.LIGHT_BACKGROUND};
   border-radius: 100px;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
-  color: ${BUTTON_RED};
+  color: ${({ theme }) => theme.BUTTON_RED};
   cursor: pointer;
-  border: 2px solid ${BUTTON_RED};
+  border: 2px solid ${({ theme }) => theme.BUTTON_RED};
   transition: all 0.3s ease;
   &:hover {
-    color: ${LIGHT_BACKGROUND};
-    background: ${BUTTON_RED};
+    color: ${({ theme }) => theme.LIGHT_BACKGROUND};
+    background: ${({ theme }) => theme.BUTTON_RED};
   }
 `;
 
 export const MediumPriorityLabel = styled(HighPriorityLabel)`
-  background: ${LIGHT_BACKGROUND};
-  color: ${BUTTON_YELLOW};
-  border-color: ${BUTTON_YELLOW};
+  background: ${({ theme }) => theme.LIGHT_BACKGROUND};
+  color: ${({ theme }) => theme.BUTTON_YELLOW};
+  border-color: ${({ theme }) => theme.BUTTON_YELLOW};
   &:hover {
-    color: ${LIGHT_BACKGROUND};
-    background: ${BUTTON_YELLOW};
+    color: ${({ theme }) => theme.LIGHT_BACKGROUND};
+    background: ${({ theme }) => theme.BUTTON_YELLOW};
   }
 `;
 
 export const LowPriorityLabel = styled(HighPriorityLabel)`
-  background: ${LIGHT_BACKGROUND};
-  color: ${BUTTON_GREEN};
-  border-color: ${BUTTON_GREEN};
+  background: ${({ theme }) => theme.LIGHT_BACKGROUND};
+  color: ${({ theme }) => theme.BUTTON_GREEN};
+  border-color: ${({ theme }) => theme.BUTTON_GREEN};
   &:hover {
-    color: ${LIGHT_BACKGROUND};
-    background: ${BUTTON_GREEN};
+    color: ${({ theme }) => theme.LIGHT_BACKGROUND};
+    background: ${({ theme }) => theme.BUTTON_GREEN};
   }
 `;

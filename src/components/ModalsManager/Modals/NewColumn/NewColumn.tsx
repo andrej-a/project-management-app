@@ -8,7 +8,7 @@ import { NewColumnForm } from './Form/Form';
 export const NewColumn = () => {
   const { title } = useAppSelector((state) => {
     return {
-      title: state.language.createColumn.title,
+      title: state.language.lang.createColumn.title,
     };
   });
   return (

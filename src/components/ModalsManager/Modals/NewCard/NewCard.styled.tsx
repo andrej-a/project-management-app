@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-import { store } from '../../../../store/store';
-
-const { TEXT_COLOR_DARK } = store.getState().application_theme;
-
 export const NewCardTitleWrapper = styled.div`
   padding: 34px 0px 0px 41px;
 `;
@@ -13,5 +9,5 @@ export const NewCardTitle = styled.div`
   font-size: 30px;
   line-height: 36px;
 
-  color: ${TEXT_COLOR_DARK};
+  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;

@@ -93,7 +93,7 @@ export const RussianState: ILanguage = {
     namePlaceholder: 'Ваше имя',
     loginPlaceholder: 'Ваш логин',
     passwordPlaceholder: 'Ваш пароль',
-    registrationButton: 'Зарегестрироваться',
+    registrationButton: 'Зарегистрироваться',
     changeModalToSignIn: 'Уже есть аккаунт? Войдите в него',
   },
   loginModal: {

@@ -1,13 +1,6 @@
 import styled from 'styled-components';
-import { store } from '../../../../../store/store';
 import { size } from '../../../../../constants/screenSizes';
-const {
-  LIGHT_BACKGROUND,
-  INPUT_BORDER_COLOR_LIGHT,
-  BUTTON_BORDER_COLOR_DARK,
-  TEXT_COLOR,
-  BUTTON_RED,
-} = store.getState().application_theme;
+
 export const CreateBoardFormWrapper = styled.div`
   width: auto;
   height: auto;
@@ -26,14 +19,15 @@ export const CreateBoardFormWrapper = styled.div`
 
     input[type='text'] {
       width: 400px;
-      background: ${LIGHT_BACKGROUND};
+      background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       outline: none;
-      border: 1px solid ${INPUT_BORDER_COLOR_LIGHT};
+      border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
       border-radius: 5px;
       outline: none;
       font-weight: 600;
       font-size: 14px;
       line-height: 17px;
+      color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 
       @media (max-width: ${size.tablet}) {
         width: 300px;
@@ -46,7 +40,7 @@ export const CreateBoardFormWrapper = styled.div`
 
     input[type='submit'] {
       padding: 10px 37px;
-      background: ${BUTTON_BORDER_COLOR_DARK};
+      background: ${({ theme }) => theme.BUTTON_BACKGROUND};
       border-radius: 20px;
       margin-bottom: 37px;
       border: 0px;
@@ -54,12 +48,12 @@ export const CreateBoardFormWrapper = styled.div`
       font-weight: 600;
       font-size: 18px;
       line-height: 22px;
-      color: ${TEXT_COLOR};
+      color: ${({ theme }) => theme.BUTTON_COLOR_TEXT};
       cursor: pointer;
       transition: all 0.3s ease;
       &:hover:not(:disabled) {
-        background: ${LIGHT_BACKGROUND};
-        color: ${BUTTON_BORDER_COLOR_DARK};
+        background: ${({ theme }) => theme.BUTTON_GREEN};
+        color: ${({ theme }) => theme.TEXT_COLOR};
       }
       &:disabled {
         cursor: not-allowed;
@@ -98,20 +92,20 @@ export const ButtonsWrapper = styled.div`
 export const CreateCardCancelButton = styled.button`
   width: 180px;
   height: 40px;
-  background: ${LIGHT_BACKGROUND};
-  border: 2px solid ${BUTTON_RED};
+  background: ${({ theme }) => theme.LIGHT_BACKGROUND};
+  border: 2px solid ${({ theme }) => theme.BUTTON_RED};
   border-radius: 20px;
   cursor: pointer;
 
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  color: ${BUTTON_RED};
+  color: ${({ theme }) => theme.BUTTON_RED};
 
   transition: all 0.3s ease;
 
   &:hover {
-    background: ${BUTTON_RED};
-    color: ${TEXT_COLOR};
+    background: ${({ theme }) => theme.BUTTON_RED};
+    color: ${({ theme }) => theme.TEXT_COLOR};
   }
 `;

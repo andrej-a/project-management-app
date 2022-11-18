@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-/* STORE */
-import { store } from '../../../../store/store';
-/* CONSTANTS */
-import { size } from '../../../../constants/screenSizes';
-
-const { FRAME_TASK_COLOR, LIGHT_BACKGROUND, TEXT_COLOR_DARK, BUTTON_RED } =
-  store.getState().application_theme;
-
 export const RegistrationWrapper = styled.div`
   width: auto;
   height: auto;
@@ -18,7 +10,7 @@ export const RegistrationFrame = styled.div`
   width: auto;
   height: auto;
   padding: 15px;
-  background: ${FRAME_TASK_COLOR};
+  background: ${({ theme }) => theme.FRAME_TASK_COLOR};
   border-radius: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -30,7 +22,7 @@ export const RegistrationCard = styled.div`
   width: auto;
   height: auto;
   border-radius: 10px;
-  background: ${LIGHT_BACKGROUND};
+  background: ${({ theme }) => theme.LIGHT_BACKGROUND};
   display: flex;
   flex-direction: column;
 `;
@@ -48,7 +40,7 @@ export const RegistrationTitle = styled.p`
   font-size: 30px;
   line-height: 36px;
 
-  color: ${TEXT_COLOR_DARK};
+  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;
 
 export const ChangeModalWrapper = styled.div`
@@ -62,7 +54,7 @@ export const ChangeModal = styled.p`
   font-size: 16px;
   line-height: 19px;
   cursor: pointer;
-  color: ${TEXT_COLOR_DARK};
+  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;
 
 export const CancelWrapper = styled.div`
@@ -77,6 +69,6 @@ export const Cancel = styled.p`
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  color: ${BUTTON_RED};
+  color: ${({ theme }) => theme.BUTTON_RED};
   cursor: pointer;
 `;

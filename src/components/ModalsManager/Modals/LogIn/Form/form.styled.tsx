@@ -1,15 +1,6 @@
 import styled from 'styled-components';
-/* STORE */
-import { store } from '../../../../../store/store';
 /* CONSTANTS */
 import { size } from '../../../../../constants/screenSizes';
-const {
-  LIGHT_BACKGROUND,
-  INPUT_BORDER_COLOR_LIGHT,
-  TEXT_COLOR_GREY,
-  BUTTON_BORDER_COLOR_DARK,
-  TEXT_COLOR,
-} = store.getState().application_theme;
 
 export const FormWrapper = styled.div`
   width: auto;
@@ -25,40 +16,41 @@ export const FormWrapper = styled.div`
     gap: 16px;
 
     input[type='text'] {
-      background: ${LIGHT_BACKGROUND};
+      background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       width: 306px;
       height: 40px;
-      border: 1px solid ${INPUT_BORDER_COLOR_LIGHT};
+      border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
       border-radius: 5px;
       outline: none;
       padding: 12px 0px 10px 11px;
       font-weight: 600;
       font-size: 14px;
       line-height: 17px;
+      color: ${({ theme }) => theme.TEXT_COLOR_DARK};
     }
     input[type='text']::-moz-placeholder {
-      color: ${TEXT_COLOR_GREY};
+      color: ${({ theme }) => theme.TEXT_COLOR_GREY};
     }
     input[type='text']::-webkit-input-placeholder {
-      color: ${TEXT_COLOR_GREY};
+      color: ${({ theme }) => theme.TEXT_COLOR_GREY};
     }
 
     input[type='submit'] {
       margin-top: 18px;
       padding: 10px 37px;
-      background: ${BUTTON_BORDER_COLOR_DARK};
+      background: ${({ theme }) => theme.BUTTON_BACKGROUND};
       border-radius: 20px;
       border: 0px;
       font-style: normal;
       font-weight: 600;
       font-size: 18px;
       line-height: 22px;
-      color: ${TEXT_COLOR};
+      color: ${({ theme }) => theme.BUTTON_COLOR_TEXT};
       cursor: pointer;
       transition: all 0.3s ease;
       &:hover:not(:disabled) {
-        background: ${LIGHT_BACKGROUND};
-        color: ${BUTTON_BORDER_COLOR_DARK};
+        background: ${({ theme }) => theme.BUTTON_GREEN};
+        color: ${({ theme }) => theme.TEXT_COLOR};
       }
       &:disabled {
         cursor: not-allowed;
@@ -83,7 +75,7 @@ export const InputError = styled.p`
   margin-top: 10px;
   font-size: 14px;
   line-height: 22px;
-  color: ${TEXT_COLOR_GREY};
+  color: ${({ theme }) => theme.TEXT_COLOR_GREY};
 `;
 
 export const InputWrapper = styled.div``;

@@ -1,8 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { HandySvg } from 'handy-svg';
 
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppSelector, useAppDispatch } from '../../../hooks/hooks';
 import { Styles, SvgSizes } from '../../../constants/applicationConstants';
 
 import { themeChange } from '../../../slices/themeSlice/themeSlice';
@@ -10,6 +9,8 @@ import { DarkTheme, Default } from '../../../slices/themeSlice/initialState';
 import { langChange } from '../../../slices/languageSlice/languageSlice';
 import { EnglishState, RussianState } from '../../../slices/languageSlice/initialState';
 import { authorizationSwitch } from '../../../slices/userSlice/userSlice';
+
+import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
 
 import plus from '../../../assets/svg/plus.svg';
 import arrow from '../../../assets/svg/arrow.svg';
@@ -31,7 +32,7 @@ type props = {
 };
 
 export const NavigationComponent = ({ isOpen }: props) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { user, dictionary } = useAppSelector((state) => {
     return {
       user: state.user,
@@ -76,7 +77,7 @@ export const NavigationComponent = ({ isOpen }: props) => {
         </ItemContainer>
       </NavLink>
 
-      <NewBoardButton onClick={() => {}}>
+      <NewBoardButton onClick={() => dispatch(setStatus('new_board'))}>
         <HandySvg src={plus} width={SvgSizes.SMALL} height={SvgSizes.SMALL} />
         <p>{dictionary.boardsPage['New Board']}</p>
       </NewBoardButton>

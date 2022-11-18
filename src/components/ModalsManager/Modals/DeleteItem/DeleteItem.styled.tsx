@@ -1,17 +1,6 @@
 import styled from 'styled-components';
-/* STORE */
-import { store } from '../../../../store/store';
 /* CONSTANTS */
 import { size } from '../../../../constants/screenSizes';
-const {
-  FRAME_TASK_COLOR,
-  LIGHT_BACKGROUND,
-  TEXT_COLOR_DARK,
-  BUTTON_RED,
-  MAIN_BACKGROUND,
-  TEXT_COLOR,
-  BUTTON_BORDER_COLOR_DARK,
-} = store.getState().application_theme;
 
 export const DeleteItemWrapper = styled.div`
   width: auto;
@@ -23,7 +12,7 @@ export const DeleteItemFrame = styled.div`
   width: auto;
   height: auto;
   padding: 15px;
-  background: ${FRAME_TASK_COLOR};
+  background: ${({ theme }) => theme.FRAME_TASK_COLOR};
   border-radius: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -35,7 +24,7 @@ export const DeleteItemCard = styled.div`
   width: 390px;
   height: auto;
   border-radius: 10px;
-  background: ${LIGHT_BACKGROUND};
+  background: ${({ theme }) => theme.LIGHT_BACKGROUND};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,13 +35,12 @@ export const DeleteItemCard = styled.div`
 
 export const Title = styled.p`
   margin-top: 54px;
-  font-family: 'Libre Franklin';
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
   line-height: 36px;
 
-  color: ${TEXT_COLOR_DARK};
+  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -73,8 +61,8 @@ export const ButtonsWrapper = styled.div`
 
 export const CancelButton = styled.button`
   padding: 7px 35px;
-  background: ${LIGHT_BACKGROUND};
-  border: 2px solid ${BUTTON_RED};
+  background: ${({ theme }) => theme.LIGHT_BACKGROUND};
+  border: 2px solid ${({ theme }) => theme.BUTTON_RED};
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -82,17 +70,17 @@ export const CancelButton = styled.button`
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  color: ${BUTTON_RED};
+  color: ${({ theme }) => theme.BUTTON_RED};
 
   &:hover {
-    background: ${BUTTON_RED};
-    color: ${TEXT_COLOR};
+    background: ${({ theme }) => theme.BUTTON_RED};
+    color: ${({ theme }) => theme.TEXT_COLOR};
   }
 `;
 
 export const ConfirmButton = styled.button`
   padding: 7px 35px;
-  background: ${MAIN_BACKGROUND};
+  background: ${({ theme }) => theme.BUTTON_BACKGROUND};
   border: 0px solid transparent;
   border-radius: 20px;
   cursor: pointer;
@@ -101,10 +89,10 @@ export const ConfirmButton = styled.button`
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  color: ${TEXT_COLOR};
+  color: ${({ theme }) => theme.BUTTON_COLOR_TEXT};
 
   &:hover:not(:disabled) {
-    background: ${LIGHT_BACKGROUND};
-    color: ${BUTTON_BORDER_COLOR_DARK};
+    background: ${({ theme }) => theme.BUTTON_GREEN};
+    color: ${({ theme }) => theme.TEXT_COLOR};
   }
 `;

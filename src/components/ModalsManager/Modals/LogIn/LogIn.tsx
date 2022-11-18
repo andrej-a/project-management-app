@@ -11,15 +11,20 @@ import {
   Cancel,
 } from './LogIn.styled';
 /* HOOKS */
-import { useAppSelector } from '../../../../hooks/hooks';
+import { useAppSelector, useAppDispatch } from '../../../../hooks/hooks';
 /* COMPONENTS */
 import { Form } from './Form/Form';
+/* ACTIONS */
+import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
+
 export const LogIn = () => {
+  const dispatch = useAppDispatch();
+
   const { title, changeModalToSignIn, cancel } = useAppSelector((state) => {
     return {
-      title: state.language.loginModal.title,
-      changeModalToSignIn: state.language.loginModal.changeModalToSignUp,
-      cancel: state.language.cancel,
+      title: state.language.lang.loginModal.title,
+      changeModalToSignIn: state.language.lang.loginModal.changeModalToSignUp,
+      cancel: state.language.lang.cancel,
     };
   });
   return (
@@ -32,10 +37,12 @@ export const LogIn = () => {
             </LogInTitleWrapper>
             <Form />
             <ChangeModalWrapper>
-              <ChangeModal>{changeModalToSignIn}</ChangeModal>
+              <ChangeModal onClick={() => dispatch(setStatus('registration'))}>
+                {changeModalToSignIn}
+              </ChangeModal>
             </ChangeModalWrapper>
             <CancelWrapper>
-              <Cancel>{cancel.toUpperCase()}</Cancel>
+              <Cancel onClick={() => dispatch(setStatus('hidden'))}>{cancel.toUpperCase()}</Cancel>
             </CancelWrapper>
           </LogInCard>
         </LogInFrame>

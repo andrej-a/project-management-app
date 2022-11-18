@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+/* ACTIONlang. */
 import { setStatus } from '../../../../../slices/modalsSlice/modalsSlice';
 /* STYLES */
 import { CreateColumnWrapper } from './Form.styled';
@@ -18,9 +19,9 @@ export const NewColumnForm = () => {
   const dispatch = useAppDispatch();
   const { hint, addColumnButton, cancel } = useAppSelector((state) => {
     return {
-      hint: state.language.createColumn.hint,
-      addColumnButton: state.language.createColumn.addColumnButton,
-      cancel: state.language.cancel,
+      hint: state.language.lang.createColumn.hint,
+      addColumnButton: state.language.lang.createColumn.addColumnButton,
+      cancel: state.language.lang.cancel,
     };
   });
   const schema = yup

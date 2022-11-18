@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 /* CONSTANTS */
 import { size } from '../../../../../constants/screenSizes';
-/* STORE */
-import { store } from '../../../../../store/store';
-const { LIGHT_BACKGROUND, INPUT_BORDER_COLOR_LIGHT, BUTTON_BORDER_COLOR_DARK, TEXT_COLOR } =
-  store.getState().application_theme;
 
 export const CreateColumnWrapper = styled.div`
   width: auto;
@@ -19,9 +15,9 @@ export const CreateColumnWrapper = styled.div`
 
     input[type='text'] {
       width: 400px;
-      background: ${LIGHT_BACKGROUND};
+      background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       outline: none;
-      border: 1px solid ${INPUT_BORDER_COLOR_LIGHT};
+      border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
       border-radius: 5px;
       outline: none;
       font-weight: 600;
@@ -29,6 +25,7 @@ export const CreateColumnWrapper = styled.div`
       line-height: 17px;
       height: 40px;
       padding: 12px 0px 10px 10px;
+      color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 
       @media (max-width: ${size.tablet}) {
         width: 300px;
@@ -41,19 +38,19 @@ export const CreateColumnWrapper = styled.div`
 
     input[type='submit'] {
       padding: 10px 37px;
-      background: ${BUTTON_BORDER_COLOR_DARK};
+      background: ${({ theme }) => theme.BUTTON_BACKGROUND};
       border-radius: 20px;
       border: 0px;
       font-style: normal;
       font-weight: 600;
       font-size: 18px;
       line-height: 22px;
-      color: ${TEXT_COLOR};
+      color: ${({ theme }) => theme.BUTTON_COLOR_TEXT};
       transition: all 0.3s ease;
       cursor: pointer;
       &:hover:not(:disabled) {
-        background: ${LIGHT_BACKGROUND};
-        color: ${BUTTON_BORDER_COLOR_DARK};
+        background: ${({ theme }) => theme.BUTTON_GREEN};
+        color: ${({ theme }) => theme.TEXT_COLOR};
       }
       &:disabled {
         cursor: not-allowed;

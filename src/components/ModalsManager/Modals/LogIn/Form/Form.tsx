@@ -8,12 +8,13 @@ import { useAppSelector } from '../../../../../hooks/hooks';
 import { ILogInData } from '../../../../../models/IInputData';
 /* STYLES */
 import { FormWrapper, InputWrapper, InputError } from './form.styled';
+
 export const Form = () => {
   const { loginPlaceholder, passwordPlaceholder, registrationButton } = useAppSelector((state) => {
     return {
-      loginPlaceholder: state.language.loginModal.loginPlaceholder,
-      passwordPlaceholder: state.language.loginModal.passwordPlaceholder,
-      registrationButton: state.language.loginModal.logInButton,
+      loginPlaceholder: state.language.lang.loginModal.loginPlaceholder,
+      passwordPlaceholder: state.language.lang.loginModal.passwordPlaceholder,
+      registrationButton: state.language.lang.loginModal.logInButton,
     };
   });
 

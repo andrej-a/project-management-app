@@ -11,6 +11,7 @@ import {
   HighPriorityLabel,
   MediumPriorityLabel,
   LowPriorityLabel,
+  PriorityTitle,
 } from './NewCardForm.styled';
 /* COMPONENTS */
 import { InputWrapper, InputError } from '../../Registration/Form/form.styled';
@@ -27,12 +28,12 @@ export const NewCardForm = () => {
   const { hint, description, priority, addTaskButon, titlePriority, cancel } = useAppSelector(
     (state) => {
       return {
-        hint: state.language.createCard.hint,
-        description: state.language.createCard.description,
-        priority: state.language.createCard.priority,
-        addTaskButon: state.language.createCard.addTaskButon,
-        titlePriority: state.language.createCard.titlePriority,
-        cancel: state.language.cancel,
+        hint: state.language.lang.createCard.hint,
+        description: state.language.lang.createCard.description,
+        priority: state.language.lang.createCard.priority,
+        addTaskButon: state.language.lang.createCard.addTaskButon,
+        titlePriority: state.language.lang.createCard.titlePriority,
+        cancel: state.language.lang.cancel,
       };
     }
   );
@@ -88,7 +89,7 @@ export const NewCardForm = () => {
             />
           </InputWrapper>
 
-          {titlePriority}
+          <PriorityTitle>{titlePriority}</PriorityTitle>
           <LabelWrapper>
             <InputWrapper>
               <input
