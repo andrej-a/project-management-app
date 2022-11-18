@@ -7,6 +7,8 @@ import { useAppSelector } from './hooks/hooks';
 import { ProtectedRoute } from './utils/routes';
 /* COMPONENTS */
 import { NoResultPage } from './pages/404/NoResultPage';
+import { ModalsManager } from './components/ModalsManager/ModalsManager';
+
 import BoardsPage from './pages/BoardsPage/BoardsPage';
 import MainPage from './pages/MainPage/MainPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
@@ -50,6 +52,7 @@ function App() {
           <Route path="*" element={<NoResultPage />} />
         </Routes>
         <Footer />
+        <ModalsManager />
       </ThemeProvider>
     </>
   );
