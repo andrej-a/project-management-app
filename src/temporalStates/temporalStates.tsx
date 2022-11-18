@@ -34,7 +34,7 @@ export const columns: IColumn[] = [
     boardId: '6373dc7f7a0a06b9b7c6db2c',
   },
   {
-    _id: '637510c37a0a06b9b7c6db43',
+    _id: '637510c37a0a06b9b74545454',
     title: 'In progress',
     order: 0,
     boardId: '6373dc7f7a0a06b9b7c6db2c',
@@ -64,14 +64,14 @@ export const tasks: { [key: string]: ITask[] } = {
       users: ['string'],
     },
   ],
-  '637510c37a0a06b9b7c6db43': [
+  '637510c37a0a06b9b74545454': [
     {
-      _id: '637510c37a0a06b9b7c6db43',
+      _id: '637510c37a0a06b9b7c6db45',
       title: 'Blablabla',
       order: 0,
       description: 'Hello world',
       userId: '0',
-      boardId: '6373dc7f7a0a06b9b7c6db2c',
+      boardId: '637510c37a0a06b9b74545454',
       columnId: '6373dca97a0a06b9b7c6db33',
       users: ['string'],
     },
