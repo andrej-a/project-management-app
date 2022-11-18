@@ -1,5 +1,5 @@
 /* STYLES */
-import { TextWrapper, TextContent } from './Text.components';
+import { TextWrapper, TextContent } from './Text.styled';
 /* CONSTANTS */
 import { applicationConstants } from '../../../constants/applicationConstants';
 const { NO_RESULT_PAGE_MAIN_TEXT } = applicationConstants;

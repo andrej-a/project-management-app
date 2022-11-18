@@ -9,7 +9,7 @@ const KanbanArea = () => {
       board: state.board.board,
       columns: state.board.columns,
       tasks: state.board.tasks,
-      dictionary: state.language.currentBoardPage,
+      dictionary: state.language.lang.currentBoardPage,
     };
   });
   const columnsElements = columns.map((column) => (

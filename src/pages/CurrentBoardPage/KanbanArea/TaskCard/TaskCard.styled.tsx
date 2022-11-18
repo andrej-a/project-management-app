@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { store } from '../../../../store/store';
-const { LIGHT_BACKGROUND, TASK_TEXT } = store.getState().application_theme;
+const { LIGHT_BACKGROUND, TASK_TEXT } = store.getState().application_theme.theme;
 
 export const TaskCardStyled = styled.div`
   height: 155px;

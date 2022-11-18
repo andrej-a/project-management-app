@@ -6,7 +6,7 @@ import { BackBtnWrapper } from './BackBtn.components';
 const BackBtn = () => {
   const { dictionary } = useAppSelector((state) => {
     return {
-      dictionary: state.language.currentBoardPage,
+      dictionary: state.language.lang.currentBoardPage,
     };
   });
   return (

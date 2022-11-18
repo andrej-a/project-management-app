@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { size } from '../../constants/screenSizes';
 import { store } from '../../store/store';
-const { DESK_BACKGROUND } = store.getState().application_theme;
+const { DESK_BACKGROUND } = store.getState().application_theme.theme;
 
 export const Wrapper = styled.div`
   max-width: 100vw;

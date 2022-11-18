@@ -1,6 +1,6 @@
 import React from 'react';
 /* STYLES */
-import { Wrapper } from './NoResultPage.components';
+import { Wrapper } from './NoResultPage.styled';
 /* COMPONENTS */
 import { GoBack } from './GoBack/GoBack';
 import { Text } from './Text/Text';

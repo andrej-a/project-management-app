@@ -1,5 +1,5 @@
 import BackBtn from './BackBtn/BackBtn';
-import { PageHeaderStyled } from './PageHeader.components';
+import { PageHeaderStyled } from './PageHeader.styled';
 
 const PageHeader = ({ title }: { title: string }) => {
   return (

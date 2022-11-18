@@ -6,7 +6,7 @@ import {
   BoardSmallCardStyled,
   BoardSmallDescription,
   BoardSmallTitle,
-} from './BoardSmallCard.components';
+} from './BoardSmallCard.styled';
 /**STYLES */
 import deleteIcon from '../../../assets/img/delete.svg';
 import editIcon from '../../../assets/img/edit.svg';
@@ -15,9 +15,10 @@ import { useAppSelector } from '../../../hooks/hooks';
 import { IBoard } from '../../../models/IBoard';
 
 const BoardSmallCard = ({ title, description }: IBoard) => {
-  const { buttonColor } = useAppSelector((state) => {
+  const { textColor, buttonColor } = useAppSelector((state) => {
     return {
-      buttonColor: state.application_theme.BUTTON_BORDER_COLOR_LIGHT,
+      textColor: state.application_theme.theme.TEXT_COLOR,
+      buttonColor: state.application_theme.theme.BUTTON_BORDER_COLOR_LIGHT,
     };
   });
   return (

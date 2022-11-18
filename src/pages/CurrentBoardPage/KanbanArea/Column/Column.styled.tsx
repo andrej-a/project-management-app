@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { store } from '../../../../store/store';
-const { FRAME_TASK_COLOR, TASK_TEXT } = store.getState().application_theme;
+const { FRAME_TASK_COLOR, TASK_TEXT } = store.getState().application_theme.theme;
 
 export const ColumnWrapper = styled.div`
   display: flex;

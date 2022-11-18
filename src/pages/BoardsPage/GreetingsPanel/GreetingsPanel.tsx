@@ -5,20 +5,36 @@ import {
   GreetingsPanelStyled,
   GreetingSubText,
   GreetingTextBlock,
-} from './GreetingsPanel.components';
+} from './GreetingsPanel.styled';
 import imageHand from '../../../assets/img/boards_page/greetings_hand.png';
 
 import { IBoard } from '../../../models/IBoard';
 import { useAppSelector } from '../../../hooks/hooks';
-import { getBoardsWord } from '../utils/utils';
 /**UTILS */
 
 const GreetingsPanel = ({ userName, boards }: { userName: string; boards: IBoard[] }) => {
   const { dictionary } = useAppSelector((state) => {
     return {
-      dictionary: state.language.boardsPage,
+      dictionary: state.language.lang.boardsPage,
     };
   });
+
+  const getBoardsWord = (number: number) => {
+    switch (number) {
+      case 0:
+        return dictionary['Boards (0)'];
+      case number === 1 || (number % 10 === 1 && number % 100 !== 11) ? number : true:
+        return number + dictionary['Boards (1)'];
+      case (number > 1 && number < 5) ||
+      (number % 10 > 1 && number % 10 < 5 && (number % 100 < 11 || number % 100 > 20))
+        ? number
+        : true:
+        return number + dictionary['Boards (2-4)'];
+      default:
+        return number + dictionary['Boards (5+)'];
+    }
+  };
+
   return (
     <GreetingsPanelStyled>
       <GreetingTextBlock>

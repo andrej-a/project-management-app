@@ -10,7 +10,7 @@ import { useAppSelector } from '../../../../hooks/hooks';
 const TaskCard = ({ title, description, _id }: ITask) => {
   const { buttonColor } = useAppSelector((state) => {
     return {
-      buttonColor: state.application_theme.BUTTON_RED,
+      buttonColor: state.application_theme.theme.BUTTON_RED,
     };
   });
   return (

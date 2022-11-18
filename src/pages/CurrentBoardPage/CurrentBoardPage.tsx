@@ -1,5 +1,5 @@
 /**STYLES */
-import { InnerWrapper, Wrapper } from './CurrentBoardPage.components';
+import { InnerWrapper, Wrapper } from './CurrentBoardPage.styled';
 /**HOOKS */
 import { useAppSelector } from '../../hooks/hooks';
 import PageHeader from './PageHeader/PageHeader';

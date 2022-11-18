@@ -17,7 +17,7 @@ const Column = ({ title, _id }: Partial<IColumn>) => {
       board: state.board.board,
       columns: state.board.columns,
       tasks: state.board.tasks[_id as string] ?? [],
-      buttonColor: state.application_theme.TASK_TEXT,
+      buttonColor: state.application_theme.theme.TASK_TEXT,
     };
   });
   const taskElements = tasks.map((task) => <TaskCard {...task} key={task._id} />);
