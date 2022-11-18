@@ -7,13 +7,13 @@ const NewBoardButton = () => {
   const dispatch = useAppDispatch();
   const { dictionary } = useAppSelector((state) => {
     return {
-      dictionary: state.language.boardsPage,
+      dictionary: state.language.lang.boardsPage,
     };
   });
   return (
     <NewBoardButtonWrapper onClick={() => dispatch(setStatus('new_board'))}>
       <div>
-        {dictionary.Create} <br /> {dictionary['new Board']}
+        {dictionary.Create} <br /> {dictionary['New Board']}
       </div>
     </NewBoardButtonWrapper>
   );

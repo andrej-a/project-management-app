@@ -1,7 +1,7 @@
 /* MODELS */
 import { ITheme_Interface } from '../../models/theme_interface';
 
-export const initialState: ITheme_Interface = {
+export const Default: ITheme_Interface = {
   MAIN_BACKGROUND: '#48409E',
   LIGHT_BACKGROUND: '#FFFFFF',
   DESK_BACKGROUND: '#F1F0FF',
@@ -22,7 +22,6 @@ export const initialState: ITheme_Interface = {
 
   GRADIENT_SECOND_COLOR: '#4332f7',
 };
-
 export const DarkTheme: ITheme_Interface = {
   MAIN_BACKGROUND: '#252525',
   LIGHT_BACKGROUND: '#252525',
@@ -44,3 +43,10 @@ export const DarkTheme: ITheme_Interface = {
 
   GRADIENT_SECOND_COLOR: '#434343',
 };
+
+export const initialState: ITheme = {
+  theme: Default,
+};
+interface ITheme {
+  theme: ITheme_Interface;
+}

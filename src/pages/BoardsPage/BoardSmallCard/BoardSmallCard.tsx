@@ -15,7 +15,7 @@ import { useAppSelector } from '../../../hooks/hooks';
 const BoardSmallCard = ({ title, description }: { title: string; description: string }) => {
   const { textColor } = useAppSelector((state) => {
     return {
-      textColor: state.application_theme.TEXT_COLOR,
+      textColor: state.application_theme.theme.TEXT_COLOR,
     };
   });
   return (
