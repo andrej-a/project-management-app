@@ -14,7 +14,7 @@ export const ModalsManager = () => {
   const { modalsState } = useAppSelector((state) => state.modals_state);
   const getModal = (): JSX.Element => {
     switch (modalsState) {
-      case 'hidden':
+      case 'add_column':
         return (
           <Overlay>
             <NewColumn />

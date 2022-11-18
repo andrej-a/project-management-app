@@ -10,6 +10,7 @@ const {
   BUTTON_RED,
   MAIN_BACKGROUND,
   TEXT_COLOR,
+  BUTTON_BORDER_COLOR_DARK,
 } = store.getState().application_theme;
 
 export const DeleteItemWrapper = styled.div`
@@ -63,7 +64,8 @@ export const ButtonsWrapper = styled.div`
   justify-content: space-around;
 
   @media (max-width: ${size.mobileL}) {
-    width: 70%;
+    width: 100%;
+    align-items: center;
     flex-direction: column-reverse;
     gap: 20px;
   }
@@ -75,22 +77,34 @@ export const CancelButton = styled.button`
   border: 2px solid ${BUTTON_RED};
   border-radius: 20px;
   cursor: pointer;
+  transition: all 0.3s ease;
 
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
   color: ${BUTTON_RED};
+
+  &:hover {
+    background: ${BUTTON_RED};
+    color: ${TEXT_COLOR};
+  }
 `;
 
 export const ConfirmButton = styled.button`
   padding: 7px 35px;
   background: ${MAIN_BACKGROUND};
-  border: 2px solid ${MAIN_BACKGROUND};
+  border: 0px solid transparent;
   border-radius: 20px;
   cursor: pointer;
+  transition: all 0.3s ease;
 
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
   color: ${TEXT_COLOR};
+
+  &:hover:not(:disabled) {
+    background: ${LIGHT_BACKGROUND};
+    color: ${BUTTON_BORDER_COLOR_DARK};
+  }
 `;

@@ -12,7 +12,7 @@ export const initialState: ILanguage = {
     loginPlaceholder: 'Your login',
     passwordPlaceholder: 'Your password',
     registrationButton: 'Registration',
-    changeModalToSignIn: 'You alredy have account? Log In',
+    changeModalToSignIn: 'You already have account? Log In',
   },
   loginModal: {
     title: 'Authorization',

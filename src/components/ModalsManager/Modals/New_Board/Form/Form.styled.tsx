@@ -56,6 +56,11 @@ export const CreateBoardFormWrapper = styled.div`
       line-height: 22px;
       color: ${TEXT_COLOR};
       cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover:not(:disabled) {
+        background: ${LIGHT_BACKGROUND};
+        color: ${BUTTON_BORDER_COLOR_DARK};
+      }
       &:disabled {
         cursor: not-allowed;
       }

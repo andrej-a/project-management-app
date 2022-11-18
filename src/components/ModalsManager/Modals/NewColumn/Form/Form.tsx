@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { setStatus } from '../../../../../slices/modalsSlice/modalsSlice';
 /* STYLES */
 import { CreateColumnWrapper } from './Form.styled';
 import { ButtonsWrapper } from '../../DeleteItem/DeleteItem.styled';
@@ -58,7 +59,9 @@ export const NewColumnForm = () => {
             <InputError>{errors.title?.message}</InputError>
           </InputWrapper>
           <ButtonsWrapper>
-            <CreateCardCancelButton>{cancel}</CreateCardCancelButton>
+            <CreateCardCancelButton onClick={() => dispatch(setStatus('hidden'))}>
+              {cancel}
+            </CreateCardCancelButton>
             <input
               disabled={Object.keys(errors).length > 0}
               type="submit"
