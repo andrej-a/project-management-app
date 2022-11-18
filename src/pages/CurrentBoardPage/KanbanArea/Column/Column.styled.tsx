@@ -30,4 +30,12 @@ export const ColumnStyled = styled.div`
   border-radius: 20px;
   gap: 15px;
   padding: 15px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 `;

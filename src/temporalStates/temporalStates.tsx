@@ -39,6 +39,12 @@ export const columns: IColumn[] = [
     order: 0,
     boardId: '6373dc7f7a0a06b9b7c6db2c',
   },
+  {
+    _id: '6373dca57a0a06b9b7c6aaaa',
+    title: 'In test',
+    order: 0,
+    boardId: '6373dc7f7a0a06b9b7c6db2c',
+  },
 ];
 export const tasks: { [key: string]: ITask[] } = {
   '6373dca57a0a06b9b7c6db30': [
@@ -73,6 +79,29 @@ export const tasks: { [key: string]: ITask[] } = {
       userId: '0',
       boardId: '637510c37a0a06b9b74545454',
       columnId: '6373dca97a0a06b9b7c6db33',
+      users: ['string'],
+    },
+  ],
+  '6373dca57a0a06b9b7c6aaaa': [
+    {
+      _id: '637510997a0a06b9b7c6daaa',
+      title: 'Fsssirst task',
+      order: 0,
+      description: '12121212',
+      userId: '0',
+      boardId: '6373dc7f7a0a06b9b7c6db2c',
+      columnId: '6373dca57a0a06b9b7c6aaaa',
+      users: ['string'],
+    },
+    {
+      _id: '637510a27a0a06b9b7c6daaa',
+      title: 'Second task',
+      order: 0,
+      description:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque non iste, vitae esse, delectus maxime voluptas, laborum magni ipsum nesciunt rem magnam suscipit explicabo! Voluptatem animi deserunt enim beatae culpa.',
+      userId: '0',
+      boardId: '6373dc7f7a0a06b9b7c6db2c',
+      columnId: '6373dca57a0a06b9b7c6aaaa',
       users: ['string'],
     },
   ],

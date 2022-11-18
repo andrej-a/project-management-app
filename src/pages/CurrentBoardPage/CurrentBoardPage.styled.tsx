@@ -6,7 +6,10 @@ const { DESK_BACKGROUND } = store.getState().application_theme.theme;
 export const Wrapper = styled.div`
   max-width: 100vw;
   width: 100%;
-  min-height: 100vh;
+  max-height: calc(100vh - 170px);
+  min-height: calc(100vh - 170px);
+  height: calc(100vh - 170px);
+  overflow: hidden;
   margin: 0;
   padding: 0;
   height: auto;
@@ -19,5 +22,5 @@ export const Wrapper = styled.div`
 export const InnerWrapper = styled.div`
   max-height: 100%;
   max-width: 100%;
-  padding: 27px 3.26% 87px 5.55%;
+  padding: 27px 3.26% 27px 5.55%;
 `;

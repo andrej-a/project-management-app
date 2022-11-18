@@ -41,20 +41,34 @@ function App() {
           break;
 
         case 'task':
-          const tasksFromSourceColumn = [...tasks[result.source.droppableId]];
-          const tasksFromTargetColumn = [...tasks[result.destination.droppableId]];
-          const task = tasksFromSourceColumn[result.source.index];
+          if (result.source.droppableId === result.destination.droppableId) {
+            const columnTasks = [...tasks[result.source.droppableId]];
+            dispatch(
+              setTasks({
+                ...tasks,
+                [result.source.droppableId]: swapElements(
+                  columnTasks,
+                  result.source.index,
+                  result.destination.index
+                ),
+              })
+            );
+          } else {
+            const tasksFromSourceColumn = [...tasks[result.source.droppableId]];
+            const tasksFromTargetColumn = [...tasks[result.destination.droppableId]];
+            const task = tasksFromSourceColumn[result.source.index];
 
-          tasksFromSourceColumn.splice(result.source.index, 1);
-          tasksFromTargetColumn.splice(result.source.index, 0, task);
+            tasksFromSourceColumn.splice(result.source.index, 1);
+            tasksFromTargetColumn.splice(result.destination.index, 0, task);
 
-          dispatch(
-            setTasks({
-              ...tasks,
-              [result.source.droppableId]: tasksFromSourceColumn,
-              [result.destination.droppableId]: tasksFromTargetColumn,
-            })
-          );
+            dispatch(
+              setTasks({
+                ...tasks,
+                [result.source.droppableId]: tasksFromSourceColumn,
+                [result.destination.droppableId]: tasksFromTargetColumn,
+              })
+            );
+          }
           break;
       }
     }
