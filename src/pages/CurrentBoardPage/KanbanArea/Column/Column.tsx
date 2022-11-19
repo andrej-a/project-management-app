@@ -12,6 +12,7 @@ import { IColumn } from '../../../../models/IColumn';
 import TaskCard from '../TaskCard/TaskCard';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
+import ColumnTitle from './ColumtTitle';
 
 const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
   const { tasks, buttonColor } = useAppSelector((state) => {
@@ -35,9 +36,7 @@ const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
           ref={providedDrag.innerRef}
         >
           <ColumnHeader>
-            <h3>
-              {title} <span>({tasks.length})</span>
-            </h3>
+            <ColumnTitle title={title} /> <span>({tasks.length})</span>
             <SvgButton
               color={buttonColor}
               icon={deleteIcon}

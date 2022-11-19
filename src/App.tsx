@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './global';
 import { useAppSelector } from './hooks/hooks';
 import { ProtectedRoute } from './utils/routes';
-import { swapElements } from './utils/utils';
 /* COMPONENTS */
 import { NoResultPage } from './pages/404/NoResultPage';
 import { ModalsManager } from './components/ModalsManager/ModalsManager';
@@ -18,7 +17,7 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import SearchPage from './pages/SearchPage/SearchPage';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
-import { DragDropContext, DropResult } from 'react-beautiful-dnd';
+import { DragDropContext } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { onDragEnd } from './utils/onDragEnd';
 

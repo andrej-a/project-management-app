@@ -15,6 +15,7 @@ export const TaskCardStyled = styled.div`
   border-radius: 20px;
   color: ${TASK_TEXT};
   position: relative;
+  cursor: pointer !important;
 
   &:hover {
     transform: scale(1.06);

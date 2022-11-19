@@ -31,7 +31,7 @@ const BoardSmallCard = ({ title, owner }: IBoard) => {
         color={buttonColor}
         icon={deleteIcon}
         stylish={{ position: 'absolute', right: '12px', top: '12px' }}
-        handleClick={() => {}} //РЕДАКТИРОВАНИЕ БОРДА
+        //handleClick={() => {}} //РЕДАКТИРОВАНИЕ БОРДА
       />
       <SvgButton
         color={buttonColor}

@@ -13,7 +13,7 @@ const SearchPage = () => {
     };
   });
 
-  const [boards, setBoards] = useState<IBoard[]>([]);
+  const [boards] = useState<IBoard[]>([]);
   return (
     <Wrapper>
       <Search />

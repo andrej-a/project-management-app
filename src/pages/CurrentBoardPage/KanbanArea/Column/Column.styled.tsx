@@ -7,15 +7,10 @@ export const ColumnWrapper = styled.div`
   flex-direction: column;
   gap: 20px;
   max-height: 100%;
+  width: 332px;
 `;
 export const ColumnHeader = styled.div`
-  h3 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 38px;
-    color: ${TASK_TEXT};
-  }
+  max-width: 100%;
   span {
     font-weight: 400;
   }

@@ -10,21 +10,25 @@ const SvgButton = ({
   size,
   stylish,
   handleClick,
+  type,
+  disabled = false,
 }: {
   color: string;
   icon: string;
   size?: number;
   stylish?: CSS.Properties;
-  handleClick:
+  handleClick?:
     | (() => {
         payload: unknown;
         type: 'modals_state/setStatus';
       })
     | (() => void);
+  type?: 'submit';
+  disabled?: boolean;
 }) => {
   size = size ?? svgDefaultSize;
   return (
-    <BoardCardBtnStyled color={color} style={stylish} onClick={handleClick}>
+    <BoardCardBtnStyled color={color} style={stylish} onClick={handleClick} type={type ?? 'button'}>
       <HandySvg src={icon} width={String(size)} height={String(size)} />
     </BoardCardBtnStyled>
   );

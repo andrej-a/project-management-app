@@ -5,20 +5,11 @@ import { ITask } from '../../models/ITask';
 import { IUser } from '../../models/IUser';
 
 /**FAKE DATA */
-import {
-  boards,
-  columns,
-  getTasksSetQuerryAnswer,
-  tasks,
-} from '../../temporalStates/temporalStates';
-import { convertTasksArrayToObject } from '../../utils/convertTasksArrayToObject';
+import { boards, columns, getTasksSetQuerryAnswer } from '../../temporalStates/temporalStates';
 
 interface IBoardSlice {
   board: IBoard;
   columns: IColumn[];
-  /*tasks: {
-    [key: string]: ITask[];
-  };*/
   tasks: ITask[];
   users: IUser[];
 }

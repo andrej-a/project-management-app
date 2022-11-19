@@ -6,7 +6,7 @@ import PageHeader from './PageHeader/PageHeader';
 import KanbanArea from './KanbanArea/KanbanArea';
 
 const CurrentBoardPage = () => {
-  const { board, columns, tasks } = useAppSelector((state) => {
+  const { board } = useAppSelector((state) => {
     return {
       board: state.board.board,
       columns: state.board.columns,

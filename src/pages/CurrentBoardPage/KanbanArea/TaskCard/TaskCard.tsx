@@ -23,6 +23,7 @@ const TaskCard = ({ title, description, _id, dragIndex }: ITask & { dragIndex: n
           {...providedDrag.draggableProps}
           {...providedDrag.dragHandleProps}
           ref={providedDrag.innerRef}
+          onClick={() => dispatch(setStatus('new_card'))}
         >
           <TaskCardTitle>{title}</TaskCardTitle>
           <TaskCardDescription>{description}</TaskCardDescription>
