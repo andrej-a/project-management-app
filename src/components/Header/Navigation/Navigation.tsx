@@ -14,7 +14,7 @@ import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
 
 import plus from '../../../assets/svg/plus.svg';
 import arrow from '../../../assets/svg/arrow.svg';
-import searchIcon from '../../../assets/svg/search1.svg';
+import searchIcon from '../../../assets/svg/search.svg';
 import {
   LogOut,
   User,
@@ -72,7 +72,7 @@ export const NavigationComponent = ({ isOpen }: props) => {
     <Wrapper className={isOpen ? Styles.ACTIVE : ''}>
       <NavLink to="search">
         <ItemContainer>
-          <HandySvg src={searchIcon} width={SvgSizes.SMALL} height={SvgSizes.SMALL} />
+          <HandySvg src={searchIcon} width="26" height="26" />
           <p>{dictionary.header.Search}</p>
         </ItemContainer>
       </NavLink>

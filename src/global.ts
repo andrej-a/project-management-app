@@ -34,14 +34,13 @@ ${normalize}
 body {
     margin: 0;
     background: ${({ theme }: GlobalThemeProps) => theme.DESK_BACKGROUND};
-
+    transition: all 0.5s ease-in-out;
     font-family: 'Libre Franklin', sans-serif;
     background-color: ${({ theme }: GlobalThemeProps) => theme.DESK_BACKGROUND};
     width: 100%;
     &::-webkit-scrollbar {
-    background-color: ${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
-    width: 14px;
-  
+      background-color: ${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
+      width: 14px;
       background-color:${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
     };
   }

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useAppSelector } from '../../hooks/hooks';
 
 import { FormWrapper, InputSearch } from './Search.styled';
-import searchIcon from '../../assets/svg/search1.svg';
+import searchIcon from '../../assets/svg/search.svg';
 import { HandySvg } from 'handy-svg';
 
 export const Search = () => {
