@@ -19,7 +19,7 @@ const KanbanArea = () => {
     <Column {...column} key={column._id} dragIndex={index} />
   ));
   return (
-    <Droppable droppableId={board.id} type="column" direction="horizontal">
+    <Droppable droppableId={board._id} type="column" direction="horizontal">
       {(provided) => (
         <KanbanWrapper ref={provided.innerRef} {...provided.droppableProps}>
           {columnsElements}

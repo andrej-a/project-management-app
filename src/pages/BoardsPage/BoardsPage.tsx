@@ -11,7 +11,7 @@ import { userName, boards } from '../../temporalStates/temporalStates';
 import { setStatus } from '../../slices/modalsSlice/modalsSlice';
 
 const BoardsPage = () => {
-  const boardsList = boards.map((board) => <BoardSmallCard {...board} key={board.id} />);
+  const boardsList = boards.map((board) => <BoardSmallCard {...board} key={board._id} />);
   const { dictionary } = useAppSelector((state) => {
     return {
       dictionary: state.language.lang.boardsPage,

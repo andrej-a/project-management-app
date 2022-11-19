@@ -5,10 +5,9 @@ import SvgButton from '../../../../components/SvgButton/SvgButton';
 import { TaskCardStyled, TaskCardDescription, TaskCardTitle } from './TaskCard.styled';
 import deleteIcon from '../../../../assets/img/delete.svg';
 /**HOOKS */
-import { useAppSelector } from '../../../../hooks/hooks';
-import { useDispatch } from 'react-redux';
-import { setTasks } from '../../../../slices/boardSlice/boardSlice';
+import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { Draggable } from 'react-beautiful-dnd';
+import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
 
 const TaskCard = ({ title, description, _id, dragIndex }: ITask & { dragIndex: number }) => {
   const { buttonColor } = useAppSelector((state) => {
@@ -16,7 +15,7 @@ const TaskCard = ({ title, description, _id, dragIndex }: ITask & { dragIndex: n
       buttonColor: state.application_theme.theme.BUTTON_RED,
     };
   });
-
+  const dispatch = useAppDispatch();
   return (
     <Draggable draggableId={_id} index={dragIndex}>
       {(providedDrag) => (
@@ -28,6 +27,7 @@ const TaskCard = ({ title, description, _id, dragIndex }: ITask & { dragIndex: n
           <TaskCardTitle>{title}</TaskCardTitle>
           <TaskCardDescription>{description}</TaskCardDescription>
           <SvgButton
+            handleClick={() => dispatch(setStatus('delete_item'))}
             color={buttonColor}
             icon={deleteIcon}
             stylish={{ position: 'absolute', right: '12px', top: '12px' }}

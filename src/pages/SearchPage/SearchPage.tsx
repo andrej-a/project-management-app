@@ -20,7 +20,7 @@ const SearchPage = () => {
       {boards.length > 0 ? (
         <BoardsWrapper>
           {boards.map((board) => {
-            return <BoardSmallCard {...board} key={board.id} />;
+            return <BoardSmallCard {...board} key={board._id} />;
           })}
         </BoardsWrapper>
       ) : (

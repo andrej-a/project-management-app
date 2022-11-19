@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { store } from '../../store/store';
-const { TEXT_COLOR_DARK } = store.getState().application_theme.theme;
 
 export const NewElementButtonWrapper = styled.button`
   min-height: 100%;
@@ -15,6 +13,7 @@ export const NewElementButtonWrapper = styled.button`
   border: 1px dashed transparent;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  min-width: clamp(200px, 332px, 80%);
 
   div {
     height: min-content;

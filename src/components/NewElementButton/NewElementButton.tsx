@@ -14,7 +14,7 @@ const NewElementButton = ({
   };
 }) => {
   return (
-    <NewElementButtonWrapper>
+    <NewElementButtonWrapper onClick={handleClick}>
       <div>{text}</div>
     </NewElementButtonWrapper>
   );
