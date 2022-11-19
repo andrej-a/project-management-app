@@ -1,6 +1,7 @@
 import { Droppable } from 'react-beautiful-dnd';
 import NewElementButton from '../../../components/NewElementButton/NewElementButton';
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
 import Column from './Column/Column';
 import { KanbanWrapper } from './KanbanArea.styled';
 
@@ -13,6 +14,7 @@ const KanbanArea = () => {
       dictionary: state.language.lang.currentBoardPage,
     };
   });
+  const dispatch = useAppDispatch();
   const columnsElements = columns.map((column, index) => (
     <Column {...column} key={column._id} dragIndex={index} />
   ));
@@ -22,7 +24,10 @@ const KanbanArea = () => {
         <KanbanWrapper ref={provided.innerRef} {...provided.droppableProps}>
           {columnsElements}
           {provided.placeholder}
-          <NewElementButton text={dictionary['New column']} />
+          <NewElementButton
+            text={dictionary['New column']}
+            handleClick={() => dispatch(setStatus('add_column'))}
+          />
         </KanbanWrapper>
       )}
     </Droppable>

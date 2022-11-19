@@ -5,9 +5,10 @@ import NewElementButton from '../../components/NewElementButton/NewElementButton
 /**STYLES */
 import { BoardsPanelWrapper, BoardsWrapper, Wrapper } from './BoardsPage.styled';
 /**HOOKS */
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 /**FAKE DATA */
 import { userName, boards } from '../../temporalStates/temporalStates';
+import { setStatus } from '../../slices/modalsSlice/modalsSlice';
 
 const BoardsPage = () => {
   const boardsList = boards.map((board) => <BoardSmallCard {...board} key={board.id} />);
@@ -16,6 +17,7 @@ const BoardsPage = () => {
       dictionary: state.language.lang.boardsPage,
     };
   });
+  const dispatch = useAppDispatch();
   const newBoardText = (
     <>
       {dictionary.Create} <br /> {dictionary['New Board']}
@@ -25,7 +27,10 @@ const BoardsPage = () => {
     <Wrapper>
       <GreetingsPanel userName={userName} boards={boards} />
       <BoardsPanelWrapper>
-        <NewElementButton text={newBoardText} />
+        <NewElementButton
+          text={newBoardText}
+          handleClick={() => dispatch(setStatus('new_board'))}
+        />
         <BoardsWrapper>{boardsList}</BoardsWrapper>
       </BoardsPanelWrapper>
     </Wrapper>

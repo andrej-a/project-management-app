@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import classNames from 'classnames';
 
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
 import { NavigationComponent } from './Navigation/Navigation';
 import { authorizationSwitch } from '../../slices/userSlice/userSlice';
 import { Styles, headerHeight } from '../../constants/applicationConstants';
+
+import { setStatus } from '../../slices/modalsSlice/modalsSlice';
 
 import {
   ButtonContainer,
@@ -18,7 +19,7 @@ import {
 } from './Header.styled';
 
 export const Header = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scroll, setScroll] = React.useState(headerHeight.start);
   const { isAuthorized, dictionary } = useAppSelector((state) => {
@@ -75,8 +76,10 @@ export const Header = () => {
           className={isMenuOpen ? Styles.ACTIVE : ''}
           onClick={(e) => handleButton((e.target as HTMLElement).innerText)}
         >
-          <SignIn>{dictionary.header.SignIn}</SignIn>
-          <SignUp>{dictionary.header.SignUp}</SignUp>
+          <SignIn onClick={() => dispatch(setStatus('login'))}>{dictionary.header.SignIn}</SignIn>
+          <SignUp onClick={() => dispatch(setStatus('registration'))}>
+            {dictionary.header.SignUp}
+          </SignUp>
         </ButtonContainer>
       )}
     </HeaderWrapper>

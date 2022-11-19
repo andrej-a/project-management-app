@@ -1,4 +1,47 @@
 export interface ILanguage {
+  deleteItemModal: {
+    title: string;
+    confirmButton: string;
+  };
+  registrationModal: {
+    title: string;
+    namePlaceholder: string;
+    loginPlaceholder: string;
+    passwordPlaceholder: string;
+    registrationButton: string;
+    changeModalToSignIn: string;
+  };
+  loginModal: {
+    title: string;
+    loginPlaceholder: string;
+    passwordPlaceholder: string;
+    logInButton: string;
+    changeModalToSignUp: string;
+  };
+  createBoard: {
+    title: string;
+    hint: string;
+    description: string;
+    createButton: string;
+  };
+  createCard: {
+    title: string;
+    hint: string;
+    description: string;
+    titlePriority: string;
+    priority: {
+      high: string;
+      medium: string;
+      low: string;
+    };
+    addTaskButon: string;
+  };
+  createColumn: {
+    title: string;
+    hint: string;
+    addColumnButton: string;
+  };
+  cancel: string;
   boardsPage: {
     Hello: string;
     'You have': string;

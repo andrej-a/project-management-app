@@ -8,6 +8,8 @@ import { ProtectedRoute } from './utils/routes';
 import { swapElements } from './utils/utils';
 /* COMPONENTS */
 import { NoResultPage } from './pages/404/NoResultPage';
+import { ModalsManager } from './components/ModalsManager/ModalsManager';
+
 import BoardsPage from './pages/BoardsPage/BoardsPage';
 import CurrentBoardPage from './pages/CurrentBoardPage/CurrentBoardPage';
 
@@ -61,7 +63,8 @@ function App() {
             <Route path="*" element={<NoResultPage />} />
           </Routes>
           <Footer />
-        </ThemeProvider>
+          <ModalsManager />
+      </ThemeProvider>
       </DragDropContext>
     </>
   );
