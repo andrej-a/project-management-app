@@ -18,7 +18,7 @@ import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
-import { setColumns, setTasks } from './slices/boardSlice/boardSlice';
+import { onDragEnd } from './utils/onDragEnd';
 
 function App() {
   const { isAuthorized, theme, columns, tasks } = useAppSelector((state) => {
@@ -31,52 +31,9 @@ function App() {
   });
   const dispatch = useDispatch();
 
-  const onDragEnd = (result: DropResult) => {
-    if (result.destination) {
-      switch (result.type) {
-        case 'column':
-          dispatch(
-            setColumns(swapElements(columns, result.destination.index, result.source.index))
-          );
-          break;
-
-        case 'task':
-          if (result.source.droppableId === result.destination.droppableId) {
-            const columnTasks = [...tasks[result.source.droppableId]];
-            dispatch(
-              setTasks({
-                ...tasks,
-                [result.source.droppableId]: swapElements(
-                  columnTasks,
-                  result.source.index,
-                  result.destination.index
-                ),
-              })
-            );
-          } else {
-            const tasksFromSourceColumn = [...tasks[result.source.droppableId]];
-            const tasksFromTargetColumn = [...tasks[result.destination.droppableId]];
-            const task = tasksFromSourceColumn[result.source.index];
-
-            tasksFromSourceColumn.splice(result.source.index, 1);
-            tasksFromTargetColumn.splice(result.destination.index, 0, task);
-
-            dispatch(
-              setTasks({
-                ...tasks,
-                [result.source.droppableId]: tasksFromSourceColumn,
-                [result.destination.droppableId]: tasksFromTargetColumn,
-              })
-            );
-          }
-          break;
-      }
-    }
-  };
-
   return (
     <>
-      <DragDropContext onDragEnd={onDragEnd}>
+      <DragDropContext onDragEnd={onDragEnd(dispatch, tasks, columns)}>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
           <Header />

@@ -14,7 +14,7 @@ import editIcon from '../../../assets/img/edit.svg';
 import { useAppSelector } from '../../../hooks/hooks';
 import { IBoard } from '../../../models/IBoard';
 
-const BoardSmallCard = ({ title, description }: IBoard) => {
+const BoardSmallCard = ({ title, owner }: IBoard) => {
   const { textColor, buttonColor } = useAppSelector((state) => {
     return {
       textColor: state.application_theme.theme.TEXT_COLOR,
@@ -24,7 +24,7 @@ const BoardSmallCard = ({ title, description }: IBoard) => {
   return (
     <BoardSmallCardStyled>
       <BoardSmallTitle>{title}</BoardSmallTitle>
-      <BoardSmallDescription>{description}</BoardSmallDescription>
+      <BoardSmallDescription>{owner}</BoardSmallDescription>
       <SvgButton
         color={buttonColor}
         icon={deleteIcon}

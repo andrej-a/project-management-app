@@ -6,6 +6,7 @@ export const ColumnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-height: 100%;
 `;
 export const ColumnHeader = styled.div`
   h3 {
@@ -33,8 +34,6 @@ export const ColumnStyled = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
 
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
   &::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
   }
