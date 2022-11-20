@@ -22,28 +22,28 @@ export const TitleWrapper = styled.div`
     font-size: 20px;
     line-height: 38px;
     color: ${TASK_TEXT};
-    padding-right: 60px;
+    cursor: pointer;
   }
   input:focus {
     max-width: 100%;
     border: 3px solid ${MAIN_BACKGROUND};
     background-color: ${LIGHT_BACKGROUND};
     outline: none;
-    transition: 0.3s;
+    transition: padding 0.3s;
     padding-left: 9px;
+    padding-right: 70px;
+    cursor: text;
   }
   input:focus ~ .buttons {
-    transform: scale(1);
+    display: flex;
   }
   .buttons {
-    display: flex;
     gap: 5px;
     flex-direction: row;
     position: absolute;
     right: 9px;
     top: 0;
     height: 100%;
-    transform: scale(0);
-    transition: 0.3s;
+    display: none;
   }
 `;

@@ -36,7 +36,7 @@ const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
           ref={providedDrag.innerRef}
         >
           <ColumnHeader>
-            <ColumnTitle title={title} /> <span>({tasks.length})</span>
+            <ColumnTitle title={title} id={_id} />
             <SvgButton
               color={buttonColor}
               icon={deleteIcon}
