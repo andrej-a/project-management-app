@@ -36,6 +36,14 @@ export interface ILanguage {
     };
     addTaskButon: string;
   };
+  updateCard: {
+    title: string;
+    addTaskButon: string;
+  };
+  updateBoard: {
+    title: string;
+    createButton: string;
+  };
   createColumn: {
     title: string;
     hint: string;

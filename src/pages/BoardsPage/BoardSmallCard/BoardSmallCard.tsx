@@ -14,11 +14,12 @@ import editIcon from '../../../assets/img/edit.svg';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { IBoard } from '../../../models/IBoard';
 import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
+import { setCurrentBoard } from '../../../slices/boardSlice/boardSlice';
 
-const BoardSmallCard = ({ title, owner }: IBoard) => {
-  const { textColor, buttonColor } = useAppSelector((state) => {
+const BoardSmallCard = (board: IBoard) => {
+  const { title, owner } = board;
+  const { buttonColor } = useAppSelector((state) => {
     return {
-      textColor: state.application_theme.theme.TEXT_COLOR,
       buttonColor: state.application_theme.theme.BUTTON_BORDER_COLOR_LIGHT,
     };
   });
@@ -31,14 +32,17 @@ const BoardSmallCard = ({ title, owner }: IBoard) => {
         color={buttonColor}
         icon={deleteIcon}
         stylish={{ position: 'absolute', right: '12px', top: '12px' }}
-        //handleClick={() => {}} //РЕДАКТИРОВАНИЕ БОРДА
+        handleClick={() => dispatch(setStatus('delete_item'))}
       />
       <SvgButton
         color={buttonColor}
         icon={editIcon}
         size={28}
         stylish={{ position: 'absolute', right: '44px', top: '14px' }}
-        handleClick={() => dispatch(setStatus('delete_item'))}
+        handleClick={() => {
+          dispatch(setCurrentBoard(board));
+          dispatch(setStatus('update_board'));
+        }}
       />
     </BoardSmallCardStyled>
   );

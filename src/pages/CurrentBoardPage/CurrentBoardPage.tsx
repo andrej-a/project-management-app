@@ -8,12 +8,11 @@ import KanbanArea from './KanbanArea/KanbanArea';
 const CurrentBoardPage = () => {
   const { board } = useAppSelector((state) => {
     return {
-      board: state.board.board,
+      board: state.board.boards[0],
       columns: state.board.columns,
       tasks: state.board.tasks,
     };
   });
-
   return (
     <Wrapper>
       <InnerWrapper className="TEST">

@@ -28,7 +28,13 @@ const SvgButton = ({
 }) => {
   size = size ?? svgDefaultSize;
   return (
-    <BoardCardBtnStyled color={color} style={stylish} onClick={handleClick} type={type ?? 'button'}>
+    <BoardCardBtnStyled
+      color={color}
+      style={stylish}
+      onClick={handleClick}
+      disabled={disabled}
+      type={type ?? 'button'}
+    >
       <HandySvg src={icon} width={String(size)} height={String(size)} />
     </BoardCardBtnStyled>
   );

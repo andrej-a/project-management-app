@@ -6,11 +6,10 @@ import Column from './Column/Column';
 import { KanbanWrapper } from './KanbanArea.styled';
 
 const KanbanArea = () => {
-  const { board, columns, tasks, dictionary } = useAppSelector((state) => {
+  const { board, columns, dictionary } = useAppSelector((state) => {
     return {
-      board: state.board.board,
+      board: state.board.boards[0],
       columns: state.board.columns,
-      tasks: state.board.tasks,
       dictionary: state.language.lang.currentBoardPage,
     };
   });

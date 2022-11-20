@@ -23,17 +23,21 @@ import {
 } from '../../New_Board/Form/Form.styled';
 /* MODELS */
 import { ICreateCardData } from '../../../../../models/IInputData';
+import { setCurrentCard } from '../../../../../slices/boardSlice/boardSlice';
 export const NewCardForm = () => {
   const dispatch = useAppDispatch();
-  const { hint, description, priority, addTaskButon, titlePriority, cancel } = useAppSelector(
+  const { hint, description, priority, addTaskButon, titlePriority, cancel, task } = useAppSelector(
     (state) => {
       return {
         hint: state.language.lang.createCard.hint,
         description: state.language.lang.createCard.description,
         priority: state.language.lang.createCard.priority,
-        addTaskButon: state.language.lang.createCard.addTaskButon,
+        addTaskButon: state.board.currentTask
+          ? state.language.lang.updateCard.addTaskButon
+          : state.language.lang.createCard.addTaskButon,
         titlePriority: state.language.lang.createCard.titlePriority,
         cancel: state.language.lang.cancel,
+        task: state.board.currentTask,
       };
     }
   );
@@ -51,7 +55,9 @@ export const NewCardForm = () => {
     formState: { errors, isSubmitSuccessful },
   } = useForm<ICreateCardData>({
     resolver: yupResolver(schema),
-    defaultValues: { title: '', description: '', priority: '' },
+    defaultValues: task
+      ? { title: task.title, description: task.description, priority: priority.high }
+      : { title: '', description: '', priority: '' },
   });
 
   useEffect(() => {
@@ -61,8 +67,12 @@ export const NewCardForm = () => {
   }, [isSubmitSuccessful, reset]);
 
   const formSubmit: SubmitHandler<ICreateCardData> = (data) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+    if (task) {
+      // eslint-disable-next-line no-console
+      console.log('Update to ', data);
+      dispatch(setCurrentCard(undefined));
+      // eslint-disable-next-line no-console
+    } else console.log('Create ', data);
   };
 
   return (

@@ -5,17 +5,21 @@ import { ITask } from '../../models/ITask';
 import { IUser } from '../../models/IUser';
 
 /**FAKE DATA */
-import { boards, columns, getTasksSetQuerryAnswer } from '../../temporalStates/temporalStates';
+import { boards, columns, tasks } from '../../temporalStates/temporalStates';
 
 interface IBoardSlice {
-  board: IBoard;
+  boards: IBoard[];
   columns: IColumn[];
   tasks: ITask[];
   users: IUser[];
+  currentTask: ITask | undefined;
+  currentBoard: ITask | undefined;
 }
 export const initialState: IBoardSlice = {
-  board: boards[0],
+  boards: boards,
   columns: columns,
-  tasks: getTasksSetQuerryAnswer,
+  tasks: tasks,
   users: [],
+  currentTask: undefined,
+  currentBoard: undefined,
 };

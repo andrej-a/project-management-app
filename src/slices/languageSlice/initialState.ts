@@ -39,6 +39,14 @@ export const EnglishState: ILanguage = {
     },
     addTaskButon: 'Add Task',
   },
+  updateCard: {
+    title: 'Edit Card',
+    addTaskButon: 'Confirm',
+  },
+  updateBoard: {
+    title: 'Edit Board',
+    createButton: 'Confirm',
+  },
   createColumn: {
     title: 'Create column',
     hint: 'Your title',
@@ -124,6 +132,14 @@ export const RussianState: ILanguage = {
       low: 'низкий',
     },
     addTaskButon: 'Добавить карточку',
+  },
+  updateCard: {
+    title: 'Редактировать карточку',
+    addTaskButon: 'Подтвердить',
+  },
+  updateBoard: {
+    title: 'Редактировать доску',
+    createButton: 'Подтвердить',
   },
   createColumn: {
     title: 'Добавить колонку',

@@ -7,10 +7,15 @@ import { BoardsPanelWrapper, BoardsWrapper, Wrapper } from './BoardsPage.styled'
 /**HOOKS */
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 /**FAKE DATA */
-import { userName, boards } from '../../temporalStates/temporalStates';
+import { userName } from '../../temporalStates/temporalStates';
 import { setStatus } from '../../slices/modalsSlice/modalsSlice';
 
 const BoardsPage = () => {
+  const { boards } = useAppSelector((state) => {
+    return {
+      boards: state.board.boards,
+    };
+  });
   const boardsList = boards.map((board) => <BoardSmallCard {...board} key={board._id} />);
   const { dictionary } = useAppSelector((state) => {
     return {

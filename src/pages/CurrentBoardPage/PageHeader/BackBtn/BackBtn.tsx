@@ -1,4 +1,5 @@
 /**COMPONENTS */
+import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../../../hooks/hooks';
 /**hOOKS */
 import { BackBtnWrapper } from './BackBtn.components';
@@ -11,7 +12,9 @@ const BackBtn = () => {
   });
   return (
     <BackBtnWrapper>
-      <div>{dictionary['See all Boards']}</div>
+      <NavLink to="../../boards">
+        <div>{dictionary['See all Boards']}</div>
+      </NavLink>
     </BackBtnWrapper>
   );
 };

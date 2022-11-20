@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -15,13 +15,14 @@ type Inputs = {
   title: string;
 };
 
-const ColumnTitle = ({ title, id }: { title: string; id: string }) => {
+const ColumnTitle = ({ id }: { title: string; id: string }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
-  const { hint, buttonColor } = useAppSelector((state) => {
+  const { hint, buttonColor, column } = useAppSelector((state) => {
     return {
       hint: state.language.lang.createCard.hint,
       buttonColor: state.application_theme.theme.TASK_TEXT,
+      column: state.board.columns.find((column) => column._id === id),
     };
   });
   const schema = yup
@@ -47,9 +48,10 @@ const ColumnTitle = ({ title, id }: { title: string; id: string }) => {
 
   const formReset = () => {
     inputRef.current?.blur();
+    reset({ title: column?.title ?? '' });
   };
   const formatInput = () => {
-    reset({ title: title });
+    reset();
   };
 
   return (
@@ -66,7 +68,7 @@ const ColumnTitle = ({ title, id }: { title: string; id: string }) => {
           name="title"
           id="title"
           autoComplete="off"
-          defaultValue={title}
+          defaultValue={column?.title ?? ''}
           onBlur={formatInput}
         />
         <InputError style={{ position: 'absolute', top: '30px' }}>

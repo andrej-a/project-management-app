@@ -49,67 +49,7 @@ export const columns: IColumn[] = [
     boardId: '6378fce70507883684d0ece2',
   },
 ];
-export const tasks: { [key: string]: ITask[] } = {
-  '6373dca57a0a06b9b7c6db30': [
-    {
-      _id: '637510997a0a06b9b7c6db3d',
-      title: 'First task',
-      order: 0,
-      description: '12121212',
-      userId: '0',
-      boardId: '6373dc7f7a0a06b9b7c6db2c',
-      columnId: '6373dca57a0a06b9b7c6db30',
-      users: ['string'],
-    },
-    {
-      _id: '637510a27a0a06b9b7c6db40',
-      title: 'Second task',
-      order: 0,
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque non iste, vitae esse, delectus maxime voluptas, laborum magni ipsum nesciunt rem magnam suscipit explicabo! Voluptatem animi deserunt enim beatae culpa.',
-      userId: '0',
-      boardId: '6373dc7f7a0a06b9b7c6db2c',
-      columnId: '6373dca57a0a06b9b7c6db30',
-      users: ['string'],
-    },
-  ],
-  '637510c37a0a06b9b74545454': [
-    {
-      _id: '637510c37a0a06b9b7c6db45',
-      title: 'Blablabla',
-      order: 0,
-      description: 'Hello world',
-      userId: '0',
-      boardId: '637510c37a0a06b9b74545454',
-      columnId: '6373dca97a0a06b9b7c6db33',
-      users: ['string'],
-    },
-  ],
-  '6373dca57a0a06b9b7c6aaaa': [
-    {
-      _id: '637510997a0a06b9b7c6daaa',
-      title: 'Fsssirst task',
-      order: 0,
-      description: '12121212',
-      userId: '0',
-      boardId: '6373dc7f7a0a06b9b7c6db2c',
-      columnId: '6373dca57a0a06b9b7c6aaaa',
-      users: ['string'],
-    },
-    {
-      _id: '637510a27a0a06b9b7c6daaa',
-      title: 'Second task',
-      order: 0,
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque non iste, vitae esse, delectus maxime voluptas, laborum magni ipsum nesciunt rem magnam suscipit explicabo! Voluptatem animi deserunt enim beatae culpa.',
-      userId: '0',
-      boardId: '6373dc7f7a0a06b9b7c6db2c',
-      columnId: '6373dca57a0a06b9b7c6aaaa',
-      users: ['string'],
-    },
-  ],
-};
-export const getTasksSetQuerryAnswer = [
+export const tasks: ITask[] = [
   {
     _id: '6378fd990507883684d0ece7',
     title: 'string',

@@ -17,15 +17,13 @@ import ColumnTitle from './ColumtTitle';
 const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
   const { tasks, buttonColor } = useAppSelector((state) => {
     return {
-      board: state.board.board,
-      columns: state.board.columns,
       tasks: state.board.tasks.filter((task) => task.columnId === _id) ?? [],
       buttonColor: state.application_theme.theme.TASK_TEXT,
     };
   });
   const dispatch = useAppDispatch();
   const taskElements = tasks.map((task, index) => (
-    <TaskCard {...task} key={task._id} dragIndex={index} />
+    <TaskCard task={task} key={task._id} dragIndex={index} />
   ));
   return (
     <Draggable draggableId={_id} index={dragIndex}>
