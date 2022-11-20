@@ -2,6 +2,7 @@
 import { InnerWrapper, Wrapper } from './CurrentBoardPage.styled';
 /**HOOKS */
 import { useAppSelector } from '../../hooks/hooks';
+/**COMPONENTS */
 import PageHeader from './PageHeader/PageHeader';
 import KanbanArea from './KanbanArea/KanbanArea';
 

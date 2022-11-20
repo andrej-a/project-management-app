@@ -1,4 +1,6 @@
+/**COMPONENTS */
 import BackBtn from './BackBtn/BackBtn';
+/**STYLES */
 import { PageHeaderStyled } from './PageHeader.styled';
 
 const PageHeader = ({ title }: { title: string }) => {

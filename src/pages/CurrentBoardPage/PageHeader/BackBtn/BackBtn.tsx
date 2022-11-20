@@ -1,8 +1,8 @@
-/**COMPONENTS */
 import { NavLink } from 'react-router-dom';
-import { useAppSelector } from '../../../../hooks/hooks';
-/**hOOKS */
+/**COMPONENTS */
 import { BackBtnWrapper } from './BackBtn.components';
+/**hOOKS */
+import { useAppSelector } from '../../../../hooks/hooks';
 
 const BackBtn = () => {
   const { dictionary } = useAppSelector((state) => {

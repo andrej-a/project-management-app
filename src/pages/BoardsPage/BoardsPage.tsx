@@ -8,6 +8,7 @@ import { BoardsPanelWrapper, BoardsWrapper, Wrapper } from './BoardsPage.styled'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 /**FAKE DATA */
 import { userName } from '../../temporalStates/temporalStates';
+/**DISPATCH */
 import { setStatus } from '../../slices/modalsSlice/modalsSlice';
 
 const BoardsPage = () => {

@@ -1,18 +1,18 @@
 /**COMPONENTS */
 import SvgButton from '../../../components/SvgButton/SvgButton';
-
 /**STYLES */
 import {
   BoardSmallCardStyled,
   BoardSmallDescription,
   BoardSmallTitle,
 } from './BoardSmallCard.styled';
-/**STYLES */
 import deleteIcon from '../../../assets/img/delete.svg';
 import editIcon from '../../../assets/img/edit.svg';
 /**HOOKS */
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+/**MODELS */
 import { IBoard } from '../../../models/IBoard';
+/**DISPATCH */
 import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
 import { setCurrentBoard } from '../../../slices/boardSlice/boardSlice';
 

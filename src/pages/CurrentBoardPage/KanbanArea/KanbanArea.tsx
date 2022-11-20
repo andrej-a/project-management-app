@@ -1,8 +1,12 @@
 import { Droppable } from 'react-beautiful-dnd';
+/**COMPONENTS */
 import NewElementButton from '../../../components/NewElementButton/NewElementButton';
-import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
-import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
 import Column from './Column/Column';
+/**HOOKS */
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+/**DISPATCH */
+import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
+/**STYLES */
 import { KanbanWrapper } from './KanbanArea.styled';
 
 const KanbanArea = () => {

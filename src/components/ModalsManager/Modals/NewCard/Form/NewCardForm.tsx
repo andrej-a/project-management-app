@@ -1,29 +1,31 @@
-import { useEffect } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { useAppSelector, useAppDispatch } from '../../../../../hooks/hooks';
+/**HOOKS */
+import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
+/* MODELS */
+import { ICreateCardData } from '../../../../../models/IInputData';
+/**DISPATCH */
+import { setCurrentCard } from '../../../../../slices/boardSlice/boardSlice';
 import { setStatus } from '../../../../../slices/modalsSlice/modalsSlice';
 /* STYLES */
 import {
   FormWrapper,
-  LabelWrapper,
   HighPriorityLabel,
-  MediumPriorityLabel,
+  LabelWrapper,
   LowPriorityLabel,
+  MediumPriorityLabel,
   PriorityTitle,
 } from './NewCardForm.styled';
-/* COMPONENTS */
-import { InputWrapper, InputError } from '../../Registration/Form/form.styled';
 import { ButtonsWrapper } from '../../New_Board/Form/Form.styled';
 import {
-  TitleInput,
-  DescriptionInput,
   CreateCardCancelButton,
+  DescriptionInput,
+  TitleInput,
 } from '../../New_Board/Form/Form.styled';
-/* MODELS */
-import { ICreateCardData } from '../../../../../models/IInputData';
-import { setCurrentCard } from '../../../../../slices/boardSlice/boardSlice';
+import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
+
 export const NewCardForm = () => {
   const dispatch = useAppDispatch();
   const { hint, description, priority, addTaskButon, titlePriority, cancel, task } = useAppSelector(

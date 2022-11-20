@@ -57,8 +57,6 @@ export const CreateBoardForm = () => {
 
   const formSubmit: SubmitHandler<ICreateBoardData> = (data) => {
     if (currentBoard) {
-      // eslint-disable-next-line no-console
-      console.log({ title: data.title, id: currentBoard._id });
       dispatch(updateBoardTitle({ title: data.title, id: currentBoard._id }));
       dispatch(setCurrentBoard(undefined));
     }

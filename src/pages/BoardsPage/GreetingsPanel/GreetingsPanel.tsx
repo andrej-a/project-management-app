@@ -7,10 +7,10 @@ import {
   GreetingTextBlock,
 } from './GreetingsPanel.styled';
 import imageHand from '../../../assets/img/boards_page/greetings_hand.png';
-
+/**MODELS */
 import { IBoard } from '../../../models/IBoard';
+/**HOOKS */
 import { useAppSelector } from '../../../hooks/hooks';
-/**UTILS */
 
 const GreetingsPanel = ({ userName, boards }: { userName: string; boards: IBoard[] }) => {
   const { dictionary } = useAppSelector((state) => {

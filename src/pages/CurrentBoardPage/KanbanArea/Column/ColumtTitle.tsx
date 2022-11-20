@@ -1,14 +1,19 @@
-import { useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useRef } from 'react';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import crossIcon from '../../../../assets/img/cross.svg';
-import confirmIcon from '../../../../assets/img/confirm.svg';
+/**STYLES */
 import { InputError } from '../../../../components/ModalsManager/Modals/Registration/Form/form.styled';
-import { IColumnTitle } from '../../../../models/IInputData';
 import { TitleWrapper } from './ColumnTitle.styled';
+import confirmIcon from '../../../../assets/img/confirm.svg';
+import crossIcon from '../../../../assets/img/cross.svg';
+/**COMPONENTS */
 import SvgButton from '../../../../components/SvgButton/SvgButton';
+/**HOOKS */
+import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
+/**MODELS */
+import { IColumnTitle } from '../../../../models/IInputData';
+/**DISPATCH */
 import { updateColumnTitle } from '../../../../slices/boardSlice/boardSlice';
 
 type Inputs = {

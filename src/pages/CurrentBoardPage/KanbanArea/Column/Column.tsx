@@ -1,5 +1,4 @@
-/**COMPONENTS */
-import SvgButton from '../../../../components/SvgButton/SvgButton';
+import { Draggable, Droppable } from 'react-beautiful-dnd';
 /**STYLES */
 import { ColumnHeader, ColumnStyled, ColumnWrapper } from './Column.styled';
 import deleteIcon from '../../../../assets/img/delete.svg';
@@ -10,9 +9,10 @@ import { useAppSelector, useAppDispatch } from '../../../../hooks/hooks';
 import { IColumn } from '../../../../models/IColumn';
 /**COMPONENTS */
 import TaskCard from '../TaskCard/TaskCard';
-import { Draggable, Droppable } from 'react-beautiful-dnd';
-import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
+import SvgButton from '../../../../components/SvgButton/SvgButton';
 import ColumnTitle from './ColumtTitle';
+/**DISPATCH */
+import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
 
 const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
   const { tasks, buttonColor } = useAppSelector((state) => {

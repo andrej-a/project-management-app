@@ -1,3 +1,5 @@
+import { Draggable } from 'react-beautiful-dnd';
+/**MODELS */
 import { ITask } from '../../../../models/ITask';
 /**COMPONENTS */
 import SvgButton from '../../../../components/SvgButton/SvgButton';
@@ -6,7 +8,7 @@ import { TaskCardStyled, TaskCardDescription, TaskCardTitle } from './TaskCard.s
 import deleteIcon from '../../../../assets/img/delete.svg';
 /**HOOKS */
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
-import { Draggable } from 'react-beautiful-dnd';
+/**DISPATCH */
 import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
 import { setCurrentCard } from '../../../../slices/boardSlice/boardSlice';
 
