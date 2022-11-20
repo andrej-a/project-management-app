@@ -2,7 +2,7 @@ import { Dispatch } from '@reduxjs/toolkit';
 import { DropResult } from 'react-beautiful-dnd';
 import { IColumn } from '../models/IColumn';
 import { ITask } from '../models/ITask';
-import { setColumns, updateTask } from '../slices/boardSlice/boardSlice';
+import { setColumns, updateTaskOrder } from '../slices/boardSlice/boardSlice';
 import { swapElements } from './utils';
 
 export const onDragEnd =
@@ -19,7 +19,7 @@ export const onDragEnd =
           const task = tasks.find((task) => task._id === result.draggableId);
           if (task)
             dispatch(
-              updateTask({
+              updateTaskOrder({
                 index: tasks.indexOf(task),
                 order: result.destination.index,
                 columnId: result.destination.droppableId,

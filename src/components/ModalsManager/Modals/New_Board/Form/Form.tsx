@@ -61,7 +61,7 @@ export const CreateBoardForm = () => {
       dispatch(setCurrentBoard(undefined));
     }
     // eslint-disable-next-line no-console
-    console.log(data);
+    else console.log(data);
   };
 
   return (

@@ -10,7 +10,7 @@ import deleteIcon from '../../../../assets/img/delete.svg';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 /**DISPATCH */
 import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
-import { setCurrentCard } from '../../../../slices/boardSlice/boardSlice';
+import { setCurrentTask } from '../../../../slices/boardSlice/boardSlice';
 
 const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
   const { title, description, _id } = task;
@@ -28,7 +28,7 @@ const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
           {...providedDrag.dragHandleProps}
           ref={providedDrag.innerRef}
           onClick={() => {
-            dispatch(setCurrentCard(task));
+            dispatch(setCurrentTask(task));
             dispatch(setStatus('update_card'));
           }}
         >

@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
 /* MODELS */
 import { ICreateCardData } from '../../../../../models/IInputData';
 /**DISPATCH */
-import { setCurrentCard } from '../../../../../slices/boardSlice/boardSlice';
+import { setCurrentTask, updateTaskInfo } from '../../../../../slices/boardSlice/boardSlice';
 import { setStatus } from '../../../../../slices/modalsSlice/modalsSlice';
 /* STYLES */
 import {
@@ -28,8 +28,8 @@ import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
 
 export const NewCardForm = () => {
   const dispatch = useAppDispatch();
-  const { hint, description, priority, addTaskButon, titlePriority, cancel, task } = useAppSelector(
-    (state) => {
+  const { hint, description, priority, addTaskButon, titlePriority, cancel, task, currentTask } =
+    useAppSelector((state) => {
       return {
         hint: state.language.lang.createCard.hint,
         description: state.language.lang.createCard.description,
@@ -40,9 +40,9 @@ export const NewCardForm = () => {
         titlePriority: state.language.lang.createCard.titlePriority,
         cancel: state.language.lang.cancel,
         task: state.board.currentTask,
+        currentTask: state.board.currentTask,
       };
-    }
-  );
+    });
   const schema = yup
     .object({
       title: yup.string().required().min(3),
@@ -65,14 +65,23 @@ export const NewCardForm = () => {
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset();
+      dispatch(setStatus('hidden'));
     }
   }, [isSubmitSuccessful, reset]);
 
   const formSubmit: SubmitHandler<ICreateCardData> = (data) => {
     if (task) {
+      dispatch(
+        updateTaskInfo({
+          _id: currentTask?._id ?? '',
+          title: data.title,
+          description: data.description,
+        })
+      );
+      dispatch(setCurrentTask(undefined));
       // eslint-disable-next-line no-console
       console.log('Update to ', data);
-      dispatch(setCurrentCard(undefined));
+      dispatch(setCurrentTask(undefined));
       // eslint-disable-next-line no-console
     } else console.log('Create ', data);
   };
