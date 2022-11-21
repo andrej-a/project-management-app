@@ -31,7 +31,7 @@ const data: IContact[] = [
 const Item = ({ name, link }: IContact) => {
   return (
     <MemberItem>
-      <a href={link}>
+      <a href={link} className="gitLogo">
         <HandySvg src={gitLogo} width={SvgSizes.MEDIUM} height={SvgSizes.MEDIUM} />
         <p>{name}</p>
       </a>

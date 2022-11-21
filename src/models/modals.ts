@@ -6,5 +6,7 @@ export type ModalsState = {
     | 'add_column'
     | 'registration'
     | 'login'
-    | 'delete_item';
+    | 'delete_item'
+    | 'update_card'
+    | 'update_board';
 };

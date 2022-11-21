@@ -1,58 +1,55 @@
 import styled from 'styled-components';
 
-export const NewBoardButtonWrapper = styled.button`
-  min-height: 100%;
-  border-radius: 20px;
-  width: clamp(200px, 332px, 80%);
+export const BackBtnWrapper = styled.button`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 31px 33px;
   text-align: left;
   background-color: transparent;
-  border: 1px dashed transparent;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  border: none;
 
   div {
     height: min-content;
     color: ${({ theme }) => theme.TEXT_COLOR_DARK};
-    font-size: 24px;
-    line-height: 29px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
     position: relative;
-    padding-left: 67px;
+    padding-left: 16px;
     transition: transform 0.3s ease-in-out;
 
     &::before,
     &::after {
       display: block;
       content: '';
-      width: 37px;
-      min-height: 4px;
+      width: 8px;
+      min-height: 2px;
       background-color: ${({ theme }) => theme.TEXT_COLOR_DARK};
       position: absolute;
       transition: transform 0.5s ease-in-out;
     }
     &::before {
-      top: 50%;
-      left: 0;
+      top: calc(50% - 3px);
+      left: 0px;
+      transform: rotate(-45deg);
     }
     &::after {
-      top: 50%;
+      top: calc(50% + 1.4px);
       left: 0;
-      transform: rotate(90deg);
+      transform: rotate(45deg);
     }
   }
 
   &:hover {
-    border: 1px dashed ${({ theme }) => theme.TEXT_COLOR_DARK};
     div {
       transform: scale(1.06);
       &::before {
-        transform: rotate(90deg);
+        transform: translateX(-4px) rotate(-45deg);
       }
       &::after {
-        transform: rotate(180deg);
+        transform: translateX(-4px) rotate(45deg);
       }
     }
   }
