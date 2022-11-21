@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { store } from '../../../../store/store';
-const { TEXT_COLOR_DARK } = store.getState().application_theme.theme;
 
 export const BackBtnWrapper = styled.button`
   display: flex;
@@ -14,7 +12,7 @@ export const BackBtnWrapper = styled.button`
 
   div {
     height: min-content;
-    color: ${TEXT_COLOR_DARK};
+    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
@@ -28,7 +26,7 @@ export const BackBtnWrapper = styled.button`
       content: '';
       width: 8px;
       min-height: 2px;
-      background-color: ${TEXT_COLOR_DARK};
+      background-color: ${({ theme }) => theme.TEXT_COLOR_DARK};
       position: absolute;
       transition: transform 0.5s ease-in-out;
     }

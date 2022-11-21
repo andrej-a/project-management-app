@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { store } from '../../../store/store';
-const { TEXT_COLOR_DARK } = store.getState().application_theme.theme;
+import { size } from '../../../constants/screenSizes';
 
 export const PageHeaderStyled = styled.div`
   h2 {
@@ -10,6 +9,10 @@ export const PageHeaderStyled = styled.div`
     font-size: 30px;
     line-height: 36px;
     padding-bottom: 7px;
-    color: ${TEXT_COLOR_DARK};
+    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+  }
+
+  @media (max-width: ${size.tablet}) {
+    padding: 0 6%;
   }
 `;

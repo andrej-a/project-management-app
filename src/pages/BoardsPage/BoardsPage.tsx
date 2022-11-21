@@ -32,13 +32,15 @@ const BoardsPage = () => {
   return (
     <Wrapper>
       <GreetingsPanel userName={userName} boards={boards} />
-      <BoardsPanelWrapper>
-        <NewElementButton
-          text={newBoardText}
-          handleClick={() => dispatch(setStatus('new_board'))}
-        />
-        <BoardsWrapper>{boardsList}</BoardsWrapper>
-      </BoardsPanelWrapper>
+      <div>
+        <BoardsPanelWrapper className="BoardsPanelWrapper">
+          <NewElementButton
+            text={newBoardText}
+            handleClick={() => dispatch(setStatus('new_board'))}
+          />
+          <BoardsWrapper>{boardsList}</BoardsWrapper>
+        </BoardsPanelWrapper>
+      </div>
     </Wrapper>
   );
 };

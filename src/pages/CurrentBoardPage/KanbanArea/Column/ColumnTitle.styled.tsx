@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import { size } from '../../../../constants/screenSizes';
-import { store } from '../../../../store/store';
-const { TASK_TEXT, MAIN_BACKGROUND, LIGHT_BACKGROUND } = store.getState().application_theme.theme;
 
 export const TitleWrapper = styled.div`
-  max-width: 80%;
+  max-width: 70%;
   height: 40px;
   display: flex;
   flex-direction: row;
@@ -21,13 +19,13 @@ export const TitleWrapper = styled.div`
     font-weight: 600;
     font-size: 20px;
     line-height: 38px;
-    color: ${TASK_TEXT};
+    color: ${({ theme }) => theme.TASK_TEXT};
     cursor: pointer;
   }
   input:focus {
     max-width: 100%;
-    border: 3px solid ${MAIN_BACKGROUND};
-    background-color: ${LIGHT_BACKGROUND};
+    border: 3px solid ${({ theme }) => theme.MAIN_BACKGROUND};
+    background-color: ${({ theme }) => theme.LIGHT_BACKGROUND};
     outline: none;
     transition: padding 0.3s;
     padding-left: 9px;

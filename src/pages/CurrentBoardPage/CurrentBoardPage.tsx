@@ -16,7 +16,7 @@ const CurrentBoardPage = () => {
   });
   return (
     <Wrapper>
-      <InnerWrapper className="TEST">
+      <InnerWrapper>
         <PageHeader title={board.title} />
         <KanbanArea />
       </InnerWrapper>

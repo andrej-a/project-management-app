@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { store } from '../../../../store/store';
-const { LIGHT_BACKGROUND, TASK_TEXT } = store.getState().application_theme.theme;
 
 export const TaskCardStyled = styled.div`
   height: 155px;
@@ -9,11 +7,11 @@ export const TaskCardStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 14px;
-  background-color: ${LIGHT_BACKGROUND};
+  background-color: ${({ theme }) => theme.LIGHT_BACKGROUND};
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  color: ${TASK_TEXT};
+  color: ${({ theme }) => theme.TASK_TEXT};
   position: relative;
   cursor: pointer !important;
 

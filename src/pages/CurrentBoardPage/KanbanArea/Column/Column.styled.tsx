@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { store } from '../../../../store/store';
-const { FRAME_TASK_COLOR, TASK_TEXT } = store.getState().application_theme.theme;
 
 export const ColumnWrapper = styled.div`
   display: flex;
@@ -21,7 +19,7 @@ export const ColumnStyled = styled.div`
   display: flex;
   flex-direction: column;
   width: 332px;
-  background-color: ${FRAME_TASK_COLOR};
+  background-color: ${({ theme }) => theme.FRAME_TASK_COLOR};
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   gap: 15px;

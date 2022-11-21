@@ -92,7 +92,6 @@ const ColumnTitle = ({ id }: { title: string; id: string }) => {
             type="submit"
             disabled={Object.keys(errors).length > 0}
             size={20}
-            handleClick={() => formReset}
           />
         </div>
       </TitleWrapper>

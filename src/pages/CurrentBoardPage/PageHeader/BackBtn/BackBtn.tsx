@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 /**COMPONENTS */
-import { BackBtnWrapper } from './BackBtn.components';
+import { BackBtnWrapper } from './BackBtn.styled';
 /**hOOKS */
 import { useAppSelector } from '../../../../hooks/hooks';
 
