@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   width: 100%;
   margin: 0;
   padding: 0;
-  max-height: calc(100vh - 150px);
+  max-height: calc(100vh - 180px);
   background: ${({ theme }) => theme.DESK_BACKGROUND};
   display: grid;
   grid-template-columns: auto;
@@ -20,7 +20,7 @@ export const InnerWrapper = styled.div`
   max-width: 100vw;
   display: grid;
   grid-template-rows: min-content auto;
-  max-height: calc(100vh - 150px);
+  max-height: calc(100vh - 180px);
   @media (max-width: ${size.tablet}) {
     padding: 27px 0;
     max-height: calc(100vh - 220px);
