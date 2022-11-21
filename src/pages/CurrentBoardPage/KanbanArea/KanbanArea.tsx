@@ -24,21 +24,18 @@ const KanbanArea = () => {
   return (
     <Droppable droppableId={board._id} type="column" direction="horizontal">
       {(provided) => (
-        <div>
-          {' '}
-          <KanbanWrapper
-            className="KanbanWrapper"
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-          >
-            {columnsElements}
-            {provided.placeholder}
-            <NewElementButton
-              text={dictionary['New column']}
-              handleClick={() => dispatch(setStatus('add_column'))}
-            />
-          </KanbanWrapper>
-        </div>
+        <KanbanWrapper
+          className="KanbanWrapper"
+          ref={provided.innerRef}
+          {...provided.droppableProps}
+        >
+          {columnsElements}
+          {provided.placeholder}
+          <NewElementButton
+            text={dictionary['New column']}
+            handleClick={() => dispatch(setStatus('add_column'))}
+          />
+        </KanbanWrapper>
       )}
     </Droppable>
   );

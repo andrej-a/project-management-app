@@ -66,6 +66,7 @@ export const NewCardForm = () => {
     if (isSubmitSuccessful) {
       reset();
       dispatch(setStatus('hidden'));
+      dispatch(setCurrentTask(undefined));
     }
   }, [isSubmitSuccessful, reset]);
 
@@ -78,10 +79,8 @@ export const NewCardForm = () => {
           description: data.description,
         })
       );
-      dispatch(setCurrentTask(undefined));
       // eslint-disable-next-line no-console
       console.log('Update to ', data);
-      dispatch(setCurrentTask(undefined));
       // eslint-disable-next-line no-console
     } else console.log('Create ', data);
   };

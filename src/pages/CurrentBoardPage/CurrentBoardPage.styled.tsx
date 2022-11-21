@@ -6,24 +6,23 @@ export const Wrapper = styled.div`
   width: 100%;
   margin: 0;
   padding: 0;
+  max-height: calc(100vh - 150px);
   background: ${({ theme }) => theme.DESK_BACKGROUND};
   display: grid;
-  grid-template-columns: auto auto;
-  max-height: calc(100vh - 170px);
-  min-height: calc(100vh - 170px);
-  height: calc(100vh - 170px);
+  grid-template-columns: auto;
   @media (max-width: ${size.tablet}) {
-    max-height: calc(100vh - 190px);
-    min-height: calc(100vh - 190px);
-    height: calc(100vh - 190px);
+    max-height: calc(100vh - 220px);
   }
 `;
 
 export const InnerWrapper = styled.div`
-  padding: 27px 3.26% 27px 5.55%;
+  padding: 27px 0 0 0;
   max-width: 100vw;
+  display: grid;
+  grid-template-rows: min-content auto;
+  max-height: calc(100vh - 150px);
   @media (max-width: ${size.tablet}) {
-    max-height: calc(100vh - 190px);
     padding: 27px 0;
+    max-height: calc(100vh - 220px);
   }
 `;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { size } from '../../../constants/screenSizes';
 
 export const GreetingsPanelStyled = styled.div`
-  width: 93%;
+  max-width: 93vw;
   box-sizing: border-box;
   min-height: 125px;
   margin: 33px 3.5% 0 3.5%;
