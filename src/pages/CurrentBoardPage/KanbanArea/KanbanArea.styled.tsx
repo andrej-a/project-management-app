@@ -13,7 +13,7 @@ export const KanbanWrapper = styled.div`
 
   @media (max-width: ${size.tablet}) {
     max-width: 100vw;
-    padding: 0 6%;
+    padding: 6%;
   }
   ::-webkit-scrollbar {
     width: 7px;
