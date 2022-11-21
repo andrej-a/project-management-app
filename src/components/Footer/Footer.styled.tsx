@@ -9,8 +9,8 @@ export const FooterWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 4.5%;
-  height: 60px;
   padding: 0px 2.7%;
+  height: auto;
 
   p {
     font-size: clamp(13px, 3vw, 16px);
