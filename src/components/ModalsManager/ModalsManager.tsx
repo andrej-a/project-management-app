@@ -50,6 +50,18 @@ export const ModalsManager = () => {
             <DeleteItem />
           </Overlay>
         );
+      case 'update_card':
+        return (
+          <Overlay>
+            <NewCard />
+          </Overlay>
+        );
+      case 'update_board':
+        return (
+          <Overlay>
+            <NewBoard />
+          </Overlay>
+        );
       default:
         return <></>;
     }

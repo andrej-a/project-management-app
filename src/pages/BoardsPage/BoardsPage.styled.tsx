@@ -3,13 +3,14 @@ import { size } from '../../constants/screenSizes';
 
 export const Wrapper = styled.div`
   max-width: 100vw;
-  min-height: 100vh;
   margin: 0;
   padding: 0;
   height: auto;
   background: ${({ theme }) => theme.DESK_BACKGROUND};
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: min-content auto;
+  min-height: calc(100vh - 170px);
+  align-items: start;
 `;
 
 export const BoardsPanelWrapper = styled.div`
@@ -31,6 +32,7 @@ export const BoardsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 31px 22px;
+  align-content: flex-start;
 
   @media screen and (max-width: ${size.laptop}) {
     justify-content: center;

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 /* STYLES */
-import { GoBackButtonWrapper, GoBackButton } from './GoBack.components';
+import { GoBackButtonWrapper, GoBackButton } from './GoBack.styled';
 /* CONSTANTS */
 import { applicationConstants } from '../../../constants/applicationConstants';
 const { NO_RESULT_PAGE_BUTTON_TEXT } = applicationConstants;

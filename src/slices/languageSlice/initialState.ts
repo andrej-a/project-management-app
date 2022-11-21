@@ -39,6 +39,14 @@ export const EnglishState: ILanguage = {
     },
     addTaskButon: 'Add Task',
   },
+  updateCard: {
+    title: 'Edit Card',
+    addTaskButon: 'Confirm',
+  },
+  updateBoard: {
+    title: 'Edit Board',
+    createButton: 'Confirm',
+  },
   createColumn: {
     title: 'Create column',
     hint: 'Your title',
@@ -81,6 +89,10 @@ export const EnglishState: ILanguage = {
     ChangeLogin: 'Change Login',
     EditProfile: 'Edit Profile',
   },
+  currentBoardPage: {
+    'See all Boards': 'See all Boards',
+    'New column': 'New column',
+  },
 };
 
 export const RussianState: ILanguage = {
@@ -120,6 +132,14 @@ export const RussianState: ILanguage = {
       low: 'низкий',
     },
     addTaskButon: 'Добавить карточку',
+  },
+  updateCard: {
+    title: 'Редактировать карточку',
+    addTaskButon: 'Подтвердить',
+  },
+  updateBoard: {
+    title: 'Редактировать доску',
+    createButton: 'Подтвердить',
   },
   createColumn: {
     title: 'Добавить колонку',
@@ -162,6 +182,10 @@ export const RussianState: ILanguage = {
     ChangePassword: 'Изменить пароль',
     ChangeLogin: 'Изменить логин',
     EditProfile: 'Редактировать профиль',
+  },
+  currentBoardPage: {
+    'See all Boards': 'Просмтореть все доски',
+    'New column': 'Новая колонка',
   },
 };
 

@@ -23,3 +23,7 @@ export interface ICreateCardData {
 export interface ICreateColumn {
   title: string;
 }
+
+export interface IColumnTitle {
+  title: string;
+}

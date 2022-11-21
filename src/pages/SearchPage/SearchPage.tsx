@@ -3,7 +3,7 @@ import { Search } from '../../components/Search/Search';
 import { useAppSelector } from '../../hooks/hooks';
 import { IBoard } from '../../models/IBoard';
 import BoardSmallCard from '../BoardsPage/BoardSmallCard/BoardSmallCard';
-import { BoardsWrapper } from '../BoardsPage/BoardsPage.components';
+import { BoardsWrapper } from '../BoardsPage/BoardsPage.styled';
 import { Wrapper } from './SearchPage.styled';
 
 const SearchPage = () => {
@@ -13,16 +13,14 @@ const SearchPage = () => {
     };
   });
 
-  const [boards, setBoards] = useState<IBoard[]>([]);
+  const [boards] = useState<IBoard[]>([]);
   return (
     <Wrapper>
       <Search />
       {boards.length > 0 ? (
         <BoardsWrapper>
           {boards.map((board) => {
-            return (
-              <BoardSmallCard title={board.title} description={board.description} key={board.id} />
-            );
+            return <BoardSmallCard {...board} key={board._id} />;
           })}
         </BoardsWrapper>
       ) : (

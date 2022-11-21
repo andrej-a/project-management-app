@@ -36,6 +36,14 @@ export interface ILanguage {
     };
     addTaskButon: string;
   };
+  updateCard: {
+    title: string;
+    addTaskButon: string;
+  };
+  updateBoard: {
+    title: string;
+    createButton: string;
+  };
   createColumn: {
     title: string;
     hint: string;
@@ -76,5 +84,9 @@ export interface ILanguage {
     ChangePassword: string;
     ChangeLogin: string;
     EditProfile: string;
+  };
+  currentBoardPage: {
+    'See all Boards': string;
+    'New column': string;
   };
 }

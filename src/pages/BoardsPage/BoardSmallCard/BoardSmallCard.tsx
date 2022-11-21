@@ -1,37 +1,48 @@
 /**COMPONENTS */
-import BoardCardBtn from './BoardCardBtnStyled/BoardCardBtn';
+import SvgButton from '../../../components/SvgButton/SvgButton';
 /**STYLES */
 import {
   BoardSmallCardStyled,
   BoardSmallDescription,
   BoardSmallTitle,
-} from './BoardSmallCard.components';
-/**STYLES */
+} from './BoardSmallCard.styled';
 import deleteIcon from '../../../assets/img/delete.svg';
 import editIcon from '../../../assets/img/edit.svg';
 /**HOOKS */
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+/**MODELS */
+import { IBoard } from '../../../models/IBoard';
+/**DISPATCH */
+import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
+import { setCurrentBoard } from '../../../slices/boardSlice/boardSlice';
 
-const BoardSmallCard = ({ title, description }: { title: string; description: string }) => {
-  const { textColor } = useAppSelector((state) => {
+const BoardSmallCard = (board: IBoard) => {
+  const { title, owner } = board;
+  const { buttonColor } = useAppSelector((state) => {
     return {
-      textColor: state.application_theme.theme.TEXT_COLOR,
+      buttonColor: state.application_theme.theme.BUTTON_BORDER_COLOR_LIGHT,
     };
   });
+  const dispatch = useAppDispatch();
   return (
     <BoardSmallCardStyled>
       <BoardSmallTitle>{title}</BoardSmallTitle>
-      <BoardSmallDescription>{description}</BoardSmallDescription>
-      <BoardCardBtn
-        color={textColor}
+      <BoardSmallDescription>{owner}</BoardSmallDescription>
+      <SvgButton
+        color={buttonColor}
         icon={deleteIcon}
         stylish={{ position: 'absolute', right: '12px', top: '12px' }}
+        handleClick={() => dispatch(setStatus('delete_item'))}
       />
-      <BoardCardBtn
-        color={textColor}
+      <SvgButton
+        color={buttonColor}
         icon={editIcon}
         size={28}
         stylish={{ position: 'absolute', right: '44px', top: '14px' }}
+        handleClick={() => {
+          dispatch(setCurrentBoard(board));
+          dispatch(setStatus('update_board'));
+        }}
       />
     </BoardSmallCardStyled>
   );

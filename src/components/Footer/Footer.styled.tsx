@@ -19,11 +19,6 @@ export const FooterWrapper = styled.div`
   svg {
     fill: ${({ theme }) => theme.TEXT_COLOR_DARK};
   }
-  @media (max-width: ${size.tablet}) {
-    flex-direction: column;
-    height: auto;
-    gap: 30px;
-  }
 `;
 
 export const MembersInfo = styled.div`

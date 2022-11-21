@@ -7,7 +7,9 @@ import { CreateBoardForm } from './Form/Form';
 export const NewBoard = () => {
   const { title } = useAppSelector((state) => {
     return {
-      title: state.language.lang.createBoard.title,
+      title: state.board.currentBoard
+        ? state.language.lang.updateBoard.title
+        : state.language.lang.createBoard.title,
     };
   });
   return (
