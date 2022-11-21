@@ -8,16 +8,31 @@ export const FooterWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 66px;
-  height: 60px;
-  padding: 0px 40px;
+  gap: 4.5%;
+  padding: 0px 2.7%;
+  height: auto;
+
   p {
-    font-size: 16px;
+    font-size: clamp(13px, 3vw, 16px);
     font-weight: 400;
     color: ${({ theme }) => theme.TEXT_COLOR_DARK};
   }
   svg {
     fill: ${({ theme }) => theme.TEXT_COLOR_DARK};
+  }
+  .logo {
+    svg {
+      width: clamp(75px, 7vw, 100%);
+    }
+  }
+  .gitLogo {
+    svg {
+      width: clamp(15px, 4vw, 100%);
+      min-width: 15px;
+    }
+  }
+  @media (max-width: ${size.tablet}) {
+    height: 120px;
   }
 `;
 
@@ -36,14 +51,14 @@ export const MemberItem = styled.div`
   display: flex;
   align-items: center;
   p {
-    font-size: 16px;
+    font-size: clamp(13px, 3vw, 16px);
     font-weight: 400;
     margin: 0;
   }
   a {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 13px;
     color: ${({ theme }) => theme.TEXT_COLOR_DARK};
   }
   svg {

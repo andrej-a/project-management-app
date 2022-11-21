@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BoardSmallCardStyled = styled.div`
   height: 176px;
-  width: clamp(200px, 332px, 80%);
+  width: clamp(200px, 332px, 80vw);
   padding: 31px 33px;
   display: flex;
   flex-direction: column;

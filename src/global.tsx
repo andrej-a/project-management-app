@@ -26,13 +26,15 @@ ${normalize}
   }
 
 #root {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-rows: min-content auto min-content;
+    justify-items: center;
+    min-height: 97vh;
 
 }
 body {
     margin: 0;
+    max-height: min-content;
     background: ${({ theme }: GlobalThemeProps) => theme.DESK_BACKGROUND};
 
     font-family: 'Libre Franklin', sans-serif;
@@ -41,7 +43,6 @@ body {
     &::-webkit-scrollbar {
     background-color: ${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
     width: 14px;
-  
       background-color:${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
     };
   }

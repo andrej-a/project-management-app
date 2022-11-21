@@ -8,7 +8,7 @@ export const Footer = () => {
   return (
     <FooterWrapper>
       <div>
-        <a href="https://rs.school/react/">
+        <a href="https://rs.school/react/" className="logo">
           <HandySvg src={rssLogo} width="116" height="42" />
         </a>
       </div>
