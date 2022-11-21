@@ -31,7 +31,10 @@ const SvgButton = ({
     <BoardCardBtnStyled
       color={color}
       style={stylish}
-      onClick={handleClick}
+      onClick={(e) => {
+        e.stopPropagation();
+        if (handleClick) handleClick();
+      }}
       disabled={disabled}
       type={type ?? 'button'}
     >
