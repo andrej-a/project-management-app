@@ -150,7 +150,12 @@ export const NewCardForm = () => {
             </InputWrapper>
           </LabelWrapper>
           <ButtonsWrapper>
-            <CreateCardCancelButton onClick={() => dispatch(setStatus('hidden'))}>
+            <CreateCardCancelButton
+              onClick={() => {
+                dispatch(setStatus('hidden'));
+                dispatch(setCurrentTask(undefined));
+              }}
+            >
               {cancel}
             </CreateCardCancelButton>
             <input disabled={Object.keys(errors).length > 0} type="submit" value={addTaskButon} />
