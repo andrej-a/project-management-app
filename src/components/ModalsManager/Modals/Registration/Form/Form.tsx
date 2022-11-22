@@ -3,13 +3,16 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 /* HOOKS */
-import { useAppSelector } from '../../../../../hooks/hooks';
+import { useAppSelector, useAppDispatch } from '../../../../../hooks/hooks';
 /* MODELS */
 import { IRegistrationData } from '../../../../../models/IInputData';
 /* STYLES */
 import { FormWrapper, InputWrapper, InputError } from './form.styled';
+/* THUNKS */
+import { registrationUser } from '../../../../../slices/userSlice/userSlice';
 
 export const Form = () => {
+  const dispatch = useAppDispatch();
   const { namePlaceholder, loginPlaceholder, passwordPlaceholder, registrationButton } =
     useAppSelector((state) => {
       return {
@@ -32,7 +35,6 @@ export const Form = () => {
     register,
     handleSubmit,
     reset,
-    clearErrors,
     formState: { errors, isSubmitSuccessful },
   } = useForm<IRegistrationData>({
     resolver: yupResolver(schema),
@@ -46,8 +48,7 @@ export const Form = () => {
   }, [isSubmitSuccessful, reset]);
 
   const formSubmit: SubmitHandler<IRegistrationData> = (data) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+    dispatch(registrationUser(data));
   };
 
   return (

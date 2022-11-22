@@ -9,7 +9,7 @@ import board from '../slices/boardSlice/boardSlice';
 export const store = configureStore({
   reducer: { application_theme, modals_state, language, board, user },
   devTools: process.env.NODE_ENV !== 'production',
-  middleware: [ReduxThunk],
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -74,7 +74,7 @@ export const Header = () => {
       ) : (
         <ButtonContainer
           className={isMenuOpen ? Styles.ACTIVE : ''}
-          onClick={(e) => handleButton((e.target as HTMLElement).innerText)}
+          // onClick={(e) => handleButton((e.target as HTMLElement).innerText)}
         >
           <SignIn onClick={() => dispatch(setStatus('login'))}>{dictionary.header.SignIn}</SignIn>
           <SignUp onClick={() => dispatch(setStatus('registration'))}>

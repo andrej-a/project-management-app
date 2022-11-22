@@ -9,4 +9,5 @@ export type ModalsState = {
     | 'delete_item'
     | 'update_card'
     | 'update_board';
+  warningMessage: string;
 };
