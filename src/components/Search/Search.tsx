@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 
 import { useAppSelector } from '../../hooks/hooks';
 
-import { FormWrapper, InputSearch } from './Search.styled';
+import { FormWrapper, InputSearch, InputSearchWrapper, SearchSelect } from './Search.styled';
 import searchIcon from '../../assets/svg/search.svg';
 import { HandySvg } from 'handy-svg';
 
-export const Search = () => {
-  const [search, setSearch] = useState<string>('');
+type Props = {
+  search: string;
+  setSearch: (searchStr: string) => void;
+};
+
+export const Search = ({ search, setSearch }: Props) => {
   const { dictionary } = useAppSelector((state) => {
     return {
       dictionary: state.language.lang.header,
@@ -20,15 +24,23 @@ export const Search = () => {
 
   return (
     <FormWrapper>
-      <InputSearch
-        type="search"
-        autoComplete="off"
-        autoFocus
-        value={search}
-        placeholder={dictionary.SearchBoard}
-        onChange={handleChange}
-      />
-      <HandySvg src={searchIcon} width="24" height="24" />
+      <InputSearchWrapper>
+        <InputSearch
+          type="search"
+          autoComplete="off"
+          autoFocus
+          value={search}
+          placeholder={dictionary.SearchBoard}
+          onChange={handleChange}
+        />
+        <HandySvg src={searchIcon} width="24" height="24" />
+      </InputSearchWrapper>
+      <SearchSelect>
+        {/* onChange={(e) => setOption(e.target.value)} */}
+        <option value="">Search item</option>
+        <option value="boards">boards</option>
+        <option value="tasks">tasks</option>
+      </SearchSelect>
     </FormWrapper>
   );
 };

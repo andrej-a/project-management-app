@@ -10,6 +10,9 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { userName } from '../../temporalStates/temporalStates';
 /**DISPATCH */
 import { setStatus } from '../../slices/modalsSlice/modalsSlice';
+import { useEffect } from 'react';
+import { fetchAllBoards } from '../../store/actions/actions';
+import { path } from '../../service/constants';
 
 const BoardsPage = () => {
   const { boards } = useAppSelector((state) => {
@@ -17,13 +20,20 @@ const BoardsPage = () => {
       boards: state.board.boards,
     };
   });
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllBoards(path.boards));
+  }, []);
+
   const boardsList = boards.map((board) => <BoardSmallCard {...board} key={board._id} />);
   const { dictionary } = useAppSelector((state) => {
     return {
       dictionary: state.language.lang.boardsPage,
     };
   });
-  const dispatch = useAppDispatch();
+
   const newBoardText = (
     <>
       {dictionary.Create} <br /> {dictionary['New Board']}
