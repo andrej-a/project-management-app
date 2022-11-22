@@ -4,3 +4,9 @@ export interface IUser {
   name: string | null;
   login: string | null;
 }
+
+export interface IAuthorizedUser {
+  token: string;
+  statusCode?: number;
+  message?: string;
+}

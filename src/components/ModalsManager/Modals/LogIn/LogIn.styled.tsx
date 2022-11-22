@@ -61,7 +61,7 @@ export const CancelWrapper = styled.div`
   width: 100%;
   text-align: center;
   margin-top: 23px;
-  margin-bottom: 43px;
+  margin-bottom: 23px;
 `;
 
 export const Cancel = styled.p`

@@ -3,13 +3,15 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 /* HOOKS */
-import { useAppSelector } from '../../../../../hooks/hooks';
+import { useAppSelector, useAppDispatch } from '../../../../../hooks/hooks';
 /* MODELS */
 import { ILogInData } from '../../../../../models/IInputData';
 /* STYLES */
 import { FormWrapper, InputWrapper, InputError } from './form.styled';
-
+/* THUNKS */
+import { loginUserThunk } from '../../../../../slices/userSlice/userSlice';
 export const Form = () => {
+  const dispatch = useAppDispatch();
   const { loginPlaceholder, passwordPlaceholder, registrationButton } = useAppSelector((state) => {
     return {
       loginPlaceholder: state.language.lang.loginModal.loginPlaceholder,
@@ -42,8 +44,7 @@ export const Form = () => {
   }, [isSubmitSuccessful, reset]);
 
   const formSubmit: SubmitHandler<ILogInData> = (data) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+    dispatch(loginUserThunk(data));
   };
 
   return (

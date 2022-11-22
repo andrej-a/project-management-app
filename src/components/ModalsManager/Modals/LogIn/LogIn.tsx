@@ -14,17 +14,19 @@ import {
 import { useAppSelector, useAppDispatch } from '../../../../hooks/hooks';
 /* COMPONENTS */
 import { Form } from './Form/Form';
+import { WarningMessage } from '../Registration/Registration.styled';
 /* ACTIONS */
 import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
 
 export const LogIn = () => {
   const dispatch = useAppDispatch();
 
-  const { title, changeModalToSignIn, cancel } = useAppSelector((state) => {
+  const { title, changeModalToSignIn, cancel, warningMessage } = useAppSelector((state) => {
     return {
       title: state.language.lang.loginModal.title,
       changeModalToSignIn: state.language.lang.loginModal.changeModalToSignUp,
       cancel: state.language.lang.cancel,
+      warningMessage: state.modals_state.warningMessage,
     };
   });
   return (
@@ -44,6 +46,7 @@ export const LogIn = () => {
             <CancelWrapper>
               <Cancel onClick={() => dispatch(setStatus('hidden'))}>{cancel.toUpperCase()}</Cancel>
             </CancelWrapper>
+            <WarningMessage>{warningMessage}</WarningMessage>
           </LogInCard>
         </LogInFrame>
       </LogInWrapper>

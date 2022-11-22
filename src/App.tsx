@@ -40,6 +40,14 @@ function App() {
           <Header />
           <Routes>
             <Route
+              path="/"
+              element={
+                <ProtectedRoute user={!isAuthorized} redirectPath="boards">
+                  <MainPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="boards"
               element={
                 <ProtectedRoute user={isAuthorized} redirectPath="/">

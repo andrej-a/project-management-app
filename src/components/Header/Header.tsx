@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
 import { NavigationComponent } from './Navigation/Navigation';
-import { authorizationSwitch } from '../../slices/userSlice/userSlice';
 import { Styles, headerHeight } from '../../constants/applicationConstants';
 
 import { setStatus } from '../../slices/modalsSlice/modalsSlice';
@@ -38,15 +37,6 @@ export const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleButton = (button: string) => {
-    switch (button) {
-      case dictionary.header.SignIn:
-        return dispatch(authorizationSwitch());
-      default:
-        return button;
-    }
-  };
-
   return (
     <HeaderWrapper
       className={classNames(
@@ -72,10 +62,7 @@ export const Header = () => {
       {isAuthorized ? (
         <NavigationComponent isOpen={isMenuOpen} />
       ) : (
-        <ButtonContainer
-          className={isMenuOpen ? Styles.ACTIVE : ''}
-          // onClick={(e) => handleButton((e.target as HTMLElement).innerText)}
-        >
+        <ButtonContainer className={isMenuOpen ? Styles.ACTIVE : ''}>
           <SignIn onClick={() => dispatch(setStatus('login'))}>{dictionary.header.SignIn}</SignIn>
           <SignUp onClick={() => dispatch(setStatus('registration'))}>
             {dictionary.header.SignUp}
