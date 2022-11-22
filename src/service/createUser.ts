@@ -20,15 +20,10 @@ export const createUser = async (data: IRegistrationData): Promise<IRegistredUse
 
   if (responce.status !== 200) {
     const { dispatch } = store;
-    dispatch(setWarningMessage(content.message));
+    dispatch(setWarningMessage(`Error ${content.statusCode}: ${content.message}`));
     setTimeout(() => {
       dispatch(setWarningMessage(''));
     }, 5000);
-  } else {
-    setValueToLocalStorage('TASKBAN_USER_ID', content._id);
-    setValueToLocalStorage('TASKBAN_USER_NAME', content.name);
-    setValueToLocalStorage('TASKBAN_USER_LOGIN', content.login);
   }
-
   return content;
 };

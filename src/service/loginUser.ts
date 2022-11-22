@@ -5,8 +5,10 @@ import { IAuthorizedUser } from '../models/IUser';
 import { store } from '../store/store';
 import { setWarningMessage } from '../slices/modalsSlice/modalsSlice';
 import { setStatus } from '../slices/modalsSlice/modalsSlice';
+import { authorizationSwitch } from '../slices/userSlice/userSlice';
 /* UTILS */
 import { setValueToCookie } from '../utils/cookie/setValueToCookie';
+import { updateStateAndLocalData } from '../utils/updateData';
 
 export const loginUser = async (data: ILogInData) => {
   const { dispatch } = store;
@@ -22,12 +24,12 @@ export const loginUser = async (data: ILogInData) => {
   const content: IAuthorizedUser = await responce.json();
 
   if (responce.status !== 200) {
-    dispatch(setWarningMessage(content.message));
+    dispatch(setWarningMessage(`Error ${content.statusCode}: ${content.message}`));
     setTimeout(() => {
       dispatch(setWarningMessage(''));
     }, 5000);
   } else {
     setValueToCookie(content.token);
-    dispatch(setStatus('hidden'));
+    updateStateAndLocalData(data);
   }
 };

@@ -12,6 +12,8 @@ export interface IRegistredUser {
   message?: string;
 }
 
+export type TAllRegistredUser = IRegistredUser[];
+
 export interface ILogInData {
   login: string;
   password: string;

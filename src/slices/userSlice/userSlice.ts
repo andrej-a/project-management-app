@@ -25,20 +25,14 @@ const userSlice = createSlice({
     authorizationSwitch: (state) => {
       state.isAuthorized = !state.isAuthorized;
     },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(registrationUser.fulfilled, (state, action) => {
-        state.id = action.payload._id;
-        state.login = action.payload.login;
-        state.name = action.payload.name;
-      })
-      .addCase(loginUserThunk.fulfilled, (state) => {
-        state.isAuthorized = !state.isAuthorized;
-      });
+    updateCurrentState: (state, action) => {
+      state.id = action.payload._id;
+      state.login = action.payload.login;
+      state.name = action.payload.name;
+    },
   },
 });
 
 const { actions, reducer } = userSlice;
-export const { authorizationSwitch } = actions;
+export const { authorizationSwitch, updateCurrentState } = actions;
 export default reducer;
