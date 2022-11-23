@@ -13,7 +13,7 @@ const KanbanArea = () => {
   const { board, columns, dictionary } = useAppSelector((state) => {
     return {
       board: state.board.boards[0],
-      columns: state.board.columns,
+      columns: [...state.board.columns].sort((a, b) => a.order - b.order),
       dictionary: state.language.lang.currentBoardPage,
     };
   });
