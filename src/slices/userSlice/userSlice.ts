@@ -3,6 +3,7 @@ import { initialState } from './initialState';
 /* SERVICES */
 import { createUser } from '../../service/createUser';
 import { loginUser } from '../../service/loginUser';
+import { editUser } from '../../service/editUser';
 /* MODELS */
 import { IRegistrationData } from '../../models/IInputData';
 import { ILogInData } from '../../models/IInputData';
@@ -11,6 +12,18 @@ export const registrationUser = createAsyncThunk(
   'user/registrationUser',
   (data: IRegistrationData) => {
     return createUser(data);
+  }
+);
+
+interface IEditUserThunkProps {
+  userID: string;
+  data: IRegistrationData;
+}
+
+export const editUserThunk = createAsyncThunk(
+  'user/editUser',
+  ({ userID, data }: IEditUserThunkProps) => {
+    return editUser(userID, data);
   }
 );
 

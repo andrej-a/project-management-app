@@ -30,8 +30,6 @@ export const editUser = async (userID: string, data: IRegistrationData) => {
   if (request.status !== SUCCESSFULL_REQUEST) {
     showWarningMessage(`Error ${responce.statusCode}: ${responce.message}`);
   } else {
-    // eslint-disable-next-line no-console
-    console.log(responce);
     loginUser({ login: responce.login, password: data.password });
     dispatch(authorizationSwitch());
   }

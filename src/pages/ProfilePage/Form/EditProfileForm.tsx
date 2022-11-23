@@ -13,7 +13,7 @@ import {
   InputWrapper,
 } from '../../../components/ModalsManager/Modals/Registration/Form/form.styled';
 import { WarningMessage } from '../../../components/ModalsManager/Modals/Registration/Registration.styled';
-import { editUser } from '../../../service/editUser';
+import { editUserThunk } from '../../../slices/userSlice/userSlice';
 export const EditProfileForm = () => {
   const dispatch = useAppDispatch();
   const {
@@ -21,6 +21,7 @@ export const EditProfileForm = () => {
     warningMessage,
     loadingState,
     title,
+    spinnerColor,
     userName,
     namePlaceholder,
     loginPlaceholder,
@@ -29,10 +30,11 @@ export const EditProfileForm = () => {
     deleteAccount,
   } = useAppSelector((state) => {
     return {
-      userID: state.user.id,
+      userID: state.user.id as string,
       warningMessage: state.modals_state.warningMessage,
       loadingState: state.modals_state.loadingState,
       title: state.language.lang.editProfile.title,
+      spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
       userName: state.user.name,
       namePlaceholder: state.language.lang.editProfile.namePlaceholder,
       loginPlaceholder: state.language.lang.editProfile.loginPlaceholder,
@@ -66,7 +68,7 @@ export const EditProfileForm = () => {
   }, [isSubmitSuccessful, reset]);
 
   const formSubmit: SubmitHandler<IRegistrationData> = (data) => {
-    editUser(userID as string, data);
+    dispatch(editUserThunk({ userID, data }));
   };
 
   return (
@@ -110,7 +112,7 @@ export const EditProfileForm = () => {
           </InputWrapper>
 
           {loadingState === 'loading' ? (
-            <ClockLoader />
+            <ClockLoader color={spinnerColor} />
           ) : (
             <input disabled={Object.keys(errors).length > 0} type="submit" value={changeButton} />
           )}
