@@ -6,6 +6,7 @@ export enum requests {
   POST = 'POST',
   GET = 'GET',
   PUT = 'PUT',
+  DELETE = 'DELETE',
 
   MAIN_ROUTE = 'https://kanban-lizaveta01.koyeb.app',
   SIGN_UP = '/auth/signup',

@@ -14,9 +14,12 @@ const themeSlice = createSlice({
     setLoadingState: (state, action) => {
       state.loadingState = action.payload;
     },
+    setDeletingValue: (state, action) => {
+      state.deletingValue = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = themeSlice;
-export const { setStatus, setWarningMessage, setLoadingState } = actions;
+export const { setStatus, setWarningMessage, setLoadingState, setDeletingValue } = actions;
 export default reducer;

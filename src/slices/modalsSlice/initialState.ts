@@ -5,4 +5,6 @@ export const initialState: ModalsState = {
   modalsState: 'hidden',
   warningMessage: '',
   loadingState: 'loaded',
+  deletingValue: '',
+  requestURL: '',
 };

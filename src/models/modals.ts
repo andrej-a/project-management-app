@@ -11,4 +11,6 @@ export type ModalsState = {
     | 'update_board';
   warningMessage: string;
   loadingState: 'loaded' | 'loading';
+  deletingValue: string;
+  requestURL: string;
 };

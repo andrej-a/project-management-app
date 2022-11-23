@@ -14,6 +14,8 @@ import {
 } from '../../../components/ModalsManager/Modals/Registration/Form/form.styled';
 import { WarningMessage } from '../../../components/ModalsManager/Modals/Registration/Registration.styled';
 import { editUserThunk } from '../../../slices/userSlice/userSlice';
+import { setDeletingValue, setStatus } from '../../../slices/modalsSlice/modalsSlice';
+
 export const EditProfileForm = () => {
   const dispatch = useAppDispatch();
   const {
@@ -118,7 +120,14 @@ export const EditProfileForm = () => {
           )}
           <WarningMessage>{warningMessage}</WarningMessage>
         </form>
-        <DeleteAccountButton>{deleteAccount.toUpperCase()}</DeleteAccountButton>
+        <DeleteAccountButton
+          onClick={() => {
+            dispatch(setDeletingValue(`account ${userName}`));
+            dispatch(setStatus('delete_item'));
+          }}
+        >
+          {deleteAccount.toUpperCase()}
+        </DeleteAccountButton>
       </Wrapper>
     </>
   );

@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 20px;
 
   form {
@@ -60,6 +61,12 @@ export const Wrapper = styled.div`
       }
     }
 
+    @media (max-width: ${size.tablet}) {
+      input[type='text'] {
+        width: 345px;
+      }
+    }
+
     @media (max-width: ${size.mobileL}) {
       input[type='text'] {
         width: 250px;
@@ -80,6 +87,7 @@ export const Title = styled.p`
   font-size: 30px;
   line-height: 36px;
   margin: 20px;
+  text-align: center;
 
   color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;
@@ -96,4 +104,9 @@ export const DeleteAccountButton = styled.button`
   line-height: 36px;
   border-radius: 20px;
   color: ${({ theme }) => theme.TEXT_COLOR};
+
+  @media (max-width: ${size.mobileL}) {
+    width: 250px;
+    font-size: 20px;
+  }
 `;

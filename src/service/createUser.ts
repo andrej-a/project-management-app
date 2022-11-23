@@ -3,7 +3,7 @@ import { IRegistrationData, IRegistredUser } from '../models/IInputData';
 import { requests } from '../models/requests';
 /* STORE */
 import { store } from '../store/store';
-import { setLoadingState } from '../slices/modalsSlice/modalsSlice';
+import { setLoadingState, setStatus } from '../slices/modalsSlice/modalsSlice';
 /* UTILS */
 import { showWarningMessage } from '../utils/showWarningMessage';
 
@@ -24,6 +24,8 @@ export const createUser = async (data: IRegistrationData): Promise<IRegistredUse
 
   if (request.status !== SUCCESSFULL_REQUEST) {
     showWarningMessage(`Error ${responce.statusCode}: ${responce.message}`);
+  } else {
+    dispatch(setStatus('login'));
   }
   dispatch(setLoadingState('loaded'));
   return responce;
