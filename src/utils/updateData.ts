@@ -1,28 +1,33 @@
+/* MODELS */
 import { ILogInData } from '../models/IInputData';
+import { requests } from '../models/requests';
+/* SERVICES */
 import { getAllUsers } from '../service/getAllUsers';
+/* UTILS */
 import { setValueToLocalStorage } from './setValueToLocalStorage';
+import { showWarningMessage } from './showWarningMessage';
+/* STORE */
+import { store } from '../store/store';
 import { updateCurrentState, authorizationSwitch } from '../slices/userSlice/userSlice';
 import { setStatus } from '../slices/modalsSlice/modalsSlice';
-import { setWarningMessage } from '../slices/modalsSlice/modalsSlice';
-import { store } from '../store/store';
 
 export const updateStateAndLocalData = async (data: ILogInData) => {
   const { dispatch } = store;
+  const { DEFAULT__WARNING_MESSAGE } = requests;
   let users = await getAllUsers();
   users = users.filter((item) => item.login === data.login);
 
   if (users.length) {
-    setValueToLocalStorage('TASKBAN_USER_ID', users[0]._id);
-    setValueToLocalStorage('TASKBAN_USER_NAME', users[0].name);
-    setValueToLocalStorage('TASKBAN_USER_LOGIN', users[0].login);
+    const currentUser = users[0];
+    setValueToLocalStorage(
+      ['TASKBAN_USER_ID', 'TASKBAN_USER_NAME', 'TASKBAN_USER_LOGIN'],
+      [currentUser._id, currentUser.name, currentUser.login]
+    );
 
-    dispatch(updateCurrentState(users[0]));
+    dispatch(updateCurrentState(currentUser));
     dispatch(authorizationSwitch());
     dispatch(setStatus('hidden'));
   } else {
-    dispatch(setWarningMessage(`Some errorrrr`));
-    setTimeout(() => {
-      dispatch(setWarningMessage(''));
-    }, 5000);
+    showWarningMessage(DEFAULT__WARNING_MESSAGE);
   }
 };

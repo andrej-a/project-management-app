@@ -1,17 +1,18 @@
-/* UTILS */
-import { getCookie } from '../utils/cookie/getCookie';
 /* MODELS */
 import { TAllRegistredUser } from '../models/IInputData';
+import { requests } from '../models/requests';
+import { getCookie } from '../utils/cookie/getCookie';
 
 export const getAllUsers = async (): Promise<TAllRegistredUser> => {
-  const responce = await fetch('https://kanban-lizaveta01.koyeb.app/users', {
-    method: 'GET',
+  const { TYPE, GET, MAIN_ROUTE, GET_ALL_USERS } = requests;
+  const request = await fetch(`${MAIN_ROUTE}${GET_ALL_USERS}`, {
+    method: `${GET}`,
     headers: {
-      accept: 'application/json',
+      accept: `${TYPE}`,
       Authorization: `Bearer ${getCookie('TASKBAN_USER_TOKEN')}`,
     },
   });
 
-  const result: TAllRegistredUser = await responce.json();
-  return result;
+  const responce: TAllRegistredUser = await request.json();
+  return responce;
 };

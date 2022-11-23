@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { ClockLoader } from 'react-spinners';
 /* HOOKS */
 import { useAppSelector, useAppDispatch } from '../../../../../hooks/hooks';
 /* MODELS */
@@ -13,15 +14,23 @@ import { registrationUser } from '../../../../../slices/userSlice/userSlice';
 
 export const Form = () => {
   const dispatch = useAppDispatch();
-  const { namePlaceholder, loginPlaceholder, passwordPlaceholder, registrationButton } =
-    useAppSelector((state) => {
-      return {
-        namePlaceholder: state.language.lang.registrationModal.namePlaceholder,
-        loginPlaceholder: state.language.lang.registrationModal.loginPlaceholder,
-        passwordPlaceholder: state.language.lang.registrationModal.passwordPlaceholder,
-        registrationButton: state.language.lang.registrationModal.registrationButton,
-      };
-    });
+  const {
+    namePlaceholder,
+    loginPlaceholder,
+    passwordPlaceholder,
+    registrationButton,
+    loadingState,
+    spinnerColor,
+  } = useAppSelector((state) => {
+    return {
+      namePlaceholder: state.language.lang.registrationModal.namePlaceholder,
+      loginPlaceholder: state.language.lang.registrationModal.loginPlaceholder,
+      passwordPlaceholder: state.language.lang.registrationModal.passwordPlaceholder,
+      registrationButton: state.language.lang.registrationModal.registrationButton,
+      loadingState: state.modals_state.loadingState,
+      spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
+    };
+  });
 
   const schema = yup
     .object({
@@ -86,11 +95,15 @@ export const Form = () => {
             <InputError>{errors.password?.message}</InputError>
           </InputWrapper>
 
-          <input
-            disabled={Object.keys(errors).length > 0}
-            type="submit"
-            value={registrationButton}
-          />
+          {loadingState === 'loaded' ? (
+            <input
+              disabled={Object.keys(errors).length > 0}
+              type="submit"
+              value={registrationButton}
+            />
+          ) : (
+            <ClockLoader color={spinnerColor} />
+          )}
         </form>
       </FormWrapper>
     </>

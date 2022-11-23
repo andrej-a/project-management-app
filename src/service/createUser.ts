@@ -1,29 +1,30 @@
 /* MODELS */
 import { IRegistrationData, IRegistredUser } from '../models/IInputData';
-/* UTILS */
-import { setValueToLocalStorage } from '../utils/setValueToLocalStorage';
+import { requests } from '../models/requests';
 /* STORE */
 import { store } from '../store/store';
-import { setWarningMessage } from '../slices/modalsSlice/modalsSlice';
+import { setLoadingState } from '../slices/modalsSlice/modalsSlice';
+/* UTILS */
+import { showWarningMessage } from '../utils/showWarningMessage';
 
 export const createUser = async (data: IRegistrationData): Promise<IRegistredUser> => {
-  const responce = await fetch('https://kanban-lizaveta01.koyeb.app/auth/signup', {
-    method: 'POST',
+  const { dispatch } = store;
+  const { TYPE, SUCCESSFULL_REQUEST, POST, MAIN_ROUTE, SIGN_UP } = requests;
+  dispatch(setLoadingState('loading'));
+  const request = await fetch(`${MAIN_ROUTE}${SIGN_UP}`, {
+    method: `${POST}`,
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: `${TYPE}`,
+      'Content-Type': `${TYPE}`,
     },
     body: JSON.stringify(data),
   });
 
-  const content: IRegistredUser = await responce.json();
+  const responce: IRegistredUser = await request.json();
 
-  if (responce.status !== 200) {
-    const { dispatch } = store;
-    dispatch(setWarningMessage(`Error ${content.statusCode}: ${content.message}`));
-    setTimeout(() => {
-      dispatch(setWarningMessage(''));
-    }, 5000);
+  if (request.status !== SUCCESSFULL_REQUEST) {
+    showWarningMessage(`Error ${responce.statusCode}: ${responce.message}`);
   }
-  return content;
+  dispatch(setLoadingState('loaded'));
+  return responce;
 };

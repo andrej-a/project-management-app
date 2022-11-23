@@ -63,7 +63,7 @@ export const ModalsManager = () => {
           </Overlay>
         );
       default:
-        return <></>;
+        return <Overlay style={{ transform: 'translate(-50%, 100%)' }}></Overlay>;
     }
   };
   return <>{getModal()}</>;

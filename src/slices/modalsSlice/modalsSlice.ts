@@ -11,9 +11,12 @@ const themeSlice = createSlice({
     setWarningMessage: (state, action) => {
       state.warningMessage = action.payload;
     },
+    setLoadingState: (state, action) => {
+      state.loadingState = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = themeSlice;
-export const { setStatus, setWarningMessage } = actions;
+export const { setStatus, setWarningMessage, setLoadingState } = actions;
 export default reducer;

@@ -1,3 +1,5 @@
-export const setValueToLocalStorage = (name: string, value: string) => {
-  localStorage.setItem(name, value);
+export const setValueToLocalStorage = (names: string[], values: string[]) => {
+  names.forEach((name, index) => {
+    localStorage.setItem(name, values[index]);
+  });
 };

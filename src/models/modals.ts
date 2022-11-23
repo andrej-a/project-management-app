@@ -10,4 +10,5 @@ export type ModalsState = {
     | 'update_card'
     | 'update_board';
   warningMessage: string;
+  loadingState: 'loaded' | 'loading';
 };

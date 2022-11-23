@@ -1,35 +1,36 @@
 /* MODELS */
 import { ILogInData } from '../models/IInputData';
 import { IAuthorizedUser } from '../models/IUser';
+import { requests } from '../models/requests';
 /* STORE */
 import { store } from '../store/store';
-import { setWarningMessage } from '../slices/modalsSlice/modalsSlice';
-import { setStatus } from '../slices/modalsSlice/modalsSlice';
-import { authorizationSwitch } from '../slices/userSlice/userSlice';
+import { setLoadingState } from '../slices/modalsSlice/modalsSlice';
 /* UTILS */
 import { setValueToCookie } from '../utils/cookie/setValueToCookie';
 import { updateStateAndLocalData } from '../utils/updateData';
+import { showWarningMessage } from '../utils/showWarningMessage';
 
 export const loginUser = async (data: ILogInData) => {
   const { dispatch } = store;
-  const responce = await fetch('https://kanban-lizaveta01.koyeb.app/auth/signin', {
-    method: 'POST',
+  const { SUCCESSFULL_REQUEST, TYPE, POST, MAIN_ROUTE, SIGN_IN } = requests;
+  dispatch(setLoadingState('loading'));
+  const request = await fetch(`${MAIN_ROUTE}${SIGN_IN}`, {
+    method: `${POST}`,
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: `${TYPE}`,
+      'Content-Type': `${TYPE}`,
     },
     body: JSON.stringify(data),
   });
 
-  const content: IAuthorizedUser = await responce.json();
+  const responce: IAuthorizedUser = await request.json();
 
-  if (responce.status !== 200) {
-    dispatch(setWarningMessage(`Error ${content.statusCode}: ${content.message}`));
-    setTimeout(() => {
-      dispatch(setWarningMessage(''));
-    }, 5000);
+  if (request.status !== SUCCESSFULL_REQUEST) {
+    showWarningMessage(`Error ${responce.statusCode}: ${responce.message}`);
   } else {
-    setValueToCookie(content.token);
+    setValueToCookie(responce.token);
     updateStateAndLocalData(data);
   }
+
+  dispatch(setLoadingState('loaded'));
 };

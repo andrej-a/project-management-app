@@ -17,16 +17,17 @@ export const CreateBoardFormWrapper = styled.div`
     justify-content: center;
     gap: 22px;
 
-    input[type='text'] {
+    textarea {
       width: 400px;
       background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       outline: none;
       border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
       border-radius: 5px;
-      outline: none;
       font-weight: 600;
       font-size: 14px;
       line-height: 17px;
+      overflow: hidden;
+      resize: none;
       color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 
       @media (max-width: ${size.tablet}) {
@@ -62,14 +63,14 @@ export const CreateBoardFormWrapper = styled.div`
   }
 `;
 
-export const TitleInput = styled.input`
+export const TitleInput = styled.textarea`
   height: 40px;
   padding: 12px 0px 10px 10px;
 `;
 
-export const DescriptionInput = styled.input`
+export const DescriptionInput = styled.textarea`
   height: 230px;
-  padding: 12px 0px 201px 10px;
+  padding: 12px 12px 201px 12px;
 
   @media (max-width: ${size.mobileL}) {
     padding: 12px 0px 120px 10px;
@@ -81,6 +82,7 @@ export const ButtonsWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
+  margin-top: 22px;
 
   @media (max-width: ${size.tablet}) {
     flex-direction: column;

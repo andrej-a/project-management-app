@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { ClockLoader } from 'react-spinners';
 /* HOOKS */
 import { useAppSelector, useAppDispatch } from '../../../../../hooks/hooks';
 /* MODELS */
@@ -12,13 +13,16 @@ import { FormWrapper, InputWrapper, InputError } from './form.styled';
 import { loginUserThunk } from '../../../../../slices/userSlice/userSlice';
 export const Form = () => {
   const dispatch = useAppDispatch();
-  const { loginPlaceholder, passwordPlaceholder, registrationButton } = useAppSelector((state) => {
-    return {
-      loginPlaceholder: state.language.lang.loginModal.loginPlaceholder,
-      passwordPlaceholder: state.language.lang.loginModal.passwordPlaceholder,
-      registrationButton: state.language.lang.loginModal.logInButton,
-    };
-  });
+  const { loginPlaceholder, passwordPlaceholder, registrationButton, loadingState, spinnerColor } =
+    useAppSelector((state) => {
+      return {
+        loginPlaceholder: state.language.lang.loginModal.loginPlaceholder,
+        passwordPlaceholder: state.language.lang.loginModal.passwordPlaceholder,
+        registrationButton: state.language.lang.loginModal.logInButton,
+        loadingState: state.modals_state.loadingState,
+        spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
+      };
+    });
 
   const schema = yup
     .object({
@@ -72,11 +76,15 @@ export const Form = () => {
             <InputError>{errors.password?.message}</InputError>
           </InputWrapper>
 
-          <input
-            disabled={Object.keys(errors).length > 0}
-            type="submit"
-            value={registrationButton}
-          />
+          {loadingState === 'loaded' ? (
+            <input
+              disabled={Object.keys(errors).length > 0}
+              type="submit"
+              value={registrationButton}
+            />
+          ) : (
+            <ClockLoader color={spinnerColor} />
+          )}
         </form>
       </FormWrapper>
     </>
