@@ -17,7 +17,10 @@ import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
 const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
   const { tasks, buttonColor } = useAppSelector((state) => {
     return {
-      tasks: state.board.tasks.filter((task) => task.columnId === _id) ?? [],
+      tasks:
+        [...state.board.tasks]
+          .sort((a, b) => a.order - b.order)
+          .filter((task) => task.columnId === _id) ?? [],
       buttonColor: state.application_theme.theme.TASK_TEXT,
     };
   });

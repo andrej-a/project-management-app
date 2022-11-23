@@ -12,7 +12,7 @@ import column from '../slices/columnSlice/columnSlice';
 export const store = configureStore({
   reducer: { application_theme, modals_state, language, board, column, task, user },
   devTools: process.env.NODE_ENV !== 'production',
-  middleware: [ReduxThunk],
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
