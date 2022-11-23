@@ -12,9 +12,14 @@ import {
   InputError,
   InputWrapper,
 } from '../../../components/ModalsManager/Modals/Registration/Form/form.styled';
+import { WarningMessage } from '../../../components/ModalsManager/Modals/Registration/Registration.styled';
+import { editUser } from '../../../service/editUser';
 export const EditProfileForm = () => {
   const dispatch = useAppDispatch();
   const {
+    userID,
+    warningMessage,
+    loadingState,
     title,
     userName,
     namePlaceholder,
@@ -24,6 +29,9 @@ export const EditProfileForm = () => {
     deleteAccount,
   } = useAppSelector((state) => {
     return {
+      userID: state.user.id,
+      warningMessage: state.modals_state.warningMessage,
+      loadingState: state.modals_state.loadingState,
       title: state.language.lang.editProfile.title,
       userName: state.user.name,
       namePlaceholder: state.language.lang.editProfile.namePlaceholder,
@@ -58,8 +66,7 @@ export const EditProfileForm = () => {
   }, [isSubmitSuccessful, reset]);
 
   const formSubmit: SubmitHandler<IRegistrationData> = (data) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+    editUser(userID as string, data);
   };
 
   return (
@@ -102,7 +109,12 @@ export const EditProfileForm = () => {
             <InputError>{errors.password?.message}</InputError>
           </InputWrapper>
 
-          <input disabled={Object.keys(errors).length > 0} type="submit" value={changeButton} />
+          {loadingState === 'loading' ? (
+            <ClockLoader />
+          ) : (
+            <input disabled={Object.keys(errors).length > 0} type="submit" value={changeButton} />
+          )}
+          <WarningMessage>{warningMessage}</WarningMessage>
         </form>
         <DeleteAccountButton>{deleteAccount.toUpperCase()}</DeleteAccountButton>
       </Wrapper>

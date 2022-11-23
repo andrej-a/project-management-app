@@ -63,6 +63,14 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="profile"
+              element={
+                <ProtectedRoute user={isAuthorized} redirectPath="/">
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/" element={<MainPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="boards" element={<BoardsPage />} />

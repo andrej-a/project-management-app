@@ -87,7 +87,7 @@ export const Title = styled.p`
 export const DeleteAccountButton = styled.button`
   width: 100%;
   height: 60px;
-  margin-top: 40px;
+  margin-top: 20px;
   border: 0;
   cursor: pointer;
   background: ${({ theme }) => theme.BUTTON_RED};

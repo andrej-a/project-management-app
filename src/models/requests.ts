@@ -5,9 +5,11 @@ export enum requests {
   DEFAULT__WARNING_MESSAGE = 'Internal error',
   POST = 'POST',
   GET = 'GET',
+  PUT = 'PUT',
 
   MAIN_ROUTE = 'https://kanban-lizaveta01.koyeb.app',
   SIGN_UP = '/auth/signup',
   SIGN_IN = '/auth/signin',
   GET_ALL_USERS = '/users',
+  UPDATE_USER = '/users',
 }
