@@ -17,8 +17,8 @@ interface IBoardSlice {
 }
 export const initialState: IBoardSlice = {
   boards: boards,
-  columns: columns,
-  tasks: tasks,
+  columns: columns.sort((a: IColumn, b: IColumn) => a.order - b.order),
+  tasks: tasks.sort((a: ITask, b: ITask) => a.order - b.order),
   users: [],
   currentTask: undefined,
   currentBoard: undefined,
