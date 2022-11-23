@@ -26,8 +26,8 @@ function App() {
     return {
       isAuthorized: state.user.isAuthorized,
       theme: state.application_theme.theme,
-      columns: state.board.columns,
-      tasks: state.board.tasks,
+      columns: state.column.columns,
+      tasks: state.task.tasks,
     };
   });
   const dispatch = useDispatch();

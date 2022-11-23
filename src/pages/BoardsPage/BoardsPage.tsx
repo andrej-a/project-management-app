@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**COMPONENTS */
 import BoardSmallCard from './BoardSmallCard/BoardSmallCard';
 import GreetingsPanel from './GreetingsPanel/GreetingsPanel';
@@ -9,15 +10,20 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 /**FAKE DATA */
 import { userName } from '../../temporalStates/temporalStates';
 /**DISPATCH */
-import { setStatus } from '../../slices/modalsSlice/modalsSlice';
 import { useEffect } from 'react';
 import { fetchAllBoards } from '../../store/actions/actions';
 import { path } from '../../service/constants';
+import { setBoards } from '../../slices/boardSlice/boardSlice';
+import { setStatus } from '../../slices/modalsSlice/modalsSlice';
+import Spinner from '../../components/Spinner/Spinner';
 
 const BoardsPage = () => {
-  const { boards } = useAppSelector((state) => {
+  const { boards, isLoading, isError, id } = useAppSelector((state) => {
     return {
       boards: state.board.boards,
+      isLoading: state.board.isLoading,
+      isError: state.board.isError,
+      id: state.user.id,
     };
   });
 
@@ -48,7 +54,13 @@ const BoardsPage = () => {
             text={newBoardText}
             handleClick={() => dispatch(setStatus('new_board'))}
           />
-          <BoardsWrapper>{boardsList}</BoardsWrapper>
+          {isLoading ? (
+            <Spinner />
+          ) : isError ? (
+            <p>Loading Error</p>
+          ) : (
+            <BoardsWrapper>{boardsList}</BoardsWrapper>
+          )}
         </BoardsPanelWrapper>
       </div>
     </Wrapper>

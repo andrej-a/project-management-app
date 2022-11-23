@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
 /* MODELS */
 import { ICreateCardData } from '../../../../../models/IInputData';
 /**DISPATCH */
-import { setCurrentTask, updateTaskInfo } from '../../../../../slices/boardSlice/boardSlice';
+import { setCurrentTask, updateTaskInfo } from '../../../../../slices/taskSlice/taskSlice';
 import { setStatus } from '../../../../../slices/modalsSlice/modalsSlice';
 /* STYLES */
 import {
@@ -34,13 +34,13 @@ export const NewCardForm = () => {
         hint: state.language.lang.createCard.hint,
         description: state.language.lang.createCard.description,
         priority: state.language.lang.createCard.priority,
-        addTaskButon: state.board.currentTask
+        addTaskButon: state.task.currentTask
           ? state.language.lang.updateCard.addTaskButon
           : state.language.lang.createCard.addTaskButon,
         titlePriority: state.language.lang.createCard.titlePriority,
         cancel: state.language.lang.cancel,
-        task: state.board.currentTask,
-        currentTask: state.board.currentTask,
+        task: state.task.currentTask,
+        currentTask: state.task.currentTask,
       };
     });
   const schema = yup

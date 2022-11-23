@@ -10,8 +10,8 @@ const CurrentBoardPage = () => {
   const { board } = useAppSelector((state) => {
     return {
       board: state.board.boards[0],
-      columns: state.board.columns,
-      tasks: state.board.tasks,
+      columns: state.column.columns,
+      tasks: state.task.tasks,
     };
   });
   return (

@@ -20,6 +20,9 @@ const boardSlice = createSlice({
     rejected: (state) => {
       state.isError = true;
     },
+    setBoards: (state, action) => {
+      state.boards = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchAllBoards.fulfilled, (state, action) => {
@@ -29,5 +32,5 @@ const boardSlice = createSlice({
 });
 
 const { actions, reducer } = boardSlice;
-export const { updateBoardTitle, setCurrentBoard } = actions;
+export const { updateBoardTitle, setCurrentBoard, setBoards } = actions;
 export default reducer;

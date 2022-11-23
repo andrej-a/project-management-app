@@ -18,7 +18,7 @@ const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
   const { tasks, buttonColor } = useAppSelector((state) => {
     return {
       tasks:
-        [...state.board.tasks]
+        [...state.task.tasks]
           .sort((a, b) => a.order - b.order)
           .filter((task) => task.columnId === _id) ?? [],
       buttonColor: state.application_theme.theme.TASK_TEXT,

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { size } from '../../constants/screenSizes';
 
 export const Wrapper = styled.div`
-  max-width: 100vw;
+  min-width: 100vw;
   margin: 0;
   padding: 0;
   height: auto;
