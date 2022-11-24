@@ -17,6 +17,7 @@ const KanbanArea = () => {
       dictionary: state.language.lang.currentBoardPage,
     };
   });
+
   const dispatch = useAppDispatch();
   const columnsElements = columns.map((column, index) => (
     <Column {...column} key={column._id} dragIndex={index} />

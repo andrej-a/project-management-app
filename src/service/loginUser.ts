@@ -1,7 +1,7 @@
 /* MODELS */
 import { ILogInData } from '../models/IInputData';
 import { IAuthorizedUser } from '../models/IUser';
-import { requests } from '../models/requests';
+import { path, requests } from '../models/requests';
 /* STORE */
 import { store } from '../store/store';
 import { setLoadingState } from '../slices/modalsSlice/modalsSlice';
@@ -12,9 +12,9 @@ import { showWarningMessage } from '../utils/showWarningMessage';
 
 export const loginUser = async (data: ILogInData) => {
   const { dispatch } = store;
-  const { SUCCESSFULL_REQUEST, TYPE, POST, MAIN_ROUTE, SIGN_IN } = requests;
+  const { SUCCESSFULL_REQUEST, TYPE, POST } = requests;
   dispatch(setLoadingState('loading'));
-  const request = await fetch(`${MAIN_ROUTE}${SIGN_IN}`, {
+  const request = await fetch(`${path.signin}`, {
     method: `${POST}`,
     headers: {
       Accept: `${TYPE}`,

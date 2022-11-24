@@ -17,13 +17,12 @@ import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
 /* SERVICES */
 import { deleteValue } from '../../../../service/deleteValue';
 /* MODELS */
-import { requests } from '../../../../models/requests';
+import { path, requests } from '../../../../models/requests';
 import { deleteCookie } from '../../../../utils/cookie/deleteCookie';
 import { getCookie } from '../../../../utils/cookie/getCookie';
 
 export const DeleteItem = () => {
   const dispatch = useAppDispatch();
-  const { MAIN_ROUTE, UPDATE_USER } = requests;
   const {
     title,
     confirmButton,
@@ -64,7 +63,7 @@ export const DeleteItem = () => {
                 </CancelButton>
                 <ConfirmButton
                   onClick={() => {
-                    deleteValue(`${MAIN_ROUTE}${UPDATE_USER}/${userID}`, deletingValue);
+                    deleteValue(`${path.users}/${userID}`, deletingValue);
                     deleteCookie(getCookie('TASKBAN_USER_TOKEN') as string);
                   }}
                 >

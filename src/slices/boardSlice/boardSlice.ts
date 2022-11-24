@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAllBoards } from '../../store/actions/actions';
 
 import { initialState } from './initialState';
 
@@ -14,23 +13,16 @@ const boardSlice = createSlice({
     setCurrentBoard: (state, action) => {
       state.currentBoard = action.payload;
     },
-    pending: (state) => {
+    setLoading: (state) => {
       state.isLoading = true;
-    },
-    rejected: (state) => {
-      state.isError = true;
     },
     setBoards: (state, action) => {
       state.boards = action.payload;
+      state.isLoading = false;
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(fetchAllBoards.fulfilled, (state, action) => {
-      state.boards = action.payload;
-    });
   },
 });
 
 const { actions, reducer } = boardSlice;
-export const { updateBoardTitle, setCurrentBoard, setBoards } = actions;
+export const { updateBoardTitle, setCurrentBoard, setBoards, setLoading } = actions;
 export default reducer;

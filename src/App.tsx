@@ -74,7 +74,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="boards" element={<BoardsPage />} />
-            <Route path="board" element={<CurrentBoardPage />} />
+            <Route path="board/:boardId" element={<CurrentBoardPage />} />
             <Route path="*" element={<NoResultPage />} />
           </Routes>
           <Footer />

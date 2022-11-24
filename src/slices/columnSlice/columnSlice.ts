@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchAllColumns } from './actions';
 import { initialState } from './initialState';
 
 const columnSlice = createSlice({

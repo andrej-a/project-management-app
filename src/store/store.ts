@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import ReduxThunk from 'redux-thunk';
 
 import application_theme from '../slices/themeSlice/themeSlice';
 import modals_state from '../slices/modalsSlice/modalsSlice';

@@ -9,9 +9,10 @@ import { HandySvg } from 'handy-svg';
 type Props = {
   search: string;
   setSearch: (searchStr: string) => void;
+  setOption: (searchStr: boolean) => void;
 };
 
-export const Search = ({ search, setSearch }: Props) => {
+export const Search = ({ search, setSearch, setOption }: Props) => {
   const { dictionary } = useAppSelector((state) => {
     return {
       dictionary: state.language.lang.header,
@@ -20,6 +21,10 @@ export const Search = ({ search, setSearch }: Props) => {
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     setSearch((e.target as HTMLInputElement).value);
+  };
+  const handleChangeOption = (e: React.FormEvent<HTMLSelectElement>) => {
+    const option = (e.target as HTMLSelectElement).value;
+    option === 'boards' ? setOption(true) : setOption(false);
   };
 
   return (
@@ -35,9 +40,7 @@ export const Search = ({ search, setSearch }: Props) => {
         />
         <HandySvg src={searchIcon} width="24" height="24" />
       </InputSearchWrapper>
-      <SearchSelect>
-        {/* onChange={(e) => setOption(e.target.value)} */}
-        <option value="">Search item</option>
+      <SearchSelect onChange={handleChangeOption}>
         <option value="boards">boards</option>
         <option value="tasks">tasks</option>
       </SearchSelect>

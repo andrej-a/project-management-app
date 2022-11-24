@@ -7,10 +7,22 @@ export enum requests {
   GET = 'GET',
   PUT = 'PUT',
   DELETE = 'DELETE',
+}
 
-  MAIN_ROUTE = 'https://kanban-lizaveta01.koyeb.app',
-  SIGN_UP = '/auth/signup',
-  SIGN_IN = '/auth/signin',
-  GET_ALL_USERS = '/users',
-  UPDATE_USER = '/users',
+export const url = 'https://kanban-lizaveta01.koyeb.app';
+
+export const path = {
+  signup: `${url}/auth/signup`,
+  signin: `${url}/auth/signin`,
+  users: `${url}/users`,
+  boards: `${url}/boards`,
+  tasks: `${url}/tasksSet`,
+  file: `${url}/file`,
+  points: `${url}/points`,
+};
+
+export enum Errors {
+  BAD_REQUEST = 400,
+  INVALID_TOKEN = 403,
+  NOT_FOUND_USER = 404,
 }

@@ -13,18 +13,27 @@ import SvgButton from '../../../../components/SvgButton/SvgButton';
 import ColumnTitle from './ColumtTitle';
 /**DISPATCH */
 import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
+import { useEffect } from 'react';
+import { fetchAllTasks } from '../../../../slices/taskSlice/actions';
+import { getColumnTasks } from '../../../../service/tasks/getColumnTasks';
 
 const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
-  const { tasks, buttonColor } = useAppSelector((state) => {
+  const { tasks, buttonColor, currentBoardId } = useAppSelector((state) => {
     return {
       tasks:
         [...state.task.tasks]
           .sort((a, b) => a.order - b.order)
           .filter((task) => task.columnId === _id) ?? [],
       buttonColor: state.application_theme.theme.TASK_TEXT,
+      currentBoardId: state.board.currentBoard?._id,
     };
   });
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    getColumnTasks(currentBoardId!, _id);
+  }, []);
+
   const taskElements = tasks.map((task, index) => (
     <TaskCard task={task} key={task._id} dragIndex={index} />
   ));

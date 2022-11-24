@@ -17,6 +17,7 @@ import {
 import { ICreateBoardData } from '../../../../../models/IInputData';
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
 import { setCurrentBoard, updateBoardTitle } from '../../../../../slices/boardSlice/boardSlice';
+import { createNewBoard } from '../../../../../service/boards/createBoard';
 
 export const CreateBoardForm = () => {
   const dispatch = useAppDispatch();
@@ -59,9 +60,11 @@ export const CreateBoardForm = () => {
     if (currentBoard) {
       dispatch(updateBoardTitle({ title: data.title, id: currentBoard._id }));
       dispatch(setCurrentBoard(undefined));
+    } else {
+      // eslint-disable-next-line no-console
+      console.log(data);
+      // dispatch(createNewBoard(data));
     }
-    // eslint-disable-next-line no-console
-    else console.log(data);
   };
 
   return (

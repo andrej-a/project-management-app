@@ -15,17 +15,19 @@ import { IBoard } from '../../../models/IBoard';
 /**DISPATCH */
 import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
 import { setCurrentBoard } from '../../../slices/boardSlice/boardSlice';
+import { Link } from 'react-router-dom';
 
 const BoardSmallCard = (board: IBoard) => {
-  const { title, owner } = board;
+  const { title, owner, _id } = board;
   const { buttonColor } = useAppSelector((state) => {
     return {
       buttonColor: state.application_theme.theme.BUTTON_BORDER_COLOR_LIGHT,
     };
   });
   const dispatch = useAppDispatch();
+
   return (
-    <BoardSmallCardStyled>
+    <BoardSmallCardStyled as={Link} to={`/board/${_id}`}>
       <BoardSmallTitle>{title}</BoardSmallTitle>
       <BoardSmallDescription>{owner}</BoardSmallDescription>
       <SvgButton

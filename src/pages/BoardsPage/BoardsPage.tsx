@@ -11,26 +11,22 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { userName } from '../../temporalStates/temporalStates';
 /**DISPATCH */
 import { useEffect } from 'react';
-import { fetchAllBoards } from '../../store/actions/actions';
-import { path } from '../../service/constants';
-import { setBoards } from '../../slices/boardSlice/boardSlice';
+import { fetchAllBoards } from '../../slices/boardSlice/actions';
 import { setStatus } from '../../slices/modalsSlice/modalsSlice';
 import Spinner from '../../components/Spinner/Spinner';
 
 const BoardsPage = () => {
-  const { boards, isLoading, isError, id } = useAppSelector((state) => {
+  const { boards, isLoading } = useAppSelector((state) => {
     return {
       boards: state.board.boards,
       isLoading: state.board.isLoading,
-      isError: state.board.isError,
-      id: state.user.id,
     };
   });
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllBoards(path.boards));
+    dispatch(fetchAllBoards());
   }, []);
 
   const boardsList = boards.map((board) => <BoardSmallCard {...board} key={board._id} />);
@@ -54,13 +50,7 @@ const BoardsPage = () => {
             text={newBoardText}
             handleClick={() => dispatch(setStatus('new_board'))}
           />
-          {isLoading ? (
-            <Spinner />
-          ) : isError ? (
-            <p>Loading Error</p>
-          ) : (
-            <BoardsWrapper>{boardsList}</BoardsWrapper>
-          )}
+          {isLoading ? <Spinner /> : <BoardsWrapper>{boardsList}</BoardsWrapper>}
         </BoardsPanelWrapper>
       </div>
     </Wrapper>

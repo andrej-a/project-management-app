@@ -1,11 +1,11 @@
 /* MODELS */
 import { TAllRegistredUser } from '../models/IInputData';
-import { requests } from '../models/requests';
+import { path, requests } from '../models/requests';
 import { getCookie } from '../utils/cookie/getCookie';
 
 export const getAllUsers = async (): Promise<TAllRegistredUser> => {
-  const { TYPE, GET, MAIN_ROUTE, GET_ALL_USERS } = requests;
-  const request = await fetch(`${MAIN_ROUTE}${GET_ALL_USERS}`, {
+  const { TYPE, GET } = requests;
+  const request = await fetch(`${path.users}`, {
     method: `${GET}`,
     headers: {
       accept: `${TYPE}`,
