@@ -9,4 +9,8 @@ export type ModalsState = {
     | 'delete_item'
     | 'update_card'
     | 'update_board';
+  warningMessage: string;
+  loadingState: 'loaded' | 'loading';
+  deletingValue: string;
+  requestURL: string;
 };

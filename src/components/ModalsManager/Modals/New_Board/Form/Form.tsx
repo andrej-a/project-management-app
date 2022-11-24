@@ -69,20 +69,14 @@ export const CreateBoardForm = () => {
       <CreateBoardFormWrapper>
         <form action="" onSubmit={handleSubmit(formSubmit)}>
           <InputWrapper>
-            <TitleInput
-              {...register('title')}
-              placeholder={hint}
-              type="text"
-              name="title"
-              id="title"
-            />
+            <TitleInput {...register('title')} placeholder={hint} name="title" id="title" />
             <InputError>{errors.title?.message}</InputError>
           </InputWrapper>
           <InputWrapper>
             <DescriptionInput
               {...register('descriptionInput')}
               placeholder={description}
-              type="text"
+              wrap="soft"
               name="descriptionInput"
               id="descriptionInput"
             />

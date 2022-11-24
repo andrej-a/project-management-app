@@ -1,7 +1,12 @@
 export interface IUser {
-  id: string;
+  id: string | null;
   isAuthorized: boolean;
-  name: string;
-  login: string;
-  password: string;
+  name: string | null;
+  login: string | null;
+}
+
+export interface IAuthorizedUser {
+  token: string;
+  statusCode?: number;
+  message?: string;
 }

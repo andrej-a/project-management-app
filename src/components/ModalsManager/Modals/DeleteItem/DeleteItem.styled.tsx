@@ -28,6 +28,7 @@ export const DeleteItemCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
   @media (max-width: ${size.mobileL}) {
     width: 280px;
   }
@@ -39,6 +40,7 @@ export const Title = styled.p`
   font-weight: 600;
   font-size: 30px;
   line-height: 36px;
+  text-align: center;
 
   color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;

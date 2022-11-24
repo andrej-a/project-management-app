@@ -90,20 +90,13 @@ export const NewCardForm = () => {
       <FormWrapper>
         <form action="" onSubmit={handleSubmit(formSubmit)}>
           <InputWrapper>
-            <TitleInput
-              {...register('title')}
-              placeholder={hint}
-              type="text"
-              name="title"
-              id="title"
-            />
+            <TitleInput {...register('title')} placeholder={hint} name="title" id="title" />
             <InputError>{errors.title?.message}</InputError>
           </InputWrapper>
           <InputWrapper>
             <DescriptionInput
               {...register('description')}
               placeholder={description}
-              type="text"
               name="description"
               id="description"
             />
@@ -146,9 +139,9 @@ export const NewCardForm = () => {
               <LowPriorityLabel htmlFor="low_priority">
                 {priority.low.toUpperCase()}
               </LowPriorityLabel>
-              <InputError>{errors.priority?.message}</InputError>
             </InputWrapper>
           </LabelWrapper>
+          <InputError>{errors.priority?.message}</InputError>
           <ButtonsWrapper>
             <CreateCardCancelButton onClick={() => dispatch(setStatus('hidden'))}>
               {cancel}

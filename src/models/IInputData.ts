@@ -4,6 +4,16 @@ export interface IRegistrationData {
   password: string;
 }
 
+export interface IRegistredUser {
+  name: string;
+  login: string;
+  _id: string;
+  statusCode?: number;
+  message?: string;
+}
+
+export type TAllRegistredUser = IRegistredUser[];
+
 export interface ILogInData {
   login: string;
   password: string;

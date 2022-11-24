@@ -12,6 +12,9 @@ import { authorizationSwitch } from '../../../slices/userSlice/userSlice';
 
 import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
 
+import { getCookie } from '../../../utils/cookie/getCookie';
+import { deleteCookie } from '../../../utils/cookie/deleteCookie';
+
 import plus from '../../../assets/svg/plus.svg';
 import arrow from '../../../assets/svg/arrow.svg';
 import searchIcon from '../../../assets/svg/search1.svg';
@@ -98,7 +101,14 @@ export const NavigationComponent = ({ isOpen }: props) => {
         );
       })}
 
-      <LogOut onClick={() => dispatch(authorizationSwitch())}>{dictionary.header.LogOut}</LogOut>
+      <LogOut
+        onClick={() => {
+          dispatch(authorizationSwitch());
+          deleteCookie(getCookie('TASKBAN_USER_TOKEN') as string);
+        }}
+      >
+        {dictionary.header.LogOut}
+      </LogOut>
 
       <NavLink to="profile">
         <User>

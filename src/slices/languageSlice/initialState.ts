@@ -52,6 +52,14 @@ export const EnglishState: ILanguage = {
     hint: 'Your title',
     addColumnButton: 'Add column',
   },
+  editProfile: {
+    title: 'Let`s change your information, ',
+    namePlaceholder: 'Your new name',
+    loginPlaceholder: 'Your new login',
+    passwordPlaceholder: 'Your new password',
+    changeButton: 'Do it!',
+  },
+  deleteAccount: 'Delete account',
   cancel: 'Cancel',
   boardsPage: {
     Hello: 'Hello',
@@ -146,6 +154,14 @@ export const RussianState: ILanguage = {
     hint: 'Ваша колонка',
     addColumnButton: 'Добавить',
   },
+  editProfile: {
+    title: 'Давайте изменим информацию о вас, ',
+    namePlaceholder: 'Ваше новое имя',
+    loginPlaceholder: 'Ваш новый логин',
+    passwordPlaceholder: 'Ваш новый пароль',
+    changeButton: 'Изменить',
+  },
+  deleteAccount: 'Удалить аккаунт',
   cancel: 'Отменить',
   boardsPage: {
     Hello: 'Привет',

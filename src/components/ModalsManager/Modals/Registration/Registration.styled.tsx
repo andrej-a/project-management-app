@@ -61,7 +61,7 @@ export const CancelWrapper = styled.div`
   width: 100%;
   text-align: center;
   margin-top: 23px;
-  margin-bottom: 43px;
+  margin-bottom: 23px;
 `;
 
 export const Cancel = styled.p`
@@ -71,4 +71,14 @@ export const Cancel = styled.p`
   line-height: 22px;
   color: ${({ theme }) => theme.BUTTON_RED};
   cursor: pointer;
+`;
+
+export const WarningMessage = styled.p`
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 19px;
+  margin-bottom: 20px;
+  color: ${({ theme }) => theme.BUTTON_RED};
 `;
