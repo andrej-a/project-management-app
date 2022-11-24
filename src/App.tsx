@@ -40,6 +40,14 @@ function App() {
           <Header />
           <Routes>
             <Route
+              path="/"
+              element={
+                <ProtectedRoute user={!isAuthorized} redirectPath="boards">
+                  <MainPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="boards"
               element={
                 <ProtectedRoute user={isAuthorized} redirectPath="/">
@@ -52,6 +60,14 @@ function App() {
               element={
                 <ProtectedRoute user={isAuthorized} redirectPath="/">
                   <SearchPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="profile"
+              element={
+                <ProtectedRoute user={isAuthorized} redirectPath="/">
+                  <ProfilePage />
                 </ProtectedRoute>
               }
             />

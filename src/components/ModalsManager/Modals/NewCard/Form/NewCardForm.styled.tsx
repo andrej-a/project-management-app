@@ -9,15 +9,17 @@ export const FormWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 22px;
 
-    input[type='text'] {
+    textarea {
       width: 400px;
+      margin-bottom: 22px;
       background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       outline: none;
       border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
       border-radius: 5px;
       outline: none;
+      overflow: hidden;
+      resize: none;
       font-weight: 600;
       font-size: 14px;
       line-height: 17px;
@@ -64,6 +66,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const PriorityTitle = styled.p`
+  margin-bottom: 22px;
   color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;
 

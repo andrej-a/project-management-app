@@ -1,14 +1,17 @@
 import { useAppSelector } from '../../hooks/hooks';
-
-import { Wrapper } from '../SearchPage/SearchPage.styled';
-
+import { EditProfileForm } from './Form/EditProfileForm';
+import { Wrapper } from './ProfilePage.styled';
 const ProfilePage = () => {
   const { dictionary } = useAppSelector((state) => {
     return {
       dictionary: state.language,
     };
   });
-  return <Wrapper></Wrapper>;
+  return (
+    <Wrapper>
+      <EditProfileForm></EditProfileForm>
+    </Wrapper>
+  );
 };
 
 export default ProfilePage;

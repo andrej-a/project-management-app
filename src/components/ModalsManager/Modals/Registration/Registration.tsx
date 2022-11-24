@@ -9,6 +9,7 @@ import {
   ChangeModal,
   CancelWrapper,
   Cancel,
+  WarningMessage,
 } from './Registration.styled';
 /* HOOKS */
 import { useAppSelector, useAppDispatch } from '../../../../hooks/hooks';
@@ -20,11 +21,12 @@ import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
 export const Registration = () => {
   const dispatch = useAppDispatch();
 
-  const { title, changeModalToSignIn, cancel } = useAppSelector((state) => {
+  const { title, changeModalToSignIn, cancel, warningMessage } = useAppSelector((state) => {
     return {
       title: state.language.lang.registrationModal.title,
       changeModalToSignIn: state.language.lang.registrationModal.changeModalToSignIn,
       cancel: state.language.lang.cancel,
+      warningMessage: state.modals_state.warningMessage,
     };
   });
   return (
@@ -44,6 +46,7 @@ export const Registration = () => {
             <CancelWrapper>
               <Cancel onClick={() => dispatch(setStatus('hidden'))}>{cancel.toUpperCase()}</Cancel>
             </CancelWrapper>
+            <WarningMessage>{warningMessage}</WarningMessage>
           </RegistrationCard>
         </RegistrationFrame>
       </RegistrationWrapper>

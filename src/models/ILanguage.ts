@@ -49,6 +49,14 @@ export interface ILanguage {
     hint: string;
     addColumnButton: string;
   };
+  editProfile: {
+    title: string;
+    namePlaceholder: string;
+    loginPlaceholder: string;
+    passwordPlaceholder: string;
+    changeButton: string;
+  };
+  deleteAccount: string;
   cancel: string;
   boardsPage: {
     Hello: string;

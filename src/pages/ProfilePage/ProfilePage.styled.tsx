@@ -3,17 +3,11 @@ import styled from 'styled-components';
 import { size } from '../../constants/screenSizes';
 
 export const Wrapper = styled.div`
-  position: relative;
   height: 100%;
   width: 100%;
-  padding: 0 48px;
-  img {
-    position: absolute;
-    top: 100px;
-    right: 48px;
-    width: 42rem;
-    height: 32rem;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media (max-width: ${size.laptopL}) {
     display: flex;
     flex-direction: column;

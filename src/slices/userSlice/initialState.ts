@@ -1,9 +1,8 @@
 import { IUser } from '../../models/IUser';
-
+import { getCookie } from '../../utils/cookie/getCookie';
 export const initialState: IUser = {
-  id: '6370bfa87a0a06b9b7c6db10',
-  isAuthorized: true,
-  name: 'Stepfanie',
-  login: '',
-  password: '',
+  id: localStorage.getItem('TASKBAN_USER_ID') || '',
+  isAuthorized: getCookie('TASKBAN_USER_TOKEN') ? true : false,
+  name: localStorage.getItem('TASKBAN_USER_NAME') || '',
+  login: localStorage.getItem('TASKBAN_USER_LOGIN') || '',
 };
