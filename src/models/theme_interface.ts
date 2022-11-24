@@ -1,4 +1,6 @@
 export interface ITheme_Interface {
+  CURRENT_THEME: string;
+
   MAIN_BACKGROUND: string;
   LIGHT_BACKGROUND: string;
   DESK_BACKGROUND: string;

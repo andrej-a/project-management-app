@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
@@ -20,6 +20,8 @@ import { Header } from './components/Header/Header';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { onDragEnd } from './utils/onDragEnd';
+import { localStorageEnum } from './constants/localStorage';
+import { updateTheme } from './utils/updateTheme';
 
 function App() {
   const { isAuthorized, theme, columns, tasks } = useAppSelector((state) => {
@@ -31,6 +33,17 @@ function App() {
     };
   });
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    switch (localStorage.getItem(localStorageEnum.THEME)) {
+      case localStorageEnum.DARK:
+        updateTheme(dispatch, localStorageEnum.DARK);
+        break;
+      default:
+        updateTheme(dispatch, localStorageEnum.DEFAULT);
+        break;
+    }
+  }, []);
 
   return (
     <>
