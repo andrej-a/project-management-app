@@ -16,6 +16,7 @@ import { IBoard } from '../../../models/IBoard';
 /**DISPATCH */
 import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
 import { setCurrentBoard } from '../../../slices/boardSlice/boardSlice';
+import { fetchBoard } from '../../../slices/boardSlice/actions';
 
 const BoardSmallCard = (board: IBoard) => {
   const { title, owner, _id } = board;
@@ -27,7 +28,13 @@ const BoardSmallCard = (board: IBoard) => {
   const dispatch = useAppDispatch();
 
   return (
-    <BoardSmallCardStyled as={Link} to={`/board/${_id}`}>
+    <BoardSmallCardStyled
+      as={Link}
+      to={`/board/${_id}`}
+      onClick={() => {
+        dispatch(setCurrentBoard(board));
+      }}
+    >
       <BoardSmallTitle>{title}</BoardSmallTitle>
       <BoardSmallDescription>{owner}</BoardSmallDescription>
       <SvgButton

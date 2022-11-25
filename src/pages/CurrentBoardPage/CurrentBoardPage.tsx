@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+/* eslint-disable no-console */
+import { useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClockLoader } from 'react-spinners';
 /**STYLES */
@@ -11,9 +12,12 @@ import KanbanArea from './KanbanArea/KanbanArea';
 
 import { fetchAllColumns } from '../../slices/columnSlice/actions';
 import { fetchBoard } from '../../slices/boardSlice/actions';
+import { setCurrentBoard } from '../../slices/boardSlice/boardSlice';
 
 const CurrentBoardPage = () => {
   const { boardId } = useParams();
+  console.log(boardId, 'BOARD ID');
+
   const dispatch = useAppDispatch();
   const { board, spinnerColor } = useAppSelector((state) => {
     return {
@@ -24,13 +28,16 @@ const CurrentBoardPage = () => {
     };
   });
 
-  useEffect(() => {
-    dispatch(fetchBoard(boardId!));
-    if (board) {
-      // eslint-disable-next-line no-console
-      console.log(board);
-      dispatch(fetchAllColumns(boardId!));
+  const cbFetchBoards = useCallback(() => {
+    if (!board) {
+      dispatch(fetchBoard(boardId!));
+    } else {
+      dispatch(fetchAllColumns(board._id));
     }
+  }, [board]);
+
+  useEffect(() => {
+    cbFetchBoards();
   }, []);
 
   return (

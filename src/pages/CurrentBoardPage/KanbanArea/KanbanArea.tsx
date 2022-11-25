@@ -8,22 +8,32 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
 /**STYLES */
 import { KanbanWrapper } from './KanbanArea.styled';
+import { useCallback, useEffect } from 'react';
+import { fetchAllColumns } from '../../../slices/columnSlice/actions';
 
 const KanbanArea = () => {
-  const { board, columns, dictionary } = useAppSelector((state) => {
+  const { currentBoard, columns, dictionary } = useAppSelector((state) => {
     return {
-      board: state.board.boards[0],
+      currentBoard: state.board.currentBoard,
       columns: [...state.column.columns].sort((a, b) => a.order - b.order),
       dictionary: state.language.lang.currentBoardPage,
     };
   });
+
+  const getColumnsForCurrentPge = useCallback(() => {
+    dispatch(fetchAllColumns(currentBoard!._id));
+  }, [currentBoard]);
+
+  useEffect(() => {
+    getColumnsForCurrentPge();
+  }, []);
 
   const dispatch = useAppDispatch();
   const columnsElements = columns.map((column, index) => (
     <Column {...column} key={column._id} dragIndex={index} />
   ));
   return (
-    <Droppable droppableId={board._id} type="column" direction="horizontal">
+    <Droppable droppableId={currentBoard!._id} type="column" direction="horizontal">
       {(provided) => (
         <KanbanWrapper
           className="KanbanWrapper"
