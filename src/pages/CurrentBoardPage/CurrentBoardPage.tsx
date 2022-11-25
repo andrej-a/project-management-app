@@ -38,7 +38,7 @@ const CurrentBoardPage = () => {
 
   useEffect(() => {
     cbFetchBoards();
-  }, []);
+  }, [board]);
 
   return (
     <Wrapper className="Wrapper">

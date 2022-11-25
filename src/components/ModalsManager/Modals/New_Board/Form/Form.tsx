@@ -21,17 +21,20 @@ import { fetchNewBoard } from '../../../../../slices/boardSlice/actions';
 
 export const CreateBoardForm = () => {
   const dispatch = useAppDispatch();
-  const { hint, description, createBoard, cancel, currentBoard } = useAppSelector((state) => {
-    return {
-      hint: state.language.lang.createBoard.hint,
-      description: state.language.lang.createBoard.description,
-      createBoard: state.board.currentBoard
-        ? state.language.lang.updateBoard.createButton
-        : state.language.lang.createBoard.createButton,
-      cancel: state.language.lang.cancel,
-      currentBoard: state.board.currentBoard,
-    };
-  });
+  const { hint, description, createBoard, cancel, currentBoard, modalsState } = useAppSelector(
+    (state) => {
+      return {
+        modalsState: state.modals_state.modalsState,
+        hint: state.language.lang.createBoard.hint,
+        description: state.language.lang.createBoard.description,
+        createBoard: state.board.currentBoard
+          ? state.language.lang.updateBoard.createButton
+          : state.language.lang.createBoard.createButton,
+        cancel: state.language.lang.cancel,
+        currentBoard: state.board.currentBoard,
+      };
+    }
+  );
   const schema = yup
     .object({
       title: yup.string().required().min(3),
@@ -46,7 +49,7 @@ export const CreateBoardForm = () => {
     formState: { errors, isSubmitSuccessful },
   } = useForm<ICreateBoardData>({
     resolver: yupResolver(schema),
-    defaultValues: { title: currentBoard?.title ?? '' },
+    defaultValues: { title: '' },
     // descriptionInput: ''
   });
 
@@ -58,9 +61,8 @@ export const CreateBoardForm = () => {
   }, [isSubmitSuccessful, reset]);
 
   const formSubmit: SubmitHandler<ICreateBoardData> = (data) => {
-    if (currentBoard) {
+    if (currentBoard && modalsState === 'update_board') {
       dispatch(updateBoardTitle({ title: data.title, id: currentBoard._id }));
-      dispatch(setCurrentBoard(undefined));
     } else {
       // eslint-disable-next-line no-console
       console.log(data);
@@ -89,7 +91,6 @@ export const CreateBoardForm = () => {
           <ButtonsWrapper>
             <CreateCardCancelButton
               onClick={() => {
-                if (currentBoard) dispatch(setCurrentBoard(undefined));
                 dispatch(setStatus('hidden'));
               }}
             >
