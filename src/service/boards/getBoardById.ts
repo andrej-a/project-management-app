@@ -1,7 +1,7 @@
 import { IBoard } from '../../models/IBoard';
 import { getCookie } from '../../utils/cookie/getCookie';
 import { Errors, path, requests } from '../../models/requests';
-import { setCurrentBoard, setLoading } from '../../slices/boardSlice/boardSlice';
+import { setCurrentBoard } from '../../slices/boardSlice/boardSlice';
 import { store } from '../../store/store';
 
 const { TYPE, GET } = requests;

@@ -7,6 +7,7 @@ import { editUser } from '../../service/editUser';
 /* MODELS */
 import { IRegistrationData } from '../../models/IInputData';
 import { ILogInData } from '../../models/IInputData';
+import { getAllUsers } from '../../service/getAllUsers';
 
 export const registrationUser = createAsyncThunk(
   'user/registrationUser',
@@ -31,6 +32,10 @@ export const loginUserThunk = createAsyncThunk('user/login', (data: ILogInData) 
   return loginUser(data);
 });
 
+export const getAllUsersThunk = createAsyncThunk('user/allUsers', () => {
+  return getAllUsers();
+});
+
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -43,9 +48,12 @@ const userSlice = createSlice({
       state.login = action.payload.login;
       state.name = action.payload.name;
     },
+    setUsers: (state, action) => {
+      state.users = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = userSlice;
-export const { authorizationSwitch, updateCurrentState } = actions;
+export const { authorizationSwitch, updateCurrentState, setUsers } = actions;
 export default reducer;

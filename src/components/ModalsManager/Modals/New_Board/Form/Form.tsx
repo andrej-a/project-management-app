@@ -17,7 +17,7 @@ import {
 import { ICreateBoardData } from '../../../../../models/IInputData';
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
 import { setCurrentBoard, updateBoardTitle } from '../../../../../slices/boardSlice/boardSlice';
-import { createNewBoard } from '../../../../../service/boards/createBoard';
+import { fetchNewBoard } from '../../../../../slices/boardSlice/actions';
 
 export const CreateBoardForm = () => {
   const dispatch = useAppDispatch();
@@ -35,7 +35,7 @@ export const CreateBoardForm = () => {
   const schema = yup
     .object({
       title: yup.string().required().min(3),
-      descriptionInput: yup.string().required().min(3),
+      // descriptionInput: yup.string().required().min(3),
     })
     .required();
 
@@ -46,7 +46,8 @@ export const CreateBoardForm = () => {
     formState: { errors, isSubmitSuccessful },
   } = useForm<ICreateBoardData>({
     resolver: yupResolver(schema),
-    defaultValues: { title: currentBoard?.title ?? '', descriptionInput: '' },
+    defaultValues: { title: currentBoard?.title ?? '' },
+    // descriptionInput: ''
   });
 
   useEffect(() => {
@@ -63,7 +64,7 @@ export const CreateBoardForm = () => {
     } else {
       // eslint-disable-next-line no-console
       console.log(data);
-      // dispatch(createNewBoard(data));
+      dispatch(fetchNewBoard(data));
     }
   };
 
@@ -75,7 +76,7 @@ export const CreateBoardForm = () => {
             <TitleInput {...register('title')} placeholder={hint} name="title" id="title" />
             <InputError>{errors.title?.message}</InputError>
           </InputWrapper>
-          <InputWrapper>
+          {/* <InputWrapper>
             <DescriptionInput
               {...register('descriptionInput')}
               placeholder={description}
@@ -84,7 +85,7 @@ export const CreateBoardForm = () => {
               id="descriptionInput"
             />
             <InputError>{errors.descriptionInput?.message}</InputError>
-          </InputWrapper>
+          </InputWrapper> */}
           <ButtonsWrapper>
             <CreateCardCancelButton
               onClick={() => {

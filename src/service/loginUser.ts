@@ -31,6 +31,5 @@ export const loginUser = async (data: ILogInData) => {
     setValueToCookie(responce.token);
     updateStateAndLocalData(data);
   }
-
   dispatch(setLoadingState('loaded'));
 };

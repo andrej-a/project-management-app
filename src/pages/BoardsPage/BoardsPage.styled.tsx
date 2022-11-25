@@ -18,7 +18,6 @@ export const BoardsPanelWrapper = styled.div`
   display: flex;
   min-height: 100%;
   gap: 31px 22px;
-
   @media screen and (max-width: ${size.laptop}) {
     flex-direction: column-reverse;
     justify-content: center;

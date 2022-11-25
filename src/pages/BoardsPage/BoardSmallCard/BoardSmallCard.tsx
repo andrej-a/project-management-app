@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 /**COMPONENTS */
 import SvgButton from '../../../components/SvgButton/SvgButton';
 /**STYLES */
@@ -15,7 +16,6 @@ import { IBoard } from '../../../models/IBoard';
 /**DISPATCH */
 import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
 import { setCurrentBoard } from '../../../slices/boardSlice/boardSlice';
-import { Link } from 'react-router-dom';
 
 const BoardSmallCard = (board: IBoard) => {
   const { title, owner, _id } = board;

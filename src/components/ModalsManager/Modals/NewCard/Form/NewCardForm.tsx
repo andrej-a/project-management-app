@@ -5,7 +5,7 @@ import * as yup from 'yup';
 /**HOOKS */
 import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
 /* MODELS */
-import { ICreateCardData } from '../../../../../models/IInputData';
+import { ICreateCardData, IRegistredUser } from '../../../../../models/IInputData';
 /**DISPATCH */
 import { setCurrentTask, updateTaskInfo } from '../../../../../slices/taskSlice/taskSlice';
 import { setStatus } from '../../../../../slices/modalsSlice/modalsSlice';
@@ -17,6 +17,7 @@ import {
   LowPriorityLabel,
   MediumPriorityLabel,
   PriorityTitle,
+  SelectAssign,
 } from './NewCardForm.styled';
 import { ButtonsWrapper } from '../../New_Board/Form/Form.styled';
 import {
@@ -25,24 +26,37 @@ import {
   TitleInput,
 } from '../../New_Board/Form/Form.styled';
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
+import { SearchSelect } from '../../../../Search/Search.styled';
 
 export const NewCardForm = () => {
   const dispatch = useAppDispatch();
-  const { hint, description, priority, addTaskButon, titlePriority, cancel, task, currentTask } =
-    useAppSelector((state) => {
-      return {
-        hint: state.language.lang.createCard.hint,
-        description: state.language.lang.createCard.description,
-        priority: state.language.lang.createCard.priority,
-        addTaskButon: state.task.currentTask
-          ? state.language.lang.updateCard.addTaskButon
-          : state.language.lang.createCard.addTaskButon,
-        titlePriority: state.language.lang.createCard.titlePriority,
-        cancel: state.language.lang.cancel,
-        task: state.task.currentTask,
-        currentTask: state.task.currentTask,
-      };
-    });
+  const {
+    hint,
+    description,
+    priority,
+    addTaskButon,
+    titlePriority,
+    cancel,
+    task,
+    currentTask,
+    users,
+    assign,
+  } = useAppSelector((state) => {
+    return {
+      hint: state.language.lang.createCard.hint,
+      description: state.language.lang.createCard.description,
+      priority: state.language.lang.createCard.priority,
+      assign: state.language.lang.createCard.assign,
+      addTaskButon: state.task.currentTask
+        ? state.language.lang.updateCard.addTaskButon
+        : state.language.lang.createCard.addTaskButon,
+      titlePriority: state.language.lang.createCard.titlePriority,
+      cancel: state.language.lang.cancel,
+      task: state.task.currentTask,
+      currentTask: state.task.currentTask,
+      users: state.user.users,
+    };
+  });
   const schema = yup
     .object({
       title: yup.string().required().min(3),
@@ -68,6 +82,8 @@ export const NewCardForm = () => {
       dispatch(setStatus('hidden'));
       dispatch(setCurrentTask(undefined));
     }
+    // eslint-disable-next-line no-console
+    console.log(users);
   }, [isSubmitSuccessful, reset]);
 
   const formSubmit: SubmitHandler<ICreateCardData> = (data) => {
@@ -77,6 +93,7 @@ export const NewCardForm = () => {
           _id: currentTask?._id ?? '',
           title: data.title,
           description: data.description,
+          users: data.assign,
         })
       );
       // eslint-disable-next-line no-console
@@ -101,8 +118,15 @@ export const NewCardForm = () => {
               id="description"
             />
           </InputWrapper>
+          <PriorityTitle>{assign}</PriorityTitle>
+          <SelectAssign {...register('assign')}>
+            <option key={-1} disabled></option>
+            {users!.map((option: IRegistredUser) => (
+              <option key={option._id}>{option.name}</option>
+            ))}
+          </SelectAssign>
 
-          <PriorityTitle>{titlePriority}</PriorityTitle>
+          {/* <PriorityTitle>{titlePriority}</PriorityTitle>
           <LabelWrapper>
             <InputWrapper>
               <input
@@ -140,7 +164,7 @@ export const NewCardForm = () => {
                 {priority.low.toUpperCase()}
               </LowPriorityLabel>
             </InputWrapper>
-          </LabelWrapper>
+          </LabelWrapper> */}
           <InputError>{errors.priority?.message}</InputError>
           <ButtonsWrapper>
             <CreateCardCancelButton

@@ -1,31 +1,31 @@
 import { getCookie } from '../../utils/cookie/getCookie';
 import { Errors, path, requests } from '../../models/requests';
-import { ICreateBoardData } from '../../models/IInputData';
+import { ICreateColumn } from '../../models/IInputData';
 import { store } from '../../store/store';
 import { fetchAllBoards } from '../../slices/boardSlice/actions';
+import { fetchAllColumns } from '../../slices/columnSlice/actions';
 
 const { TYPE, POST } = requests;
 const { INVALID_TOKEN } = Errors;
 
-export const createNewBoard = async (board: ICreateBoardData) => {
-  const { id } = store.getState().user;
+export const createNewColumn = async (column: ICreateColumn) => {
+  const { _id } = store.getState().board.currentBoard!;
   const { dispatch } = store;
 
-  const newBoard = {
-    title: board.title,
-    owner: id,
-    users: [],
+  const newColumn = {
+    title: column.title,
+    order: 0,
   };
 
   try {
-    const response = await fetch(`${path.boards}`, {
+    const response = await fetch(`${path.boards}/${_id}/columns`, {
       method: `${POST}`,
       headers: {
         Authorization: `Bearer ${getCookie('TASKBAN_USER_TOKEN')}`,
         Accept: `${TYPE}`,
         'Content-Type': `${TYPE}`,
       },
-      body: JSON.stringify(newBoard),
+      body: JSON.stringify(newColumn),
     });
 
     if (response.status === INVALID_TOKEN) {
@@ -34,7 +34,7 @@ export const createNewBoard = async (board: ICreateBoardData) => {
     if (!response.ok) {
       throw new Error('Something wrong!');
     }
-    dispatch(fetchAllBoards());
+    dispatch(fetchAllColumns(_id));
   } catch (err) {
     throw err;
   }

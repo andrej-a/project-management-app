@@ -1,4 +1,5 @@
 import { Draggable, Droppable } from 'react-beautiful-dnd';
+import { useEffect } from 'react';
 /**STYLES */
 import { ColumnHeader, ColumnStyled, ColumnWrapper } from './Column.styled';
 import deleteIcon from '../../../../assets/img/delete.svg';
@@ -13,8 +14,6 @@ import SvgButton from '../../../../components/SvgButton/SvgButton';
 import ColumnTitle from './ColumtTitle';
 /**DISPATCH */
 import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
-import { useEffect } from 'react';
-import { fetchAllTasks } from '../../../../slices/taskSlice/actions';
 import { getColumnTasks } from '../../../../service/tasks/getColumnTasks';
 
 const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {

@@ -6,4 +6,5 @@ export const initialState: IUser = {
   isAuthorized: getCookie('TASKBAN_USER_TOKEN') ? true : false,
   name: localStorage.getItem('TASKBAN_USER_NAME') || '',
   login: localStorage.getItem('TASKBAN_USER_LOGIN') || '',
+  users: null,
 };

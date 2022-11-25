@@ -11,7 +11,7 @@ export const createUser = async (data: IRegistrationData): Promise<IRegistredUse
   const { dispatch } = store;
   const { TYPE, SUCCESSFULL_REQUEST, POST } = requests;
   dispatch(setLoadingState('loading'));
-  const request = await fetch(`${path.users}`, {
+  const request = await fetch(`${path.signup}`, {
     method: `${POST}`,
     headers: {
       Accept: `${TYPE}`,

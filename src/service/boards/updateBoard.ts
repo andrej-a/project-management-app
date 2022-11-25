@@ -13,6 +13,7 @@ export const updateBoard = async (board: ICreateBoardData): Promise<IBoard> => {
       headers: {
         Authorization: `Bearer ${getCookie('TASKBAN_USER_TOKEN')}`,
         Accept: TYPE as string,
+        'Content-Type': `${TYPE}`,
       },
       body: JSON.stringify(board),
     });
