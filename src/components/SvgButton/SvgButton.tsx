@@ -31,7 +31,14 @@ const SvgButton = ({
     <BoardCardBtnStyled
       color={color}
       style={stylish}
-      onClick={handleClick}
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        // eslint-disable-next-line no-console
+        console.log(e.target, 'TARGET');
+
+        if (handleClick) handleClick();
+      }}
       disabled={disabled}
       type={type ?? 'button'}
     >

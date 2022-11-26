@@ -28,8 +28,8 @@ function App() {
     return {
       isAuthorized: state.user.isAuthorized,
       theme: state.application_theme.theme,
-      columns: state.board.columns,
-      tasks: state.board.tasks,
+      columns: state.column.columns,
+      tasks: state.task.tasks,
     };
   });
   const dispatch = useDispatch();
@@ -87,7 +87,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="boards" element={<BoardsPage />} />
-            <Route path="board" element={<CurrentBoardPage />} />
+            <Route path="board/:boardId" element={<CurrentBoardPage />} />
             <Route path="*" element={<NoResultPage />} />
           </Routes>
           <Footer />

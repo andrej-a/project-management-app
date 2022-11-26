@@ -2,7 +2,9 @@ import { Dispatch } from '@reduxjs/toolkit';
 import { DropResult } from 'react-beautiful-dnd';
 import { IColumn } from '../models/IColumn';
 import { ITask } from '../models/ITask';
-import { setColumns, setTasks } from '../slices/boardSlice/boardSlice';
+import { setColumns } from '../slices/columnSlice/columnSlice';
+import { setTasks } from '../slices/taskSlice/taskSlice';
+
 import { reorderElements, swapElements } from './utils';
 
 export const onDragEnd =

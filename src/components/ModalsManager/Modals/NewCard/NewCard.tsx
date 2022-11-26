@@ -7,7 +7,7 @@ import { NewCardTitleWrapper, NewCardTitle } from './NewCard.styled';
 export const NewCard = () => {
   const { title } = useAppSelector((state) => {
     return {
-      title: state.board.currentTask
+      title: state.task.currentTask
         ? state.language.lang.updateCard.title
         : state.language.lang.createCard.title,
     };

@@ -35,6 +35,7 @@ export interface ILanguage {
       low: string;
     };
     addTaskButon: string;
+    assign: string;
   };
   updateCard: {
     title: string;
@@ -57,6 +58,7 @@ export interface ILanguage {
     changeButton: string;
   };
   deleteAccount: string;
+  successDeleteValueMessage: string;
   cancel: string;
   boardsPage: {
     Hello: string;

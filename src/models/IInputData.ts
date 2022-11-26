@@ -21,13 +21,14 @@ export interface ILogInData {
 
 export interface ICreateBoardData {
   title: string;
-  descriptionInput: string;
+  // descriptionInput: string;
 }
 
 export interface ICreateCardData {
   title: string;
   description: string;
   priority: string;
+  assign: string;
 }
 
 export interface ICreateColumn {

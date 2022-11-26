@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 /**MODELS */
 import { IColumnTitle } from '../../../../models/IInputData';
 /**DISPATCH */
-import { updateColumnTitle } from '../../../../slices/boardSlice/boardSlice';
+import { updateColumnTitle } from '../../../../slices/columnSlice/columnSlice';
 
 type Inputs = {
   title: string;
@@ -27,7 +27,7 @@ const ColumnTitle = ({ id }: { title: string; id: string }) => {
     return {
       hint: state.language.lang.createCard.hint,
       buttonColor: state.application_theme.theme.TASK_TEXT,
-      column: state.board.columns.find((column) => column._id === id),
+      column: state.column.columns.find((column) => column._id === id),
     };
   });
   const schema = yup

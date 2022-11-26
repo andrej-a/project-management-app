@@ -1,4 +1,5 @@
 import { Draggable, Droppable } from 'react-beautiful-dnd';
+import { useEffect } from 'react';
 /**STYLES */
 import { ColumnHeader, ColumnStyled, ColumnWrapper } from './Column.styled';
 import deleteIcon from '../../../../assets/img/delete.svg';
@@ -7,24 +8,32 @@ import plusIcon from '../../../../assets/img/plus.svg';
 import { useAppSelector, useAppDispatch } from '../../../../hooks/hooks';
 /**MODELS */
 import { IColumn } from '../../../../models/IColumn';
+import { path } from '../../../../models/requests';
 /**COMPONENTS */
 import TaskCard from '../TaskCard/TaskCard';
 import SvgButton from '../../../../components/SvgButton/SvgButton';
 import ColumnTitle from './ColumtTitle';
 /**DISPATCH */
 import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
-
+import { getColumnTasks } from '../../../../service/tasks/getColumnTasks';
+import { setDeletingValue, setRequestUrl } from '../../../../slices/modalsSlice/modalsSlice';
 const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
-  const { tasks, buttonColor } = useAppSelector((state) => {
+  const { tasks, buttonColor, currentBoardId } = useAppSelector((state) => {
     return {
       tasks:
-        [...state.board.tasks]
+        [...state.task.tasks]
           .sort((a, b) => a.order - b.order)
           .filter((task) => task.columnId === _id) ?? [],
       buttonColor: state.application_theme.theme.TASK_TEXT,
+      currentBoardId: state.board.currentBoard?._id,
     };
   });
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    getColumnTasks(currentBoardId!, _id);
+  }, []);
+
   const taskElements = tasks.map((task, index) => (
     <TaskCard task={task} key={task._id} dragIndex={index} />
   ));
@@ -42,7 +51,11 @@ const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
               color={buttonColor}
               icon={deleteIcon}
               stylish={{ position: 'absolute', right: '30px' }}
-              handleClick={() => dispatch(setStatus('delete_item'))}
+              handleClick={() => {
+                dispatch(setStatus('delete_item'));
+                dispatch(setDeletingValue(title));
+                dispatch(setRequestUrl(`${path.boards}/${currentBoardId}/columns/${_id}`));
+              }}
             />
             <SvgButton
               color={buttonColor}

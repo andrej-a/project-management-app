@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../hooks/hooks';
-import { TextInfo, Wrapper } from './MainPage.styled';
+import { Container, TextInfo, Wrapper } from './MainPage.styled';
 import notebook from '../../assets/img/noteBook.png';
 
 const MainPage = () => {
@@ -10,11 +10,13 @@ const MainPage = () => {
   });
   return (
     <Wrapper>
-      <TextInfo>
-        <h1>{dictionary.title}</h1>
-        <p>{dictionary.description}</p>
-      </TextInfo>
-      <img src={notebook} alt="notebook img" />
+      <Container>
+        <TextInfo>
+          <h1>{dictionary.title}</h1>
+          <p>{dictionary.description}</p>
+        </TextInfo>
+        <img src={notebook} alt="notebook img" />
+      </Container>
     </Wrapper>
   );
 };

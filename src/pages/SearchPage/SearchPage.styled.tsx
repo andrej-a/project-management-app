@@ -16,3 +16,7 @@ export const Wrapper = styled.div`
     font-weight: 400;
   }
 `;
+
+export const AreaWrapper = styled.div`
+  margin: auto 0;
+`;
