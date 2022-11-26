@@ -32,6 +32,8 @@ const SvgButton = ({
       color={color}
       style={stylish}
       onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
         // eslint-disable-next-line no-console
         console.log(e.target, 'TARGET');
 

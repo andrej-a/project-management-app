@@ -13,9 +13,10 @@ import { IBoard } from '../../../models/IBoard';
 import { useAppSelector } from '../../../hooks/hooks';
 
 const GreetingsPanel = ({ userName, boards }: { userName: string; boards: IBoard[] }) => {
-  const { dictionary } = useAppSelector((state) => {
+  const { dictionary, user } = useAppSelector((state) => {
     return {
       dictionary: state.language.lang.boardsPage,
+      user: state.user.name,
     };
   });
 
@@ -39,7 +40,7 @@ const GreetingsPanel = ({ userName, boards }: { userName: string; boards: IBoard
     <GreetingsPanelStyled>
       <GreetingTextBlock>
         <GreetingMainText>
-          {dictionary.Hello} <span>{userName}!</span>
+          {dictionary.Hello} <span>{user}!</span>
         </GreetingMainText>
         <GreetingSubText>
           {dictionary['You have']} {getBoardsWord(boards.length)} {dictionary['To do']}.

@@ -58,6 +58,7 @@ export interface ILanguage {
     changeButton: string;
   };
   deleteAccount: string;
+  successDeleteValueMessage: string;
   cancel: string;
   boardsPage: {
     Hello: string;

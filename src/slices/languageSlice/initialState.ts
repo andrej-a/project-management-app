@@ -62,6 +62,7 @@ export const EnglishState: ILanguage = {
   },
   deleteAccount: 'Delete account',
   cancel: 'Cancel',
+  successDeleteValueMessage: `Successfully deleted:`,
   boardsPage: {
     Hello: 'Hello',
     'You have': 'You have',
@@ -164,6 +165,7 @@ export const RussianState: ILanguage = {
     changeButton: 'Изменить',
   },
   deleteAccount: 'Удалить аккаунт',
+  successDeleteValueMessage: `Успешно удалено:`,
   cancel: 'Отменить',
   boardsPage: {
     Hello: 'Привет',

@@ -8,6 +8,7 @@ import plusIcon from '../../../../assets/img/plus.svg';
 import { useAppSelector, useAppDispatch } from '../../../../hooks/hooks';
 /**MODELS */
 import { IColumn } from '../../../../models/IColumn';
+import { path } from '../../../../models/requests';
 /**COMPONENTS */
 import TaskCard from '../TaskCard/TaskCard';
 import SvgButton from '../../../../components/SvgButton/SvgButton';
@@ -15,7 +16,7 @@ import ColumnTitle from './ColumtTitle';
 /**DISPATCH */
 import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
 import { getColumnTasks } from '../../../../service/tasks/getColumnTasks';
-
+import { setDeletingValue, setRequestUrl } from '../../../../slices/modalsSlice/modalsSlice';
 const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
   const { tasks, buttonColor, currentBoardId } = useAppSelector((state) => {
     return {
@@ -50,7 +51,11 @@ const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
               color={buttonColor}
               icon={deleteIcon}
               stylish={{ position: 'absolute', right: '30px' }}
-              handleClick={() => dispatch(setStatus('delete_item'))}
+              handleClick={() => {
+                dispatch(setStatus('delete_item'));
+                dispatch(setDeletingValue(title));
+                dispatch(setRequestUrl(`${path.boards}/${currentBoardId}/columns/${_id}`));
+              }}
             />
             <SvgButton
               color={buttonColor}

@@ -14,10 +14,10 @@ import { WarningMessage } from '../Registration/Registration.styled';
 import { useAppSelector, useAppDispatch } from '../../../../hooks/hooks';
 /* ACTIONS */
 import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
+import { fetchAllBoards } from '../../../../slices/boardSlice/actions';
 /* SERVICES */
 import { deleteValue } from '../../../../service/deleteValue';
 /* MODELS */
-import { path, requests } from '../../../../models/requests';
 import { deleteCookie } from '../../../../utils/cookie/deleteCookie';
 import { getCookie } from '../../../../utils/cookie/getCookie';
 
@@ -28,20 +28,20 @@ export const DeleteItem = () => {
     confirmButton,
     cancel,
     deletingValue,
-    userID,
     warningMessage,
     loadingState,
     loaderColor,
+    requestURL,
   } = useAppSelector((state) => {
     return {
       title: state.language.lang.deleteItemModal.title,
       confirmButton: state.language.lang.deleteItemModal.confirmButton,
       cancel: state.language.lang.cancel,
       deletingValue: state.modals_state.deletingValue,
-      userID: state.user.id,
       warningMessage: state.modals_state.warningMessage,
       loadingState: state.modals_state.loadingState,
       loaderColor: state.application_theme.theme.MAIN_BACKGROUND,
+      requestURL: state.modals_state.requestURL,
     };
   });
   return (
@@ -63,8 +63,9 @@ export const DeleteItem = () => {
                 </CancelButton>
                 <ConfirmButton
                   onClick={() => {
-                    deleteValue(`${path.users}/${userID}`, deletingValue);
-                    deleteCookie(getCookie('TASKBAN_USER_TOKEN') as string);
+                    deleteValue(requestURL, deletingValue);
+                    requestURL.match('users') &&
+                      deleteCookie(getCookie('TASKBAN_USER_TOKEN') as string);
                   }}
                 >
                   {confirmButton}

@@ -13,8 +13,13 @@ import editIcon from '../../../assets/img/edit.svg';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 /**MODELS */
 import { IBoard } from '../../../models/IBoard';
+import { path } from '../../../models/requests';
 /**DISPATCH */
-import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
+import {
+  setStatus,
+  setDeletingValue,
+  setRequestUrl,
+} from '../../../slices/modalsSlice/modalsSlice';
 import { setCurrentBoard } from '../../../slices/boardSlice/boardSlice';
 
 const BoardSmallCard = (board: IBoard) => {
@@ -40,7 +45,11 @@ const BoardSmallCard = (board: IBoard) => {
         color={buttonColor}
         icon={deleteIcon}
         stylish={{ position: 'absolute', right: '12px', top: '12px' }}
-        handleClick={() => dispatch(setStatus('delete_item'))}
+        handleClick={() => {
+          dispatch(setDeletingValue(`${board.title}`));
+          dispatch(setRequestUrl(`${path.boards}/${board._id}`));
+          dispatch(setStatus('delete_item'));
+        }}
       />
       <SvgButton
         color={buttonColor}
