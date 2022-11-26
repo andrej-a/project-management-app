@@ -1,5 +1,5 @@
 /* MODELS */
-import { requests } from '../models/requests';
+import { path, requests } from '../models/requests';
 /* UTILS */
 import { getCookie } from '../utils/cookie/getCookie';
 import { showWarningMessage } from '../utils/showWarningMessage';
@@ -7,10 +7,13 @@ import { showWarningMessage } from '../utils/showWarningMessage';
 import { store } from '../store/store';
 import { setStatus, setLoadingState } from '../slices/modalsSlice/modalsSlice';
 import { authorizationSwitch } from '../slices/userSlice/userSlice';
+import { fetchAllBoards } from '../slices/boardSlice/actions';
+import { fetchAllColumns } from '../slices/columnSlice/actions';
 
 export const deleteValue = async (url: string, removingValue: string) => {
-  const { DELETE, TYPE, SUCCESSFULL_REQUEST, WARNING_MESSAGE_DURATION } = requests;
+  const { DELETE, TYPE, SUCCESSFULL_REQUEST, SHORT_WARNING_MESSAGE_DURATION } = requests;
   const { dispatch } = store;
+  const currentBoard = store.getState().board.currentBoard?._id;
   dispatch(setLoadingState('loading'));
   const request = await fetch(url, {
     method: `${DELETE}`,
@@ -26,11 +29,16 @@ export const deleteValue = async (url: string, removingValue: string) => {
     showWarningMessage(`Error ${responce.statusCode}: ${responce.message}`);
     dispatch(setLoadingState('loaded'));
   } else {
-    showWarningMessage(`Successfully deleted: ${removingValue}`);
-    dispatch(authorizationSwitch());
+    showWarningMessage(
+      `${store.getState().language.lang.successDeleteValueMessage} ${removingValue}`
+    );
     setTimeout(() => {
       dispatch(setStatus('hidden'));
       dispatch(setLoadingState('loaded'));
-    }, WARNING_MESSAGE_DURATION);
+
+      url.match(path.users) && dispatch(authorizationSwitch());
+      url.match(path.boards) && dispatch(fetchAllBoards());
+      url.match('columns') && dispatch(fetchAllColumns(currentBoard!));
+    }, SHORT_WARNING_MESSAGE_DURATION);
   }
 };

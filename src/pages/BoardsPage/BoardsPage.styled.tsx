@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { size } from '../../constants/screenSizes';
 
 export const Wrapper = styled.div`
-  max-width: 100vw;
+  min-width: 100vw;
   margin: 0;
   padding: 0;
   height: auto;
@@ -18,7 +18,6 @@ export const BoardsPanelWrapper = styled.div`
   display: flex;
   min-height: 100%;
   gap: 31px 22px;
-
   @media screen and (max-width: ${size.laptop}) {
     flex-direction: column-reverse;
     justify-content: center;

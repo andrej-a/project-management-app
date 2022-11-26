@@ -14,6 +14,7 @@ import { InputWrapper } from './Form.styled';
 import { useAppSelector, useAppDispatch } from '../../../../../hooks/hooks';
 /* CONSTANTS */
 import { ICreateColumn } from '../../../../../models/IInputData';
+import { fetchNewColumn } from '../../../../../slices/columnSlice/actions';
 
 export const NewColumnForm = () => {
   const dispatch = useAppDispatch();
@@ -49,6 +50,7 @@ export const NewColumnForm = () => {
   const formSubmit: SubmitHandler<ICreateColumn> = (data) => {
     // eslint-disable-next-line no-console
     console.log(data);
+    dispatch(fetchNewColumn(data));
   };
 
   return (

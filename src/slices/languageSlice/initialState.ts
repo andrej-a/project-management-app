@@ -38,6 +38,7 @@ export const EnglishState: ILanguage = {
       low: 'low',
     },
     addTaskButon: 'Add Task',
+    assign: 'Assign to',
   },
   updateCard: {
     title: 'Edit Card',
@@ -61,6 +62,7 @@ export const EnglishState: ILanguage = {
   },
   deleteAccount: 'Delete account',
   cancel: 'Cancel',
+  successDeleteValueMessage: `Successfully deleted:`,
   boardsPage: {
     Hello: 'Hello',
     'You have': 'You have',
@@ -140,6 +142,7 @@ export const RussianState: ILanguage = {
       low: 'низкий',
     },
     addTaskButon: 'Добавить карточку',
+    assign: 'Назначить к задаче',
   },
   updateCard: {
     title: 'Редактировать карточку',
@@ -162,6 +165,7 @@ export const RussianState: ILanguage = {
     changeButton: 'Изменить',
   },
   deleteAccount: 'Удалить аккаунт',
+  successDeleteValueMessage: `Успешно удалено:`,
   cancel: 'Отменить',
   boardsPage: {
     Hello: 'Привет',

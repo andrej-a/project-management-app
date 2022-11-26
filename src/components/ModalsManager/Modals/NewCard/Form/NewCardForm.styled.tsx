@@ -66,7 +66,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const PriorityTitle = styled.p`
-  margin-bottom: 22px;
+  margin-bottom: 14px;
   color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;
 
@@ -125,4 +125,17 @@ export const LowPriorityLabel = styled(HighPriorityLabel)`
     color: ${({ theme }) => theme.LIGHT_BACKGROUND};
     background: ${({ theme }) => theme.BUTTON_GREEN};
   }
+`;
+
+export const SelectAssign = styled.select`
+  width: 120px;
+  height: 32px;
+  background: ${({ theme }) => theme.LIGHT_BACKGROUND};
+  outline: none;
+  border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+  margin-bottom: 14px;
 `;

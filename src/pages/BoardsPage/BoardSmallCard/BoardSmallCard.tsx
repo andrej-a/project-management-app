@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 /**COMPONENTS */
 import SvgButton from '../../../components/SvgButton/SvgButton';
 /**STYLES */
@@ -12,27 +13,43 @@ import editIcon from '../../../assets/img/edit.svg';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 /**MODELS */
 import { IBoard } from '../../../models/IBoard';
+import { path } from '../../../models/requests';
 /**DISPATCH */
-import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
+import {
+  setStatus,
+  setDeletingValue,
+  setRequestUrl,
+} from '../../../slices/modalsSlice/modalsSlice';
 import { setCurrentBoard } from '../../../slices/boardSlice/boardSlice';
 
 const BoardSmallCard = (board: IBoard) => {
-  const { title, owner } = board;
+  const { title, owner, _id } = board;
   const { buttonColor } = useAppSelector((state) => {
     return {
       buttonColor: state.application_theme.theme.BUTTON_BORDER_COLOR_LIGHT,
     };
   });
   const dispatch = useAppDispatch();
+
   return (
-    <BoardSmallCardStyled>
+    <BoardSmallCardStyled
+      as={Link}
+      to={`/board/${_id}`}
+      onClick={() => {
+        dispatch(setCurrentBoard(board));
+      }}
+    >
       <BoardSmallTitle>{title}</BoardSmallTitle>
       <BoardSmallDescription>{owner}</BoardSmallDescription>
       <SvgButton
         color={buttonColor}
         icon={deleteIcon}
         stylish={{ position: 'absolute', right: '12px', top: '12px' }}
-        handleClick={() => dispatch(setStatus('delete_item'))}
+        handleClick={() => {
+          dispatch(setDeletingValue(`${board.title}`));
+          dispatch(setRequestUrl(`${path.boards}/${board._id}`));
+          dispatch(setStatus('delete_item'));
+        }}
       />
       <SvgButton
         color={buttonColor}

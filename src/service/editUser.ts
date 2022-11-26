@@ -4,7 +4,7 @@ import { setLoadingState } from '../slices/modalsSlice/modalsSlice';
 import { authorizationSwitch } from '../slices/userSlice/userSlice';
 /* MODELS */
 import { IRegistrationData, IRegistredUser } from '../models/IInputData';
-import { requests } from '../models/requests';
+import { path, requests } from '../models/requests';
 /* UTILS */
 import { showWarningMessage } from '../utils/showWarningMessage';
 import { getCookie } from '../utils/cookie/getCookie';
@@ -14,8 +14,8 @@ import { loginUser } from './loginUser';
 export const editUser = async (userID: string, data: IRegistrationData) => {
   const { dispatch } = store;
   dispatch(setLoadingState('loading'));
-  const { TYPE, PUT, MAIN_ROUTE, UPDATE_USER, SUCCESSFULL_REQUEST } = requests;
-  const request = await fetch(`${MAIN_ROUTE}${UPDATE_USER}/${userID}`, {
+  const { TYPE, PUT, SUCCESSFULL_REQUEST } = requests;
+  const request = await fetch(`${path.users}/${userID}`, {
     method: `${PUT}`,
     headers: {
       Accept: `${TYPE}`,

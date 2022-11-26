@@ -8,13 +8,18 @@ import { ClockLoader } from 'react-spinners';
 /* STYLES */
 import { Wrapper, Title, DeleteAccountButton } from './EditProfileForm.styled';
 import { IRegistrationData } from '../../../models/IInputData';
+import { path } from '../../../models/requests';
 import {
   InputError,
   InputWrapper,
 } from '../../../components/ModalsManager/Modals/Registration/Form/form.styled';
 import { WarningMessage } from '../../../components/ModalsManager/Modals/Registration/Registration.styled';
 import { editUserThunk } from '../../../slices/userSlice/userSlice';
-import { setDeletingValue, setStatus } from '../../../slices/modalsSlice/modalsSlice';
+import {
+  setDeletingValue,
+  setStatus,
+  setRequestUrl,
+} from '../../../slices/modalsSlice/modalsSlice';
 
 export const EditProfileForm = () => {
   const dispatch = useAppDispatch();
@@ -122,7 +127,8 @@ export const EditProfileForm = () => {
         </form>
         <DeleteAccountButton
           onClick={() => {
-            dispatch(setDeletingValue(`account ${userName}`));
+            dispatch(setDeletingValue(userName));
+            dispatch(setRequestUrl(`${path.users}/${userID}`));
             dispatch(setStatus('delete_item'));
           }}
         >

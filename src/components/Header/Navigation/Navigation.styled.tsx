@@ -29,11 +29,12 @@ export const OptionsContainer = styled.div`
   display: none;
   position: absolute;
   background-color: ${({ theme }) => theme.MAIN_BACKGROUND};
-  min-width: 160px;
+  min-width: 100px;
   z-index: 1;
   transition: all 0.5s ease-in-out;
   border-radius: 0px 0px 14px 14px;
   font-weight: 500;
+
   li {
     width: auto;
     transition: all 0.5s ease-in-out;
