@@ -1,4 +1,6 @@
+import { useCallback, useEffect } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
+import { ClockLoader } from 'react-spinners';
 /**COMPONENTS */
 import NewElementButton from '../../../components/NewElementButton/NewElementButton';
 import Column from './Column/Column';
@@ -6,17 +8,19 @@ import Column from './Column/Column';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 /**DISPATCH */
 import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
+import { fetchAllColumns } from '../../../slices/columnSlice/actions';
+import { setLoading } from '../../../slices/columnSlice/columnSlice';
 /**STYLES */
 import { KanbanWrapper } from './KanbanArea.styled';
-import { useCallback, useEffect } from 'react';
-import { fetchAllColumns } from '../../../slices/columnSlice/actions';
 
 const KanbanArea = () => {
-  const { currentBoard, columns, dictionary } = useAppSelector((state) => {
+  const { currentBoard, columns, dictionary, isLoading, spinnerColor } = useAppSelector((state) => {
     return {
+      isLoading: state.column.isLoading,
       currentBoard: state.board.currentBoard,
-      columns: [...state.column.columns].sort((a, b) => a.order - b.order),
+      columns: [...state.column.columns]!.sort((a, b) => a.order - b.order),
       dictionary: state.language.lang.currentBoardPage,
+      spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
     };
   });
 
@@ -25,6 +29,7 @@ const KanbanArea = () => {
   }, [currentBoard]);
 
   useEffect(() => {
+    dispatch(setLoading());
     getColumnsForCurrentPge();
   }, []);
 
@@ -40,12 +45,18 @@ const KanbanArea = () => {
           ref={provided.innerRef}
           {...provided.droppableProps}
         >
-          {columnsElements}
-          {provided.placeholder}
-          <NewElementButton
-            text={dictionary['New column']}
-            handleClick={() => dispatch(setStatus('add_column'))}
-          />
+          {isLoading ? (
+            <ClockLoader color={spinnerColor} />
+          ) : (
+            <>
+              {columnsElements}
+              {provided.placeholder}
+              <NewElementButton
+                text={dictionary['New column']}
+                handleClick={() => dispatch(setStatus('add_column'))}
+              />
+            </>
+          )}
         </KanbanWrapper>
       )}
     </Droppable>

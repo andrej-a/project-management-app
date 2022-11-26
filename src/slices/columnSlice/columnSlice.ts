@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchAllColumns } from './actions';
 import { initialState } from './initialState';
 
 const columnSlice = createSlice({
@@ -8,14 +7,18 @@ const columnSlice = createSlice({
   reducers: {
     setColumns: (state, action) => {
       state.columns = action.payload;
+      state.isLoading = false;
     },
     updateColumnTitle: (state, action) => {
-      const column = state.columns.find((column) => column._id === action.payload.id);
+      const column = state.columns?.find((column) => column._id === action.payload.id);
       if (column) column.title = action.payload.title;
+    },
+    setLoading: (state) => {
+      state.isLoading = true;
     },
   },
 });
 
 const { actions, reducer } = columnSlice;
-export const { setColumns, updateColumnTitle } = actions;
+export const { setColumns, updateColumnTitle, setLoading } = actions;
 export default reducer;

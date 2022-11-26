@@ -1,4 +1,3 @@
-import { IBoard } from '../../models/IBoard';
 import { store } from '../../store/store';
 import { getCookie } from '../../utils/cookie/getCookie';
 import { Errors, path, requests } from '../../models/requests';

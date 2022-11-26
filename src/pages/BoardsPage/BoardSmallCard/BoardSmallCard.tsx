@@ -16,7 +16,6 @@ import { IBoard } from '../../../models/IBoard';
 /**DISPATCH */
 import { setStatus } from '../../../slices/modalsSlice/modalsSlice';
 import { setCurrentBoard } from '../../../slices/boardSlice/boardSlice';
-import { fetchBoard } from '../../../slices/boardSlice/actions';
 
 const BoardSmallCard = (board: IBoard) => {
   const { title, owner, _id } = board;

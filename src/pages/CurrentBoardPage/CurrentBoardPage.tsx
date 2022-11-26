@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ClockLoader } from 'react-spinners';
@@ -12,11 +11,9 @@ import KanbanArea from './KanbanArea/KanbanArea';
 
 import { fetchAllColumns } from '../../slices/columnSlice/actions';
 import { fetchBoard } from '../../slices/boardSlice/actions';
-import { setCurrentBoard } from '../../slices/boardSlice/boardSlice';
 
 const CurrentBoardPage = () => {
   const { boardId } = useParams();
-  console.log(boardId, 'BOARD ID');
 
   const dispatch = useAppDispatch();
   const { board, spinnerColor } = useAppSelector((state) => {

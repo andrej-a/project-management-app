@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   margin: auto 0;
   position: relative;
-  margin-top: 18vh;
+  margin-top: 10vh;
   img {
     position: absolute;
     top: 80px;
