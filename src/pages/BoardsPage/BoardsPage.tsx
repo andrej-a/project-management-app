@@ -8,8 +8,6 @@ import NewElementButton from '../../components/NewElementButton/NewElementButton
 import { BoardsPanelWrapper, BoardsWrapper, Wrapper } from './BoardsPage.styled';
 /**HOOKS */
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-/**FAKE DATA */
-import { userName } from '../../temporalStates/temporalStates';
 /**DISPATCH */
 import { fetchAllBoards } from '../../slices/boardSlice/actions';
 import { setStatus } from '../../slices/modalsSlice/modalsSlice';
@@ -31,10 +29,11 @@ const BoardsPage = () => {
   }, []);
 
   const boardsList = boards.map((board) => <BoardSmallCard {...board} key={board._id} />);
-  const { dictionary, spinnerColor } = useAppSelector((state) => {
+  const { dictionary, spinnerColor, userName } = useAppSelector((state) => {
     return {
       dictionary: state.language.lang.boardsPage,
       spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
+      userName: state.user.name ?? 'Stranger',
     };
   });
 
