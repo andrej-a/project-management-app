@@ -39,6 +39,7 @@ export const ViewCard = () => {
               stylish={{ position: 'absolute', right: '20px', top: '20px' }}
               handleClick={() => {
                 dispatch(setStatus('hidden'));
+                dispatch(setCurrentTask(undefined));
               }}
             />
             <NewCardTitle>{task?.title.split(priorityKey)[0] ?? ''}</NewCardTitle>
