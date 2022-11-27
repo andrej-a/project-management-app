@@ -4,6 +4,7 @@ import { createNewTask } from '../../service/tasks/createTask';
 import { getBoardTasks } from '../../service/tasks/getBoardTasks';
 import { ITasksSet } from '../../models/ITasksSet';
 import { updateTasksSet } from '../../service/tasks/updateTasksSet';
+import { updateTask } from '../../service/tasks/updateTask';
 
 export const ALL_TASKS_FETCHING = 'ALL_TASKS_FETCHING';
 
@@ -29,3 +30,6 @@ export const fetchTasksSet = createAsyncThunk(
     return updateTasksSet(tasks);
   }
 );
+export const fetchTask = createAsyncThunk('tasks/updateTask', async (task: ICreateCardData) => {
+  return updateTask(task);
+});

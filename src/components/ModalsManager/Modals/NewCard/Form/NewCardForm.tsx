@@ -32,6 +32,7 @@ import {
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
 import { SearchSelect } from '../../../../Search/Search.styled';
 import { createNewTask } from '../../../../../service/tasks/createTask';
+import { fetchTask } from '../../../../../slices/taskSlice/actions';
 
 export const NewCardForm = () => {
   const dispatch = useAppDispatch();
@@ -106,15 +107,10 @@ export const NewCardForm = () => {
           users: data.assign,
         })
       );
-      // eslint-disable-next-line no-console
-      console.log('Update to ', data);
-      // eslint-disable-next-line no-console
+      dispatch(fetchTask(data));
     } else {
-      // eslint-disable-next-line no-console
-      console.log('Update to ', data, newTaskColumnId);
       createNewTask(data);
       dispatch(setNewTaskColumnId(undefined));
-      //createNewTask(data, newTaskColumnId,);
     }
   };
 
