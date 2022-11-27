@@ -1,19 +1,19 @@
 import { getCookie } from '../../utils/cookie/getCookie';
 import { Errors, path, requests } from '../../models/requests';
-import { ITasksSet } from '../../models/ITasksSet';
+import { IColumnsSet } from '../../models/IColumnsSet';
 
 const { TYPE, PATCH } = requests;
 const { INVALID_TOKEN } = Errors;
-export const updateTasksSet = async (tasks: ITasksSet[]) => {
+export const updateColumnsSet = async (columns: IColumnsSet[]) => {
   try {
-    const response = await fetch(`${path.tasks}`, {
+    const response = await fetch(`${path.columns}`, {
       method: PATCH as string,
       headers: {
         Authorization: `Bearer ${getCookie('TASKBAN_USER_TOKEN')}`,
         Accept: `${TYPE}`,
         'Content-Type': `${TYPE}`,
       },
-      body: JSON.stringify(tasks),
+      body: JSON.stringify(columns),
     });
 
     if (response.status === INVALID_TOKEN) {

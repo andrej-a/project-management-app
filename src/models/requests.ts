@@ -19,6 +19,7 @@ export const path = {
   users: `${url}/users`,
   boards: `${url}/boards`,
   tasks: `${url}/tasksSet`,
+  columns: `${url}/columnsSet`,
   file: `${url}/file`,
   points: `${url}/points`,
 };

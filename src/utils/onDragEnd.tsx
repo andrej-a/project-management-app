@@ -2,10 +2,12 @@ import { Dispatch } from '@reduxjs/toolkit';
 import { DropResult } from 'react-beautiful-dnd';
 import { IColumn } from '../models/IColumn';
 import { ITask } from '../models/ITask';
+import { fetchColumnsSet } from '../slices/columnSlice/actions';
 import { setColumns } from '../slices/columnSlice/columnSlice';
 import { fetchTasksSet } from '../slices/taskSlice/actions';
 import { setTasks } from '../slices/taskSlice/taskSlice';
 import { AppDispatch } from '../store/store';
+import { convertColumnsArrToUpdateArr } from './convertColumnsArrToUpdateArr';
 import { convertTasksArrToUpdateArr } from './convertTasksArrToUpdateArr';
 
 import { reorderElements, swapElements } from './utils';
@@ -19,7 +21,9 @@ export const onDragEnd =
     ) {
       switch (type) {
         case 'column':
-          dispatch(setColumns(swapElements(columns, destination.index, source.index)));
+          const newColumns = swapElements(columns, destination.index, source.index);
+          dispatch(fetchColumnsSet(convertColumnsArrToUpdateArr(newColumns)));
+          dispatch(setColumns(newColumns));
           break;
 
         case 'task':
