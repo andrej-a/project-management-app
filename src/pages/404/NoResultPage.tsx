@@ -9,7 +9,7 @@ import { GoBack } from './GoBack/GoBack';
 import { Text } from './Text/Text';
 
 import { useAppSelector } from '../../hooks/hooks';
-import { localStorageEnum } from '../../constants/localStorage';
+import { themeEnum } from '../../constants/localStorage';
 export const NoResultPage = () => {
   const { theme } = useAppSelector((state) => {
     return {
@@ -20,7 +20,7 @@ export const NoResultPage = () => {
     <>
       <Wrapper>
         <Lottie
-          animationData={theme === localStorageEnum.DARK ? dark_notFoundImage : light_notFoundImage}
+          animationData={theme === themeEnum.DARK ? dark_notFoundImage : light_notFoundImage}
           loop={true}
           style={{ height: '50%' }}
         />

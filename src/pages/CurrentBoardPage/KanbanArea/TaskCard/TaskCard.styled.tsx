@@ -32,8 +32,31 @@ export const TaskCardDescription = styled.div`
   font-size: 14px;
   line-height: 17px;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+export const Priority = styled.div`
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  border-radius: 100px;
+  padding: 5px 15px;
+  width: min-content;
+  color: ${({ theme }) => theme.TEXT_COLOR};
+  &.high {
+    background-color: ${({ theme }) => theme.BUTTON_RED};
+    border: 2px solid ${({ theme }) => theme.BUTTON_RED};
+  }
+  &.medium {
+    background-color: ${({ theme }) => theme.BUTTON_YELLOW};
+    border: 2px solid ${({ theme }) => theme.BUTTON_YELLOW};
+  }
+  &.low {
+    background-color: ${({ theme }) => theme.BUTTON_GREEN};
+    border: 2px solid ${({ theme }) => theme.BUTTON_GREEN};
+  }
 `;

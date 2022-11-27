@@ -20,9 +20,10 @@ import { Header } from './components/Header/Header';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { onDragEnd } from './utils/onDragEnd';
-import { localStorageEnum } from './constants/localStorage';
+import { langEnum, localStorageEnum, themeEnum } from './constants/localStorage';
 import { updateTheme } from './utils/updateTheme';
 import { getAllUsersThunk } from './slices/userSlice/userSlice';
+import { updateLang } from './utils/updateLang';
 
 function App() {
   const { isAuthorized, theme, columns, tasks } = useAppSelector((state) => {
@@ -38,11 +39,19 @@ function App() {
   useEffect(() => {
     dispatch(getAllUsersThunk());
     switch (localStorage.getItem(localStorageEnum.THEME)) {
-      case localStorageEnum.DARK:
-        updateTheme(dispatch, localStorageEnum.DARK);
+      case themeEnum.DARK:
+        updateTheme(dispatch, themeEnum.DARK);
         break;
       default:
-        updateTheme(dispatch, localStorageEnum.DEFAULT);
+        updateTheme(dispatch, themeEnum.DEFAULT);
+        break;
+    }
+    switch (localStorage.getItem(localStorageEnum.LANG)) {
+      case langEnum.RU:
+        updateLang(dispatch, langEnum.RU);
+        break;
+      default:
+        updateLang(dispatch, langEnum.EN);
         break;
     }
   }, []);

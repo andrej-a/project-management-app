@@ -27,8 +27,9 @@ import {
   TextContainer,
   ItemContainer,
 } from './Navigation.styled';
-import { localStorageEnum } from '../../../constants/localStorage';
+import { langEnum, localStorageEnum, themeEnum } from '../../../constants/localStorage';
 import { updateTheme } from '../../../utils/updateTheme';
+import { updateLang } from '../../../utils/updateLang';
 
 type props = {
   isOpen: boolean;
@@ -59,14 +60,16 @@ export const NavigationComponent = ({ isOpen }: props) => {
   const handleOption = (option: string) => {
     switch (option) {
       case dictionary.header.EN:
-        return dispatch(langChange(EnglishState));
+        updateLang(dispatch, langEnum.EN);
+        break;
       case dictionary.header.RU:
-        return dispatch(langChange(RussianState));
+        updateLang(dispatch, langEnum.RU);
+        break;
       case dictionary.header.ThemeDefault:
-        updateTheme(dispatch, localStorageEnum.DEFAULT);
+        updateTheme(dispatch, themeEnum.DEFAULT);
         break;
       case dictionary.header.ThemeDark:
-        updateTheme(dispatch, localStorageEnum.DARK);
+        updateTheme(dispatch, themeEnum.DARK);
         break;
       default:
         return option;

@@ -1,19 +1,16 @@
 import { Dispatch } from '@reduxjs/toolkit';
-import { localStorageEnum } from '../constants/localStorage';
+import { localStorageEnum, themeEnum } from '../constants/localStorage';
 import { DarkTheme, Default } from '../slices/themeSlice/initialState';
 import { themeChange } from '../slices/themeSlice/themeSlice';
 
-export const updateTheme = (
-  dispatch: Dispatch,
-  theme: localStorageEnum.DARK | localStorageEnum.DEFAULT
-) => {
+export const updateTheme = (dispatch: Dispatch, theme: themeEnum.DARK | themeEnum.DEFAULT) => {
   switch (theme) {
-    case localStorageEnum.DARK:
-      localStorage.setItem(localStorageEnum.THEME, localStorageEnum.DARK);
+    case themeEnum.DARK:
+      localStorage.setItem(localStorageEnum.THEME, themeEnum.DARK);
       dispatch(themeChange(DarkTheme));
       break;
     default:
-      localStorage.setItem(localStorageEnum.THEME, localStorageEnum.DEFAULT);
+      localStorage.setItem(localStorageEnum.THEME, themeEnum.DEFAULT);
       dispatch(themeChange(Default));
       break;
   }

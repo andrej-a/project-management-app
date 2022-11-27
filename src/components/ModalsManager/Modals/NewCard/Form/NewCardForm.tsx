@@ -35,6 +35,7 @@ import { createNewTask } from '../../../../../service/tasks/createTask';
 import { fetchNewTasks, fetchTask } from '../../../../../slices/taskSlice/actions';
 import { updateBoard } from '../../../../../service/boards/updateBoard';
 import { fetchUpdateBoard } from '../../../../../slices/boardSlice/actions';
+import { priorityKey } from '../../../../../constants/priorityKey';
 
 export const NewCardForm = () => {
   const dispatch = useAppDispatch();
@@ -76,6 +77,7 @@ export const NewCardForm = () => {
       title: yup.string().required().min(3),
       description: yup.string().required().min(3),
       assign: yup.string().required(),
+      priority: yup.string().required(),
     })
     .required();
 
@@ -88,9 +90,9 @@ export const NewCardForm = () => {
     resolver: yupResolver(schema),
     defaultValues: task
       ? {
-          title: task.title,
+          title: task.title.split(priorityKey)[0],
           description: task.description,
-          priority: priority.high,
+          priority: task.title.split(priorityKey)[1] ?? priority.high,
         }
       : { title: '', description: '', priority: '' },
   });
@@ -108,7 +110,7 @@ export const NewCardForm = () => {
       dispatch(
         updateTaskInfo({
           _id: task._id ?? '',
-          title: data.title,
+          title: data.title + priorityKey + data.priority,
           description: data.description,
           users: [data.assign],
         })
@@ -135,6 +137,7 @@ export const NewCardForm = () => {
               name="description"
               id="description"
             />
+            <InputError>{errors.description?.message}</InputError>
           </InputWrapper>
           <PriorityTitle>{assign}</PriorityTitle>
           <SelectAssign {...register('assign')} defaultValue={task ? task.users[0] : ''}>
@@ -146,7 +149,7 @@ export const NewCardForm = () => {
             ))}
           </SelectAssign>
 
-          {/* <PriorityTitle>{titlePriority}</PriorityTitle>
+          <PriorityTitle>{titlePriority}</PriorityTitle>
           <LabelWrapper>
             <InputWrapper>
               <input
@@ -184,7 +187,7 @@ export const NewCardForm = () => {
                 {priority.low.toUpperCase()}
               </LowPriorityLabel>
             </InputWrapper>
-          </LabelWrapper> */}
+          </LabelWrapper>
           <InputError>{errors.priority?.message}</InputError>
           <ButtonsWrapper>
             <CreateCardCancelButton
