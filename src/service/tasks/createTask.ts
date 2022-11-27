@@ -7,19 +7,20 @@ import { ICreateCardData } from '../../models/IInputData';
 const { TYPE, POST } = requests;
 const { INVALID_TOKEN } = Errors;
 
-export const createNewTask = async (task: ICreateCardData, columnId: string) => {
-  const boardId = store.getState().board.currentBoard?._id;
+export const createNewTask = async (task: ICreateCardData) => {
+  const boardId = store.getState().board.currentBoard?._id ?? '';
   const userId = store.getState().user.id;
+  const columnId = store.getState().task.newTaskColumnId ?? '';
+  const tasks = [...store.getState().task.tasks].filter((task) => task.columnId === columnId);
+  const order = !!tasks.length ? tasks.sort((a, b) => b.order - a.order)[0].order + 1 : 0;
   const { dispatch } = store;
-
   const newTask = {
     title: task.title,
-    order: 0,
-    description: task.description,
+    order: order,
+    description: task.description ?? ' ',
     userId: userId,
-    users: task.assign,
+    users: [task.assign],
   };
-
   try {
     const response = await fetch(`${path.boards}/${boardId}/columns/${columnId}/tasks`, {
       method: `${POST}`,
@@ -37,7 +38,7 @@ export const createNewTask = async (task: ICreateCardData, columnId: string) => 
     if (!response.ok) {
       throw new Error('Something wrong!');
     }
-    // dispatch(fetchAllTasks({ boardId, columnId }));
+    dispatch(fetchAllTasks({ boardId }));
   } catch (err) {
     throw err;
   }

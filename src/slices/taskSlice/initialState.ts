@@ -7,6 +7,7 @@ interface ITaskSlice {
   isError: boolean;
   tasks: ITask[];
   currentTask: ITask | undefined;
+  newTaskColumnId: string | undefined;
 }
 
 export const initialState: ITaskSlice = {
@@ -14,4 +15,5 @@ export const initialState: ITaskSlice = {
   isError: false,
   tasks: tasks,
   currentTask: undefined,
+  newTaskColumnId: undefined,
 };

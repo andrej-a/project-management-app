@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyles from './global';
-import { useAppSelector } from './hooks/hooks';
+import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { ProtectedRoute } from './utils/routes';
 /* COMPONENTS */
 import { NoResultPage } from './pages/404/NoResultPage';
@@ -22,6 +22,7 @@ import { useDispatch } from 'react-redux';
 import { onDragEnd } from './utils/onDragEnd';
 import { localStorageEnum } from './constants/localStorage';
 import { updateTheme } from './utils/updateTheme';
+import { getAllUsersThunk } from './slices/userSlice/userSlice';
 
 function App() {
   const { isAuthorized, theme, columns, tasks } = useAppSelector((state) => {
@@ -32,9 +33,10 @@ function App() {
       tasks: state.task.tasks,
     };
   });
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
+    dispatch(getAllUsersThunk());
     switch (localStorage.getItem(localStorageEnum.THEME)) {
       case localStorageEnum.DARK:
         updateTheme(dispatch, localStorageEnum.DARK);

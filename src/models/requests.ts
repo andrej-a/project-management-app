@@ -8,6 +8,7 @@ export enum requests {
   GET = 'GET',
   PUT = 'PUT',
   DELETE = 'DELETE',
+  PATCH = 'PATCH',
 }
 
 export const url = 'https://kanban-lizaveta01.koyeb.app';

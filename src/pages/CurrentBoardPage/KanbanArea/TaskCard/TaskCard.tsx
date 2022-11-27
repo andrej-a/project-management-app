@@ -9,11 +9,16 @@ import deleteIcon from '../../../../assets/img/delete.svg';
 /**HOOKS */
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 /**DISPATCH */
-import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
+import {
+  setDeletingValue,
+  setRequestUrl,
+  setStatus,
+} from '../../../../slices/modalsSlice/modalsSlice';
 import { setCurrentTask } from '../../../../slices/taskSlice/taskSlice';
+import { path } from '../../../../models/requests';
 
 const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
-  const { title, description, _id } = task;
+  const { title, description, _id, boardId, columnId } = task;
   const { buttonColor } = useAppSelector((state) => {
     return {
       buttonColor: state.application_theme.theme.BUTTON_RED,
@@ -35,7 +40,11 @@ const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
           <TaskCardTitle>{title}</TaskCardTitle>
           <TaskCardDescription>{description}</TaskCardDescription>
           <SvgButton
-            handleClick={() => dispatch(setStatus('delete_item'))}
+            handleClick={() => {
+              dispatch(setStatus('delete_item'));
+              dispatch(setDeletingValue(task.title));
+              dispatch(setRequestUrl(`${path.boards}/${boardId}/columns/${columnId}/tasks/${_id}`));
+            }}
             color={buttonColor}
             icon={deleteIcon}
             stylish={{ position: 'absolute', right: '12px', top: '12px' }}

@@ -7,7 +7,11 @@ import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
 /* MODELS */
 import { ICreateCardData, IRegistredUser } from '../../../../../models/IInputData';
 /**DISPATCH */
-import { setCurrentTask, updateTaskInfo } from '../../../../../slices/taskSlice/taskSlice';
+import {
+  setCurrentTask,
+  setNewTaskColumnId,
+  updateTaskInfo,
+} from '../../../../../slices/taskSlice/taskSlice';
 import { setStatus } from '../../../../../slices/modalsSlice/modalsSlice';
 /* STYLES */
 import {
@@ -27,6 +31,7 @@ import {
 } from '../../New_Board/Form/Form.styled';
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
 import { SearchSelect } from '../../../../Search/Search.styled';
+import { createNewTask } from '../../../../../service/tasks/createTask';
 
 export const NewCardForm = () => {
   const dispatch = useAppDispatch();
@@ -41,6 +46,8 @@ export const NewCardForm = () => {
     currentTask,
     users,
     assign,
+    newTaskColumnId,
+    tasks,
   } = useAppSelector((state) => {
     return {
       hint: state.language.lang.createCard.hint,
@@ -55,12 +62,15 @@ export const NewCardForm = () => {
       task: state.task.currentTask,
       currentTask: state.task.currentTask,
       users: state.user.users,
+      newTaskColumnId: state.task.newTaskColumnId,
+      tasks: [...state.task.tasks].filter((task) => task.columnId === state.task.newTaskColumnId),
     };
   });
   const schema = yup
     .object({
       title: yup.string().required().min(3),
-      priority: yup.string().required(),
+      description: yup.string().required().min(3),
+      assign: yup.string().required(),
     })
     .required();
 
@@ -90,7 +100,7 @@ export const NewCardForm = () => {
     if (task) {
       dispatch(
         updateTaskInfo({
-          _id: currentTask?._id ?? '',
+          _id: task._id ?? '',
           title: data.title,
           description: data.description,
           users: data.assign,
@@ -99,7 +109,13 @@ export const NewCardForm = () => {
       // eslint-disable-next-line no-console
       console.log('Update to ', data);
       // eslint-disable-next-line no-console
-    } else console.log('Create ', data);
+    } else {
+      // eslint-disable-next-line no-console
+      console.log('Update to ', data, newTaskColumnId);
+      createNewTask(data);
+      dispatch(setNewTaskColumnId(undefined));
+      //createNewTask(data, newTaskColumnId,);
+    }
   };
 
   return (
