@@ -13,6 +13,9 @@ const boardSlice = createSlice({
     setCurrentBoard: (state, action) => {
       state.currentBoard = action.payload;
     },
+    setEditBoard: (state, action) => {
+      state.editBoard = action.payload;
+    },
     setLoading: (state) => {
       state.isLoading = true;
     },
@@ -24,5 +27,5 @@ const boardSlice = createSlice({
 });
 
 const { actions, reducer } = boardSlice;
-export const { updateBoardTitle, setCurrentBoard, setBoards, setLoading } = actions;
+export const { updateBoardTitle, setCurrentBoard, setEditBoard, setBoards, setLoading } = actions;
 export default reducer;

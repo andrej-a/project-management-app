@@ -52,8 +52,6 @@ export const NewCardForm = () => {
     newTaskColumnId,
     tasks,
     userId,
-    currentBoard,
-    allTasks,
   } = useAppSelector((state) => {
     return {
       hint: state.language.lang.createCard.hint,
@@ -70,9 +68,7 @@ export const NewCardForm = () => {
       users: state.user.users,
       userId: state.user.id,
       newTaskColumnId: state.task.newTaskColumnId,
-      allTasks: state.task.tasks,
       tasks: [...state.task.tasks].filter((task) => task.columnId === state.task.newTaskColumnId),
-      currentBoard: state.board.currentBoard,
     };
   });
   const schema = yup
@@ -122,7 +118,6 @@ export const NewCardForm = () => {
       dispatch(fetchNewTasks({ task: data }));
       dispatch(setNewTaskColumnId(undefined));
     }
-    //if (currentBoard) updateBoard({ ...currentBoard });
   };
 
   return (

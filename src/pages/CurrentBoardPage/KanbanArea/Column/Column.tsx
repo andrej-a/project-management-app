@@ -21,14 +21,16 @@ import { setNewTaskColumnId } from '../../../../slices/taskSlice/taskSlice';
 import { fetchAllTasks } from '../../../../slices/taskSlice/actions';
 import { setLoading } from '../../../../slices/boardSlice/boardSlice';
 const Column = ({ title, _id, dragIndex, boardId }: IColumn & { dragIndex: number }) => {
-  const { tasks, buttonColor, currentBoard } = useAppSelector((state) => {
+  const { tasks, buttonColor, user, owner, disabledButtonColor } = useAppSelector((state) => {
     return {
       tasks:
         [...state.task.tasks]
           .sort((a, b) => a.order - b.order)
           .filter((task) => task.columnId === _id) ?? [],
       buttonColor: state.application_theme.theme.TASK_TEXT,
-      currentBoard: state.board.boards,
+      user: state.user.id,
+      owner: state.board.currentBoard?.owner ?? '',
+      disabledButtonColor: state.application_theme.theme.FRAME_TASK_COLOR,
     };
   });
   const dispatch = useAppDispatch();
@@ -47,7 +49,7 @@ const Column = ({ title, _id, dragIndex, boardId }: IColumn & { dragIndex: numbe
           <ColumnHeader>
             <ColumnTitle title={title} id={_id} />
             <SvgButton
-              color={buttonColor}
+              color={user === owner ? buttonColor : disabledButtonColor}
               icon={deleteIcon}
               stylish={{ position: 'absolute', right: '30px' }}
               handleClick={() => {
@@ -55,6 +57,7 @@ const Column = ({ title, _id, dragIndex, boardId }: IColumn & { dragIndex: numbe
                 dispatch(setDeletingValue(title));
                 dispatch(setRequestUrl(`${path.boards}/${boardId}/columns/${_id}`));
               }}
+              disabled={user !== owner}
             />
             <SvgButton
               color={buttonColor}

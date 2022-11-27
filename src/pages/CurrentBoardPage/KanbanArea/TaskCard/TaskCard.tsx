@@ -18,10 +18,13 @@ import { setCurrentTask } from '../../../../slices/taskSlice/taskSlice';
 import { path } from '../../../../models/requests';
 
 const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
-  const { title, description, _id, boardId, columnId } = task;
-  const { buttonColor } = useAppSelector((state) => {
+  const { title, description, _id, boardId, columnId, userId } = task;
+  const { buttonColor, currentUser, disabledButtonColor, boardOwner } = useAppSelector((state) => {
     return {
       buttonColor: state.application_theme.theme.BUTTON_RED,
+      currentUser: state.user.id,
+      boardOwner: state.board.currentBoard?.owner,
+      disabledButtonColor: state.application_theme.theme.FRAME_TASK_COLOR,
     };
   });
   const dispatch = useAppDispatch();
@@ -34,7 +37,8 @@ const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
           ref={providedDrag.innerRef}
           onClick={() => {
             dispatch(setCurrentTask(task));
-            dispatch(setStatus('update_card'));
+            if (currentUser === userId) dispatch(setStatus('update_card'));
+            else dispatch(setStatus('view_card'));
           }}
         >
           <TaskCardTitle>{title}</TaskCardTitle>
@@ -45,9 +49,14 @@ const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
               dispatch(setDeletingValue(task.title));
               dispatch(setRequestUrl(`${path.boards}/${boardId}/columns/${columnId}/tasks/${_id}`));
             }}
-            color={buttonColor}
+            color={
+              currentUser === userId || currentUser === boardOwner
+                ? buttonColor
+                : disabledButtonColor
+            }
             icon={deleteIcon}
             stylish={{ position: 'absolute', right: '12px', top: '12px' }}
+            disabled={currentUser !== userId && currentUser !== boardOwner}
           />
         </TaskCardStyled>
       )}

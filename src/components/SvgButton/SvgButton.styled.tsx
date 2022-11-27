@@ -15,7 +15,7 @@ export const BoardCardBtnStyled = styled.button.attrs((props: { color: string })
     fill: ${(props) => props.color};
   }
 
-  &:hover {
+  &:enabled:hover {
     transform: scale(1.2);
   }
 `;

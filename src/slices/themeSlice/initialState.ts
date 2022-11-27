@@ -26,6 +26,8 @@ export const Default: ITheme_Interface = {
   BUTTON_GREEN: '#46B220',
 
   GRADIENT_SECOND_COLOR: '#4332f7',
+
+  MODAL_BG: 'rgba(191, 185, 255, 0.5)',
 };
 export const DarkTheme: ITheme_Interface = {
   CURRENT_THEME: localStorageEnum.DARK,
@@ -51,6 +53,8 @@ export const DarkTheme: ITheme_Interface = {
   BUTTON_GREEN: '#46B220',
 
   GRADIENT_SECOND_COLOR: '#434343',
+
+  MODAL_BG: 'rgba(135, 135, 135, 0.5)',
 };
 
 export const initialState: ITheme = {

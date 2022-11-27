@@ -22,4 +22,6 @@ export interface ITheme_Interface {
   BUTTON_GREEN: string;
 
   GRADIENT_SECOND_COLOR: string;
+
+  MODAL_BG: string;
 }

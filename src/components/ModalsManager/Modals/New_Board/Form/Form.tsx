@@ -16,23 +16,22 @@ import {
 /* CONSTANTS */
 import { ICreateBoardData } from '../../../../../models/IInputData';
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
-import { setCurrentBoard, updateBoardTitle } from '../../../../../slices/boardSlice/boardSlice';
+import { setEditBoard, updateBoardTitle } from '../../../../../slices/boardSlice/boardSlice';
 import { fetchNewBoard, fetchUpdateBoard } from '../../../../../slices/boardSlice/actions';
-import { updateBoard } from '../../../../../service/boards/updateBoard';
 
 export const CreateBoardForm = () => {
   const dispatch = useAppDispatch();
-  const { hint, description, createBoard, cancel, currentBoard, modalsState } = useAppSelector(
+  const { hint, description, createBoard, cancel, editBoard, modalsState } = useAppSelector(
     (state) => {
       return {
         modalsState: state.modals_state.modalsState,
         hint: state.language.lang.createBoard.hint,
         description: state.language.lang.createBoard.description,
-        createBoard: state.board.currentBoard
+        createBoard: state.board.editBoard
           ? state.language.lang.updateBoard.createButton
           : state.language.lang.createBoard.createButton,
         cancel: state.language.lang.cancel,
-        currentBoard: state.board.currentBoard,
+        editBoard: state.board.editBoard,
       };
     }
   );
@@ -56,13 +55,14 @@ export const CreateBoardForm = () => {
     if (isSubmitSuccessful) {
       reset();
       dispatch(setStatus('hidden'));
+      dispatch(setEditBoard(undefined));
     }
   }, [isSubmitSuccessful, reset]);
 
   const formSubmit: SubmitHandler<ICreateBoardData> = (data) => {
-    if (currentBoard && modalsState === 'update_board') {
-      dispatch(updateBoardTitle({ title: data.title, id: currentBoard._id }));
-      dispatch(fetchUpdateBoard({ ...currentBoard, title: data.title }));
+    if (editBoard && modalsState === 'update_board') {
+      dispatch(updateBoardTitle({ title: data.title, id: editBoard._id }));
+      dispatch(fetchUpdateBoard({ ...editBoard, title: data.title }));
     } else {
       // eslint-disable-next-line no-console
       console.log(data);

@@ -11,4 +11,5 @@ export const Overlay = styled.div`
   justify-content: center;
   align-items: center;
   transition: 0.6s ease-in-out;
+  background-color: ${({ theme }) => theme.MODAL_BG};
 `;
