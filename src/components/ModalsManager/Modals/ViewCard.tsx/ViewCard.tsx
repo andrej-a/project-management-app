@@ -8,6 +8,7 @@ import { NewCardTitleWrapper, NewCardTitle } from './NewCard.styled';
 import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
 import { priorityKey } from '../../../../constants/priorityKey';
 import { Priority } from '../../../../pages/CurrentBoardPage/KanbanArea/TaskCard/TaskCard.styled';
+import { setCurrentTask } from '../../../../slices/taskSlice/taskSlice';
 export const ViewCard = () => {
   const dispatch = useAppDispatch();
 
