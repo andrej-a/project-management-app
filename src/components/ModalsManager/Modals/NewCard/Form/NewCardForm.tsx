@@ -32,7 +32,9 @@ import {
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
 import { SearchSelect } from '../../../../Search/Search.styled';
 import { createNewTask } from '../../../../../service/tasks/createTask';
-import { fetchTask } from '../../../../../slices/taskSlice/actions';
+import { fetchNewTasks, fetchTask } from '../../../../../slices/taskSlice/actions';
+import { updateBoard } from '../../../../../service/boards/updateBoard';
+import { fetchUpdateBoard } from '../../../../../slices/boardSlice/actions';
 
 export const NewCardForm = () => {
   const dispatch = useAppDispatch();
@@ -49,6 +51,9 @@ export const NewCardForm = () => {
     assign,
     newTaskColumnId,
     tasks,
+    userId,
+    currentBoard,
+    allTasks,
   } = useAppSelector((state) => {
     return {
       hint: state.language.lang.createCard.hint,
@@ -63,8 +68,11 @@ export const NewCardForm = () => {
       task: state.task.currentTask,
       currentTask: state.task.currentTask,
       users: state.user.users,
+      userId: state.user.id,
       newTaskColumnId: state.task.newTaskColumnId,
+      allTasks: state.task.tasks,
       tasks: [...state.task.tasks].filter((task) => task.columnId === state.task.newTaskColumnId),
+      currentBoard: state.board.currentBoard,
     };
   });
   const schema = yup
@@ -83,7 +91,11 @@ export const NewCardForm = () => {
   } = useForm<ICreateCardData>({
     resolver: yupResolver(schema),
     defaultValues: task
-      ? { title: task.title, description: task.description, priority: priority.high }
+      ? {
+          title: task.title,
+          description: task.description,
+          priority: priority.high,
+        }
       : { title: '', description: '', priority: '' },
   });
 
@@ -93,8 +105,6 @@ export const NewCardForm = () => {
       dispatch(setStatus('hidden'));
       dispatch(setCurrentTask(undefined));
     }
-    // eslint-disable-next-line no-console
-    console.log(users);
   }, [isSubmitSuccessful, reset]);
 
   const formSubmit: SubmitHandler<ICreateCardData> = (data) => {
@@ -104,14 +114,15 @@ export const NewCardForm = () => {
           _id: task._id ?? '',
           title: data.title,
           description: data.description,
-          users: data.assign,
+          users: [data.assign],
         })
       );
       dispatch(fetchTask(data));
     } else {
-      createNewTask(data);
+      dispatch(fetchNewTasks({ task: data }));
       dispatch(setNewTaskColumnId(undefined));
     }
+    //if (currentBoard) updateBoard({ ...currentBoard });
   };
 
   return (
@@ -131,10 +142,12 @@ export const NewCardForm = () => {
             />
           </InputWrapper>
           <PriorityTitle>{assign}</PriorityTitle>
-          <SelectAssign {...register('assign')}>
+          <SelectAssign {...register('assign')} defaultValue={task ? task.users[0] : ''}>
             <option key={-1} disabled></option>
             {users!.map((option: IRegistredUser) => (
-              <option key={option._id}>{option.name}</option>
+              <option key={option._id} value={option._id}>
+                {option.name}
+              </option>
             ))}
           </SelectAssign>
 

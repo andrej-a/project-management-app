@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from '../../../../hooks/hooks';
 import { IColumnTitle } from '../../../../models/IInputData';
 /**DISPATCH */
 import { updateColumnTitle } from '../../../../slices/columnSlice/columnSlice';
+import { fetchColumn } from '../../../../slices/columnSlice/actions';
 
 type Inputs = {
   title: string;
@@ -48,6 +49,7 @@ const ColumnTitle = ({ id }: { title: string; id: string }) => {
 
   const formSubmit = (data: IColumnTitle) => {
     dispatch(updateColumnTitle({ id: id, title: data.title.trim() }));
+    if (column) dispatch(fetchColumn({ title: data.title.trim(), column }));
     inputRef.current?.blur();
   };
 
@@ -92,6 +94,7 @@ const ColumnTitle = ({ id }: { title: string; id: string }) => {
             type="submit"
             disabled={Object.keys(errors).length > 0}
             size={20}
+            handleClick={handleSubmit(formSubmit)}
           />
         </div>
       </TitleWrapper>

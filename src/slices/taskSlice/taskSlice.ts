@@ -18,6 +18,7 @@ const taskSlice = createSlice({
       if (task) {
         task.title = action.payload.title;
         task.description = action.payload.description;
+        task.users = action.payload.users;
       }
     },
     setCurrentTask: (state, action) => {

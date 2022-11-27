@@ -3,6 +3,7 @@ import { Errors, path, requests } from '../../models/requests';
 import { store } from '../../store/store';
 import { fetchAllTasks } from '../../slices/taskSlice/actions';
 import { ICreateCardData } from '../../models/IInputData';
+import { fetchUpdateBoardAssignList } from '../../slices/boardSlice/actions';
 
 const { TYPE, POST } = requests;
 const { INVALID_TOKEN } = Errors;
@@ -38,7 +39,8 @@ export const createNewTask = async (task: ICreateCardData) => {
     if (!response.ok) {
       throw new Error('Something wrong!');
     }
-    dispatch(fetchAllTasks({ boardId }));
+    await dispatch(fetchAllTasks({ boardId }));
+    dispatch(fetchUpdateBoardAssignList());
   } catch (err) {
     throw err;
   }

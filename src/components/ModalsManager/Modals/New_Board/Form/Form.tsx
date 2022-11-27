@@ -17,7 +17,8 @@ import {
 import { ICreateBoardData } from '../../../../../models/IInputData';
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
 import { setCurrentBoard, updateBoardTitle } from '../../../../../slices/boardSlice/boardSlice';
-import { fetchNewBoard } from '../../../../../slices/boardSlice/actions';
+import { fetchNewBoard, fetchUpdateBoard } from '../../../../../slices/boardSlice/actions';
+import { updateBoard } from '../../../../../service/boards/updateBoard';
 
 export const CreateBoardForm = () => {
   const dispatch = useAppDispatch();
@@ -38,7 +39,6 @@ export const CreateBoardForm = () => {
   const schema = yup
     .object({
       title: yup.string().required().min(3),
-      // descriptionInput: yup.string().required().min(3),
     })
     .required();
 
@@ -50,7 +50,6 @@ export const CreateBoardForm = () => {
   } = useForm<ICreateBoardData>({
     resolver: yupResolver(schema),
     defaultValues: { title: '' },
-    // descriptionInput: ''
   });
 
   useEffect(() => {
@@ -63,6 +62,7 @@ export const CreateBoardForm = () => {
   const formSubmit: SubmitHandler<ICreateBoardData> = (data) => {
     if (currentBoard && modalsState === 'update_board') {
       dispatch(updateBoardTitle({ title: data.title, id: currentBoard._id }));
+      dispatch(fetchUpdateBoard({ ...currentBoard, title: data.title }));
     } else {
       // eslint-disable-next-line no-console
       console.log(data);
