@@ -43,7 +43,8 @@ export const SelectAssign = ({
         container: (baseStyles) => ({
           ...baseStyles,
           height: 'auto',
-          maxWidth: '100%',
+          width: '100%',
+          maxWidth: 400,
         }),
         menuList: (base) => ({
           ...base,
