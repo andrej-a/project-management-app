@@ -79,7 +79,7 @@ export const InputError = styled.p`
 `;
 
 export const InputWrapper = styled.div`
-  width: auto;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const TaskCardStyled = styled.div`
-  height: 155px;
+  height: 300px;
   width: 300px;
   padding: 31px 33px;
   display: flex;
@@ -32,7 +32,7 @@ export const TaskCardDescription = styled.div`
   font-size: 14px;
   line-height: 17px;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;

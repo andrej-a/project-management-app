@@ -11,7 +11,7 @@ export const FormWrapper = styled.div`
     justify-content: center;
 
     textarea {
-      width: 400px;
+      width: 100%;
       margin-bottom: 22px;
       background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       outline: none;
@@ -24,14 +24,6 @@ export const FormWrapper = styled.div`
       font-size: 14px;
       line-height: 17px;
       color: ${({ theme }) => theme.TEXT_COLOR_DARK};
-
-      @media (max-width: ${size.tablet}) {
-        width: 300px;
-      }
-
-      @media (max-width: ${size.mobileL}) {
-        width: 200px;
-      }
     }
 
     input[type='radio'] {
@@ -66,7 +58,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const PriorityTitle = styled.p`
-  margin-bottom: 14px;
+  margin-top: 14px;
   color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;
 
@@ -79,9 +71,9 @@ export const LabelWrapper = styled.div`
   gap: 15px;
 
   input[type='radio']:checked + label {
-    background: ${({ theme }) => theme.MAIN_BACKGROUND};
-    border-color: ${({ theme }) => theme.MAIN_BACKGROUND};
-    color: ${({ theme }) => theme.TEXT_COLOR};
+    background: ${({ theme }) => theme.TEXT_COLOR_DARK};
+    border-color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+    color: ${({ theme }) => theme.LIGHT_BACKGROUND};
   }
 
   @media (max-width: ${size.mobileL}) {

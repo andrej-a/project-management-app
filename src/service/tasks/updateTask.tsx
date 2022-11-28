@@ -10,7 +10,7 @@ const { INVALID_TOKEN } = Errors;
 
 export const updateTask = async (task: ICreateCardData) => {
   const boardId = store.getState().board.currentBoard?._id ?? '';
-  const userId = store.getState().user.id;
+  const userId = store.getState().task.currentTask?.userId ?? '';
   const columnId = store.getState().task.currentTask?.columnId ?? '';
   const taskId = store.getState().task.currentTask?._id ?? '';
   const order = store.getState().task.currentTask?.order ?? 0;
@@ -22,7 +22,7 @@ export const updateTask = async (task: ICreateCardData) => {
     description: task.description ?? ' ',
     userId: userId,
     columnId: columnId,
-    users: [task.assign],
+    users: task.assign,
   };
 
   try {

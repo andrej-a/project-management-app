@@ -1,11 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
+
 /**HOOKS */
 import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
 /* MODELS */
-import { ICreateCardData, IRegistredUser } from '../../../../../models/IInputData';
+import { ICreateCardData } from '../../../../../models/IInputData';
 /**DISPATCH */
 import {
   setCurrentTask,
@@ -21,7 +22,6 @@ import {
   LowPriorityLabel,
   MediumPriorityLabel,
   PriorityTitle,
-  SelectAssign,
 } from './NewCardForm.styled';
 import { ButtonsWrapper } from '../../New_Board/Form/Form.styled';
 import {
@@ -30,12 +30,9 @@ import {
   TitleInput,
 } from '../../New_Board/Form/Form.styled';
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
-import { SearchSelect } from '../../../../Search/Search.styled';
-import { createNewTask } from '../../../../../service/tasks/createTask';
 import { fetchNewTasks, fetchTask } from '../../../../../slices/taskSlice/actions';
-import { updateBoard } from '../../../../../service/boards/updateBoard';
-import { fetchUpdateBoard } from '../../../../../slices/boardSlice/actions';
 import { priorityKey } from '../../../../../constants/priorityKey';
+import { SelectAssign } from './SelectAssign';
 
 export const NewCardForm = () => {
   const dispatch = useAppDispatch();
@@ -47,11 +44,8 @@ export const NewCardForm = () => {
     titlePriority,
     cancel,
     task,
-    currentTask,
     users,
     assign,
-    newTaskColumnId,
-    tasks,
     userId,
   } = useAppSelector((state) => {
     return {
@@ -65,18 +59,18 @@ export const NewCardForm = () => {
       titlePriority: state.language.lang.createCard.titlePriority,
       cancel: state.language.lang.cancel,
       task: state.task.currentTask,
-      currentTask: state.task.currentTask,
       users: state.user.users,
       userId: state.user.id,
-      newTaskColumnId: state.task.newTaskColumnId,
-      tasks: [...state.task.tasks].filter((task) => task.columnId === state.task.newTaskColumnId),
     };
   });
+  const [assignArray, setAssignArray] = useState<string[]>(task ? task.users : []);
+  const handleSetAssignArray = (value: string[]) => {
+    setAssignArray(() => value);
+  };
   const schema = yup
     .object({
       title: yup.string().required().min(3),
       description: yup.string().required().min(3),
-      assign: yup.string().required(),
       priority: yup.string().required(),
     })
     .required();
@@ -112,12 +106,12 @@ export const NewCardForm = () => {
           _id: task._id ?? '',
           title: data.title + priorityKey + data.priority,
           description: data.description,
-          users: [data.assign],
+          users: assignArray,
         })
       );
-      dispatch(fetchTask(data));
+      dispatch(fetchTask({ ...data, assign: assignArray }));
     } else {
-      dispatch(fetchNewTasks({ task: data }));
+      dispatch(fetchNewTasks({ task: { ...data, assign: assignArray } }));
       dispatch(setNewTaskColumnId(undefined));
     }
   };
@@ -140,15 +134,7 @@ export const NewCardForm = () => {
             <InputError>{errors.description?.message}</InputError>
           </InputWrapper>
           <PriorityTitle>{assign}</PriorityTitle>
-          <SelectAssign {...register('assign')} defaultValue={task ? task.users[0] : ''}>
-            <option key={-1} disabled></option>
-            {users!.map((option: IRegistredUser) => (
-              <option key={option._id} value={option._id}>
-                {option.name}
-              </option>
-            ))}
-          </SelectAssign>
-
+          <SelectAssign task={task!} users={users!} handleSetAssignArray={handleSetAssignArray} />
           <PriorityTitle>{titlePriority}</PriorityTitle>
           <LabelWrapper>
             <InputWrapper>

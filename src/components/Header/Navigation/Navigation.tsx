@@ -52,7 +52,10 @@ export const NavigationComponent = ({ isOpen }: props) => {
     },
     {
       id: 112,
-      title: dictionary.header.EN,
+      title:
+        dictionary.header[
+          (localStorage.getItem(localStorageEnum.LANG)?.toUpperCase() as 'EN' | 'RU') ?? 'EN'
+        ],
       options: [dictionary.header.EN, dictionary.header.RU],
     },
   ];

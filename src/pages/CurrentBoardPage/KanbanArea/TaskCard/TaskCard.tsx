@@ -41,7 +41,8 @@ const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
           ref={providedDrag.innerRef}
           onClick={() => {
             dispatch(setCurrentTask(task));
-            if (currentUser === userId) dispatch(setStatus('update_card'));
+            if (currentUser === userId || currentUser === boardOwner)
+              dispatch(setStatus('update_card'));
             else dispatch(setStatus('view_card'));
           }}
         >

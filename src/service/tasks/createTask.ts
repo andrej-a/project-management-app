@@ -21,7 +21,7 @@ export const createNewTask = async (task: ICreateCardData) => {
     order: order,
     description: task.description ?? ' ',
     userId: userId,
-    users: [task.assign],
+    users: task.assign,
   };
   try {
     const response = await fetch(`${path.boards}/${boardId}/columns/${columnId}/tasks`, {

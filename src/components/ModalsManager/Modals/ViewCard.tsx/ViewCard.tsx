@@ -16,9 +16,10 @@ export const ViewCard = () => {
     useAppSelector((state) => {
       return {
         task: state.task.currentTask,
-        assignName: state.user.users
-          ? state.user.users.find((user) => user._id === state.task.currentTask?.users[0])?.name
-          : '',
+        assignName: state.task.currentTask?.users.map((user) =>
+          state.user.users ? state.user.users.find((name) => name._id === user)?.name : ''
+        ),
+
         ownerName: state.user.users
           ? state.user.users.find((user) => user._id === state.task.currentTask?.userId)?.name
           : '',
@@ -47,7 +48,7 @@ export const ViewCard = () => {
             <div className="description">{task?.description ?? ''}</div>
             <div className="assign">
               <div>
-                <span>{assignedTxt}</span> {assignName}
+                <span>{assignedTxt}</span> {assignName?.join(', ')}
               </div>
               <div>
                 <span>{ownerTxt}</span> {ownerName}
