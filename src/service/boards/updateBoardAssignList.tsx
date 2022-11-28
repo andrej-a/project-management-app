@@ -11,10 +11,10 @@ export const updateBoardAssignList = () => {
       users: Array.from(
         new Set(
           allTasks.map((task) => {
-            if (!!task.users.length) return task.users[0];
-            else return '';
+            if (!!task.users.length) return task.users;
+            else return [];
           })
         )
-      ),
+      ).flat(),
     });
 };
