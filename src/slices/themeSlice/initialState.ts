@@ -1,7 +1,10 @@
 /* MODELS */
+import { localStorageEnum, themeEnum } from '../../constants/localStorage';
 import { ITheme_Interface } from '../../models/theme_interface';
 
 export const Default: ITheme_Interface = {
+  CURRENT_THEME: themeEnum.DEFAULT,
+
   MAIN_BACKGROUND: '#48409E',
   LIGHT_BACKGROUND: '#FFFFFF',
   DESK_BACKGROUND: '#F1F0FF',
@@ -23,8 +26,12 @@ export const Default: ITheme_Interface = {
   BUTTON_GREEN: '#46B220',
 
   GRADIENT_SECOND_COLOR: '#4332f7',
+
+  MODAL_BG: 'rgba(191, 185, 255, 0.5)',
 };
 export const DarkTheme: ITheme_Interface = {
+  CURRENT_THEME: themeEnum.DARK,
+
   MAIN_BACKGROUND: '#252525',
   LIGHT_BACKGROUND: '#252525',
   DESK_BACKGROUND: '#383838',
@@ -46,10 +53,12 @@ export const DarkTheme: ITheme_Interface = {
   BUTTON_GREEN: '#46B220',
 
   GRADIENT_SECOND_COLOR: '#434343',
+
+  MODAL_BG: 'rgba(135, 135, 135, 0.5)',
 };
 
 export const initialState: ITheme = {
-  theme: Default,
+  theme: localStorage.getItem(localStorageEnum.THEME) === themeEnum.DARK ? DarkTheme : Default,
 };
 interface ITheme {
   theme: ITheme_Interface;

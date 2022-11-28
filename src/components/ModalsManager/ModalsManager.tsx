@@ -9,6 +9,7 @@ import { LogIn } from './Modals/LogIn/LogIn';
 import { NewBoard } from './Modals/New_Board/NewBoard';
 import { NewCard } from './Modals/NewCard/NewCard';
 import { NewColumn } from './Modals/NewColumn/NewColumn';
+import { ViewCard } from './Modals/ViewCard.tsx/ViewCard';
 
 export const ModalsManager = () => {
   const { modalsState } = useAppSelector((state) => state.modals_state);
@@ -60,6 +61,12 @@ export const ModalsManager = () => {
         return (
           <Overlay>
             <NewBoard />
+          </Overlay>
+        );
+      case 'view_card':
+        return (
+          <Overlay>
+            <ViewCard />
           </Overlay>
         );
       default:

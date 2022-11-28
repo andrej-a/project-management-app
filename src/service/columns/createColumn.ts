@@ -2,7 +2,6 @@ import { getCookie } from '../../utils/cookie/getCookie';
 import { Errors, path, requests } from '../../models/requests';
 import { ICreateColumn } from '../../models/IInputData';
 import { store } from '../../store/store';
-import { fetchAllBoards } from '../../slices/boardSlice/actions';
 import { fetchAllColumns } from '../../slices/columnSlice/actions';
 
 const { TYPE, POST } = requests;
@@ -10,11 +9,12 @@ const { INVALID_TOKEN } = Errors;
 
 export const createNewColumn = async (column: ICreateColumn) => {
   const { _id } = store.getState().board.currentBoard!;
+  const order = Math.max(...store.getState().column.columns.map((column) => column.order), 0);
   const { dispatch } = store;
 
   const newColumn = {
     title: column.title,
-    order: 0,
+    order: order,
   };
 
   try {

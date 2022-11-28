@@ -1,5 +1,5 @@
 import { Draggable, Droppable } from 'react-beautiful-dnd';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 /**STYLES */
 import { ColumnHeader, ColumnStyled, ColumnWrapper } from './Column.styled';
 import deleteIcon from '../../../../assets/img/delete.svg';
@@ -15,24 +15,25 @@ import SvgButton from '../../../../components/SvgButton/SvgButton';
 import ColumnTitle from './ColumtTitle';
 /**DISPATCH */
 import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
-import { getColumnTasks } from '../../../../service/tasks/getColumnTasks';
+import { getBoardTasks } from '../../../../service/tasks/getBoardTasks';
 import { setDeletingValue, setRequestUrl } from '../../../../slices/modalsSlice/modalsSlice';
-const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
-  const { tasks, buttonColor, currentBoardId } = useAppSelector((state) => {
+import { setNewTaskColumnId } from '../../../../slices/taskSlice/taskSlice';
+import { fetchAllTasks } from '../../../../slices/taskSlice/actions';
+import { setLoading } from '../../../../slices/boardSlice/boardSlice';
+const Column = ({ title, _id, dragIndex, boardId }: IColumn & { dragIndex: number }) => {
+  const { tasks, buttonColor, user, owner, disabledButtonColor } = useAppSelector((state) => {
     return {
       tasks:
         [...state.task.tasks]
           .sort((a, b) => a.order - b.order)
           .filter((task) => task.columnId === _id) ?? [],
       buttonColor: state.application_theme.theme.TASK_TEXT,
-      currentBoardId: state.board.currentBoard?._id,
+      user: state.user.id,
+      owner: state.board.currentBoard?.owner ?? '',
+      disabledButtonColor: state.application_theme.theme.FRAME_TASK_COLOR,
     };
   });
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    getColumnTasks(currentBoardId!, _id);
-  }, []);
 
   const taskElements = tasks.map((task, index) => (
     <TaskCard task={task} key={task._id} dragIndex={index} />
@@ -48,21 +49,25 @@ const Column = ({ title, _id, dragIndex }: IColumn & { dragIndex: number }) => {
           <ColumnHeader>
             <ColumnTitle title={title} id={_id} />
             <SvgButton
-              color={buttonColor}
+              color={user === owner ? buttonColor : disabledButtonColor}
               icon={deleteIcon}
               stylish={{ position: 'absolute', right: '30px' }}
               handleClick={() => {
                 dispatch(setStatus('delete_item'));
                 dispatch(setDeletingValue(title));
-                dispatch(setRequestUrl(`${path.boards}/${currentBoardId}/columns/${_id}`));
+                dispatch(setRequestUrl(`${path.boards}/${boardId}/columns/${_id}`));
               }}
+              disabled={user !== owner}
             />
             <SvgButton
               color={buttonColor}
               icon={plusIcon}
               size={20}
               stylish={{ position: 'absolute', right: '0', top: '6px' }}
-              handleClick={() => dispatch(setStatus('new_card'))}
+              handleClick={() => {
+                dispatch(setNewTaskColumnId(_id));
+                dispatch(setStatus('new_card'));
+              }}
             />
           </ColumnHeader>
           <Droppable droppableId={_id} type="task" direction="vertical">

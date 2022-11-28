@@ -44,6 +44,7 @@ export const NewColumnForm = () => {
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset();
+      dispatch(setStatus('hidden'));
     }
   }, [isSubmitSuccessful, reset]);
 

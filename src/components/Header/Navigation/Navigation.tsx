@@ -4,8 +4,6 @@ import { HandySvg } from 'handy-svg';
 import { useAppSelector, useAppDispatch } from '../../../hooks/hooks';
 import { Styles, SvgSizes } from '../../../constants/applicationConstants';
 
-import { themeChange } from '../../../slices/themeSlice/themeSlice';
-import { DarkTheme, Default } from '../../../slices/themeSlice/initialState';
 import { langChange } from '../../../slices/languageSlice/languageSlice';
 import { EnglishState, RussianState } from '../../../slices/languageSlice/initialState';
 import { authorizationSwitch } from '../../../slices/userSlice/userSlice';
@@ -29,6 +27,9 @@ import {
   TextContainer,
   ItemContainer,
 } from './Navigation.styled';
+import { langEnum, localStorageEnum, themeEnum } from '../../../constants/localStorage';
+import { updateTheme } from '../../../utils/updateTheme';
+import { updateLang } from '../../../utils/updateLang';
 
 type props = {
   isOpen: boolean;
@@ -59,13 +60,17 @@ export const NavigationComponent = ({ isOpen }: props) => {
   const handleOption = (option: string) => {
     switch (option) {
       case dictionary.header.EN:
-        return dispatch(langChange(EnglishState));
+        updateLang(dispatch, langEnum.EN);
+        break;
       case dictionary.header.RU:
-        return dispatch(langChange(RussianState));
+        updateLang(dispatch, langEnum.RU);
+        break;
       case dictionary.header.ThemeDefault:
-        return dispatch(themeChange(Default));
+        updateTheme(dispatch, themeEnum.DEFAULT);
+        break;
       case dictionary.header.ThemeDark:
-        return dispatch(themeChange(DarkTheme));
+        updateTheme(dispatch, themeEnum.DARK);
+        break;
       default:
         return option;
     }

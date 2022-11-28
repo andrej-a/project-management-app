@@ -8,6 +8,7 @@ export enum requests {
   GET = 'GET',
   PUT = 'PUT',
   DELETE = 'DELETE',
+  PATCH = 'PATCH',
 }
 
 export const url = 'https://kanban-lizaveta01.koyeb.app';
@@ -18,6 +19,7 @@ export const path = {
   users: `${url}/users`,
   boards: `${url}/boards`,
   tasks: `${url}/tasksSet`,
+  columns: `${url}/columnsSet`,
   file: `${url}/file`,
   points: `${url}/points`,
 };

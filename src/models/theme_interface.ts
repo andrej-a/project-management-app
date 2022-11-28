@@ -1,4 +1,6 @@
 export interface ITheme_Interface {
+  CURRENT_THEME: string;
+
   MAIN_BACKGROUND: string;
   LIGHT_BACKGROUND: string;
   DESK_BACKGROUND: string;
@@ -20,4 +22,6 @@ export interface ITheme_Interface {
   BUTTON_GREEN: string;
 
   GRADIENT_SECOND_COLOR: string;
+
+  MODAL_BG: string;
 }

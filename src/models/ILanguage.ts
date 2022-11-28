@@ -99,4 +99,8 @@ export interface ILanguage {
     'See all Boards': string;
     'New column': string;
   };
+  view_card: {
+    assign: string;
+    owner: string;
+  };
 }

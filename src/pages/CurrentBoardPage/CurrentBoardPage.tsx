@@ -11,6 +11,7 @@ import KanbanArea from './KanbanArea/KanbanArea';
 
 import { fetchAllColumns } from '../../slices/columnSlice/actions';
 import { fetchBoard } from '../../slices/boardSlice/actions';
+import { getBoardTasks } from '../../service/tasks/getBoardTasks';
 
 const CurrentBoardPage = () => {
   const { boardId } = useParams();
@@ -28,8 +29,10 @@ const CurrentBoardPage = () => {
   const cbFetchBoards = useCallback(() => {
     if (!board) {
       dispatch(fetchBoard(boardId!));
+      getBoardTasks(boardId!);
     } else {
       dispatch(fetchAllColumns(board._id));
+      getBoardTasks(board._id);
     }
   }, [board]);
 

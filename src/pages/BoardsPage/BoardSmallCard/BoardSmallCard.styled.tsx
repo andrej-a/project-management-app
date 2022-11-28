@@ -27,11 +27,13 @@ export const BoardSmallTitle = styled.h3`
   line-height: 29px;
 `;
 export const BoardSmallDescription = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;

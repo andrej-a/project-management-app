@@ -1,4 +1,5 @@
 /* MODELS */
+import { langEnum, localStorageEnum } from '../../constants/localStorage';
 import { ILanguage } from '../../models/ILanguage';
 
 export const EnglishState: ILanguage = {
@@ -102,6 +103,10 @@ export const EnglishState: ILanguage = {
   currentBoardPage: {
     'See all Boards': 'See all Boards',
     'New column': 'New column',
+  },
+  view_card: {
+    assign: 'Assigned to: ',
+    owner: 'Owner: ',
   },
 };
 
@@ -207,10 +212,14 @@ export const RussianState: ILanguage = {
     'See all Boards': 'Просмтореть все доски',
     'New column': 'Новая колонка',
   },
+  view_card: {
+    assign: 'Назначена для: ',
+    owner: 'Владелец: ',
+  },
 };
 
 export const initialState: IState = {
-  lang: EnglishState,
+  lang: localStorage.getItem(localStorageEnum.LANG) === langEnum.RU ? RussianState : EnglishState,
 };
 interface IState {
   lang: ILanguage;

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyles from './global';
-import { useAppSelector } from './hooks/hooks';
+import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { ProtectedRoute } from './utils/routes';
 /* COMPONENTS */
 import { NoResultPage } from './pages/404/NoResultPage';
@@ -20,6 +20,10 @@ import { Header } from './components/Header/Header';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { onDragEnd } from './utils/onDragEnd';
+import { langEnum, localStorageEnum, themeEnum } from './constants/localStorage';
+import { updateTheme } from './utils/updateTheme';
+import { getAllUsersThunk } from './slices/userSlice/userSlice';
+import { updateLang } from './utils/updateLang';
 
 function App() {
   const { isAuthorized, theme, columns, tasks } = useAppSelector((state) => {
@@ -30,7 +34,27 @@ function App() {
       tasks: state.task.tasks,
     };
   });
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getAllUsersThunk());
+    switch (localStorage.getItem(localStorageEnum.THEME)) {
+      case themeEnum.DARK:
+        updateTheme(dispatch, themeEnum.DARK);
+        break;
+      default:
+        updateTheme(dispatch, themeEnum.DEFAULT);
+        break;
+    }
+    switch (localStorage.getItem(localStorageEnum.LANG)) {
+      case langEnum.RU:
+        updateLang(dispatch, langEnum.RU);
+        break;
+      default:
+        updateLang(dispatch, langEnum.EN);
+        break;
+    }
+  }, []);
 
   return (
     <>
@@ -64,6 +88,14 @@ function App() {
               }
             />
             <Route
+              path="board/:boardId"
+              element={
+                <ProtectedRoute user={isAuthorized} redirectPath="/">
+                  <CurrentBoardPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="profile"
               element={
                 <ProtectedRoute user={isAuthorized} redirectPath="/">
@@ -72,9 +104,6 @@ function App() {
               }
             />
             <Route path="/" element={<MainPage />} />
-            <Route path="profile" element={<ProfilePage />} />
-            <Route path="boards" element={<BoardsPage />} />
-            <Route path="board/:boardId" element={<CurrentBoardPage />} />
             <Route path="*" element={<NoResultPage />} />
           </Routes>
           <Footer />
