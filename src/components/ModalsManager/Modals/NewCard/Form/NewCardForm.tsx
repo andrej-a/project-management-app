@@ -36,22 +36,33 @@ import { SelectAssign } from './SelectAssign';
 
 export const NewCardForm = () => {
   const dispatch = useAppDispatch();
-  const { hint, description, priority, addTaskButon, titlePriority, cancel, task, users, assign } =
-    useAppSelector((state) => {
-      return {
-        hint: state.language.lang.createCard.hint,
-        description: state.language.lang.createCard.description,
-        priority: state.language.lang.createCard.priority,
-        assign: state.language.lang.createCard.assign,
-        addTaskButon: state.task.currentTask
-          ? state.language.lang.updateCard.addTaskButon
-          : state.language.lang.createCard.addTaskButon,
-        titlePriority: state.language.lang.createCard.titlePriority,
-        cancel: state.language.lang.cancel,
-        task: state.task.currentTask,
-        users: state.user.users,
-      };
-    });
+  const {
+    hint,
+    description,
+    priority,
+    addTaskButon,
+    titlePriority,
+    cancel,
+    task,
+    users,
+    assign,
+    userId,
+  } = useAppSelector((state) => {
+    return {
+      hint: state.language.lang.createCard.hint,
+      description: state.language.lang.createCard.description,
+      priority: state.language.lang.createCard.priority,
+      assign: state.language.lang.createCard.assign,
+      addTaskButon: state.task.currentTask
+        ? state.language.lang.updateCard.addTaskButon
+        : state.language.lang.createCard.addTaskButon,
+      titlePriority: state.language.lang.createCard.titlePriority,
+      cancel: state.language.lang.cancel,
+      task: state.task.currentTask,
+      users: state.user.users,
+      userId: state.user.id,
+    };
+  });
   const [assignArray, setAssignArray] = useState<string[]>(task ? task.users : []);
   const handleSetAssignArray = (value: string[]) => {
     setAssignArray(() => value);
@@ -98,7 +109,7 @@ export const NewCardForm = () => {
           users: assignArray,
         })
       );
-      dispatch(fetchTask({ ...data, assign: assignArray }));
+      dispatch(fetchTask({ ...data, assign: assignArray, id: task._id }));
     } else {
       dispatch(fetchNewTasks({ task: { ...data, assign: assignArray } }));
       dispatch(setNewTaskColumnId(undefined));

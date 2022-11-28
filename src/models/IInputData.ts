@@ -29,6 +29,7 @@ export interface ICreateCardData {
   description: string;
   priority: string;
   assign: string[];
+  id?: string;
 }
 
 export interface ICreateColumn {
