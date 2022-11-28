@@ -22,7 +22,7 @@ export const updateTask = async (task: ICreateCardData) => {
     description: task.description ?? ' ',
     userId: userId,
     columnId: columnId,
-    users: [task.assign],
+    users: task.assign,
   };
 
   try {
