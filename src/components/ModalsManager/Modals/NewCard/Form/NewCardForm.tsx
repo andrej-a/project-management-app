@@ -52,7 +52,7 @@ export const NewCardForm = () => {
         users: state.user.users,
       };
     });
-  const [assignArray, setAssignArray] = useState<string[]>(task!.users);
+  const [assignArray, setAssignArray] = useState<string[]>(task ? task.users : []);
   const handleSetAssignArray = (value: string[]) => {
     setAssignArray(() => value);
   };
