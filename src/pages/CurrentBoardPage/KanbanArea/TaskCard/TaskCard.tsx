@@ -50,7 +50,7 @@ const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
           <SvgButton
             handleClick={() => {
               dispatch(setStatus('delete_item'));
-              dispatch(setDeletingValue(task.title));
+              dispatch(setDeletingValue(task.title.split(priorityKey)[0]));
               dispatch(setRequestUrl(`${path.boards}/${boardId}/columns/${columnId}/tasks/${_id}`));
             }}
             color={
