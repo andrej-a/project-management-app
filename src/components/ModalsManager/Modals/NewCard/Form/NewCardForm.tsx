@@ -109,7 +109,7 @@ export const NewCardForm = () => {
           users: assignArray,
         })
       );
-      dispatch(fetchTask({ ...data, assign: assignArray, id: task._id }));
+      dispatch(fetchTask({ ...data, assign: assignArray }));
     } else {
       dispatch(fetchNewTasks({ task: { ...data, assign: assignArray } }));
       dispatch(setNewTaskColumnId(undefined));
