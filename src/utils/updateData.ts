@@ -10,6 +10,7 @@ import { showWarningMessage } from './showWarningMessage';
 import { store } from '../store/store';
 import { updateCurrentState, authorizationSwitch } from '../slices/userSlice/userSlice';
 import { setStatus } from '../slices/modalsSlice/modalsSlice';
+import { localData } from '../constants/applicationConstants';
 
 export const updateStateAndLocalData = async (data: ILogInData) => {
   const { dispatch } = store;
@@ -19,10 +20,7 @@ export const updateStateAndLocalData = async (data: ILogInData) => {
 
   if (users.length) {
     const currentUser = users[0];
-    setValueToLocalStorage(
-      ['TASKBAN_USER_ID', 'TASKBAN_USER_NAME', 'TASKBAN_USER_LOGIN'],
-      [currentUser._id, currentUser.name, currentUser.login]
-    );
+    setValueToLocalStorage(localData, [currentUser._id, currentUser.name, currentUser.login]);
 
     dispatch(updateCurrentState(currentUser));
     dispatch(authorizationSwitch());

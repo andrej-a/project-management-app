@@ -3,7 +3,7 @@ import { IRegistrationData, IRegistredUser } from '../models/IInputData';
 import { path, requests } from '../models/requests';
 /* STORE */
 import { store } from '../store/store';
-import { setLoadingState, setStatus } from '../slices/modalsSlice/modalsSlice';
+import { setLoadingState } from '../slices/modalsSlice/modalsSlice';
 /* UTILS */
 import { showWarningMessage } from '../utils/showWarningMessage';
 import { loginUser } from './loginUser';

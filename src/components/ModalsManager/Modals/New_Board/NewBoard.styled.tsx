@@ -14,7 +14,6 @@ export const BoardFrame = styled.div`
 export const BoardCard = styled.div`
   width: auto;
   max-height: 100%;
-  overflow-y: auto;
   border-radius: 10px;
   background: ${({ theme }) => theme.LIGHT_BACKGROUND};
   display: flex;
