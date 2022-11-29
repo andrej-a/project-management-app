@@ -15,7 +15,8 @@ export const FormWrapper = styled.div`
     align-items: center;
     gap: 16px;
 
-    input[type='text'] {
+    input[type='text'],
+    input[type='password'] {
       background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       width: 306px;
       height: 40px;
@@ -32,6 +33,13 @@ export const FormWrapper = styled.div`
       color: ${({ theme }) => theme.TEXT_COLOR_GREY};
     }
     input[type='text']::-webkit-input-placeholder {
+      color: ${({ theme }) => theme.TEXT_COLOR_GREY};
+    }
+
+    input[type='password']::-moz-placeholder {
+      color: ${({ theme }) => theme.TEXT_COLOR_GREY};
+    }
+    input[type='password']::-webkit-input-placeholder {
       color: ${({ theme }) => theme.TEXT_COLOR_GREY};
     }
 
@@ -79,6 +87,7 @@ export const InputError = styled.p`
 `;
 
 export const InputWrapper = styled.div`
+  position: relative;
   width: 100%;
   height: auto;
   display: flex;

@@ -14,4 +14,5 @@ export type ModalsState = {
   loadingState: 'loaded' | 'loading';
   deletingValue: string;
   requestURL: string;
+  inputType: 'password' | 'text';
 };
