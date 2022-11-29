@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 /* STYLES */
 import { Overlay } from './ModalsManager.styled';
 /* HOOKS */
@@ -13,6 +14,9 @@ import { ViewCard } from './Modals/ViewCard.tsx/ViewCard';
 
 export const ModalsManager = () => {
   const { modalsState } = useAppSelector((state) => state.modals_state);
+  useEffect(() => {
+    document.documentElement.style.overflow = modalsState === 'hidden' ? '' : 'hidden';
+  }, [modalsState]);
   const getModal = (): JSX.Element => {
     switch (modalsState) {
       case 'add_column':
