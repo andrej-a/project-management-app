@@ -16,7 +16,7 @@ import { useAppSelector, useAppDispatch } from '../../../../hooks/hooks';
 import { Form } from './Form/Form';
 import { WarningMessage } from '../Registration/Registration.styled';
 /* ACTIONS */
-import { setStatus } from '../../../../slices/modalsSlice/modalsSlice';
+import { setLoadingState, setStatus } from '../../../../slices/modalsSlice/modalsSlice';
 
 export const LogIn = () => {
   const dispatch = useAppDispatch();
@@ -44,7 +44,14 @@ export const LogIn = () => {
               </ChangeModal>
             </ChangeModalWrapper>
             <CancelWrapper>
-              <Cancel onClick={() => dispatch(setStatus('hidden'))}>{cancel.toUpperCase()}</Cancel>
+              <Cancel
+                onClick={() => {
+                  dispatch(setStatus('hidden'));
+                  dispatch(setLoadingState('loaded'));
+                }}
+              >
+                {cancel.toUpperCase()}
+              </Cancel>
             </CancelWrapper>
             <WarningMessage>{warningMessage}</WarningMessage>
           </LogInCard>
