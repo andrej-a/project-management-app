@@ -57,6 +57,10 @@ export interface ILanguage {
     passwordPlaceholder: string;
     changeButton: string;
   };
+  noResultPage: {
+    title: string;
+    backButton: string;
+  };
   deleteAccount: string;
   successDeleteValueMessage: string;
   cancel: string;

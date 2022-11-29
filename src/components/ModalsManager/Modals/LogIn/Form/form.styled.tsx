@@ -66,13 +66,15 @@ export const FormWrapper = styled.div`
     }
 
     @media (max-width: ${size.mobileL}) {
-      input[type='text'] {
+      input[type='text'],
+      input[type='password'] {
         width: 250px;
       }
     }
 
     @media (max-width: ${size.mobileM}) {
-      input[type='text'] {
+      input[type='text'],
+      input[type='password'] {
         width: 200px;
       }
     }
@@ -96,6 +98,10 @@ export const TogglerWrapper = styled.div`
     width: 35px;
     height: 25px;
     filter: invert(19%) sepia(94%) saturate(1588%) hue-rotate(232deg) brightness(92%) contrast(85%);
+  }
+
+  @media (max-width: ${size.mobileM}) {
+    left: 80%;
   }
 `;
 

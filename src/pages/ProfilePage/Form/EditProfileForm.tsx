@@ -35,6 +35,7 @@ export const EditProfileForm = () => {
     passwordPlaceholder,
     changeButton,
     deleteAccount,
+    useLogin,
   } = useAppSelector((state) => {
     return {
       userID: state.user.id as string,
@@ -48,6 +49,7 @@ export const EditProfileForm = () => {
       passwordPlaceholder: state.language.lang.editProfile.passwordPlaceholder,
       changeButton: state.language.lang.editProfile.changeButton,
       deleteAccount: state.language.lang.deleteAccount,
+      useLogin: state.user.login,
     };
   });
   const schema = yup
@@ -65,7 +67,7 @@ export const EditProfileForm = () => {
     formState: { errors, isSubmitSuccessful },
   } = useForm<IRegistrationData>({
     resolver: yupResolver(schema),
-    defaultValues: { name: '', login: '', password: '' },
+    defaultValues: { name: `${userName}`, login: `${useLogin}`, password: '' },
   });
 
   useEffect(() => {
@@ -132,7 +134,7 @@ export const EditProfileForm = () => {
             dispatch(setStatus('delete_item'));
           }}
         >
-          {deleteAccount.toUpperCase()}
+          {deleteAccount}
         </DeleteAccountButton>
       </Wrapper>
     </>

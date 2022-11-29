@@ -11,10 +11,9 @@ import { useAppSelector, useAppDispatch } from '../../../../../hooks/hooks';
 /* MODELS */
 import { IRegistrationData } from '../../../../../models/IInputData';
 /* STYLES */
-import { FormWrapper, InputWrapper, InputError } from './form.styled';
+import { FormWrapper, InputWrapper, InputError, TogglerWrapper } from './form.styled';
 /* THUNKS */
 import { registrationUser } from '../../../../../slices/userSlice/userSlice';
-import { TogglerWrapper } from '../../LogIn/Form/form.styled';
 import { setInputType } from '../../../../../slices/modalsSlice/modalsSlice';
 
 export const Form = () => {
