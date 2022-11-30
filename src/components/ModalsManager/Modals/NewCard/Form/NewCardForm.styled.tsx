@@ -12,18 +12,20 @@ export const FormWrapper = styled.div`
 
     textarea {
       width: 100%;
-      margin-bottom: 22px;
       background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       outline: none;
       border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
       border-radius: 5px;
       outline: none;
       overflow: hidden;
-      resize: none;
-      font-weight: 600;
-      font-size: 14px;
+      resize: vertical;
+      font-size: 16px;
       line-height: 17px;
       color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+      overflow: auto;
+      max-height: 210px;
+      margin-bottom: -5px;
+      margin-top: 5px;
     }
 
     input[type='radio'] {
@@ -37,7 +39,7 @@ export const FormWrapper = styled.div`
       padding: 10px 37px;
       background: ${({ theme }) => theme.BUTTON_BACKGROUND};
       border-radius: 20px;
-      margin-bottom: 37px;
+      margin-bottom: 18px;
       border: 0px;
       font-style: normal;
       font-weight: 600;
@@ -58,7 +60,9 @@ export const FormWrapper = styled.div`
 `;
 
 export const PriorityTitle = styled.p`
-  margin-top: 14px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
   color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;
 
@@ -89,6 +93,7 @@ export const HighPriorityLabel = styled.label`
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
+  text-align: center;
   color: ${({ theme }) => theme.BUTTON_RED};
   cursor: pointer;
   border: 2px solid ${({ theme }) => theme.BUTTON_RED};

@@ -63,14 +63,22 @@ export const CreateBoardFormWrapper = styled.div`
   }
 `;
 
-export const TitleInput = styled.textarea`
+export const TitleInput = styled.input`
   height: 40px;
   padding: 12px 0px 10px 10px;
+  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+  border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
+  background: ${({ theme }) => theme.LIGHT_BACKGROUND};
+  border-radius: 5px;
+  font-weight: 600;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const DescriptionInput = styled.textarea`
-  height: 230px;
-  padding: 12px 12px 201px 12px;
+  height: 90px;
+  padding: 12px 12px 12px 12px;
 
   @media (max-width: ${size.mobileL}) {
     padding: 12px 0px 120px 10px;
@@ -83,6 +91,7 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 22px;
+  gap: 20px;
 
   @media (max-width: ${size.tablet}) {
     flex-direction: column;
