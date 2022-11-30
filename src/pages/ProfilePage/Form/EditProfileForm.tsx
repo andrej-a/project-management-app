@@ -42,7 +42,7 @@ export const EditProfileForm = () => {
       warningMessage: state.modals_state.warningMessage,
       loadingState: state.modals_state.loadingState,
       title: state.language.lang.editProfile.title,
-      spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
+      spinnerColor: state.application_theme.theme.TEXT_COLOR_DARK,
       userName: state.user.name,
       namePlaceholder: state.language.lang.editProfile.namePlaceholder,
       loginPlaceholder: state.language.lang.editProfile.loginPlaceholder,

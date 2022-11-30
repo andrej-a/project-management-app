@@ -14,8 +14,11 @@ import { setStatus } from '../../slices/modalsSlice/modalsSlice';
 import { getAllUsersThunk } from '../../slices/userSlice/userSlice';
 
 const BoardsPage = () => {
-  const { boards, isLoading } = useAppSelector((state) => {
+  const { dictionary, spinnerColor, userName, boards, isLoading } = useAppSelector((state) => {
     return {
+      dictionary: state.language.lang.boardsPage,
+      spinnerColor: state.application_theme.theme.TEXT_COLOR_DARK,
+      userName: state.user.name ?? 'Stranger',
       boards: state.board.boards,
       isLoading: state.board.isLoading,
     };
@@ -29,13 +32,6 @@ const BoardsPage = () => {
   }, []);
 
   const boardsList = boards.map((board) => <BoardSmallCard {...board} key={board._id} />);
-  const { dictionary, spinnerColor, userName } = useAppSelector((state) => {
-    return {
-      dictionary: state.language.lang.boardsPage,
-      spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
-      userName: state.user.name ?? 'Stranger',
-    };
-  });
 
   const newBoardText = (
     <>

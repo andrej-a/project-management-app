@@ -31,7 +31,7 @@ export const Form = () => {
       passwordPlaceholder: state.language.lang.loginModal.passwordPlaceholder,
       registrationButton: state.language.lang.loginModal.logInButton,
       loadingState: state.modals_state.loadingState,
-      spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
+      spinnerColor: state.application_theme.theme.TEXT_COLOR_DARK,
       inputType: state.modals_state.inputType,
     };
   });

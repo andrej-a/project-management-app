@@ -22,7 +22,7 @@ const CurrentBoardPage = () => {
       board: state.board.currentBoard,
       columns: state.column.columns,
       tasks: state.task.tasks,
-      spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
+      spinnerColor: state.application_theme.theme.TEXT_COLOR_DARK,
     };
   });
 

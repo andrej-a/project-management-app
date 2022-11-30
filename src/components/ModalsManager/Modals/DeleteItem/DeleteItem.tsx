@@ -40,7 +40,7 @@ export const DeleteItem = () => {
       deletingValue: state.modals_state.deletingValue,
       warningMessage: state.modals_state.warningMessage,
       loadingState: state.modals_state.loadingState,
-      loaderColor: state.application_theme.theme.MAIN_BACKGROUND,
+      loaderColor: state.application_theme.theme.TEXT_COLOR_DARK,
       requestURL: state.modals_state.requestURL,
     };
   });
