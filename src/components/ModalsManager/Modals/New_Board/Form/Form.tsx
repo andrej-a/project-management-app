@@ -92,6 +92,7 @@ export const CreateBoardForm = () => {
             <CreateCardCancelButton
               onClick={() => {
                 dispatch(setStatus('hidden'));
+                dispatch(setEditBoard(undefined));
               }}
             >
               {cancel}
