@@ -3,11 +3,12 @@ import styled from 'styled-components';
 export const ColumnWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   max-height: 100%;
   width: 332px;
+  max-width: 94vw;
   form {
-    max-width: calc(100% - 80px);
+    max-width: calc(100% - 70px);
   }
 `;
 export const ColumnHeader = styled.div`

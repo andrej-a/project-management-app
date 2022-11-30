@@ -3,7 +3,7 @@ import { size } from '../../../constants/screenSizes';
 
 export const KanbanWrapper = styled.div`
   display: flex;
-  padding: 38px 3.6% 38px 5.55%;
+  padding: 18px 3.6% 28px 5.55%;
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 54px;

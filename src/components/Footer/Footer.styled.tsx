@@ -10,7 +10,7 @@ export const FooterWrapper = styled.div`
   justify-content: space-between;
   gap: 4.5%;
   padding: 0px 2.7%;
-  height: auto;
+  height: 52px;
 
   p {
     font-size: clamp(13px, 3vw, 16px);
@@ -41,9 +41,6 @@ export const MembersInfo = styled.div`
   gap: 10%;
   @media (max-width: ${size.tablet}) {
     flex-direction: column;
-    p {
-      margin-top: 10px;
-    }
   }
 `;
 
@@ -63,8 +60,5 @@ export const MemberItem = styled.div`
   }
   svg {
     fill: ${({ theme }) => theme.TEXT_COLOR_DARK};
-  }
-  @media (max-width: ${size.tablet}) {
-    margin-top: 10px;
   }
 `;
