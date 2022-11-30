@@ -1,12 +1,13 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { ClockLoader } from 'react-spinners';
+import { HandySvg } from 'handy-svg';
+import { useEffect } from 'react';
+
 import EyeOpen from '../../../../../assets/img/eye-toggler.svg';
 import EyeClosed from '../../../../../assets/img/eye-closed.svg';
 /* HOOKS */
 import { useAppSelector, useAppDispatch } from '../../../../../hooks/hooks';
-import { useEffect } from 'react';
 /* MODELS */
 import { ILogInData } from '../../../../../models/IInputData';
 /* STYLES */
@@ -14,27 +15,21 @@ import { FormWrapper, InputWrapper, InputError, TogglerWrapper } from './form.st
 /* THUNKS */
 import { loginUserThunk } from '../../../../../slices/userSlice/userSlice';
 import { setInputType } from '../../../../../slices/modalsSlice/modalsSlice';
-import { HandySvg } from 'handy-svg';
+
+import { Spinner } from '../../../../Spinner/Spinner';
 
 export const Form = () => {
   const dispatch = useAppDispatch();
-  const {
-    loginPlaceholder,
-    passwordPlaceholder,
-    registrationButton,
-    loadingState,
-    spinnerColor,
-    inputType,
-  } = useAppSelector((state) => {
-    return {
-      loginPlaceholder: state.language.lang.loginModal.loginPlaceholder,
-      passwordPlaceholder: state.language.lang.loginModal.passwordPlaceholder,
-      registrationButton: state.language.lang.loginModal.logInButton,
-      loadingState: state.modals_state.loadingState,
-      spinnerColor: state.application_theme.theme.TEXT_COLOR_DARK,
-      inputType: state.modals_state.inputType,
-    };
-  });
+  const { loginPlaceholder, passwordPlaceholder, registrationButton, loadingState, inputType } =
+    useAppSelector((state) => {
+      return {
+        loginPlaceholder: state.language.lang.loginModal.loginPlaceholder,
+        passwordPlaceholder: state.language.lang.loginModal.passwordPlaceholder,
+        registrationButton: state.language.lang.loginModal.logInButton,
+        loadingState: state.modals_state.loadingState,
+        inputType: state.modals_state.inputType,
+      };
+    });
 
   const schema = yup
     .object({
@@ -110,7 +105,7 @@ export const Form = () => {
               value={registrationButton}
             />
           ) : (
-            <ClockLoader color={spinnerColor} />
+            <Spinner center={false} />
           )}
         </form>
       </FormWrapper>

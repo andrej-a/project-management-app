@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { ClockLoader } from 'react-spinners';
+import { HandySvg } from 'handy-svg';
+
 import EyeOpen from '../../../../../assets/img/eye-toggler.svg';
 import EyeClosed from '../../../../../assets/img/eye-closed.svg';
-
 /* HOOKS */
 import { useAppSelector, useAppDispatch } from '../../../../../hooks/hooks';
 /* MODELS */
@@ -15,7 +15,8 @@ import { FormWrapper, InputWrapper, InputError, TogglerWrapper } from './form.st
 /* THUNKS */
 import { registrationUser } from '../../../../../slices/userSlice/userSlice';
 import { setInputType } from '../../../../../slices/modalsSlice/modalsSlice';
-import { HandySvg } from 'handy-svg';
+
+import { Spinner } from '../../../../Spinner/Spinner';
 
 export const Form = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +26,6 @@ export const Form = () => {
     passwordPlaceholder,
     registrationButton,
     loadingState,
-    spinnerColor,
     inputType,
   } = useAppSelector((state) => {
     return {
@@ -34,7 +34,6 @@ export const Form = () => {
       passwordPlaceholder: state.language.lang.registrationModal.passwordPlaceholder,
       registrationButton: state.language.lang.registrationModal.registrationButton,
       loadingState: state.modals_state.loadingState,
-      spinnerColor: state.application_theme.theme.TEXT_COLOR_DARK,
       inputType: state.modals_state.inputType,
     };
   });
@@ -124,7 +123,7 @@ export const Form = () => {
               value={registrationButton}
             />
           ) : (
-            <ClockLoader color={spinnerColor} />
+            <Spinner center={false} />
           )}
         </form>
       </FormWrapper>
