@@ -26,14 +26,19 @@ import { getAllUsersThunk } from './slices/userSlice/userSlice';
 import { updateLang } from './utils/updateLang';
 
 function App() {
-  const { isAuthorized, theme, columns, tasks } = useAppSelector((state) => {
-    return {
-      isAuthorized: state.user.isAuthorized,
-      theme: state.application_theme.theme,
-      columns: state.column.columns,
-      tasks: state.task.tasks,
-    };
-  });
+  const { isAuthorized, theme, columns, tasks, boardOwner, boardUsers, userId } = useAppSelector(
+    (state) => {
+      return {
+        isAuthorized: state.user.isAuthorized,
+        theme: state.application_theme.theme,
+        boardOwner: state.board.currentBoard?.owner ?? '',
+        boardUsers: state.board.currentBoard?.users ?? [],
+        userId: state.user.id ?? '',
+        columns: state.column.columns,
+        tasks: state.task.tasks,
+      };
+    }
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -90,7 +95,10 @@ function App() {
             <Route
               path="board/:boardId"
               element={
-                <ProtectedRoute user={isAuthorized} redirectPath="/">
+                <ProtectedRoute
+                  user={isAuthorized && (userId === boardOwner || boardUsers.includes(userId))}
+                  redirectPath="/"
+                >
                   <CurrentBoardPage />
                 </ProtectedRoute>
               }
