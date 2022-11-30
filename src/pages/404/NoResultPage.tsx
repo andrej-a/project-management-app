@@ -2,8 +2,8 @@ import React from 'react';
 import Lottie from 'lottie-react';
 /* STYLES */
 import { Wrapper } from './NoResultPage.styled';
-import light_notFoundImage from '../../assets/404-page_light.json';
-import dark_notFoundImage from '../../assets/404-page.json';
+import light_notFoundImage from '../../assets/json/404-page_light.json';
+import dark_notFoundImage from '../../assets/json/404-page.json';
 /* COMPONENTS */
 import { GoBack } from './GoBack/GoBack';
 import { Text } from './Text/Text';
