@@ -45,7 +45,11 @@ export const ViewCard = () => {
               }}
             />
             <NewCardTitle>{task?.title.split(priorityKey)[0] ?? ''}</NewCardTitle>
-            <div className="description">{task?.description ?? ''}</div>
+            <div className="description">
+              {task?.description.split(/(\n|\r)+/).map((str, i) => (
+                <p key={i}>{str}</p>
+              ))}
+            </div>
             <div className="assign">
               <div>
                 <span>{assignedTxt}</span> {assignName?.join(', ')}

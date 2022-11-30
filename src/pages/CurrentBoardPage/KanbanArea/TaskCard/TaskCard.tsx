@@ -47,7 +47,11 @@ const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
           }}
         >
           <TaskCardTitle>{title.split(priorityKey)[0]}</TaskCardTitle>
-          <TaskCardDescription>{description}</TaskCardDescription>
+          <TaskCardDescription>
+            {description.split(/(\n|\r)+/).map((str, i) => (
+              <p key={i}>{str}</p>
+            ))}
+          </TaskCardDescription>
           <SvgButton
             handleClick={() => {
               dispatch(setStatus('delete_item'));
