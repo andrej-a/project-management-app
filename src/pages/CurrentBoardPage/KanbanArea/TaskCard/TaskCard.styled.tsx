@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const TaskCardStyled = styled.div`
-  height: 300px;
+  height: 155px;
   width: 300px;
-  padding: 31px 33px;
+  max-width: 85vw;
+  padding: 17px 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 8px;
   background-color: ${({ theme }) => theme.LIGHT_BACKGROUND};
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -24,7 +25,13 @@ export const TaskCardTitle = styled.h3`
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
+  max-width: 240px;
   line-height: 22px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 export const TaskCardDescription = styled.div`
   font-style: normal;
@@ -36,6 +43,7 @@ export const TaskCardDescription = styled.div`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-height: 51px;
 `;
 export const Priority = styled.div`
   text-transform: uppercase;
@@ -44,7 +52,9 @@ export const Priority = styled.div`
   font-size: 12px;
   line-height: 15px;
   border-radius: 100px;
-  padding: 5px 15px;
+  height: 24px;
+  padding: 3.5px 15px;
+  margin-top: 8px;
   width: min-content;
   color: ${({ theme }) => theme.TEXT_COLOR};
   &.high {

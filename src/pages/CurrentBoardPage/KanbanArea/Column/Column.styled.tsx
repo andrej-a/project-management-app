@@ -6,6 +6,9 @@ export const ColumnWrapper = styled.div`
   gap: 20px;
   max-height: 100%;
   width: 332px;
+  form {
+    max-width: calc(100% - 80px);
+  }
 `;
 export const ColumnHeader = styled.div`
   max-width: 100%;
@@ -19,6 +22,7 @@ export const ColumnStyled = styled.div`
   display: flex;
   flex-direction: column;
   width: 332px;
+  max-width: 94vw;
   background-color: ${({ theme }) => theme.FRAME_TASK_COLOR};
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   border-radius: 20px;

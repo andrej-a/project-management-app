@@ -13,9 +13,9 @@ export const KanbanWrapper = styled.div`
 
   @media (max-width: ${size.tablet}) {
     max-width: 100vw;
-    padding: 6%;
+    padding: max(2%, 4px) 3%;
   }
   ::-webkit-scrollbar {
-    width: 7px;
+    width: auto;
   }
 `;
