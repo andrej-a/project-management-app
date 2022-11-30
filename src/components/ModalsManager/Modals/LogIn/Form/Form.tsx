@@ -14,6 +14,7 @@ import { FormWrapper, InputWrapper, InputError, TogglerWrapper } from './form.st
 /* THUNKS */
 import { loginUserThunk } from '../../../../../slices/userSlice/userSlice';
 import { setInputType } from '../../../../../slices/modalsSlice/modalsSlice';
+import { HandySvg } from 'handy-svg';
 
 export const Form = () => {
   const dispatch = useAppDispatch();
@@ -93,7 +94,11 @@ export const Form = () => {
             <TogglerWrapper
               onClick={() => dispatch(setInputType(inputType === 'password' ? 'text' : 'password'))}
             >
-              <img src={inputType === 'password' ? EyeOpen : EyeClosed} alt="toggler" />
+              <HandySvg
+                src={inputType === 'password' ? EyeOpen : EyeClosed}
+                width="32"
+                height="32"
+              />
             </TogglerWrapper>
             <InputError>{errors.password?.message}</InputError>
           </InputWrapper>

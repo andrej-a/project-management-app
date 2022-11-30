@@ -7,6 +7,10 @@ export const FormWrapper = styled.div`
   height: auto;
   margin: 19px 42px;
 
+  svg {
+    stroke: ${({ theme }) => theme.TEXT_COLOR_GREY};
+    fill: none;
+  }
   form {
     width: auto;
     display: flex;
@@ -101,7 +105,7 @@ export const InputError = styled.p`
 export const TogglerWrapper = styled.div`
   position: absolute;
   cursor: pointer;
-  top: 15%;
+  top: 4px;
   left: 85%;
 
   img {

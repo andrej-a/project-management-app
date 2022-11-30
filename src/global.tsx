@@ -32,6 +32,14 @@ ${normalize}
     min-height: 97vh;
 
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.LIGHT_BACKGROUND} inset !important;
+    border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
+    -webkit-text-fill-color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+}
 body {
     margin: 0;
     max-height: min-content;
