@@ -3,14 +3,19 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { ClockLoader } from 'react-spinners';
+import EyeOpen from '../../../../../assets/img/eye-toggler.svg';
+import EyeClosed from '../../../../../assets/img/eye-closed.svg';
+
 /* HOOKS */
 import { useAppSelector, useAppDispatch } from '../../../../../hooks/hooks';
 /* MODELS */
 import { IRegistrationData } from '../../../../../models/IInputData';
 /* STYLES */
-import { FormWrapper, InputWrapper, InputError } from './form.styled';
+import { FormWrapper, InputWrapper, InputError, TogglerWrapper } from './form.styled';
 /* THUNKS */
 import { registrationUser } from '../../../../../slices/userSlice/userSlice';
+import { setInputType } from '../../../../../slices/modalsSlice/modalsSlice';
+import { HandySvg } from 'handy-svg';
 
 export const Form = () => {
   const dispatch = useAppDispatch();
@@ -21,6 +26,7 @@ export const Form = () => {
     registrationButton,
     loadingState,
     spinnerColor,
+    inputType,
   } = useAppSelector((state) => {
     return {
       namePlaceholder: state.language.lang.registrationModal.namePlaceholder,
@@ -29,6 +35,7 @@ export const Form = () => {
       registrationButton: state.language.lang.registrationModal.registrationButton,
       loadingState: state.modals_state.loadingState,
       spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
+      inputType: state.modals_state.inputType,
     };
   });
 
@@ -49,6 +56,12 @@ export const Form = () => {
     resolver: yupResolver(schema),
     defaultValues: { name: '', login: '', password: '' },
   });
+
+  useEffect(() => {
+    return () => {
+      dispatch(setInputType('password'));
+    };
+  }, []);
 
   useEffect(() => {
     if (isSubmitSuccessful) {
@@ -88,10 +101,19 @@ export const Form = () => {
             <input
               {...register('password')}
               placeholder={passwordPlaceholder}
-              type="text"
+              type={inputType}
               name="password"
               id=""
             />
+            <TogglerWrapper
+              onClick={() => dispatch(setInputType(inputType === 'password' ? 'text' : 'password'))}
+            >
+              <HandySvg
+                src={inputType === 'password' ? EyeOpen : EyeClosed}
+                width="32"
+                height="32"
+              />
+            </TogglerWrapper>
             <InputError>{errors.password?.message}</InputError>
           </InputWrapper>
 

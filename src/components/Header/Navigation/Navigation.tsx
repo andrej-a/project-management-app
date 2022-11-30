@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { HandySvg } from 'handy-svg';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/hooks';
-import { Styles, SvgSizes } from '../../../constants/applicationConstants';
+import { localData, Styles, SvgSizes } from '../../../constants/applicationConstants';
 
 import { langChange } from '../../../slices/languageSlice/languageSlice';
 import { EnglishState, RussianState } from '../../../slices/languageSlice/initialState';
@@ -30,6 +30,7 @@ import {
 import { langEnum, localStorageEnum, themeEnum } from '../../../constants/localStorage';
 import { updateTheme } from '../../../utils/updateTheme';
 import { updateLang } from '../../../utils/updateLang';
+import { deleteValueFromLocalStorage } from '../../../utils/deleteValueFromLocalStorage';
 
 type props = {
   isOpen: boolean;
@@ -113,6 +114,7 @@ export const NavigationComponent = ({ isOpen }: props) => {
         onClick={() => {
           dispatch(authorizationSwitch());
           deleteCookie(getCookie('TASKBAN_USER_TOKEN') as string);
+          deleteValueFromLocalStorage(localData);
         }}
       >
         {dictionary.header.LogOut}

@@ -61,6 +61,10 @@ export const EnglishState: ILanguage = {
     passwordPlaceholder: 'Your new password',
     changeButton: 'Do it!',
   },
+  noResultPage: {
+    title: 'Sorry, this page is not exist',
+    backButton: 'Go back',
+  },
   deleteAccount: 'Delete account',
   cancel: 'Cancel',
   successDeleteValueMessage: `Successfully deleted:`,
@@ -168,6 +172,10 @@ export const RussianState: ILanguage = {
     loginPlaceholder: 'Ваш новый логин',
     passwordPlaceholder: 'Ваш новый пароль',
     changeButton: 'Изменить',
+  },
+  noResultPage: {
+    title: 'Извините, данной страницы не существует',
+    backButton: 'Назад',
   },
   deleteAccount: 'Удалить аккаунт',
   successDeleteValueMessage: `Успешно удалено:`,

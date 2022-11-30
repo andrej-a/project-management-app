@@ -7,6 +7,10 @@ export const FormWrapper = styled.div`
   height: auto;
   margin: 19px 42px;
 
+  svg {
+    stroke: ${({ theme }) => theme.TEXT_COLOR_DARK};
+    fill: none;
+  }
   form {
     width: auto;
     display: flex;
@@ -15,7 +19,8 @@ export const FormWrapper = styled.div`
     align-items: center;
     gap: 16px;
 
-    input[type='text'] {
+    input[type='text'],
+    input[type='password'] {
       background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       width: 306px;
       height: 40px;
@@ -32,6 +37,13 @@ export const FormWrapper = styled.div`
       color: ${({ theme }) => theme.TEXT_COLOR_GREY};
     }
     input[type='text']::-webkit-input-placeholder {
+      color: ${({ theme }) => theme.TEXT_COLOR_GREY};
+    }
+
+    input[type='password']::-moz-placeholder {
+      color: ${({ theme }) => theme.TEXT_COLOR_GREY};
+    }
+    input[type='password']::-webkit-input-placeholder {
       color: ${({ theme }) => theme.TEXT_COLOR_GREY};
     }
 
@@ -58,13 +70,15 @@ export const FormWrapper = styled.div`
     }
 
     @media (max-width: ${size.mobileL}) {
-      input[type='text'] {
+      input[type='text'],
+      input[type='password'] {
         width: 250px;
       }
     }
 
     @media (max-width: ${size.mobileM}) {
-      input[type='text'] {
+      input[type='text'],
+      input[type='password'] {
         width: 200px;
       }
     }
@@ -78,4 +92,23 @@ export const InputError = styled.p`
   color: ${({ theme }) => theme.TEXT_COLOR_GREY};
 `;
 
-export const InputWrapper = styled.div``;
+export const TogglerWrapper = styled.div`
+  position: absolute;
+  cursor: pointer;
+  top: 4px;
+  left: 85%;
+
+  img {
+    width: 35px;
+    height: 25px;
+    filter: invert(19%) sepia(94%) saturate(1588%) hue-rotate(232deg) brightness(92%) contrast(85%);
+  }
+
+  @media (max-width: ${size.mobileM}) {
+    left: 80%;
+  }
+`;
+
+export const InputWrapper = styled.div`
+  position: relative;
+`;

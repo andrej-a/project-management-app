@@ -20,10 +20,19 @@ const themeSlice = createSlice({
     setRequestUrl: (state, action) => {
       state.requestURL = action.payload;
     },
+    setInputType: (state, action) => {
+      state.inputType = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = themeSlice;
-export const { setStatus, setWarningMessage, setLoadingState, setDeletingValue, setRequestUrl } =
-  actions;
+export const {
+  setStatus,
+  setWarningMessage,
+  setLoadingState,
+  setDeletingValue,
+  setRequestUrl,
+  setInputType,
+} = actions;
 export default reducer;

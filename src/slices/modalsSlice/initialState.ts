@@ -7,4 +7,5 @@ export const initialState: ModalsState = {
   loadingState: 'loaded',
   deletingValue: '',
   requestURL: '',
+  inputType: 'password',
 };

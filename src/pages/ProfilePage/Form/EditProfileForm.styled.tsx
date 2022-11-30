@@ -17,11 +17,11 @@ export const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     gap: 16px;
-    margin: 0 20px 20px 20px;
+    margin: 0 20px -10px 20px;
 
     input[type='text'] {
       background: ${({ theme }) => theme.LIGHT_BACKGROUND};
-      width: 506px;
+      width: 306px;
       height: 40px;
       border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
       border-radius: 5px;
@@ -40,7 +40,6 @@ export const Wrapper = styled.div`
     }
 
     input[type='submit'] {
-      margin-top: 18px;
       padding: 10px 37px;
       background: ${({ theme }) => theme.BUTTON_BACKGROUND};
       border-radius: 20px;
@@ -93,20 +92,19 @@ export const Title = styled.p`
 `;
 
 export const DeleteAccountButton = styled.button`
-  width: 100%;
-  height: 60px;
-  margin-top: 20px;
+  width: auto;
+  height: auto;
+  padding: 10px 37px;
   border: 0;
   cursor: pointer;
-  background: ${({ theme }) => theme.BUTTON_RED};
   font-weight: 600;
-  font-size: 30px;
-  line-height: 36px;
+  font-size: 16px;
   border-radius: 20px;
-  color: ${({ theme }) => theme.TEXT_COLOR};
-
-  @media (max-width: ${size.mobileL}) {
-    width: 250px;
-    font-size: 20px;
+  background: transparent;
+  color: ${({ theme }) => theme.BUTTON_RED};
+  transition: all 0.3s ease;
+  &:hover {
+    background: ${({ theme }) => theme.BUTTON_RED};
+    color: ${({ theme }) => theme.TEXT_COLOR};
   }
 `;

@@ -10,6 +10,9 @@ import { authorizationSwitch } from '../slices/userSlice/userSlice';
 import { fetchAllBoards, fetchUpdateBoardAssignList } from '../slices/boardSlice/actions';
 import { fetchAllColumns } from '../slices/columnSlice/actions';
 import { fetchAllTasks } from '../slices/taskSlice/actions';
+import { deleteValueFromLocalStorage } from '../utils/deleteValueFromLocalStorage';
+/* CONSTANTS */
+import { localData } from '../constants/applicationConstants';
 
 export const deleteValue = async (url: string, removingValue: string) => {
   const { DELETE, TYPE, SUCCESSFULL_REQUEST, SHORT_WARNING_MESSAGE_DURATION } = requests;
@@ -37,7 +40,10 @@ export const deleteValue = async (url: string, removingValue: string) => {
       dispatch(setStatus('hidden'));
       dispatch(setLoadingState('loaded'));
 
-      url.match(path.users) && dispatch(authorizationSwitch());
+      if (url.match(path.users)) {
+        dispatch(authorizationSwitch());
+        deleteValueFromLocalStorage(localData);
+      }
       url.match(path.boards) && dispatch(fetchAllBoards());
       url.match('columns') && dispatch(fetchAllColumns(currentBoard!));
       url.match('tasks') && dispatch(fetchAllTasks({ boardId: currentBoard! }));

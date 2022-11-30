@@ -1,13 +1,17 @@
+import { useAppSelector } from '../../../hooks/hooks';
 /* STYLES */
 import { TextWrapper, TextContent } from './Text.styled';
-/* CONSTANTS */
-import { applicationConstants } from '../../../constants/applicationConstants';
-const { NO_RESULT_PAGE_MAIN_TEXT } = applicationConstants;
+
 export const Text = () => {
+  const { mainText } = useAppSelector((state) => {
+    return {
+      mainText: state.language.lang.noResultPage.title,
+    };
+  });
   return (
     <>
       <TextWrapper>
-        <TextContent>{NO_RESULT_PAGE_MAIN_TEXT}</TextContent>
+        <TextContent>{mainText}</TextContent>
       </TextWrapper>
     </>
   );
