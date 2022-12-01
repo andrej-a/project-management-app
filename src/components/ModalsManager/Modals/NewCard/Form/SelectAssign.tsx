@@ -91,7 +91,7 @@ export const SelectAssign = ({
           primary25: selectFocus,
           neutral0: selectBg,
           primary: selectBorder,
-          neutral80: selectBg,
+          neutral80: selectTxtColor,
           neutral10: selectFocusActive,
           neutral50: selectTxtColor,
           primary50: selectFocus,
