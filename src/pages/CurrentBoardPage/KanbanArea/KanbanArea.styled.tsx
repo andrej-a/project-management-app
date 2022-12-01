@@ -7,7 +7,7 @@ export const KanbanWrapper = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 54px;
-  max-height: calc(100vh - 293px);
+  max-height: calc(100vh - 253px);
   /**ПРОКРУТКА */
   overflow-y: hidden;
   overflow-x: scroll;
