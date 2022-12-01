@@ -28,7 +28,7 @@ export const SearchTaskCard = ({ task }: { task: ITask }) => {
   );
   const dispatch = useAppDispatch();
   return (
-    <TaskCardStyled as={Link} to={`/board/${boardId}`}>
+    <TaskCardStyled as={Link} to={`/board/${_id}`}>
       <TaskCardTitle>{title.split(priorityKey)[0]}</TaskCardTitle>
       <TaskCardDescription>{description}</TaskCardDescription>
       <SvgButton

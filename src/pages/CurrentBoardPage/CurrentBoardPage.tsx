@@ -12,6 +12,7 @@ import { Spinner } from '../../components/Spinner/Spinner';
 import { fetchAllColumns } from '../../slices/columnSlice/actions';
 import { fetchBoard } from '../../slices/boardSlice/actions';
 import { getBoardTasks } from '../../service/tasks/getBoardTasks';
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 
 const CurrentBoardPage = () => {
   const { boardId } = useParams();
@@ -39,14 +40,16 @@ const CurrentBoardPage = () => {
 
   return (
     <Wrapper className="Wrapper">
-      {!board ? (
-        <Spinner center={true} />
-      ) : (
-        <InnerWrapper className="innerWrapper">
-          <PageHeader title={board!.title} />
-          <KanbanArea />
-        </InnerWrapper>
-      )}
+      <ErrorBoundary>
+        {!board ? (
+          <Spinner center={true} />
+        ) : (
+          <InnerWrapper className="innerWrapper">
+            <PageHeader title={board!.title} />
+            <KanbanArea />
+          </InnerWrapper>
+        )}
+      </ErrorBoundary>
     </Wrapper>
   );
 };

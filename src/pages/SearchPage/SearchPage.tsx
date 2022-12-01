@@ -14,6 +14,8 @@ import { fetchAllUserTasks } from '../../slices/taskSlice/actions';
 
 import { BoardsWrapper } from '../BoardsPage/BoardsPage.styled';
 import { AreaWrapper, Wrapper } from './SearchPage.styled';
+import { priorityKey } from '../../constants/priorityKey';
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 
 const SearchPage = () => {
   const { dictionary, allBoards, allUserTasks, isLoadingBoards } = useAppSelector((state) => {
@@ -45,7 +47,7 @@ const SearchPage = () => {
       } else {
         setBoards([]);
         const searchedTasks = allUserTasks.filter((task) =>
-          task.title.toLowerCase().includes(search.toLowerCase())
+          task.title.split(priorityKey)[0].toLowerCase().includes(search.toLowerCase())
         );
         setTasks(searchedTasks);
       }
@@ -63,28 +65,33 @@ const SearchPage = () => {
 
   return (
     <Wrapper>
-      <Search
-        setSearch={(value: string) => setSearch(value)}
-        search={search}
-        setOption={(value: boolean) => setIsOptionIsBoard(value)}
-      />
-      <AreaWrapper>
-        {boards.length > 0 ? (
-          <BoardsWrapper>
-            {boards.map((board) => {
-              return <BoardSmallCard {...board} key={board._id} />;
-            })}
-          </BoardsWrapper>
-        ) : tasks.length > 0 ? (
-          <BoardsWrapper>
-            {tasks.map((task) => (
-              <SearchTaskCard task={task} key={task._id} />
-            ))}
-          </BoardsWrapper>
-        ) : (
-          <p>{dictionary.header.SearchNothing}</p>
-        )}
-      </AreaWrapper>
+      <ErrorBoundary>
+        <Search
+          setSearch={(value: string) => setSearch(value)}
+          search={search}
+          setOption={(value: boolean) => setIsOptionIsBoard(value)}
+        />
+      </ErrorBoundary>
+
+      <ErrorBoundary>
+        <AreaWrapper>
+          {boards.length > 0 ? (
+            <BoardsWrapper>
+              {boards.map((board) => {
+                return <BoardSmallCard {...board} key={board._id} />;
+              })}
+            </BoardsWrapper>
+          ) : tasks.length > 0 ? (
+            <BoardsWrapper>
+              {tasks.map((task) => (
+                <SearchTaskCard task={task} key={task._id} />
+              ))}
+            </BoardsWrapper>
+          ) : (
+            <p>{dictionary.header.SearchNothing}</p>
+          )}
+        </AreaWrapper>
+      </ErrorBoundary>
     </Wrapper>
   );
 };
