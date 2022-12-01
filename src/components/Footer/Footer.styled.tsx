@@ -28,7 +28,7 @@ export const FooterWrapper = styled.div`
   .gitLogo {
     svg {
       width: clamp(15px, 4vw, 100%);
-      min-width: 15px;
+      min-width: 32px;
     }
   }
   @media (max-width: ${size.tablet}) {

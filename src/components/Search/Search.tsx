@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { HandySvg } from 'handy-svg';
 
 import { useAppSelector } from '../../hooks/hooks';
 
 import { FormWrapper, InputSearch, InputSearchWrapper, SearchSelect } from './Search.styled';
 import searchIcon from '../../assets/svg/search.svg';
-import { HandySvg } from 'handy-svg';
 
 type Props = {
   search: string;

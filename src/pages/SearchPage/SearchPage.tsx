@@ -1,26 +1,35 @@
 import { useEffect, useState } from 'react';
+
 import { Search } from '../../components/Search/Search';
-import { useAppSelector } from '../../hooks/hooks';
+import BoardSmallCard from '../BoardsPage/BoardSmallCard/BoardSmallCard';
+import { SearchTaskCard } from './SearchTask';
+
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+
 import { IBoard } from '../../models/IBoard';
 import { ITask } from '../../models/ITask';
-import BoardSmallCard from '../BoardsPage/BoardSmallCard/BoardSmallCard';
+
+import { fetchAllBoards } from '../../slices/boardSlice/actions';
+import { fetchAllUserTasks } from '../../slices/taskSlice/actions';
+
 import { BoardsWrapper } from '../BoardsPage/BoardsPage.styled';
-import TaskCard from '../CurrentBoardPage/KanbanArea/TaskCard/TaskCard';
 import { AreaWrapper, Wrapper } from './SearchPage.styled';
 
 const SearchPage = () => {
-  const { dictionary, allBoards } = useAppSelector((state) => {
+  const { dictionary, allBoards, allUserTasks, isLoadingBoards } = useAppSelector((state) => {
     return {
       dictionary: state.language.lang,
       allBoards: state.board.boards,
+      allUserTasks: state.task.allUserTasks,
+      isLoadingBoards: state.board.isLoading,
     };
   });
 
   const [search, setSearch] = useState<string>('');
   const [boards, setBoards] = useState<IBoard[]>([]);
-  const [allTasks, setAllTasks] = useState<ITask[]>([]);
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [isOptionIsBoard, setIsOptionIsBoard] = useState(true);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (search === '') {
@@ -35,27 +44,22 @@ const SearchPage = () => {
         setBoards(searchedBoards);
       } else {
         setBoards([]);
-        const searchedTasks = allTasks.filter((board) =>
-          board.title.toLowerCase().includes(search.toLowerCase())
+        const searchedTasks = allUserTasks.filter((task) =>
+          task.title.toLowerCase().includes(search.toLowerCase())
         );
         setTasks(searchedTasks);
       }
     }
   }, [search]);
 
-  // useEffect(() => {
-  //   const fetchedTasks: [] = [];
-  //   allBoards.map((board) =>
-  //     // eslint-disable-next-line no-console
-  //     getAllTasks(board._id).then((task) => {
-  //       [...fetchedTasks, task];
-  //     })
-  //   );
+  useEffect(() => {
+    dispatch(fetchAllBoards());
+    isLoadingBoards && dispatch(fetchAllUserTasks(allBoards));
+  }, []);
 
-  // eslint-disable-next-line no-console
-  //   console.log(fetchedTasks);
-  //   setAllTasks(fetchedTasks.flat());
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchAllUserTasks(allBoards));
+  }, [allBoards]);
 
   return (
     <Wrapper>
@@ -73,8 +77,8 @@ const SearchPage = () => {
           </BoardsWrapper>
         ) : tasks.length > 0 ? (
           <BoardsWrapper>
-            {tasks.map((task, index) => (
-              <TaskCard task={task} key={task._id} dragIndex={index} />
+            {tasks.map((task) => (
+              <SearchTaskCard task={task} key={task._id} />
             ))}
           </BoardsWrapper>
         ) : (

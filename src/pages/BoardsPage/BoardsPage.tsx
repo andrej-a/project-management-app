@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import ClockLoader from 'react-spinners/ClockLoader';
 /**COMPONENTS */
 import BoardSmallCard from './BoardSmallCard/BoardSmallCard';
 import GreetingsPanel from './GreetingsPanel/GreetingsPanel';
 import NewElementButton from '../../components/NewElementButton/NewElementButton';
+import { Spinner } from '../../components/Spinner/Spinner';
 /**STYLES */
 import { BoardsPanelWrapper, BoardsWrapper, Wrapper } from './BoardsPage.styled';
 /**HOOKS */
@@ -14,8 +14,10 @@ import { setStatus } from '../../slices/modalsSlice/modalsSlice';
 import { getAllUsersThunk } from '../../slices/userSlice/userSlice';
 
 const BoardsPage = () => {
-  const { boards, isLoading } = useAppSelector((state) => {
+  const { dictionary, userName, boards, isLoading } = useAppSelector((state) => {
     return {
+      dictionary: state.language.lang.boardsPage,
+      userName: state.user.name ?? 'Stranger',
       boards: state.board.boards,
       isLoading: state.board.isLoading,
     };
@@ -29,13 +31,6 @@ const BoardsPage = () => {
   }, []);
 
   const boardsList = boards.map((board) => <BoardSmallCard {...board} key={board._id} />);
-  const { dictionary, spinnerColor, userName } = useAppSelector((state) => {
-    return {
-      dictionary: state.language.lang.boardsPage,
-      spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
-      userName: state.user.name ?? 'Stranger',
-    };
-  });
 
   const newBoardText = (
     <>
@@ -51,11 +46,7 @@ const BoardsPage = () => {
             text={newBoardText}
             handleClick={() => dispatch(setStatus('new_board'))}
           />
-          {isLoading ? (
-            <ClockLoader color={spinnerColor} />
-          ) : (
-            <BoardsWrapper>{boardsList}</BoardsWrapper>
-          )}
+          {isLoading ? <Spinner center={true} /> : <BoardsWrapper>{boardsList}</BoardsWrapper>}
         </BoardsPanelWrapper>
       </div>
     </Wrapper>

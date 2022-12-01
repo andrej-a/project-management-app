@@ -48,7 +48,6 @@ export const Title = styled.p`
 export const ButtonsWrapper = styled.div`
   width: 100%;
   margin-top: 29px;
-  margin-bottom: 35px;
   height: auto;
   display: flex;
   justify-content: space-around;

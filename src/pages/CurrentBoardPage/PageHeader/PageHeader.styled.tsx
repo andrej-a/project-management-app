@@ -4,8 +4,6 @@ import { size } from '../../../constants/screenSizes';
 export const PageHeaderStyled = styled.div`
   padding: 0 3.6% 0 5.55%;
   h2 {
-    font-family: 'Libre Franklin';
-    font-style: normal;
     font-weight: 600;
     font-size: 30px;
     line-height: 36px;

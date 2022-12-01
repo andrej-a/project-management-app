@@ -3,8 +3,6 @@ import { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { ClockLoader } from 'react-spinners';
-
 /* STYLES */
 import { Wrapper, Title, DeleteAccountButton } from './EditProfileForm.styled';
 import { IRegistrationData } from '../../../models/IInputData';
@@ -20,6 +18,7 @@ import {
   setStatus,
   setRequestUrl,
 } from '../../../slices/modalsSlice/modalsSlice';
+import { Spinner } from '../../../components/Spinner/Spinner';
 
 export const EditProfileForm = () => {
   const dispatch = useAppDispatch();
@@ -28,7 +27,6 @@ export const EditProfileForm = () => {
     warningMessage,
     loadingState,
     title,
-    spinnerColor,
     userName,
     namePlaceholder,
     loginPlaceholder,
@@ -42,7 +40,6 @@ export const EditProfileForm = () => {
       warningMessage: state.modals_state.warningMessage,
       loadingState: state.modals_state.loadingState,
       title: state.language.lang.editProfile.title,
-      spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
       userName: state.user.name,
       namePlaceholder: state.language.lang.editProfile.namePlaceholder,
       loginPlaceholder: state.language.lang.editProfile.loginPlaceholder,
@@ -121,7 +118,7 @@ export const EditProfileForm = () => {
           </InputWrapper>
 
           {loadingState === 'loading' ? (
-            <ClockLoader color={spinnerColor} />
+            <Spinner center={false} />
           ) : (
             <input disabled={Object.keys(errors).length > 0} type="submit" value={changeButton} />
           )}

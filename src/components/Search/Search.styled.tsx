@@ -15,7 +15,7 @@ export const InputSearchWrapper = styled.div`
   position: relative;
   z-index: 1;
   svg {
-    fill: ${({ theme }) => theme.MAIN_BACKGROUND};
+    fill: ${({ theme }) => theme.TEXT_COLOR_DARK};
     position: absolute;
     top: 8px;
     left: 18px;
@@ -25,8 +25,8 @@ export const InputSearchWrapper = styled.div`
 export const SearchSelect = styled.select`
   width: 160px;
   height: 40px;
-  color: ${({ theme }) => theme.TASK_TEXT};
-  background-color: ${({ theme }) => theme.TEXT_COLOR};
+  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+  background-color: ${({ theme }) => theme.LIGHT_BACKGROUND};
   border-radius: 20px;
   padding-left: 10px;
   padding-right: 10px;
@@ -40,8 +40,8 @@ export const SearchSelect = styled.select`
 export const InputSearch = styled.input`
   width: 350px;
   height: 40px;
-  color: ${({ theme }) => theme.TASK_TEXT};
-  background-color: ${({ theme }) => theme.TEXT_COLOR};
+  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+  background-color: ${({ theme }) => theme.LIGHT_BACKGROUND};
   border-radius: 20px;
   padding-left: 62px;
   padding-right: 10px;
