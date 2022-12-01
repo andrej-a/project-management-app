@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { BoardsWrapper } from '../BoardsPage/BoardsPage.styled';
+import { TaskCardStyled } from '../CurrentBoardPage/KanbanArea/TaskCard/TaskCard.styled';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -9,6 +11,7 @@ export const Wrapper = styled.div`
   width: 100%;
   padding: 0 48px;
   padding-top: 40px;
+  height: auto;
   p {
     margin: auto 0;
     color: ${({ theme }) => theme.TEXT_COLOR_DARK};
@@ -18,5 +21,12 @@ export const Wrapper = styled.div`
 `;
 
 export const AreaWrapper = styled.div`
-  margin: auto 0;
+  padding: 40px 0;
+  display: flex;
+  ${BoardsWrapper} {
+    justify-content: center;
+  }
+  ${TaskCardStyled} {
+    height: auto;
+  }
 `;
