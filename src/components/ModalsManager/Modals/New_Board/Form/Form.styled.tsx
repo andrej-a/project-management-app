@@ -56,7 +56,15 @@ export const CreateBoardFormWrapper = styled.div`
 
 export const TitleInput = styled.input`
   height: 40px;
-  padding: 0px 10px;
+  padding: 12px 0px 10px 10px;
+  color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+  border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
+  background: ${({ theme }) => theme.LIGHT_BACKGROUND};
+  border-radius: 5px;
+  font-weight: 600;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const DescriptionInput = styled.textarea`
@@ -70,6 +78,7 @@ export const ButtonsWrapper = styled.div`
   row-gap: 16px !important;
   justify-content: space-between;
   margin-top: 22px;
+  gap: 20px;
 
   @media (max-width: ${size.tablet}) {
     flex-direction: column;
@@ -96,6 +105,11 @@ export const CreateCardCancelButton = styled.button`
   &:hover {
     background: ${({ theme }) => theme.BUTTON_RED};
     color: ${({ theme }) => theme.TEXT_COLOR};
+  }
+
+  margin-right: 10px !important;
+  @media (max-width: ${size.mobileL}) {
+    margin: 0;
   }
 `;
 export const EmojiWrap = styled.div`

@@ -27,10 +27,19 @@ const taskSlice = createSlice({
     setNewTaskColumnId: (state, action) => {
       state.newTaskColumnId = action.payload;
     },
+    setAllUserTasks: (state, action) => {
+      state.allUserTasks = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = taskSlice;
-export const { setTasks, updateTaskOrder, setCurrentTask, updateTaskInfo, setNewTaskColumnId } =
-  actions;
+export const {
+  setTasks,
+  updateTaskOrder,
+  setCurrentTask,
+  updateTaskInfo,
+  setNewTaskColumnId,
+  setAllUserTasks,
+} = actions;
 export default reducer;

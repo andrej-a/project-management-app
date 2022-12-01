@@ -18,6 +18,7 @@ import {
   setStatus,
   setRequestUrl,
 } from '../../../slices/modalsSlice/modalsSlice';
+import { Spinner } from '../../../components/Spinner/Spinner';
 
 export const EditProfileForm = () => {
   const dispatch = useAppDispatch();
@@ -117,7 +118,7 @@ export const EditProfileForm = () => {
           </InputWrapper>
 
           {loadingState === 'loading' ? (
-            <></>
+            <Spinner center={false} />
           ) : (
             <input disabled={Object.keys(errors).length > 0} type="submit" value={changeButton} />
           )}

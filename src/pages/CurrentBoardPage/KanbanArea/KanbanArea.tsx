@@ -1,9 +1,9 @@
 import { useCallback, useEffect } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
-import { ClockLoader } from 'react-spinners';
 /**COMPONENTS */
 import NewElementButton from '../../../components/NewElementButton/NewElementButton';
 import Column from './Column/Column';
+import { Spinner } from '../../../components/Spinner/Spinner';
 /**HOOKS */
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 /**DISPATCH */
@@ -14,13 +14,12 @@ import { setLoading } from '../../../slices/columnSlice/columnSlice';
 import { KanbanWrapper } from './KanbanArea.styled';
 
 const KanbanArea = () => {
-  const { currentBoard, columns, dictionary, isLoading, spinnerColor } = useAppSelector((state) => {
+  const { currentBoard, columns, dictionary, isLoading } = useAppSelector((state) => {
     return {
       isLoading: state.column.isLoading,
       currentBoard: state.board.currentBoard,
       columns: [...state.column.columns]!.sort((a, b) => a.order - b.order),
       dictionary: state.language.lang.currentBoardPage,
-      spinnerColor: state.application_theme.theme.MAIN_BACKGROUND,
     };
   });
 
@@ -46,7 +45,7 @@ const KanbanArea = () => {
           {...provided.droppableProps}
         >
           {isLoading ? (
-            <ClockLoader color={spinnerColor} />
+            <Spinner center={true} />
           ) : (
             <>
               {columnsElements}

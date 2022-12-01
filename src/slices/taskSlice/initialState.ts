@@ -6,6 +6,7 @@ interface ITaskSlice {
   tasks: ITask[];
   currentTask: ITask | undefined;
   newTaskColumnId: string | undefined;
+  allUserTasks: ITask[];
 }
 
 export const initialState: ITaskSlice = {
@@ -14,4 +15,5 @@ export const initialState: ITaskSlice = {
   tasks: [],
   currentTask: undefined,
   newTaskColumnId: undefined,
+  allUserTasks: [],
 };

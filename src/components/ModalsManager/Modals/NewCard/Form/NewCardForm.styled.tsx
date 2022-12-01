@@ -17,10 +17,14 @@ export const FormWrapper = styled.div`
       border-radius: 5px;
       outline: none;
       overflow: hidden;
-      font-weight: 600;
-      font-size: 14px;
+      resize: vertical;
+      font-size: 16px;
       line-height: 17px;
       color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+      overflow: auto;
+      max-height: 210px;
+      margin-bottom: -5px;
+      margin-top: 5px;
     }
 
     input[type='radio'] {
@@ -88,6 +92,7 @@ export const HighPriorityLabel = styled.label`
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
+  text-align: center;
   color: ${({ theme }) => theme.BUTTON_RED};
   cursor: pointer;
   border: 2px solid ${({ theme }) => theme.BUTTON_RED};

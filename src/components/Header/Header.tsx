@@ -2,31 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
 import { NavigationComponent } from './Navigation/Navigation';
 import { Styles, headerHeight } from '../../constants/applicationConstants';
-
-import { setStatus } from '../../slices/modalsSlice/modalsSlice';
-
-import {
-  ButtonContainer,
-  HeaderWrapper,
-  SignIn,
-  SignUp,
-  BurgerMenu,
-  Container,
-} from './Header.styled';
+import { HeaderWrapper, BurgerMenu, Container } from './Header.styled';
 
 export const Header = () => {
-  const dispatch = useAppDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scroll, setScroll] = React.useState(headerHeight.start);
-  const { isAuthorized, dictionary } = useAppSelector((state) => {
-    return {
-      isAuthorized: state.user.isAuthorized,
-      dictionary: state.language.lang,
-    };
-  });
 
   const handleScroll = () => {
     setScroll(window.scrollY);
@@ -48,7 +30,6 @@ export const Header = () => {
         <NavLink to="boards">
           <h2>TASKBAN</h2>
         </NavLink>
-
         <BurgerMenu
           onClick={() => {
             setIsMenuOpen(!isMenuOpen);
@@ -58,17 +39,10 @@ export const Header = () => {
           <span />
         </BurgerMenu>
       </Container>
-
-      {isAuthorized ? (
-        <NavigationComponent isOpen={isMenuOpen} />
-      ) : (
-        <ButtonContainer className={isMenuOpen ? Styles.ACTIVE : ''}>
-          <SignIn onClick={() => dispatch(setStatus('login'))}>{dictionary.header.SignIn}</SignIn>
-          <SignUp onClick={() => dispatch(setStatus('registration'))}>
-            {dictionary.header.SignUp}
-          </SignUp>
-        </ButtonContainer>
-      )}
+      <NavigationComponent
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={(value: boolean) => setIsMenuOpen(value)}
+      />
     </HeaderWrapper>
   );
 };

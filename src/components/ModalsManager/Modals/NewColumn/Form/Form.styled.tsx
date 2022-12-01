@@ -34,6 +34,7 @@ export const CreateColumnWrapper = styled.div`
       font-weight: 600;
       font-size: 18px;
       line-height: 22px;
+      margin-bottom: 37px;
       color: ${({ theme }) => theme.BUTTON_COLOR_TEXT};
       cursor: pointer;
       transition: all 0.3s ease;

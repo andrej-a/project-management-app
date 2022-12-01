@@ -47,7 +47,6 @@ export const Title = styled.p`
 export const ButtonsWrapper = styled.div`
   width: 100%;
   margin-top: 29px;
-  margin-bottom: 35px;
   height: auto;
   display: flex;
   justify-content: space-around;
@@ -76,6 +75,10 @@ export const CancelButton = styled.button`
   &:hover {
     background: ${({ theme }) => theme.BUTTON_RED};
     color: ${({ theme }) => theme.TEXT_COLOR};
+  }
+  margin-right: 10px;
+  @media (max-width: ${size.mobileL}) {
+    margin: 0;
   }
 `;
 
