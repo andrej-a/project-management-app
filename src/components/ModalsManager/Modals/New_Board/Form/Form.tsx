@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -12,16 +12,20 @@ import {
   DescriptionInput,
   CreateCardCancelButton,
   ButtonsWrapper,
+  EmojiWrap,
 } from './Form.styled';
 /* CONSTANTS */
 import { ICreateBoardData } from '../../../../../models/IInputData';
 import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
 import { setEditBoard, updateBoardTitle } from '../../../../../slices/boardSlice/boardSlice';
 import { fetchNewBoard, fetchUpdateBoard } from '../../../../../slices/boardSlice/actions';
+import EmojiPicker, { EmojiStyle, Theme } from 'emoji-picker-react';
+import { emojiKey } from '../../../../../constants/emojiKey';
+import { themeEnum } from '../../../../../constants/localStorage';
 
 export const CreateBoardForm = () => {
   const dispatch = useAppDispatch();
-  const { hint, description, createBoard, cancel, editBoard, modalsState } = useAppSelector(
+  const { hint, description, createBoard, cancel, editBoard, modalsState, theme } = useAppSelector(
     (state) => {
       return {
         modalsState: state.modals_state.modalsState,
@@ -32,8 +36,12 @@ export const CreateBoardForm = () => {
           : state.language.lang.createBoard.createButton,
         cancel: state.language.lang.cancel,
         editBoard: state.board.editBoard,
+        theme: state.application_theme.theme.CURRENT_THEME,
       };
     }
+  );
+  const [emoji, setEmoji] = useState<string>(
+    editBoard && modalsState === 'update_board' ? editBoard.title.split(emojiKey)[1] : ''
   );
   const schema = yup
     .object({
@@ -48,7 +56,9 @@ export const CreateBoardForm = () => {
     formState: { errors, isSubmitSuccessful },
   } = useForm<ICreateBoardData>({
     resolver: yupResolver(schema),
-    defaultValues: { title: editBoard && modalsState === 'update_board' ? editBoard.title : '' },
+    defaultValues: {
+      title: editBoard && modalsState === 'update_board' ? editBoard.title.split(emojiKey)[0] : '',
+    },
   });
 
   useEffect(() => {
@@ -61,8 +71,8 @@ export const CreateBoardForm = () => {
 
   const formSubmit: SubmitHandler<ICreateBoardData> = (data) => {
     if (editBoard && modalsState === 'update_board') {
-      dispatch(updateBoardTitle({ title: data.title, id: editBoard._id }));
-      dispatch(fetchUpdateBoard({ ...editBoard, title: data.title }));
+      dispatch(updateBoardTitle({ title: data.title + emojiKey + emoji, id: editBoard._id }));
+      dispatch(fetchUpdateBoard({ ...editBoard, title: data.title + emojiKey + emoji }));
     } else {
       // eslint-disable-next-line no-console
       console.log(data);
@@ -75,19 +85,34 @@ export const CreateBoardForm = () => {
       <CreateBoardFormWrapper>
         <form action="" onSubmit={handleSubmit(formSubmit)}>
           <InputWrapper>
-            <TitleInput {...register('title')} placeholder={hint} name="title" id="title" />
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <EmojiWrap
+                style={!!emoji.length ? { display: 'block' } : { display: 'none' }}
+                onClick={() => setEmoji(() => '')}
+              >
+                <div className="emoji">{emoji}</div>
+                <span className="one"></span>
+                <span className="two"></span>
+              </EmojiWrap>
+              <TitleInput
+                type="text"
+                {...register('title')}
+                placeholder={hint}
+                name="title"
+                id="title"
+              />
+            </div>
             <InputError>{errors.title?.message}</InputError>
           </InputWrapper>
-          {/* <InputWrapper>
-            <DescriptionInput
-              {...register('descriptionInput')}
-              placeholder={description}
-              wrap="soft"
-              name="descriptionInput"
-              id="descriptionInput"
-            />
-            <InputError>{errors.descriptionInput?.message}</InputError>
-          </InputWrapper> */}
+          <EmojiPicker
+            onEmojiClick={(emoji) => setEmoji(() => emoji.emoji)}
+            theme={theme === themeEnum.DARK ? Theme.DARK : Theme.LIGHT}
+            width="100%"
+            height="350px"
+            searchPlaceHolder=""
+            emojiStyle={EmojiStyle.NATIVE}
+            autoFocusSearch={false}
+          />
           <ButtonsWrapper>
             <CreateCardCancelButton
               onClick={() => {

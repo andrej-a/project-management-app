@@ -63,5 +63,11 @@ body {
   svg:not(:root){
     display: none;
   }
+  .epr-body::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  .epr-preview, .epr-emoji-category-label{
+    display: none !important;
+  }
   
 `;

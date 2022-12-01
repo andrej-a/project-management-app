@@ -17,9 +17,10 @@ export const CreateBoardFormWrapper = styled.div`
     justify-content: center;
     gap: 22px;
 
-    textarea {
+    input[type='text'],
+    .epr-search {
       width: 400px;
-      background: ${({ theme }) => theme.LIGHT_BACKGROUND};
+      background: ${({ theme }) => theme.LIGHT_BACKGROUND} !important;
       outline: none;
       border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
       border-radius: 5px;
@@ -63,7 +64,7 @@ export const CreateBoardFormWrapper = styled.div`
   }
 `;
 
-export const TitleInput = styled.textarea`
+export const TitleInput = styled.input`
   height: 40px;
   padding: 12px 0px 10px 10px;
 `;
@@ -109,5 +110,45 @@ export const CreateCardCancelButton = styled.button`
   &:hover {
     background: ${({ theme }) => theme.BUTTON_RED};
     color: ${({ theme }) => theme.TEXT_COLOR};
+  }
+`;
+export const EmojiWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+
+  cursor: pointer;
+
+  .emoji {
+    font-size: 30px;
+    transition: all 0.3s ease-in-out;
+  }
+  .one,
+  .two {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    display: block;
+    top: 50%;
+    left: calc(50% - 7.5px);
+    transition: background 0.3s ease-in-out;
+    background-color: transparent;
+  }
+  .one {
+    transform: rotate(45deg);
+  }
+  .two {
+    transform: rotate(-45deg);
+  }
+  &:hover {
+    .one,
+    .two {
+      background-color: white;
+    }
+    .emoji {
+      filter: brightness(0);
+    }
   }
 `;

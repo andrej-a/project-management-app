@@ -23,6 +23,7 @@ import {
 } from '../../../slices/modalsSlice/modalsSlice';
 import { setCurrentBoard, setEditBoard } from '../../../slices/boardSlice/boardSlice';
 import { HandySvg } from 'handy-svg';
+import { emojiKey } from '../../../constants/emojiKey';
 
 const BoardSmallCard = (board: IBoard) => {
   const { title, owner, _id } = board;
@@ -44,7 +45,7 @@ const BoardSmallCard = (board: IBoard) => {
         dispatch(setCurrentBoard(board));
       }}
     >
-      <BoardSmallTitle>{title}</BoardSmallTitle>
+      <BoardSmallTitle>{title.split(emojiKey).reverse()}</BoardSmallTitle>
       <BoardSmallDescription>
         <HandySvg src={clipIcon} width={String(20)} height={String(20)} fill={buttonColor} />
         <span>{ownerName}</span>
