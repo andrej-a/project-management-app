@@ -87,7 +87,7 @@ export const CreateBoardForm = () => {
           <InputWrapper>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <EmojiWrap
-                style={!!emoji.length ? { display: 'block' } : { display: 'none' }}
+                style={emoji && !!emoji.length ? { display: 'block' } : { display: 'none' }}
                 onClick={() => setEmoji(() => '')}
               >
                 <div className="emoji">{emoji}</div>
