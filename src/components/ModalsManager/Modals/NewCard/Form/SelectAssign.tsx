@@ -14,22 +14,31 @@ export const SelectAssign = ({
   users: IRegistredUser[];
   handleSetAssignArray: (value: string[]) => void;
 }) => {
-  const { selectBg, selectFocus, selectBorder, selectTxtColor, selectFocusActive, placeholder } =
-    useAppSelector((state) => {
-      return {
-        selectBg: state.application_theme.theme.LIGHT_BACKGROUND,
-        selectBorder: state.application_theme.theme.INPUT_BORDER_COLOR_LIGHT,
-        selectFocus: state.application_theme.theme.MODAL_BG,
-        selectTxtColor: state.application_theme.theme.TEXT_COLOR_DARK,
-        selectFocusActive: state.application_theme.theme.TEXT_COLOR_DARK,
-        placeholder: state.language.lang.createCard.select,
-      };
-    });
+  const {
+    selectBg,
+    selectFocus,
+    selectBorder,
+    selectTxtColor,
+    selectFocusActive,
+    placeholder,
+    userId,
+  } = useAppSelector((state) => {
+    return {
+      selectBg: state.application_theme.theme.LIGHT_BACKGROUND,
+      selectBorder: state.application_theme.theme.INPUT_BORDER_COLOR_LIGHT,
+      selectFocus: state.application_theme.theme.MODAL_BG,
+      selectTxtColor: state.application_theme.theme.TEXT_COLOR_DARK,
+      selectFocusActive: state.application_theme.theme.TEXT_COLOR_DARK,
+      placeholder: state.language.lang.createCard.select,
+      userId: state.user.id,
+    };
+  });
   const optionsAssign = !!users
     ? users.map((user) => {
         const value = user._id;
-        const label = user.name;
-        return { value, label };
+        const label = `${user.name} (${user.login})`;
+        const isDisabled = user._id === userId;
+        return { value, label, isDisabled };
       })
     : [];
   return (

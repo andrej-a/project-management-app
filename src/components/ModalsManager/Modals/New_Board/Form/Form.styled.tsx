@@ -67,7 +67,8 @@ export const DescriptionInput = styled.textarea`
 export const ButtonsWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  row-gap: 16px !important;
+  justify-content: space-between;
   margin-top: 22px;
 
   @media (max-width: ${size.tablet}) {
@@ -78,7 +79,7 @@ export const ButtonsWrapper = styled.div`
 `;
 
 export const CreateCardCancelButton = styled.button`
-  width: 180px;
+  padding: 9px 37px;
   height: 40px;
   background: ${({ theme }) => theme.LIGHT_BACKGROUND};
   border: 2px solid ${({ theme }) => theme.BUTTON_RED};

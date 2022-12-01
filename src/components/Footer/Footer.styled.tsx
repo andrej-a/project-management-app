@@ -27,7 +27,9 @@ export const FooterWrapper = styled.div`
   }
   .gitLogo {
     svg {
-      width: clamp(15px, 4vw, 100%);
+      width: max(4vw, 15px);
+      min-width: max(4vw, 15px);
+      max-width: max(4vw, 15px);
       min-width: 15px;
     }
   }
