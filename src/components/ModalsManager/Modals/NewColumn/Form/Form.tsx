@@ -59,11 +59,18 @@ export const NewColumnForm = () => {
       <CreateColumnWrapper>
         <form action="" onSubmit={handleSubmit(formSubmit)}>
           <InputWrapper>
-            <input {...register('title')} placeholder={hint} type="text" name="title" id="title" />
+            <input
+              {...register('title')}
+              placeholder={hint}
+              type="text"
+              name="title"
+              id="title"
+              autoComplete="off"
+            />
             <InputError>{errors.title?.message}</InputError>
           </InputWrapper>
           <ButtonsWrapper>
-            <CreateCardCancelButton onClick={() => dispatch(setStatus('hidden'))}>
+            <CreateCardCancelButton type="button" onClick={() => dispatch(setStatus('hidden'))}>
               {cancel}
             </CreateCardCancelButton>
             <input

@@ -55,6 +55,7 @@ export const DeleteItem = () => {
             {loadingState === 'loaded' ? (
               <ButtonsWrapper>
                 <CancelButton
+                  type="button"
                   onClick={() => {
                     dispatch(setStatus('hidden'));
                   }}

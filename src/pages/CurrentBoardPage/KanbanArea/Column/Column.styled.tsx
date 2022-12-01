@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ColumnWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 18px;
   max-height: 100%;
   width: 332px;
   max-width: 74vw;

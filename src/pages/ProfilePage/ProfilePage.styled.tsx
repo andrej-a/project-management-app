@@ -3,11 +3,15 @@ import styled from 'styled-components';
 import { size } from '../../constants/screenSizes';
 
 export const Wrapper = styled.div`
+  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 135px);
+  @media (max-width: ${size.tablet}) {
+    min-height: calc(100vh - 203px);
+  }
   @media (max-width: ${size.laptopL}) {
     display: flex;
     flex-direction: column;
@@ -26,6 +30,5 @@ export const Wrapper = styled.div`
       width: 80%;
       height: 80%;
     }
-    min-height: calc(100vh - 203px);
   }
 `;

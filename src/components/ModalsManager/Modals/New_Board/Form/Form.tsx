@@ -74,8 +74,6 @@ export const CreateBoardForm = () => {
       dispatch(updateBoardTitle({ title: data.title + emojiKey + emoji, id: editBoard._id }));
       dispatch(fetchUpdateBoard({ ...editBoard, title: data.title + emojiKey + emoji }));
     } else {
-      // eslint-disable-next-line no-console
-      console.log(data);
       dispatch(fetchNewBoard({ ...data, title: data.title + emojiKey + emoji }));
     }
   };
@@ -83,7 +81,7 @@ export const CreateBoardForm = () => {
   return (
     <>
       <CreateBoardFormWrapper>
-        <form action="" onSubmit={handleSubmit(formSubmit)}>
+        <form onSubmit={handleSubmit(formSubmit)}>
           <InputWrapper>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <EmojiWrap
@@ -95,6 +93,7 @@ export const CreateBoardForm = () => {
                 <span className="two"></span>
               </EmojiWrap>
               <TitleInput
+                style={emoji && !!emoji.length ? { width: 'calc(100% - 30px)' } : { width: '100%' }}
                 type="text"
                 {...register('title')}
                 placeholder={hint}
@@ -115,6 +114,7 @@ export const CreateBoardForm = () => {
           />
           <ButtonsWrapper>
             <CreateCardCancelButton
+              type="button"
               onClick={() => {
                 dispatch(setStatus('hidden'));
                 dispatch(setEditBoard(undefined));

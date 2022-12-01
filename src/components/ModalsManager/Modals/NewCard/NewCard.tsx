@@ -14,9 +14,9 @@ export const NewCard = () => {
   });
   return (
     <>
-      <BoardFrame>
-        <BoardCard>
-          <NewCardTitleWrapper>
+      <BoardFrame className="BoardFrame">
+        <BoardCard className="BoardCard">
+          <NewCardTitleWrapper className="NewCardTitleWrapper">
             <NewCardTitle>{title}</NewCardTitle>
             <NewCardForm />
           </NewCardTitleWrapper>

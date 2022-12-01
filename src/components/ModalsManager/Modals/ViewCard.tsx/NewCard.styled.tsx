@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { size } from '../../../../constants/screenSizes';
 
 export const NewCardTitleWrapper = styled.div`
-  padding: 34px 41px;
+  max-width: 100%;
   color: ${({ theme }) => theme.TEXT_COLOR_DARK};
   font-size: 17px;
   line-height: 18px;
   position: relative;
   .description {
-    width: 400px;
+    max-width: 100%;
     margin-bottom: 22px;
     font-weight: 400;
     margin: 40px 0;

@@ -55,7 +55,7 @@ const BoardSmallCard = (board: IBoard) => {
         icon={deleteIcon}
         stylish={{ position: 'absolute', right: '12px', top: '12px' }}
         handleClick={() => {
-          dispatch(setDeletingValue(`${board.title}`));
+          dispatch(setDeletingValue(`${board.title.split(emojiKey).reverse().join('')}`));
           dispatch(setRequestUrl(`${path.boards}/${board._id}`));
           dispatch(setStatus('delete_item'));
         }}

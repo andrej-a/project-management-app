@@ -7,10 +7,6 @@ export const FormWrapper = styled.div`
   height: auto;
   margin: 19px 42px;
 
-  svg {
-    stroke: ${({ theme }) => theme.TEXT_COLOR_GREY};
-    fill: none;
-  }
   form {
     width: auto;
     display: flex;
@@ -19,6 +15,10 @@ export const FormWrapper = styled.div`
     align-items: center;
     gap: 16px;
 
+    svg {
+      stroke: ${({ theme }) => theme.TEXT_COLOR_DARK};
+      fill: none;
+    }
     input[type='text'],
     input[type='password'] {
       background: ${({ theme }) => theme.LIGHT_BACKGROUND};
@@ -96,7 +96,8 @@ export const FormWrapper = styled.div`
 `;
 
 export const InputError = styled.p`
-  margin-top: 10px;
+  position: absolute;
+  bottom: -20px;
   font-size: 14px;
   line-height: 22px;
   color: ${({ theme }) => theme.TEXT_COLOR_GREY};
@@ -125,6 +126,7 @@ export const InputWrapper = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
+  gap: 0;
   @media (max-width: ${size.mobileL}) {
     justify-content: center;
   }

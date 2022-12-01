@@ -13,7 +13,7 @@ export const PageHeaderStyled = styled.div`
     font-weight: 600;
     font-size: 30px;
     line-height: 36px;
-    padding-bottom: 7px;
+    margin: 7px 0;
     color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 
     display: -webkit-box;
@@ -24,7 +24,7 @@ export const PageHeaderStyled = styled.div`
   }
 
   @media (max-width: ${size.tablet}) {
-    padding: 0 6%;
+    padding: 0 1.5vw;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;

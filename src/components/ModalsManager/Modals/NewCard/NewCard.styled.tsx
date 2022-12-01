@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const NewCardTitleWrapper = styled.div`
-  padding: 34px 0px 0px 41px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 41px;
 `;
 export const NewCardTitle = styled.div`
   font-style: normal;

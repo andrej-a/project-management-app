@@ -14,10 +14,10 @@ export const NewBoard = () => {
   });
   return (
     <>
-      <BoardFrame>
-        <BoardCard>
-          <LogInTitleWrapper>
-            <LogInTitle>{title}</LogInTitle>
+      <BoardFrame className="BoardFrame">
+        <BoardCard className="BoardCard">
+          <LogInTitleWrapper className="LogInTitleWrapper">
+            <LogInTitle className="LogInTitle">{title}</LogInTitle>
           </LogInTitleWrapper>
           <CreateBoardForm />
         </BoardCard>

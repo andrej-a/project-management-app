@@ -78,7 +78,7 @@ const ColumnTitle = ({ id }: { title: string; id: string }) => {
           defaultValue={column?.title ?? ''}
           onBlur={formatInput}
         />
-        <InputError style={{ position: 'absolute', top: '30px' }}>
+        <InputError style={{ position: 'absolute', top: '38px' }}>
           {errors.title?.message}
         </InputError>
         <div className="buttons">
