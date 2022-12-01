@@ -76,7 +76,7 @@ export const CreateBoardForm = () => {
     } else {
       // eslint-disable-next-line no-console
       console.log(data);
-      dispatch(fetchNewBoard(data));
+      dispatch(fetchNewBoard({ ...data, title: data.title + emojiKey + emoji }));
     }
   };
 
