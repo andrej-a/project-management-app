@@ -48,7 +48,7 @@ export const CreateBoardForm = () => {
     formState: { errors, isSubmitSuccessful },
   } = useForm<ICreateBoardData>({
     resolver: yupResolver(schema),
-    defaultValues: { title: '' },
+    defaultValues: { title: editBoard && modalsState === 'update_board' ? editBoard.title : '' },
   });
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TaskCardStyled = styled.div`
   height: 155px;
   width: 300px;
-  max-width: 85vw;
+  max-width: calc(74vw - 30px);
   padding: 17px 20px;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ export const TaskCardTitle = styled.h3`
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
-  max-width: 240px;
+  max-width: calc(100% - 32px);
   line-height: 22px;
   display: -webkit-box;
   -webkit-line-clamp: 1;

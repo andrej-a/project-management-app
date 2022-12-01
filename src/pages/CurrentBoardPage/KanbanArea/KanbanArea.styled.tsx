@@ -7,6 +7,7 @@ export const KanbanWrapper = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 54px;
+  max-height: calc(100vh - 293px);
   /**ПРОКРУТКА */
   overflow-y: hidden;
   overflow-x: scroll;
@@ -14,6 +15,8 @@ export const KanbanWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
     max-width: 100vw;
     padding: max(2%, 4px) 3%;
+    max-height: calc(100vh - 246px);
+    gap: 20px;
   }
   ::-webkit-scrollbar {
     width: auto;

@@ -6,13 +6,12 @@ export const Wrapper = styled.div`
   width: 100%;
   margin: 0;
   padding: 0;
+  background: ${({ theme }) => theme.DESK_BACKGROUND};
   max-height: calc(100vh - 135px);
   min-height: calc(100vh - 135px);
-  background: ${({ theme }) => theme.DESK_BACKGROUND};
-  display: grid;
-  grid-template-columns: auto;
   @media (max-width: ${size.tablet}) {
     max-height: calc(100vh - 203px);
+    min-height: calc(100vh - 203px);
   }
 `;
 
@@ -22,8 +21,10 @@ export const InnerWrapper = styled.div`
   display: grid;
   grid-template-rows: min-content auto;
   max-height: calc(100vh - 135px);
+  min-height: calc(100vh - 135px);
   @media (max-width: ${size.tablet}) {
-    padding: 27px 0 0;
+    padding: 10px 0;
     max-height: calc(100vh - 203px);
+    min-height: calc(100vh - 203px);
   }
 `;
