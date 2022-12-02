@@ -6,6 +6,8 @@ export const DeleteItemWrapper = styled.div`
   width: auto;
   height: auto;
   padding: 20px;
+
+  width: clamp(100px, 420px, 90vw);
 `;
 
 export const DeleteItemFrame = styled.div`
@@ -21,7 +23,7 @@ export const DeleteItemFrame = styled.div`
 `;
 
 export const DeleteItemCard = styled.div`
-  width: 390px;
+  width: 100%;
   height: auto;
   border-radius: 10px;
   background: ${({ theme }) => theme.LIGHT_BACKGROUND};
@@ -29,9 +31,6 @@ export const DeleteItemCard = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  @media (max-width: ${size.mobileL}) {
-    width: 280px;
-  }
 `;
 
 export const Title = styled.p`
@@ -76,6 +75,10 @@ export const CancelButton = styled.button`
   &:hover {
     background: ${({ theme }) => theme.BUTTON_RED};
     color: ${({ theme }) => theme.TEXT_COLOR};
+  }
+  margin-right: 10px;
+  @media (max-width: ${size.mobileL}) {
+    margin: 0;
   }
 `;
 

@@ -16,3 +16,16 @@ export function reorderElements(list: (ITask | IColumn)[]) {
   }
   return list;
 }
+export function getPriority(priority: string): string {
+  switch (priority) {
+    case 'высокий':
+      return 'high';
+    case 'средний':
+      return 'medium';
+    case 'низкий':
+      return 'low';
+
+    default:
+      return priority;
+  }
+}

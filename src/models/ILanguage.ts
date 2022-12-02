@@ -36,6 +36,7 @@ export interface ILanguage {
     };
     addTaskButon: string;
     assign: string;
+    select: string;
   };
   updateCard: {
     title: string;

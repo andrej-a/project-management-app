@@ -5,6 +5,7 @@ import { fetchAllTasks } from '../../slices/taskSlice/actions';
 import { ICreateCardData } from '../../models/IInputData';
 import { fetchUpdateBoardAssignList } from '../../slices/boardSlice/actions';
 import { priorityKey } from '../../constants/priorityKey';
+import { getPriority } from '../../utils/utils';
 
 const { TYPE, POST } = requests;
 const { INVALID_TOKEN } = Errors;
@@ -17,7 +18,7 @@ export const createNewTask = async (task: ICreateCardData) => {
   const order = !!tasks.length ? tasks.sort((a, b) => b.order - a.order)[0].order + 1 : 0;
   const { dispatch } = store;
   const newTask = {
-    title: task.title + priorityKey + task.priority,
+    title: task.title + priorityKey + getPriority(task.priority),
     order: order,
     description: task.description ?? ' ',
     userId: userId,

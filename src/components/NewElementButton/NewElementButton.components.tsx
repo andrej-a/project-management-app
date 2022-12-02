@@ -7,13 +7,14 @@ export const NewElementButtonWrapper = styled.button`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 31px 33px;
+  padding: 55px 33px;
   text-align: left;
   background-color: transparent;
   border: 1px dashed transparent;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   min-width: clamp(200px, 332px, 80%);
+  max-width: 74vw;
 
   div {
     height: min-content;

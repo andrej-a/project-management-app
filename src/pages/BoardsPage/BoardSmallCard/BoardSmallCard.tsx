@@ -23,6 +23,7 @@ import {
 } from '../../../slices/modalsSlice/modalsSlice';
 import { setCurrentBoard, setEditBoard } from '../../../slices/boardSlice/boardSlice';
 import { HandySvg } from 'handy-svg';
+import { emojiKey } from '../../../constants/emojiKey';
 
 const BoardSmallCard = (board: IBoard) => {
   const { title, owner, _id } = board;
@@ -44,7 +45,7 @@ const BoardSmallCard = (board: IBoard) => {
         dispatch(setCurrentBoard(board));
       }}
     >
-      <BoardSmallTitle>{title}</BoardSmallTitle>
+      <BoardSmallTitle>{title.split(emojiKey).reverse()}</BoardSmallTitle>
       <BoardSmallDescription>
         <HandySvg src={clipIcon} width={String(20)} height={String(20)} fill={buttonColor} />
         <span>{ownerName}</span>
@@ -54,7 +55,7 @@ const BoardSmallCard = (board: IBoard) => {
         icon={deleteIcon}
         stylish={{ position: 'absolute', right: '12px', top: '12px' }}
         handleClick={() => {
-          dispatch(setDeletingValue(`${board.title}`));
+          dispatch(setDeletingValue(`${board.title.split(emojiKey).reverse().join('')}`));
           dispatch(setRequestUrl(`${path.boards}/${board._id}`));
           dispatch(setStatus('delete_item'));
         }}

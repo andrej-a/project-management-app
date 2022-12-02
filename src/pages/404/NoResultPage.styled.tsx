@@ -1,12 +1,11 @@
 import styled from 'styled-components';
+import { size } from '../../constants/screenSizes';
 
 export const Wrapper = styled.div`
-  max-width: 1440px;
-  min-height: 100vh;
   height: auto;
-  max-height: 934px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: calc(100vh - 80px);
 `;

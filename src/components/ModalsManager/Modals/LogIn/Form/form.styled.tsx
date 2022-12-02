@@ -86,7 +86,8 @@ export const FormWrapper = styled.div`
 `;
 
 export const InputError = styled.p`
-  margin-top: 10px;
+  position: absolute;
+  bottom: -20px;
   font-size: 14px;
   line-height: 22px;
   color: ${({ theme }) => theme.TEXT_COLOR_GREY};

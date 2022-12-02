@@ -13,6 +13,7 @@ import { fetchAllColumns } from '../../slices/columnSlice/actions';
 import { fetchBoard } from '../../slices/boardSlice/actions';
 import { getBoardTasks } from '../../service/tasks/getBoardTasks';
 import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
+import { emojiKey } from '../../constants/emojiKey';
 
 const CurrentBoardPage = () => {
   const { boardId } = useParams();
@@ -40,16 +41,14 @@ const CurrentBoardPage = () => {
 
   return (
     <Wrapper className="Wrapper">
-      <ErrorBoundary>
-        {!board ? (
-          <Spinner center={true} />
-        ) : (
-          <InnerWrapper className="innerWrapper">
-            <PageHeader title={board!.title} />
-            <KanbanArea />
-          </InnerWrapper>
-        )}
-      </ErrorBoundary>
+      {!board ? (
+        <Spinner center={true} />
+      ) : (
+        <InnerWrapper className="innerWrapper">
+          <PageHeader title={board!.title.split(emojiKey).reverse().join('')} />
+          <KanbanArea />
+        </InnerWrapper>
+      )}
     </Wrapper>
   );
 };

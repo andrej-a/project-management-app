@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import { size } from '../../../../../constants/screenSizes';
 
 export const CreateColumnWrapper = styled.div`
-  width: auto;
-  height: auto;
-  margin: 22px 44px 0px 44px;
-
+  width: 100%;
   form {
     display: flex;
     flex-direction: column;
@@ -14,7 +11,7 @@ export const CreateColumnWrapper = styled.div`
     justify-content: center;
 
     input[type='text'] {
-      width: 400px;
+      width: 100%;
       background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       outline: none;
       border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
@@ -26,18 +23,10 @@ export const CreateColumnWrapper = styled.div`
       height: 40px;
       padding: 12px 0px 10px 10px;
       color: ${({ theme }) => theme.TEXT_COLOR_DARK};
-
-      @media (max-width: ${size.tablet}) {
-        width: 300px;
-      }
-
-      @media (max-width: ${size.mobileL}) {
-        width: 200px;
-      }
     }
 
     input[type='submit'] {
-      padding: 10px 37px;
+      padding: 9px 37px;
       background: ${({ theme }) => theme.BUTTON_BACKGROUND};
       border-radius: 20px;
       border: 0px;
@@ -47,14 +36,17 @@ export const CreateColumnWrapper = styled.div`
       line-height: 22px;
       margin-bottom: 37px;
       color: ${({ theme }) => theme.BUTTON_COLOR_TEXT};
-      transition: all 0.3s ease;
       cursor: pointer;
+      transition: all 0.3s ease;
       &:hover:not(:disabled) {
         background: ${({ theme }) => theme.BUTTON_GREEN};
         color: ${({ theme }) => theme.TEXT_COLOR};
       }
       &:disabled {
         cursor: not-allowed;
+        background: transparent;
+        outline: 2px solid ${({ theme }) => theme.BUTTON_BACKGROUND};
+        color: ${({ theme }) => theme.TEXT_COLOR_DARK};
       }
     }
   }
@@ -64,4 +56,6 @@ export const InputWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+  padding-top: 22px;
 `;
