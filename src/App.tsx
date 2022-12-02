@@ -18,12 +18,12 @@ import SearchPage from './pages/SearchPage/SearchPage';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { useDispatch } from 'react-redux';
 import { onDragEnd } from './utils/onDragEnd';
 import { langEnum, localStorageEnum, themeEnum } from './constants/localStorage';
 import { updateTheme } from './utils/updateTheme';
 import { getAllUsersThunk } from './slices/userSlice/userSlice';
 import { updateLang } from './utils/updateLang';
+import { localData } from './constants/applicationConstants';
 
 function App() {
   const { isAuthorized, theme, columns, tasks, boardOwner, boardUsers, userId } = useAppSelector(
@@ -61,6 +61,20 @@ function App() {
     }
   }, []);
 
+  const checkProps = () => {
+    if (
+      !boardOwner ||
+      (boardOwner &&
+        boardUsers &&
+        (localStorage.getItem(localData[0]) === boardOwner ||
+          boardUsers.includes(localStorage.getItem(localData[0])!)))
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return (
     <>
       <DragDropContext onDragEnd={onDragEnd(dispatch, tasks, columns)}>
@@ -95,10 +109,7 @@ function App() {
             <Route
               path="board/:boardId"
               element={
-                <ProtectedRoute
-                  user={isAuthorized && (userId === boardOwner || boardUsers.includes(userId))}
-                  redirectPath="/"
-                >
+                <ProtectedRoute user={isAuthorized && checkProps()} redirectPath="/">
                   <CurrentBoardPage />
                 </ProtectedRoute>
               }
