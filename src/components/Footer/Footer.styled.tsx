@@ -10,7 +10,7 @@ export const FooterWrapper = styled.div`
   justify-content: space-between;
   gap: 4.5%;
   padding: 0px 2.7%;
-  height: auto;
+  height: 52px;
 
   p {
     font-size: clamp(13px, 3vw, 16px);
@@ -27,8 +27,10 @@ export const FooterWrapper = styled.div`
   }
   .gitLogo {
     svg {
-      width: clamp(15px, 4vw, 100%);
-      min-width: 32px;
+      width: max(4vw, 15px);
+      min-width: max(4vw, 15px);
+      max-width: max(4vw, 15px);
+      min-width: 15px;
     }
   }
   @media (max-width: ${size.tablet}) {
@@ -41,9 +43,6 @@ export const MembersInfo = styled.div`
   gap: 10%;
   @media (max-width: ${size.tablet}) {
     flex-direction: column;
-    p {
-      margin-top: 10px;
-    }
   }
 `;
 
@@ -63,8 +62,5 @@ export const MemberItem = styled.div`
   }
   svg {
     fill: ${({ theme }) => theme.TEXT_COLOR_DARK};
-  }
-  @media (max-width: ${size.tablet}) {
-    margin-top: 10px;
   }
 `;

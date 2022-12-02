@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: calc(100vh - 135px);
+  @media (max-width: ${size.tablet}) {
+    min-height: calc(100vh - 203px);
+  }
   @media (max-width: ${size.laptopL}) {
     display: flex;
     flex-direction: column;

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { size } from '../../../../constants/screenSizes';
 
 export const TitleWrapper = styled.div`
-  max-width: 70%;
   height: 40px;
   display: flex;
   flex-direction: row;

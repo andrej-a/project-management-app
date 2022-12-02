@@ -22,7 +22,7 @@ export const NoResultPage = () => {
         <Lottie
           animationData={theme === themeEnum.DARK ? dark_notFoundImage : light_notFoundImage}
           loop={true}
-          style={{ height: '50%' }}
+          style={{ height: '50vh' }}
         />
         <Text />
         <GoBack />

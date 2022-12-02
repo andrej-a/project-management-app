@@ -9,8 +9,11 @@ export const Wrapper = styled.div`
   background: ${({ theme }) => theme.DESK_BACKGROUND};
   display: grid;
   grid-template-rows: min-content auto;
-  min-height: calc(100vh - 170px);
   align-items: start;
+  min-height: calc(100vh - 135px);
+  @media (max-width: ${size.tablet}) {
+    min-height: calc(100vh - 203px);
+  }
 `;
 
 export const BoardsPanelWrapper = styled.div`

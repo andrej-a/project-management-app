@@ -12,6 +12,7 @@ import { Spinner } from '../../components/Spinner/Spinner';
 import { fetchAllColumns } from '../../slices/columnSlice/actions';
 import { fetchBoard } from '../../slices/boardSlice/actions';
 import { getBoardTasks } from '../../service/tasks/getBoardTasks';
+import { emojiKey } from '../../constants/emojiKey';
 
 const CurrentBoardPage = () => {
   const { boardId } = useParams();
@@ -43,7 +44,7 @@ const CurrentBoardPage = () => {
         <Spinner center={true} />
       ) : (
         <InnerWrapper className="innerWrapper">
-          <PageHeader title={board!.title} />
+          <PageHeader title={board!.title.split(emojiKey).reverse().join('')} />
           <KanbanArea />
         </InnerWrapper>
       )}

@@ -40,6 +40,7 @@ export const EnglishState: ILanguage = {
     },
     addTaskButon: 'Add Task',
     assign: 'Assign to',
+    select: 'Select user...',
   },
   updateCard: {
     title: 'Edit Card',
@@ -152,6 +153,7 @@ export const RussianState: ILanguage = {
     },
     addTaskButon: 'Добавить карточку',
     assign: 'Назначить к задаче',
+    select: 'Выберите пользователя...',
   },
   updateCard: {
     title: 'Редактировать карточку',

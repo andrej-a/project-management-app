@@ -33,6 +33,7 @@ import { InputError, InputWrapper } from '../../Registration/Form/form.styled';
 import { fetchNewTasks, fetchTask } from '../../../../../slices/taskSlice/actions';
 import { priorityKey } from '../../../../../constants/priorityKey';
 import { SelectAssign } from './SelectAssign';
+import { getPriority } from '../../../../../utils/utils';
 
 export const NewCardForm = () => {
   const dispatch = useAppDispatch();
@@ -86,7 +87,7 @@ export const NewCardForm = () => {
       ? {
           title: task.title.split(priorityKey)[0],
           description: task.description,
-          priority: task.title.split(priorityKey)[1] ?? priority.high,
+          priority: priority[task.title.split(priorityKey)[1] as 'high' | 'low' | 'medium'] ?? '',
         }
       : { title: '', description: '', priority: '' },
   });
@@ -104,7 +105,7 @@ export const NewCardForm = () => {
       dispatch(
         updateTaskInfo({
           _id: task._id ?? '',
-          title: data.title + priorityKey + data.priority,
+          title: data.title + priorityKey + getPriority(data.priority),
           description: data.description,
           users: assignArray,
         })
@@ -119,9 +120,16 @@ export const NewCardForm = () => {
   return (
     <>
       <FormWrapper>
-        <form action="" onSubmit={handleSubmit(formSubmit)}>
+        <form onSubmit={handleSubmit(formSubmit)}>
           <InputWrapper>
-            <TitleInput {...register('title')} placeholder={hint} name="title" id="title" />
+            <TitleInput
+              {...register('title')}
+              placeholder={hint}
+              name="title"
+              id="title"
+              type="text"
+              autoComplete="off"
+            />
             <InputError>{errors.title?.message}</InputError>
           </InputWrapper>
           <InputWrapper>
@@ -133,50 +141,55 @@ export const NewCardForm = () => {
             />
             <InputError>{errors.description?.message}</InputError>
           </InputWrapper>
-          <PriorityTitle>{assign}</PriorityTitle>
-          <SelectAssign task={task!} users={users!} handleSetAssignArray={handleSetAssignArray} />
-          <PriorityTitle>{titlePriority}</PriorityTitle>
-          <LabelWrapper>
-            <InputWrapper>
-              <input
-                {...register('priority')}
-                type="radio"
-                id="high_priority"
-                name="priority"
-                value={priority.high}
-              />
-              <HighPriorityLabel htmlFor="high_priority">
-                {priority.high.toUpperCase()}
-              </HighPriorityLabel>
-            </InputWrapper>
-            <InputWrapper>
-              <input
-                {...register('priority')}
-                type="radio"
-                id="medium_priority"
-                name="priority"
-                value={priority.medium}
-              />
-              <MediumPriorityLabel htmlFor="medium_priority">
-                {priority.medium.toUpperCase()}
-              </MediumPriorityLabel>
-            </InputWrapper>
-            <InputWrapper>
-              <input
-                {...register('priority')}
-                type="radio"
-                id="low_priority"
-                name="priority"
-                value={priority.low}
-              />
-              <LowPriorityLabel htmlFor="low_priority">
-                {priority.low.toUpperCase()}
-              </LowPriorityLabel>
-            </InputWrapper>
-          </LabelWrapper>
-          <InputError>{errors.priority?.message}</InputError>
+          <InputWrapper>
+            <PriorityTitle>{assign}</PriorityTitle>
+            <SelectAssign task={task!} users={users!} handleSetAssignArray={handleSetAssignArray} />
+          </InputWrapper>
+          <InputWrapper>
+            <PriorityTitle>{titlePriority}</PriorityTitle>
+            <LabelWrapper className="LabelWrapper">
+              <InputWrapper>
+                <input
+                  {...register('priority')}
+                  type="radio"
+                  id="high_priority"
+                  name="priority"
+                  value={priority.high}
+                />
+                <HighPriorityLabel htmlFor="high_priority">
+                  {priority.high.toUpperCase()}
+                </HighPriorityLabel>
+              </InputWrapper>
+              <InputWrapper>
+                <input
+                  {...register('priority')}
+                  type="radio"
+                  id="medium_priority"
+                  name="priority"
+                  value={priority.medium}
+                />
+                <MediumPriorityLabel htmlFor="medium_priority">
+                  {priority.medium.toUpperCase()}
+                </MediumPriorityLabel>
+              </InputWrapper>
+              <InputWrapper>
+                <input
+                  {...register('priority')}
+                  type="radio"
+                  id="low_priority"
+                  name="priority"
+                  value={priority.low}
+                />
+                <LowPriorityLabel htmlFor="low_priority">
+                  {priority.low.toUpperCase()}
+                </LowPriorityLabel>
+              </InputWrapper>
+              <InputError>{errors.priority?.message}</InputError>
+            </LabelWrapper>
+          </InputWrapper>
           <ButtonsWrapper>
             <CreateCardCancelButton
+              type="button"
               onClick={() => {
                 dispatch(setStatus('hidden'));
                 dispatch(setCurrentTask(undefined));

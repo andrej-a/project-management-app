@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { size } from '../../../../constants/screenSizes';
 
 export const BackBtnWrapper = styled.button`
   display: flex;
@@ -19,6 +20,10 @@ export const BackBtnWrapper = styled.button`
     position: relative;
     padding-left: 16px;
     transition: transform 0.3s ease-in-out;
+
+    @media (max-width: ${size.tablet}) {
+      width: min-content;
+    }
 
     &::before,
     &::after {

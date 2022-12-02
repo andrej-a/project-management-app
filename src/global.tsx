@@ -7,7 +7,6 @@ type GlobalThemeProps = {
 };
 
 export default createGlobalStyle`
-${normalize}
 * {
     margin: 0;
     padding: 0;
@@ -25,13 +24,6 @@ ${normalize}
     text-decoration: none;
   }
 
-#root {
-    display: grid;
-    grid-template-rows: min-content auto min-content;
-    justify-items: center;
-    min-height: 97vh;
-
-}
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
@@ -40,17 +32,19 @@ input:-webkit-autofill:active{
     border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
     -webkit-text-fill-color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 }
+:root{
+  svg{
+    display: block !important;
+  }
+}
 body {
-    margin: 0;
-    max-height: min-content;
     background: ${({ theme }: GlobalThemeProps) => theme.DESK_BACKGROUND};
     transition: all 0.5s ease-in-out;
     font-family: 'Libre Franklin', sans-serif;
     background-color: ${({ theme }: GlobalThemeProps) => theme.DESK_BACKGROUND};
     width: 100%;
     &::-webkit-scrollbar {
-    background-color: ${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
-    width: 14px;
+      background-color: ${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
       background-color:${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
     };
   }
@@ -64,7 +58,16 @@ body {
     border-radius: 100px;
     background-clip: content-box;
     background-color: ${({ theme }: GlobalThemeProps) => theme.TEXT_COLOR}; 
-    border: 4px solid ${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
+    border: 5px solid ${({ theme }: GlobalThemeProps) => theme.FRAME_TASK_COLOR};
+  }
+  svg:not(:root){
+    display: none;
+  }
+  .epr-body::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  .epr-preview, .epr-emoji-category-label{
+    display: none !important;
   }
   
 `;

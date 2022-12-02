@@ -4,11 +4,7 @@ import { size } from '../../../../../constants/screenSizes';
 export const CreateBoardFormWrapper = styled.div`
   width: auto;
   height: auto;
-  margin: 22px 59px 0 59px;
-
-  @media (max-width: ${size.tablet}) {
-    margin: 22px 29px 0px 29px;
-  }
+  max-width: 100%;
 
   form {
     display: flex;
@@ -16,10 +12,11 @@ export const CreateBoardFormWrapper = styled.div`
     align-items: center;
     justify-content: center;
     gap: 22px;
-
-    textarea {
-      width: 400px;
-      background: ${({ theme }) => theme.LIGHT_BACKGROUND};
+    max-width: 100%;
+    input[type='text'],
+    .epr-search {
+      max-width: 100%;
+      background: ${({ theme }) => theme.LIGHT_BACKGROUND} !important;
       outline: none;
       border: 1px solid ${({ theme }) => theme.INPUT_BORDER_COLOR_LIGHT};
       border-radius: 5px;
@@ -29,21 +26,12 @@ export const CreateBoardFormWrapper = styled.div`
       overflow: hidden;
       resize: none;
       color: ${({ theme }) => theme.TEXT_COLOR_DARK};
-
-      @media (max-width: ${size.tablet}) {
-        width: 300px;
-      }
-
-      @media (max-width: ${size.mobileL}) {
-        width: 200px;
-      }
     }
 
     input[type='submit'] {
-      padding: 10px 37px;
+      padding: 9px 37px;
       background: ${({ theme }) => theme.BUTTON_BACKGROUND};
       border-radius: 20px;
-      margin-bottom: 37px;
       border: 0px;
       font-style: normal;
       font-weight: 600;
@@ -58,6 +46,9 @@ export const CreateBoardFormWrapper = styled.div`
       }
       &:disabled {
         cursor: not-allowed;
+        background: transparent;
+        outline: 2px solid ${({ theme }) => theme.BUTTON_BACKGROUND};
+        color: ${({ theme }) => theme.TEXT_COLOR_DARK};
       }
     }
   }
@@ -77,19 +68,15 @@ export const TitleInput = styled.input`
 `;
 
 export const DescriptionInput = styled.textarea`
-  height: 90px;
-  padding: 12px 12px 12px 12px;
-
-  @media (max-width: ${size.mobileL}) {
-    padding: 12px 0px 120px 10px;
-    height: 150px;
-  }
+  height: 150px;
+  padding: 12px;
 `;
 
 export const ButtonsWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  row-gap: 16px !important;
+  justify-content: space-between;
   margin-top: 22px;
   gap: 20px;
 
@@ -101,7 +88,7 @@ export const ButtonsWrapper = styled.div`
 `;
 
 export const CreateCardCancelButton = styled.button`
-  width: 180px;
+  padding: 9px 37px;
   height: 40px;
   background: ${({ theme }) => theme.LIGHT_BACKGROUND};
   border: 2px solid ${({ theme }) => theme.BUTTON_RED};
@@ -118,5 +105,50 @@ export const CreateCardCancelButton = styled.button`
   &:hover {
     background: ${({ theme }) => theme.BUTTON_RED};
     color: ${({ theme }) => theme.TEXT_COLOR};
+  }
+
+  margin-right: 10px !important;
+  @media (max-width: ${size.mobileL}) {
+    margin: 0;
+  }
+`;
+export const EmojiWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+
+  cursor: pointer;
+
+  .emoji {
+    font-size: 30px;
+    transition: all 0.3s ease-in-out;
+  }
+  .one,
+  .two {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    display: block;
+    top: 50%;
+    left: calc(50% - 7.5px);
+    transition: background 0.3s ease-in-out;
+    background-color: transparent;
+  }
+  .one {
+    transform: rotate(45deg);
+  }
+  .two {
+    transform: rotate(-45deg);
+  }
+  &:hover {
+    .one,
+    .two {
+      background-color: white;
+    }
+    .emoji {
+      filter: brightness(0);
+    }
   }
 `;

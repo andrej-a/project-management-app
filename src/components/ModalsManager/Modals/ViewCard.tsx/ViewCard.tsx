@@ -38,14 +38,18 @@ export const ViewCard = () => {
               color={buttonColor}
               icon={crossIcon}
               size={20}
-              stylish={{ position: 'absolute', right: '20px', top: '20px' }}
+              stylish={{ position: 'absolute', right: '-15px', top: '-15px' }}
               handleClick={() => {
                 dispatch(setStatus('hidden'));
                 dispatch(setCurrentTask(undefined));
               }}
             />
             <NewCardTitle>{task?.title.split(priorityKey)[0] ?? ''}</NewCardTitle>
-            <div className="description">{task?.description ?? ''}</div>
+            <div className="description">
+              {task?.description.split(/(\n|\r)+/).map((str, i) => (
+                <p key={i}>{str}</p>
+              ))}
+            </div>
             <div className="assign">
               <div>
                 <span>{assignedTxt}</span> {assignName?.join(', ')}
