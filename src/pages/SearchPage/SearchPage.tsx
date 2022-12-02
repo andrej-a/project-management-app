@@ -16,6 +16,7 @@ import { BoardsWrapper } from '../BoardsPage/BoardsPage.styled';
 import { AreaWrapper, Wrapper } from './SearchPage.styled';
 import { priorityKey } from '../../constants/priorityKey';
 import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
+import { emojiKey } from '../../constants/emojiKey';
 
 const SearchPage = () => {
   const { dictionary, allBoards, allUserTasks, isLoadingBoards } = useAppSelector((state) => {
@@ -41,7 +42,7 @@ const SearchPage = () => {
       if (isOptionIsBoard) {
         setTasks([]);
         const searchedBoards = allBoards.filter((board) =>
-          board.title.toLowerCase().includes(search.toLowerCase())
+          board.title.split(emojiKey)[0].toLowerCase().includes(search.toLowerCase())
         );
         setBoards(searchedBoards);
       } else {

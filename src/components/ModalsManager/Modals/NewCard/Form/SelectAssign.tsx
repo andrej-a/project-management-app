@@ -22,12 +22,14 @@ export const SelectAssign = ({
     selectFocusActive,
     placeholder,
     userId,
+    selectTxtColor1,
   } = useAppSelector((state) => {
     return {
       selectBg: state.application_theme.theme.LIGHT_BACKGROUND,
       selectBorder: state.application_theme.theme.INPUT_BORDER_COLOR_LIGHT,
       selectFocus: state.application_theme.theme.MODAL_BG,
       selectTxtColor: state.application_theme.theme.TEXT_COLOR_DARK,
+      selectTxtColor1: state.application_theme.theme.TEXT_COLOR,
       selectFocusActive: state.application_theme.theme.TEXT_COLOR_DARK,
       placeholder: state.language.lang.createCard.select,
       userId: state.user.id,
@@ -91,7 +93,7 @@ export const SelectAssign = ({
           primary25: selectFocus,
           neutral0: selectBg,
           primary: selectBorder,
-          neutral80: selectTxtColor,
+          neutral80: selectTxtColor1,
           neutral10: selectFocusActive,
           neutral50: selectTxtColor,
           primary50: selectFocus,

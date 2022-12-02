@@ -8,7 +8,7 @@ import {
   CancelButton,
   ConfirmButton,
 } from './DeleteItem.styled';
-import { WarningMessage } from '../Registration/Registration.styled';
+import { SuccessMessage, WarningMessage } from '../Registration/Registration.styled';
 /* HOOKS */
 import { useAppSelector, useAppDispatch } from '../../../../hooks/hooks';
 /* ACTIONS */
@@ -65,7 +65,7 @@ export const DeleteItem = () => {
             ) : (
               <Spinner center={false} />
             )}
-            <WarningMessage>{warningMessage}</WarningMessage>
+            <SuccessMessage>{warningMessage}</SuccessMessage>
           </DeleteItemCard>
         </DeleteItemFrame>
       </DeleteItemWrapper>
