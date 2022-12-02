@@ -82,3 +82,12 @@ export const WarningMessage = styled.p`
   margin-bottom: 20px;
   color: ${({ theme }) => theme.BUTTON_RED};
 `;
+export const SuccessMessage = styled.p`
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 19px;
+  margin-bottom: 20px;
+  color: ${({ theme }) => theme.BUTTON_GREEN};
+`;

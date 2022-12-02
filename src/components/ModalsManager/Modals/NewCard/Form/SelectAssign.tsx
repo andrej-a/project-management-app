@@ -37,8 +37,7 @@ export const SelectAssign = ({
     ? users.map((user) => {
         const value = user._id;
         const label = `${user.name} (${user.login})`;
-        const isDisabled = user._id === userId;
-        return { value, label, isDisabled };
+        return { value, label };
       })
     : [];
   return (
@@ -54,6 +53,12 @@ export const SelectAssign = ({
           height: 'auto',
           width: '100%',
           maxWidth: 353,
+        }),
+        indicatorsContainer: (baseStyles) => ({
+          ...baseStyles,
+          svg: {
+            fill: selectTxtColor,
+          },
         }),
         menuList: (base) => ({
           ...base,
@@ -91,7 +96,7 @@ export const SelectAssign = ({
           primary25: selectFocus,
           neutral0: selectBg,
           primary: selectBorder,
-          neutral80: selectTxtColor,
+          neutral80: selectBg,
           neutral10: selectFocusActive,
           neutral50: selectTxtColor,
           primary50: selectFocus,

@@ -28,8 +28,6 @@ export const getBoardTasks = async (boardId: string): Promise<ITask[]> => {
     }
 
     const content: ITask[] = await response.json();
-    // eslint-disable-next-line no-console
-    console.log(content);
     dispatch(setTasks(content));
     return content;
   } catch (err) {

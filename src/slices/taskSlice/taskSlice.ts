@@ -30,6 +30,9 @@ const taskSlice = createSlice({
     setAllUserTasks: (state, action) => {
       state.allUserTasks = action.payload;
     },
+    setAllSearchedTasks: (state, action) => {
+      state.allSearchedTasks = action.payload;
+    },
   },
 });
 
@@ -41,5 +44,6 @@ export const {
   updateTaskInfo,
   setNewTaskColumnId,
   setAllUserTasks,
+  setAllSearchedTasks,
 } = actions;
 export default reducer;

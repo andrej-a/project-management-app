@@ -77,23 +77,11 @@ export const Form = () => {
       <FormWrapper>
         <form action="" onSubmit={handleSubmit(formSubmit)}>
           <InputWrapper>
-            <input
-              {...register('name')}
-              placeholder={namePlaceholder}
-              type="text"
-              name="name"
-              id=""
-            />
+            <input {...register('name')} placeholder={namePlaceholder} type="text" name="name" />
             <InputError>{errors.name?.message}</InputError>
           </InputWrapper>
           <InputWrapper>
-            <input
-              {...register('login')}
-              placeholder={loginPlaceholder}
-              type="text"
-              name="login"
-              id=""
-            />
+            <input {...register('login')} placeholder={loginPlaceholder} type="text" name="login" />
             <InputError>{errors.login?.message}</InputError>
           </InputWrapper>
           <InputWrapper>
@@ -102,7 +90,6 @@ export const Form = () => {
               placeholder={passwordPlaceholder}
               type={inputType}
               name="password"
-              id=""
             />
             <TogglerWrapper
               onClick={() => dispatch(setInputType(inputType === 'password' ? 'text' : 'password'))}

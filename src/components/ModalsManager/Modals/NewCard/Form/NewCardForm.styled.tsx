@@ -10,6 +10,7 @@ export const FormWrapper = styled.div`
     gap: 22px;
     textarea,
     input[type='text'] {
+      font-family: 'Libre Franklin', sans-serif;
       width: 100%;
       background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       outline: none;
@@ -23,7 +24,6 @@ export const FormWrapper = styled.div`
       color: ${({ theme }) => theme.TEXT_COLOR_DARK};
       overflow: auto;
       max-height: 210px;
-      margin-bottom: -5px;
       margin-top: 5px;
     }
 
@@ -61,6 +61,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const PriorityTitle = styled.p`
+  margin-bottom: 6px;
   color: ${({ theme }) => theme.TEXT_COLOR_DARK};
 `;
 

@@ -30,7 +30,6 @@ export const BoardCard = styled.div`
 export const LogInTitleWrapper = styled.div`
   width: auto;
   height: auto;
-  margin-top: 38px;
   display: flex;
   justify-content: center;
   margin-bottom: 22px;

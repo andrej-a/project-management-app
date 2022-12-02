@@ -5,6 +5,7 @@ interface IBoardSlice {
   boards: IBoard[];
   editBoard: IBoard | undefined;
   currentBoard: IBoard | undefined;
+  allSearchedBoards: IBoard[];
 }
 
 export const initialState: IBoardSlice = {
@@ -12,4 +13,5 @@ export const initialState: IBoardSlice = {
   boards: [],
   editBoard: undefined,
   currentBoard: undefined,
+  allSearchedBoards: [],
 };

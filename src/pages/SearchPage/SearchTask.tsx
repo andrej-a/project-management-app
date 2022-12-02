@@ -12,8 +12,13 @@ import {
 } from '../CurrentBoardPage/KanbanArea/TaskCard/TaskCard.styled';
 import deleteIcon from '../../assets/img/delete.svg';
 import { Link } from 'react-router-dom';
+import { fetchBoard } from '../../slices/boardSlice/actions';
 
-export const SearchTaskCard = ({ task }: { task: ITask }) => {
+type Props = {
+  task: ITask;
+};
+
+export const SearchTaskCard = ({ task }: Props) => {
   const { title, description, _id, boardId, columnId, userId } = task;
   const { buttonColor, currentUser, disabledButtonColor, boardOwner, priority } = useAppSelector(
     (state) => {
@@ -28,7 +33,13 @@ export const SearchTaskCard = ({ task }: { task: ITask }) => {
   );
   const dispatch = useAppDispatch();
   return (
-    <TaskCardStyled as={Link} to={`/board/${boardId}`}>
+    <TaskCardStyled
+      as={Link}
+      to={`/board/${boardId}`}
+      onClick={() => {
+        dispatch(fetchBoard(boardId));
+      }}
+    >
       <TaskCardTitle>{title.split(priorityKey)[0]}</TaskCardTitle>
       <TaskCardDescription>{description}</TaskCardDescription>
       <SvgButton

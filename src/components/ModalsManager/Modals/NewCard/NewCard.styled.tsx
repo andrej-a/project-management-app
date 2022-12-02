@@ -4,7 +4,7 @@ export const NewCardTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 41px;
+  gap: 20px;
 `;
 export const NewCardTitle = styled.div`
   font-style: normal;

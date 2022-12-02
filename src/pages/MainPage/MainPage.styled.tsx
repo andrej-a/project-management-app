@@ -6,24 +6,24 @@ export const Wrapper = styled.div`
   min-height: 100vh;
   width: 100%;
   padding: 0 80px;
+  padding-top: 15vh;
   @media (max-width: ${size.tablet}) {
     padding: 0 20px;
     margin-bottom: 20px;
+  }
+  @media (max-width: ${size.laptop}) {
+    padding-top: 5vh;
   }
 `;
 export const Container = styled.div`
   display: flex;
   margin: auto 0;
   gap: 50px;
-  margin-top: 10vh;
   @media (max-width: ${size.laptopM}) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0px;
-  }
-  @media (max-width: ${size.laptop}) {
-    margin-top: 5vh;
   }
 `;
 

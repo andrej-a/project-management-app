@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { fetchAllBoards } from '../../slices/boardSlice/actions';
 import { setStatus } from '../../slices/modalsSlice/modalsSlice';
 import { getAllUsersThunk } from '../../slices/userSlice/userSlice';
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 
 const BoardsPage = () => {
   const { dictionary, userName, boards, isLoading } = useAppSelector((state) => {
@@ -40,15 +41,17 @@ const BoardsPage = () => {
   return (
     <Wrapper>
       <GreetingsPanel userName={userName} boards={boards} />
-      <div>
-        <BoardsPanelWrapper className="BoardsPanelWrapper">
-          <NewElementButton
-            text={newBoardText}
-            handleClick={() => dispatch(setStatus('new_board'))}
-          />
-          {isLoading ? <Spinner center={true} /> : <BoardsWrapper>{boardsList}</BoardsWrapper>}
-        </BoardsPanelWrapper>
-      </div>
+      <ErrorBoundary>
+        <div>
+          <BoardsPanelWrapper className="BoardsPanelWrapper">
+            <NewElementButton
+              text={newBoardText}
+              handleClick={() => dispatch(setStatus('new_board'))}
+            />
+            {isLoading ? <Spinner center={true} /> : <BoardsWrapper>{boardsList}</BoardsWrapper>}
+          </BoardsPanelWrapper>
+        </div>
+      </ErrorBoundary>
     </Wrapper>
   );
 };

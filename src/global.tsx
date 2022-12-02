@@ -39,7 +39,6 @@ input:-webkit-autofill:active{
 }
 body {
     background: ${({ theme }: GlobalThemeProps) => theme.DESK_BACKGROUND};
-    transition: all 0.5s ease-in-out;
     font-family: 'Libre Franklin', sans-serif;
     background-color: ${({ theme }: GlobalThemeProps) => theme.DESK_BACKGROUND};
     width: 100%;

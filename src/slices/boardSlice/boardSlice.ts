@@ -23,9 +23,19 @@ const boardSlice = createSlice({
       state.boards = action.payload;
       state.isLoading = false;
     },
+    setAllSearchedBoards: (state, action) => {
+      state.allSearchedBoards = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = boardSlice;
-export const { updateBoardTitle, setCurrentBoard, setEditBoard, setBoards, setLoading } = actions;
+export const {
+  updateBoardTitle,
+  setCurrentBoard,
+  setAllSearchedBoards,
+  setEditBoard,
+  setBoards,
+  setLoading,
+} = actions;
 export default reducer;

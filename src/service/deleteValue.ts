@@ -13,11 +13,18 @@ import { fetchAllTasks } from '../slices/taskSlice/actions';
 import { deleteValueFromLocalStorage } from '../utils/deleteValueFromLocalStorage';
 /* CONSTANTS */
 import { localData } from '../constants/applicationConstants';
+import { setAllSearchedTasks } from '../slices/taskSlice/taskSlice';
+import { setAllSearchedBoards } from '../slices/boardSlice/boardSlice';
 
 export const deleteValue = async (url: string, removingValue: string) => {
   const { DELETE, TYPE, SUCCESSFULL_REQUEST, SHORT_WARNING_MESSAGE_DURATION } = requests;
   const { dispatch } = store;
   const currentBoard = store.getState().board.currentBoard?._id;
+  const searchedTasks = store.getState().task.allSearchedTasks;
+  const searchedBoards = store.getState().board.allSearchedBoards;
+  const deleteId = url.split('/').reverse()[0];
+  const deleteType = url.split('/').reverse()[1];
+
   dispatch(setLoadingState('loading'));
   const request = await fetch(url, {
     method: `${DELETE}`,
@@ -50,5 +57,12 @@ export const deleteValue = async (url: string, removingValue: string) => {
 
       dispatch(fetchUpdateBoardAssignList());
     }, SHORT_WARNING_MESSAGE_DURATION);
+  }
+
+  if (url.match(deleteType)) {
+    const searchedTasksFiltered = searchedTasks.filter((elem) => elem._id !== deleteId);
+    const searchedBoardsFiltered = searchedBoards.filter((elem) => elem._id !== deleteId);
+    dispatch(setAllSearchedTasks(searchedTasksFiltered));
+    dispatch(setAllSearchedBoards(searchedBoardsFiltered));
   }
 };

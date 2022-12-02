@@ -77,7 +77,7 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   row-gap: 16px !important;
   justify-content: space-between;
-  margin-top: 22px;
+  margin-top: 10px;
   gap: 20px;
 
   @media (max-width: ${size.tablet}) {
@@ -88,7 +88,7 @@ export const ButtonsWrapper = styled.div`
 `;
 
 export const CreateCardCancelButton = styled.button`
-  padding: 9px 37px;
+  padding: 0px 37px;
   height: 40px;
   background: ${({ theme }) => theme.LIGHT_BACKGROUND};
   border: 2px solid ${({ theme }) => theme.BUTTON_RED};

@@ -50,7 +50,8 @@ export const ButtonsWrapper = styled.div`
   height: auto;
   display: flex;
   justify-content: space-around;
-
+  flex-wrap: wrap;
+  gap: 16px;
   @media (max-width: ${size.mobileL}) {
     width: 100%;
     align-items: center;
