@@ -68,5 +68,12 @@ body {
   .epr-preview, .epr-emoji-category-label{
     display: none !important;
   }
-  
+  .assign {
+    font-weight: 600;
+      font-size: 15px;
+    span {
+      font-size: 13px;
+      font-weight: 400;
+    }
+  }
 `;
