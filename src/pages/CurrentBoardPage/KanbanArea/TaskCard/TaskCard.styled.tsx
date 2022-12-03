@@ -14,11 +14,18 @@ export const TaskCardStyled = styled.div`
   border-radius: 20px;
   color: ${({ theme }) => theme.TASK_TEXT};
   position: relative;
+  border: 2px solid transparent;
+  opacity: 0.8;
   cursor: pointer !important;
 
   &:hover {
     transform: scale(1.06);
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+    opacity: 1;
+  }
+
+  &.assignedUser {
+    opacity: 1;
   }
 `;
 export const TaskCardTitle = styled.h3`
