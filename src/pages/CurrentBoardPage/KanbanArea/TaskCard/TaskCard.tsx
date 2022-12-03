@@ -62,15 +62,9 @@ const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
   useEffect(() => {
     if (!task.users.length) {
       onSetIsAssignedCurrentUser(false);
+    } else {
+      onSetIsAssignedCurrentUser(task.users.includes(currentUser as string));
     }
-
-    task.users.forEach((user) => {
-      if (user === currentUser) {
-        onSetIsAssignedCurrentUser(true);
-      } else {
-        onSetIsAssignedCurrentUser(false);
-      }
-    });
   }, [task.users]);
 
   const dispatch = useAppDispatch();
