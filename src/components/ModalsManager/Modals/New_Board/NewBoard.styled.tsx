@@ -16,7 +16,6 @@ export const BoardCard = styled.div`
   padding: 37px 30px;
   width: auto;
   max-height: 100%;
-  overflow-y: auto;
   border-radius: 10px;
   background: ${({ theme }) => theme.LIGHT_BACKGROUND};
   display: flex;
@@ -24,6 +23,9 @@ export const BoardCard = styled.div`
   align-items: center;
   &::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
+  }
+  @media (max-height: 700px) {
+    overflow-y: auto;
   }
 `;
 

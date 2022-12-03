@@ -17,7 +17,7 @@ import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 const BoardsPage = () => {
   const { dictionary, userName, boards, isLoading } = useAppSelector((state) => {
     return {
-      dictionary: state.language.lang.boardsPage,
+      dictionary: state.language.lang,
       userName: state.user.name ?? 'Stranger',
       boards: state.board.boards,
       isLoading: state.board.isLoading,
@@ -35,7 +35,7 @@ const BoardsPage = () => {
 
   const newBoardText = (
     <>
-      {dictionary.Create} <br /> {dictionary['New Board']}
+      {dictionary.boardsPage.Create} <br /> {dictionary.createBoard.titleforBoardsPage}
     </>
   );
   return (
