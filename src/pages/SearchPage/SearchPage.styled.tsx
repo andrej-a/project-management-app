@@ -27,6 +27,9 @@ export const Wrapper = styled.div`
 export const AreaWrapper = styled.div`
   padding: 40px 0;
   display: flex;
+  p {
+    text-align: center;
+  }
   ${BoardsWrapper} {
     justify-content: center;
   }

@@ -121,7 +121,7 @@ export const BurgerMenu = styled.div`
   span {
     content: '';
     position: absolute;
-    top: 20px;
+    top: 19px;
     width: 36px;
     height: 3px;
     background-color: ${({ theme }) => theme.TEXT_COLOR};

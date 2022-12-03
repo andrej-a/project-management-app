@@ -19,6 +19,7 @@ export interface ILanguage {
     changeModalToSignUp: string;
   };
   createBoard: {
+    titleforBoardsPage: string;
     title: string;
     hint: string;
     description: string;

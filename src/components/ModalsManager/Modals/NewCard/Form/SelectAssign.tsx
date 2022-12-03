@@ -51,7 +51,7 @@ export const SelectAssign = ({
         container: (baseStyles) => ({
           ...baseStyles,
           height: 'auto',
-          width: '100%',
+         minWidth: '100%',
           maxWidth: 353,
         }),
         indicatorsContainer: (baseStyles) => ({
@@ -62,7 +62,7 @@ export const SelectAssign = ({
         }),
         menuList: (base) => ({
           ...base,
-          height: 'auto',
+          height: '150px',
 
           '::-webkit-scrollbar': {
             width: '4px',

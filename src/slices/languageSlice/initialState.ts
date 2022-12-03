@@ -23,6 +23,7 @@ export const EnglishState: ILanguage = {
     changeModalToSignUp: 'Don`t have an account? Sign up',
   },
   createBoard: {
+    titleforBoardsPage: 'New Board',
     title: 'New Board',
     hint: 'Title',
     description: 'Description',
@@ -136,6 +137,7 @@ export const RussianState: ILanguage = {
     changeModalToSignUp: 'Еще нет аккаунта? Создать',
   },
   createBoard: {
+    titleforBoardsPage: 'Новую доску',
     title: 'Новая доска',
     hint: 'Название',
     description: 'Описание',

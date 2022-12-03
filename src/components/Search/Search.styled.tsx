@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { size } from '../../constants/screenSizes';
 
 export const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 `;
 
 export const InputSearchWrapper = styled.div`
@@ -19,6 +21,12 @@ export const InputSearchWrapper = styled.div`
     position: absolute;
     top: 8px;
     left: 18px;
+  }
+  @media (max-width: ${size.mobileM}) {
+    width: 50vw;
+    svg {
+      left: -10vw;
+    }
   }
 `;
 
@@ -50,4 +58,8 @@ export const InputSearch = styled.input`
   border: none;
   outline: none;
   border: 3px solid ${({ theme }) => theme.FRAME_TASK_COLOR};
+
+  @media (max-width: ${size.mobileM}) {
+    width: 80vw;
+  }
 `;
