@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 /**MODELS */
 import { ITask } from '../../../../models/ITask';
@@ -21,6 +22,7 @@ import ReactTooltip from 'react-tooltip';
 import { themeEnum } from '../../../../constants/localStorage';
 
 const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
+  const [isAssignedCurrentUser, setIsAssignedCurrentUser] = useState(false);
   const { title, description, _id, boardId, columnId, userId } = task;
   const {
     buttonColor,
@@ -53,6 +55,24 @@ const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
       theme: state.application_theme.theme.CURRENT_THEME,
     };
   });
+  const onSetIsAssignedCurrentUser = (value: boolean) => {
+    setIsAssignedCurrentUser(value);
+  };
+
+  useEffect(() => {
+    if (!task.users.length) {
+      onSetIsAssignedCurrentUser(false);
+    }
+
+    task.users.forEach((user) => {
+      if (user === currentUser) {
+        onSetIsAssignedCurrentUser(true);
+      } else {
+        onSetIsAssignedCurrentUser(false);
+      }
+    });
+  }, [task.users]);
+
   const dispatch = useAppDispatch();
   return (
     <>
@@ -79,6 +99,7 @@ const TaskCard = ({ task, dragIndex }: { task: ITask; dragIndex: number }) => {
       <Draggable draggableId={_id} index={dragIndex}>
         {(providedDrag) => (
           <TaskCardStyled
+            className={isAssignedCurrentUser ? 'assignedUser' : ''}
             data-tip
             data-for={_id}
             {...providedDrag.draggableProps}

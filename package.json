@@ -75,6 +75,7 @@
   },
   "devDependencies": {
     "@types/react-beautiful-dnd": "^13.1.2",
+    "@types/react-tooltip": "^4.2.4",
     "@types/styled-components": "^5.1.26"
   }
 }
