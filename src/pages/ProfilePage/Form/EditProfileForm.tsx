@@ -10,6 +10,7 @@ import { path } from '../../../models/requests';
 import {
   InputError,
   InputWrapper,
+  TogglerWrapper,
 } from '../../../components/ModalsManager/Modals/Registration/Form/form.styled';
 import { WarningMessage } from '../../../components/ModalsManager/Modals/Registration/Registration.styled';
 import { editUserThunk } from '../../../slices/userSlice/userSlice';
@@ -17,8 +18,12 @@ import {
   setDeletingValue,
   setStatus,
   setRequestUrl,
+  setInputType,
 } from '../../../slices/modalsSlice/modalsSlice';
 import { Spinner } from '../../../components/Spinner/Spinner';
+import { HandySvg } from 'handy-svg';
+import EyeOpen from '../../../assets/img/eye-closed.svg';
+import EyeClosed from '../../../assets/img/eye-closed.svg';
 
 export const EditProfileForm = () => {
   const dispatch = useAppDispatch();
@@ -34,6 +39,7 @@ export const EditProfileForm = () => {
     changeButton,
     deleteAccount,
     useLogin,
+    inputType,
   } = useAppSelector((state) => {
     return {
       userID: state.user.id as string,
@@ -47,6 +53,7 @@ export const EditProfileForm = () => {
       changeButton: state.language.lang.editProfile.changeButton,
       deleteAccount: state.language.lang.deleteAccount,
       useLogin: state.user.login,
+      inputType: state.modals_state.inputType,
     };
   });
   const schema = yup
@@ -76,6 +83,12 @@ export const EditProfileForm = () => {
   const formSubmit: SubmitHandler<IRegistrationData> = (data) => {
     dispatch(editUserThunk({ userID, data }));
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(setInputType('password'));
+    };
+  }, []);
 
   return (
     <>
@@ -110,10 +123,19 @@ export const EditProfileForm = () => {
             <input
               {...register('password')}
               placeholder={passwordPlaceholder}
-              type="text"
+              type={inputType}
               name="password"
               id="password"
             />
+            <TogglerWrapper
+              onClick={() => dispatch(setInputType(inputType === 'password' ? 'text' : 'password'))}
+            >
+              <HandySvg
+                src={inputType === 'password' ? EyeOpen : EyeClosed}
+                width="32"
+                height="32"
+              />
+            </TogglerWrapper>
             <InputError>{errors.password?.message}</InputError>
           </InputWrapper>
 

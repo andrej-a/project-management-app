@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { HandySvg } from 'handy-svg';
 
 import { useAppSelector } from '../../hooks/hooks';
 
-import { FormWrapper, InputSearch, InputSearchWrapper, SearchSelect } from './Search.styled';
+import {
+  DeleteIconDiv,
+  FormWrapper,
+  InputSearch,
+  InputSearchWrapper,
+  SearchSelect,
+} from './Search.styled';
 import searchIcon from '../../assets/svg/search.svg';
+import deleteIcon from '../../assets/img/cross.svg';
 
 type Props = {
   search: string;
   setSearch: (searchStr: string) => void;
   setOption: (searchStr: boolean) => void;
+  isOptionIsBoard: boolean;
 };
 
-export const Search = ({ search, setSearch, setOption }: Props) => {
+export const Search = ({ search, setSearch, setOption, isOptionIsBoard }: Props) => {
   const { dictionary } = useAppSelector((state) => {
     return {
       dictionary: state.language.lang.header,
@@ -35,10 +43,13 @@ export const Search = ({ search, setSearch, setOption }: Props) => {
           autoComplete="off"
           autoFocus
           value={search}
-          placeholder={dictionary.SearchBoard}
+          placeholder={isOptionIsBoard ? dictionary.SearchBoard : dictionary.SearchTask}
           onChange={handleChange}
         />
         <HandySvg src={searchIcon} width="24" height="24" />
+        <DeleteIconDiv onClick={() => setSearch('')} className={search && 'active'}>
+          <HandySvg src={deleteIcon} width="20" height="20" />
+        </DeleteIconDiv>
       </InputSearchWrapper>
       <SearchSelect onChange={handleChangeOption}>
         <option value="boards">boards</option>

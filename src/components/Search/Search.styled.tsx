@@ -9,6 +9,22 @@ export const FormWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
+export const DeleteIconDiv = styled.div`
+  display: none;
+  position: absolute;
+  top: 2px;
+  right: 56px;
+  &.active {
+    display: flex;
+  }
+  svg {
+    cursor: pointer;
+  }
+  @media (max-width: ${size.mobileM}) {
+    right: -13vw;
+  }
+`;
+
 export const InputSearchWrapper = styled.div`
   width: 350px;
   display: flex;
@@ -51,14 +67,16 @@ export const InputSearch = styled.input`
   color: ${({ theme }) => theme.TEXT_COLOR_DARK};
   background-color: ${({ theme }) => theme.LIGHT_BACKGROUND};
   border-radius: 20px;
-  padding-left: 62px;
-  padding-right: 10px;
+  padding-left: 50px;
+  padding-right: 42px;
   font-size: 20px;
   font-weight: 400;
   border: none;
   outline: none;
   border: 3px solid ${({ theme }) => theme.FRAME_TASK_COLOR};
-
+  &::-ms-clear {
+    color: #f00; // красный цвет
+  }
   @media (max-width: ${size.mobileM}) {
     width: 80vw;
   }

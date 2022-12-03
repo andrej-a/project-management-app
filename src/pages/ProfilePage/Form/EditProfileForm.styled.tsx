@@ -19,7 +19,13 @@ export const Wrapper = styled.div`
     gap: 16px;
     margin: 0 20px -20px 20px;
 
-    input[type='text'] {
+    svg {
+      stroke: ${({ theme }) => theme.TEXT_COLOR_DARK};
+      fill: none;
+    }
+
+    input[type='text'],
+    input[type='password'] {
       background: ${({ theme }) => theme.LIGHT_BACKGROUND};
       width: 306px;
       height: 40px;
@@ -31,6 +37,10 @@ export const Wrapper = styled.div`
       font-size: 14px;
       line-height: 17px;
       color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+    }
+    input[type='password'] {
+      font-family: Verdana, Geneva, sans-serif;
+      letter-spacing: -0.75px;
     }
     input[type='text']::-moz-placeholder {
       color: ${({ theme }) => theme.TEXT_COLOR_GREY};

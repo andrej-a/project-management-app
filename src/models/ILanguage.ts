@@ -93,6 +93,7 @@ export interface ILanguage {
     RU: string;
     SearchNothing: string;
     SearchBoard: string;
+    SearchTask: string;
     Search: string;
   };
   profile: {

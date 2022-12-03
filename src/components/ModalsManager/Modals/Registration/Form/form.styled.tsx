@@ -33,6 +33,10 @@ export const FormWrapper = styled.div`
       line-height: 17px;
       color: ${({ theme }) => theme.TEXT_COLOR_DARK};
     }
+    input[type='password'] {
+      font-family: Verdana, Geneva, sans-serif;
+      letter-spacing: -0.75px;
+    }
     input[type='text']::-moz-placeholder {
       color: ${({ theme }) => theme.TEXT_COLOR_GREY};
     }

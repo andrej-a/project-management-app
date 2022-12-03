@@ -77,6 +77,7 @@ const SearchPage = () => {
           setSearch={(value: string) => setSearch(value)}
           search={search}
           setOption={(value: boolean) => setIsOptionIsBoard(value)}
+          isOptionIsBoard={isOptionIsBoard}
         />
       </ErrorBoundary>
 

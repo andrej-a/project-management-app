@@ -98,6 +98,7 @@ export const EnglishState: ILanguage = {
     RU: 'RU',
     SearchNothing: 'Nothing found yet. Another attempt?',
     SearchBoard: 'Search Board...',
+    SearchTask: 'Search Task...',
     Search: 'Search',
   },
   profile: {
@@ -212,6 +213,7 @@ export const RussianState: ILanguage = {
     RU: 'RU',
     SearchNothing: 'Пока ничего не найдено. Еще одна попытка?',
     SearchBoard: 'Найти доску...',
+    SearchTask: 'Найти задачу...',
     Search: 'Поиск',
   },
   profile: {
