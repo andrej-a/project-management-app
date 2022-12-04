@@ -17,6 +17,7 @@ import { Form } from './Form/Form';
 import { WarningMessage } from '../Registration/Registration.styled';
 /* ACTIONS */
 import { setLoadingState, setStatus } from '../../../../slices/modalsSlice/modalsSlice';
+import { Link } from 'react-router-dom';
 
 export const LogIn = () => {
   const dispatch = useAppDispatch();
@@ -39,19 +40,14 @@ export const LogIn = () => {
             </LogInTitleWrapper>
             <Form />
             <ChangeModalWrapper>
-              <ChangeModal onClick={() => dispatch(setStatus('registration'))}>
-                {changeModalToSignIn}
-              </ChangeModal>
+              <Link to="/signUp">
+                <ChangeModal>{changeModalToSignIn}</ChangeModal>
+              </Link>
             </ChangeModalWrapper>
             <CancelWrapper>
-              <Cancel
-                onClick={() => {
-                  dispatch(setStatus('hidden'));
-                  dispatch(setLoadingState('loaded'));
-                }}
-              >
-                {cancel.toUpperCase()}
-              </Cancel>
+              <Link to="/">
+                <Cancel>{cancel.toUpperCase()}</Cancel>
+              </Link>
             </CancelWrapper>
             <WarningMessage>{warningMessage}</WarningMessage>
           </LogInCard>

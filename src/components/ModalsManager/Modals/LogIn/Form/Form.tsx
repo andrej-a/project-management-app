@@ -74,7 +74,7 @@ export const Form = () => {
               placeholder={loginPlaceholder}
               type="text"
               name="login"
-              id=""
+              id="login"
             />
             <InputError>{errors.login?.message}</InputError>
           </InputWrapper>
@@ -84,7 +84,7 @@ export const Form = () => {
               placeholder={passwordPlaceholder}
               type={inputType}
               name="password"
-              id=""
+              id="password"
             />
             <TogglerWrapper
               onClick={() => dispatch(setInputType(inputType === 'password' ? 'text' : 'password'))}
