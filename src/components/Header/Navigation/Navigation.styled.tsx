@@ -169,12 +169,12 @@ export const User = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 16px;
   transition: all 0.3s ease-in-out;
+  gap: 30px;
   p {
     color: ${({ theme }) => theme.TEXT_COLOR};
     font-weight: 500;
-    max-width: 100px;
+    max-width: 84px;
   }
   &:hover {
     transform: scale(1.1);
@@ -184,9 +184,19 @@ export const User = styled.div`
 export const LogOut = styled(Button)`
   color: ${({ theme }) => theme.TEXT_COLOR};
   background-color: transparent;
+  padding: 7px 10px;
+  font-weight: 500;
   border: 2px solid ${({ theme }) => theme.TEXT_COLOR};
-  margin: 0 10px;
   @media (max-width: ${size.laptop}) {
     margin-top: 40px;
+  }
+`;
+export const GoToMainPage = styled.p`
+  color: ${({ theme }) => theme.TEXT_COLOR} !important;
+  width: 80px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
   }
 `;

@@ -1,9 +1,10 @@
 import { useAppSelector } from '../../hooks/hooks';
-import { Container, TextInfo, Wrapper } from './MainPage.styled';
+import { Container, ContentWrapper, TextInfo, Wrapper } from './MainPage.styled';
 import Lottie from 'lottie-react';
 import MainImage from '../../assets/json/mainPage.json';
 import MainImageDark from '../../assets/json/mainPage_Dark.json';
 import { themeEnum } from '../../constants/localStorage';
+import TeamMembers from './Members/TeamMembers';
 
 const MainPage = () => {
   const { dictionary, theme } = useAppSelector((state) => {
@@ -25,6 +26,11 @@ const MainPage = () => {
           style={{ width: '80%' }}
         />
       </Container>
+      <ContentWrapper>
+        <h1>{dictionary.ourTeam}</h1>
+        <p>{dictionary.ourTemDiscription}</p>
+        <TeamMembers />
+      </ContentWrapper>
     </Wrapper>
   );
 };
