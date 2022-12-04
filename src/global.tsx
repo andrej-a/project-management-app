@@ -1,5 +1,4 @@
-import { createGlobalStyle, css } from 'styled-components';
-import { normalize } from 'styled-normalize';
+import { createGlobalStyle } from 'styled-components';
 import { ITheme_Interface } from './models/theme_interface';
 
 type GlobalThemeProps = {
@@ -76,4 +75,8 @@ body {
       font-weight: 400;
     }
   }
+  input::-webkit-search-decoration,
+  input::-webkit-search-cancel-button,
+  input::-webkit-search-results-button,
+  input::-webkit-search-results-decoration { display: none; }
 `;

@@ -51,7 +51,7 @@ export const SelectAssign = ({
         container: (baseStyles) => ({
           ...baseStyles,
           height: 'auto',
-         minWidth: '100%',
+          minWidth: '100%',
           maxWidth: 353,
         }),
         indicatorsContainer: (baseStyles) => ({
