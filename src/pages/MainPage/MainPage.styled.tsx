@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
   width: 100%;
   padding: 0 80px;
   padding-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  gap: 140px;
   @media (max-width: ${size.tablet}) {
     padding: 0 20px;
     margin-bottom: 20px;
@@ -46,6 +49,7 @@ export const TextInfo = styled.div`
     font-weight: 500;
   }
   @media (max-width: ${size.laptopL}) {
+    gap: 40px;
     padding: 0px 40px;
     margin-bottom: 40px;
   }
@@ -54,6 +58,41 @@ export const TextInfo = styled.div`
     padding: 0px;
   }
   @media (max-width: ${size.mobileL}) {
-    padding: 0px 10px;
+    padding: 0px;
+    gap: 40px;
+    h1 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
+`;
+export const ContentWrapper = styled.div`
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+  margin-bottom: 100px;
+  p {
+    text-align: center;
+    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+    width: 60%;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5em;
+    align-self: center;
+  }
+  h1 {
+    font-size: 34px;
+    text-align: center;
+    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+  }
+  @media (max-width: ${size.laptopM}) {
+    width: 100%;
+    p {
+      width: 90%;
+    }
   }
 `;

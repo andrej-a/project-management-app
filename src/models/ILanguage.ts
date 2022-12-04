@@ -81,6 +81,13 @@ export interface ILanguage {
   mainPage: {
     title: string;
     description: string;
+    ourTeam: string;
+    ourTemDiscription: string;
+    developer: string;
+    teamLead: string;
+    Andrej: string;
+    Nastya: string;
+    Lizaveta: string;
   };
   header: {
     LogOut: string;
@@ -95,6 +102,7 @@ export interface ILanguage {
     SearchBoard: string;
     SearchTask: string;
     Search: string;
+    GoToMain: string;
   };
   profile: {
     DeleteProfile: string;
