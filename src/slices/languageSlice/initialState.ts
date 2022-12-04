@@ -86,6 +86,14 @@ export const EnglishState: ILanguage = {
     title: 'YOUR PROJECT MANAGER IN ONE SPACE',
     description:
       'This is a project management program that allows you to centrally manage tasks and their timely completion. Trackers are widely used in project management, because they allow you to easily monitor all work processes and control the work of the team',
+    ourTeam: 'OUR DREAM TEAM',
+    ourTemDiscription:
+      'Hello everyone and welcome to our project management system TaskBan. We are ambitious and creative team and our goal with this project was to give youthe best Kanban task management experience. You can find out more information about us and our projects in our Github profiles',
+    developer: 'Frontend Developer',
+    teamLead: 'Team Lead',
+    Andrej: 'Andrej',
+    Nastya: 'Anastasia',
+    Lizaveta: 'Lizaveta',
   },
   header: {
     LogOut: 'LOG OUT',
@@ -100,6 +108,7 @@ export const EnglishState: ILanguage = {
     SearchBoard: 'Search Board...',
     SearchTask: 'Search Task...',
     Search: 'Search',
+    GoToMain: 'Go to Main Page',
   },
   profile: {
     DeleteProfile: 'Delete Profile',
@@ -201,6 +210,14 @@ export const RussianState: ILanguage = {
     title: 'ТВОЙ МЕНЕДЖЕР ПРОЕКТОВ В ОДНОМ МЕСТЕ',
     description:
       'Это программа для управления проектами, которая позволяет централизованно руководить задачами и их своевременным выполнением. Трекеры широко используются в проектном менеджменте, потому что позволяют без труда следить за всеми рабочими процессами и контролировать работу команды',
+    ourTeam: 'НAША КОМАНДА',
+    ourTemDiscription:
+      'Всем привет и добро пожаловать в нашу систему управления проектами TaskBan. Мы амбициозная и творческая команда, и наша цель в этом проекте состояла в том, чтобы дать вам лучший опыт управления задачами Канбан. Вы можете узнать больше информации о нас и наших проектах в наших профилях Github.',
+    developer: 'Разработчик',
+    teamLead: 'Руководитель команды',
+    Andrej: 'Андрей',
+    Nastya: 'Анастасия',
+    Lizaveta: 'Лиза',
   },
   header: {
     LogOut: 'Выйти',
@@ -215,6 +232,7 @@ export const RussianState: ILanguage = {
     SearchBoard: 'Найти доску...',
     SearchTask: 'Найти задачу...',
     Search: 'Поиск',
+    GoToMain: 'Открыть главную',
   },
   profile: {
     DeleteProfile: 'Удалить профиль',

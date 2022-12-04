@@ -23,6 +23,7 @@ import {
   OptionsContainer,
   TextContainer,
   ItemContainer,
+  GoToMainPage,
 } from './Navigation.styled';
 import { ButtonContainer, SignIn, SignUp } from '../Header.styled';
 
@@ -129,6 +130,10 @@ export const NavigationComponent = ({ isMenuOpen, setIsMenuOpen }: props) => {
       })}
       {isAuthorized ? (
         <>
+          <NavLink to="boards" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <GoToMainPage>{dictionary.header.GoToMain}</GoToMainPage>
+          </NavLink>
+
           <LogOut
             onClick={() => {
               closeMenu();
