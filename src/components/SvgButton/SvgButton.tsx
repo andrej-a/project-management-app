@@ -34,9 +34,6 @@ const SvgButton = ({
       onClick={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        // eslint-disable-next-line no-console
-        console.log(e.target, 'TARGET');
-
         if (handleClick) handleClick();
       }}
       disabled={disabled}

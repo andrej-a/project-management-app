@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { HandySvg } from 'handy-svg';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/hooks';
@@ -154,10 +154,12 @@ export const NavigationComponent = ({ isMenuOpen, setIsMenuOpen }: props) => {
         </>
       ) : (
         <ButtonContainer className={isMenuOpen ? Styles.ACTIVE : ''} onClick={closeMenu}>
-          <SignIn onClick={() => dispatch(setStatus('login'))}>{dictionary.header.SignIn}</SignIn>
-          <SignUp onClick={() => dispatch(setStatus('registration'))}>
-            {dictionary.header.SignUp}
-          </SignUp>
+          <NavLink to="signIn">
+            <SignIn>{dictionary.header.SignIn}</SignIn>
+          </NavLink>
+          <NavLink to="signUp">
+            <SignUp>{dictionary.header.SignUp}</SignUp>
+          </NavLink>
         </ButtonContainer>
       )}
     </Wrapper>

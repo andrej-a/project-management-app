@@ -19,8 +19,6 @@ type Params2 = {
 };
 
 export const fetchAllTasks = createAsyncThunk('tasks/getAllTasks', async ({ boardId }: Params) => {
-  // eslint-disable-next-line no-console
-  console.log(boardId);
   return getBoardTasks(boardId);
 });
 export const fetchNewTasks = createAsyncThunk('tasks/createTask', async ({ task }: Params2) => {

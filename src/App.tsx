@@ -17,6 +17,8 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import SearchPage from './pages/SearchPage/SearchPage';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
+import { SignIn } from './pages/SignIn/SignIn';
+import { SignUp } from './pages/SignUp/SignUp';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { onDragEnd } from './utils/onDragEnd';
 import { langEnum, localStorageEnum, themeEnum } from './constants/localStorage';
@@ -42,7 +44,7 @@ function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getAllUsersThunk());
+    isAuthorized && dispatch(getAllUsersThunk());
     switch (localStorage.getItem(localStorageEnum.THEME)) {
       case themeEnum.DARK:
         updateTheme(dispatch, themeEnum.DARK);
@@ -87,6 +89,22 @@ function App() {
               element={
                 <ProtectedRoute user={!isAuthorized} redirectPath="boards">
                   <MainPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="signIn"
+              element={
+                <ProtectedRoute user={!isAuthorized} redirectPath="/boards">
+                  <SignIn />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="signUp"
+              element={
+                <ProtectedRoute user={!isAuthorized} redirectPath="/boards">
+                  <SignUp />
                 </ProtectedRoute>
               }
             />
