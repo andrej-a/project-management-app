@@ -49,8 +49,6 @@ export const NewColumnForm = () => {
   }, [isSubmitSuccessful, reset]);
 
   const formSubmit: SubmitHandler<ICreateColumn> = (data) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
     dispatch(fetchNewColumn(data));
   };
 
