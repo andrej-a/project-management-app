@@ -11,6 +11,7 @@ import { NewBoard } from './Modals/New_Board/NewBoard';
 import { NewCard } from './Modals/NewCard/NewCard';
 import { NewColumn } from './Modals/NewColumn/NewColumn';
 import { ViewCard } from './Modals/ViewCard.tsx/ViewCard';
+import { FetchError } from './Modals/FetchError/FetchError';
 
 export const ModalsManager = () => {
   const { modalsState } = useAppSelector((state) => state.modals_state);
@@ -71,6 +72,12 @@ export const ModalsManager = () => {
         return (
           <Overlay>
             <ViewCard />
+          </Overlay>
+        );
+      case 'fetch_error':
+        return (
+          <Overlay>
+            <FetchError />
           </Overlay>
         );
       default:

@@ -42,7 +42,7 @@ export const Form = () => {
     .object({
       name: yup.string().required().min(3),
       login: yup.string().required().min(3),
-      password: yup.string().required().min(3),
+      password: yup.string().required().min(8),
     })
     .required();
 

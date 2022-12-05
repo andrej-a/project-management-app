@@ -34,7 +34,7 @@ export const Form = () => {
   const schema = yup
     .object({
       login: yup.string().required().min(3),
-      password: yup.string().required().min(3),
+      password: yup.string().required().min(8),
     })
     .required();
 

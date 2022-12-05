@@ -93,6 +93,8 @@ export const EnglishState: ILanguage = {
     Andrej: 'Andrej',
     Nastya: 'Anastasia',
     Lizaveta: 'Lizaveta',
+    AboutSchool:
+      'RS School is free-of-charge and community-based education program conducted by The Rolling Scopes developer community since 2013',
   },
   header: {
     LogOut: 'LOG OUT',
@@ -219,6 +221,8 @@ export const RussianState: ILanguage = {
     Andrej: 'Андрей',
     Nastya: 'Анастасия',
     Lizaveta: 'Лиза',
+    AboutSchool:
+      'RS School - это бесплатная образовательная программа на базе сообщества, проводимая сообществом разработчиков Rolling Scopes с 2013 года',
   },
   header: {
     LogOut: 'Выйти',
