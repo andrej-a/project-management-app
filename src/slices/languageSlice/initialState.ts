@@ -1,4 +1,3 @@
-/* MODELS */
 import { langEnum, localStorageEnum } from '../../constants/localStorage';
 import { ILanguage } from '../../models/ILanguage';
 
