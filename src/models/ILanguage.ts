@@ -102,6 +102,8 @@ export interface ILanguage {
     SearchBoard: string;
     SearchTask: string;
     Search: string;
+    Boards: string;
+    Tasks: string;
     GoToMain: string;
   };
   profile: {

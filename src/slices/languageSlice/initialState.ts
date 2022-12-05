@@ -1,4 +1,3 @@
-/* MODELS */
 import { langEnum, localStorageEnum } from '../../constants/localStorage';
 import { ILanguage } from '../../models/ILanguage';
 
@@ -108,6 +107,8 @@ export const EnglishState: ILanguage = {
     SearchBoard: 'Search Board...',
     SearchTask: 'Search Task...',
     Search: 'Search',
+    Boards: 'boards',
+    Tasks: 'tasks',
     GoToMain: 'Go to Main Page',
   },
   profile: {
@@ -232,6 +233,8 @@ export const RussianState: ILanguage = {
     SearchBoard: 'Найти доску...',
     SearchTask: 'Найти задачу...',
     Search: 'Поиск',
+    Boards: 'доски',
+    Tasks: 'задачи',
     GoToMain: 'Открыть главную',
   },
   profile: {

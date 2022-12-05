@@ -52,8 +52,8 @@ export const Search = ({ search, setSearch, setOption, isOptionIsBoard }: Props)
         </DeleteIconDiv>
       </InputSearchWrapper>
       <SearchSelect onChange={handleChangeOption}>
-        <option value="boards">boards</option>
-        <option value="tasks">tasks</option>
+        <option value="boards">{dictionary.Boards}</option>
+        <option value="tasks">{dictionary.Tasks}</option>
       </SearchSelect>
     </FormWrapper>
   );
