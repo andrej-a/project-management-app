@@ -25,7 +25,7 @@ export const SearchTaskCard = ({ task }: Props) => {
       return {
         buttonColor: state.application_theme.theme.BUTTON_RED,
         currentUser: state.user.id,
-        boardOwner: state.board.currentBoard?.owner,
+        boardOwner: state.board.boards.find((board) => board._id === boardId)?.owner,
         disabledButtonColor: state.application_theme.theme.FRAME_TASK_COLOR,
         priority: state.language.lang.createCard.priority,
       };
