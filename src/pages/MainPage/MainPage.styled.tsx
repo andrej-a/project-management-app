@@ -74,7 +74,6 @@ export const ContentWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 50px;
-  margin-bottom: 100px;
   p {
     text-align: center;
     color: ${({ theme }) => theme.TEXT_COLOR_DARK};
@@ -91,6 +90,29 @@ export const ContentWrapper = styled.div`
   }
   @media (max-width: ${size.laptopM}) {
     width: 100%;
+    p {
+      width: 90%;
+    }
+  }
+`;
+export const AboutSchoolContainer = styled.div`
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 100px;
+  p {
+    text-align: center;
+    color: ${({ theme }) => theme.TEXT_COLOR_DARK};
+    width: 40%;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5em;
+    align-self: center;
+  }
+  @media (max-width: ${size.tablet}) {
+    justify-content: center;
+    flex-direction: column;
     p {
       width: 90%;
     }

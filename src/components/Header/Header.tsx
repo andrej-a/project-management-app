@@ -27,7 +27,7 @@ export const Header = () => {
       )}
     >
       <Container>
-        <NavLink to="boards" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <NavLink to="/" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <h2>TASKBAN</h2>
         </NavLink>
         <BurgerMenu

@@ -88,6 +88,7 @@ export interface ILanguage {
     Andrej: string;
     Nastya: string;
     Lizaveta: string;
+    AboutSchool: string;
   };
   header: {
     LogOut: string;

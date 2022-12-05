@@ -60,6 +60,10 @@ export const SelectAssign = ({
             fill: selectTxtColor,
           },
         }),
+        input: (baseStyles) => ({
+          ...baseStyles,
+          color: selectTxtColor,
+        }),
         menuList: (base) => ({
           ...base,
           height: '150px',

@@ -85,14 +85,6 @@ function App() {
           <Header />
           <Routes>
             <Route
-              path="/"
-              element={
-                <ProtectedRoute user={!isAuthorized} redirectPath="boards">
-                  <MainPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
               path="signIn"
               element={
                 <ProtectedRoute user={!isAuthorized} redirectPath="/boards">
