@@ -77,11 +77,23 @@ export const Form = () => {
       <FormWrapper>
         <form action="" onSubmit={handleSubmit(formSubmit)}>
           <InputWrapper>
-            <input {...register('name')} placeholder={namePlaceholder} type="text" name="name" />
+            <input
+              {...register('name')}
+              placeholder={namePlaceholder}
+              type="text"
+              name="name"
+              id="name"
+            />
             <InputError>{errors.name?.message}</InputError>
           </InputWrapper>
           <InputWrapper>
-            <input {...register('login')} placeholder={loginPlaceholder} type="text" name="login" />
+            <input
+              {...register('login')}
+              placeholder={loginPlaceholder}
+              type="text"
+              name="login"
+              id="login"
+            />
             <InputError>{errors.login?.message}</InputError>
           </InputWrapper>
           <InputWrapper>
