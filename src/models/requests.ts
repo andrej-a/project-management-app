@@ -11,7 +11,7 @@ export enum requests {
   PATCH = 'PATCH',
 }
 
-export const url = 'https://kanban-lizaveta01.koyeb.app';
+export const url = 'https://final-task-backend-production-3db5.up.railway.app';
 
 export const path = {
   signup: `${url}/auth/signup`,
